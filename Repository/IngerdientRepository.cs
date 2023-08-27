@@ -1,6 +1,16 @@
-﻿namespace Project3.Repository
+﻿using Project3.Data;
+using Project3.Models;
+
+namespace Project3.Repository
 {
-    public class IngerdientRepository
+    public interface IIngerdientRepository : IBaseRepository<Ingredient>
     {
+
+    }
+    public class IngerdientRepository : BaseRepository<Ingredient>, IIngerdientRepository
+    {
+        public IngerdientRepository(ApplicationDbContext context) : base(context)
+        {
+        }
     }
 }

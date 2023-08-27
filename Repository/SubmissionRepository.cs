@@ -1,6 +1,16 @@
-﻿namespace Project3.Repository
+﻿using Project3.Data;
+using Project3.Models;
+
+namespace Project3.Repository
 {
-    public class SubmissionRepository
+    public interface ISubmissionRepository : IBaseRepository<Submission>
     {
+
+    }
+    public class SubmissionRepository : BaseRepository<Submission>, ISubmissionRepository
+    {
+        public SubmissionRepository(ApplicationDbContext context) : base(context)
+        {
+        }
     }
 }
