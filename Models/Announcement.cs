@@ -2,7 +2,7 @@
 
 namespace Project3.Models
 {
-    public class Announcement : Base
+    public class FAQ : Base
     {
         public string? Title { get; set; }
         public string? Description { get; set; }
