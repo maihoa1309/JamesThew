@@ -1,4 +1,5 @@
-﻿using Project3.Data;
+﻿using Microsoft.AspNetCore.Identity;
+using Project3.Data;
 using Project3.Models;
 
 namespace Project3.Repository
@@ -9,8 +10,6 @@ namespace Project3.Repository
     }
     public class RecipeRepository : BaseRepository<Recipe>, IRecipeRepository
     {
-        public RecipeRepository(ApplicationDbContext context) : base(context)
-        {
-        }
+        public RecipeRepository(ApplicationDbContext dbContext, UserManager<CustomUser> userManager, IHttpContextAccessor httpContext) : base(dbContext, userManager, httpContext) { }
     }
 }
