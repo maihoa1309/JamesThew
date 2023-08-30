@@ -472,15 +472,6 @@ namespace Project3.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RecipeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Unit")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime?>("UpdatedTime")
                         .HasColumnType("datetime2");
 
@@ -488,8 +479,6 @@ namespace Project3.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RecipeId");
 
                     b.ToTable("Ingredients");
                 });
@@ -553,16 +542,11 @@ namespace Project3.Data.Migrations
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId1")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("FeedbackId");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("Recipes");
                 });
@@ -781,15 +765,6 @@ namespace Project3.Data.Migrations
                     b.Navigation("GetCategory");
                 });
 
-            modelBuilder.Entity("Project3.Models.Ingredient", b =>
-                {
-                    b.HasOne("Project3.Models.Recipe", "Recipe")
-                        .WithMany()
-                        .HasForeignKey("RecipeId");
-
-                    b.Navigation("Recipe");
-                });
-
             modelBuilder.Entity("Project3.Models.Recipe", b =>
                 {
                     b.HasOne("Project3.Models.Category", "GetCategory")
@@ -800,15 +775,9 @@ namespace Project3.Data.Migrations
                         .WithMany()
                         .HasForeignKey("FeedbackId");
 
-                    b.HasOne("Project3.Models.CustomUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId1");
-
                     b.Navigation("Feedback");
 
                     b.Navigation("GetCategory");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Project3.Models.Submission", b =>

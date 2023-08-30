@@ -8,5 +8,13 @@ namespace Project3.Controllers
         {
             return View();
         }
-    }
+        public IActionResult Recipes()
+        {
+            return View();
+        }
+		public IActionResult AddRecipe()
+		{
+			return View();
+		}
+	}
 }
