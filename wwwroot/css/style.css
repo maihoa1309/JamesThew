@@ -93,7 +93,7 @@
 }
 
 .gradient-1 {
-    background: #f0a907;
+    background: black;
     background: -moz-linear-gradient(top, #f0a907 0%, #f53c79 100%);
     background: -webkit-linear-gradient(top, #f0a907 0%, #f53c79 100%);
     background: linear-gradient(to bottom, #f0a907 0%, #f53c79 100%) !important;
