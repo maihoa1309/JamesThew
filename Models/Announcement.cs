@@ -2,6 +2,7 @@
 
 namespace Project3.Models
 {
+
     public class Announcement : Base
     {
         public string? Title { get; set; }
