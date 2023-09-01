@@ -1,5 +1,6 @@
 ﻿using Project3.Models;
 using Project3.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace Project3.Repository
 {
@@ -9,8 +10,6 @@ namespace Project3.Repository
     }
     public class AnnouncementRepository : BaseRepository<FAQ>, IAnnouncementRepository
     {
-        public AnnouncementRepository(ApplicationDbContext context) : base(context)
-        {
-        }
+        public AnnouncementRepository(ApplicationDbContext dbContext, UserManager<CustomUser> userManager, IHttpContextAccessor httpContext) : base(dbContext, userManager, httpContext) { }
     }
 }
