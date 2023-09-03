@@ -1,15 +1,26 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+
+﻿using Microsoft.AspNetCore.Mvc;
 using Project3.Models;
 using Project3.Repository;
-using System.Threading.Tasks;
 
 namespace Project3.Controllers
 {
-    public class IngredientController : BaseController<Ingredient>
-    {
-        public IngredientController(IBaseRepository<Ingredient> repository) : base(repository)
-        {
-        }
-    }
+	public class IngredientController : BaseController<Ingredient>
+	{
+		private readonly IBaseRepository<Ingredient> _repository;
+		private readonly IIngerdientRepository _ingredientRepository;
+
+		public IngredientController(IBaseRepository<Ingredient> repository, IIngerdientRepository ingredientRepository) : base(repository)
+		{
+
+			_ingredientRepository = ingredientRepository;
+		}
+		public IActionResult CreateIngredient(Ingredient request)
+		{
+			//_ingredientRepository.CreateAsync(request).Wait();
+			return new JsonResult(request);
+		}
+
+	}
 }
+

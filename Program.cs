@@ -26,6 +26,16 @@ namespace Project3
             builder.Services.AddRazorPages();
 			builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 			builder.Services.AddScoped<IFeedBackRepository, FeedBackRepository>();
+			builder.Services.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
+			builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+			builder.Services.AddScoped<IContestRepository, ContestRepository>();
+			builder.Services.AddScoped<IFAQRepository, FAQRepository>();
+			builder.Services.AddScoped<IIngerdientRepository, IngerdientRepository>();
+			builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
+			builder.Services.AddScoped<IRegisterRepository, RegisterRepository>();
+			builder.Services.AddScoped<ISubmissionRepository, SubmissionRepository>();
+			builder.Services.AddScoped<ITipRepository, TipRepository>();
+
 			var app = builder.Build();
 
             // Configure the HTTP request pipeline.
