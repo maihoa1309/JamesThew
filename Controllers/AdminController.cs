@@ -20,5 +20,14 @@ namespace Project3.Controllers
         {
             return View();
         }
+        public IActionResult FeedbackRecipe()
+        {
+            return View();
+        }
+		public IActionResult AddIngredient()
+		{
+			return View();
+		}
+
 	}
 }
