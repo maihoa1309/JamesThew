@@ -8,7 +8,7 @@ namespace Project3.Models
         [ForeignKey("RecipeId")]
         public Recipe GetRecipe { get; set; }
         public int? IngredientId { get; set; }
-        [ForeignKey("Ingredient")]
+        [ForeignKey("IngredientId")]
         public Ingredient? GetIngredient { get; set; }
         public int? Quantity { get; set; }
         public string? Unit { get; set; }
