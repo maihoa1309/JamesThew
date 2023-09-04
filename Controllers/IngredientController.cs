@@ -17,7 +17,7 @@ namespace Project3.Controllers
 		}
 		public IActionResult CreateIngredient(Ingredient request)
 		{
-			//_ingredientRepository.CreateAsync(request).Wait();
+			_ingredientRepository.CreateAsync(request).Wait();
 			return new JsonResult(request);
 		}
 

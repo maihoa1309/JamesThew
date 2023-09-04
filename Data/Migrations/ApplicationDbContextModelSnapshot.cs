@@ -494,8 +494,8 @@ namespace Project3.Data.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CookingTime")
-                        .HasColumnType("int");
+                    b.Property<string>("CookingTime")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedTime")
                         .HasColumnType("datetime2");
@@ -527,8 +527,8 @@ namespace Project3.Data.Migrations
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("Servings")
-                        .HasColumnType("int");
+                    b.Property<string>("Servings")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
@@ -549,6 +549,60 @@ namespace Project3.Data.Migrations
                     b.HasIndex("FeedbackId");
 
                     b.ToTable("Recipes");
+                });
+
+            modelBuilder.Entity("Project3.Models.RecipeDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime?>("CreatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeletedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Ingredient")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IngredientId")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RecipeId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Unit")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Ingredient");
+
+                    b.HasIndex("RecipeId");
+
+                    b.ToTable("RecipeDetail");
                 });
 
             modelBuilder.Entity("Project3.Models.Register", b =>
@@ -778,6 +832,23 @@ namespace Project3.Data.Migrations
                     b.Navigation("Feedback");
 
                     b.Navigation("GetCategory");
+                });
+
+            modelBuilder.Entity("Project3.Models.RecipeDetail", b =>
+                {
+                    b.HasOne("Project3.Models.Ingredient", "GetIngredient")
+                        .WithMany()
+                        .HasForeignKey("Ingredient");
+
+                    b.HasOne("Project3.Models.Recipe", "GetRecipe")
+                        .WithMany()
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("GetIngredient");
+
+                    b.Navigation("GetRecipe");
                 });
 
             modelBuilder.Entity("Project3.Models.Submission", b =>
