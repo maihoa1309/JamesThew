@@ -13,7 +13,6 @@ namespace Project3.Controllers
         }
 
         // Các phương thức cụ thể cho AnnouncementController (nếu cần)
-
         // Ví dụ phương thức tùy chỉnh
         
     }

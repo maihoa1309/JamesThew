@@ -13,7 +13,7 @@ namespace Project3.Data
         public async Task RoleData()
         {
             //await _roleManager.CreateAsync(new IdentityRole { Name = "ADMIN", NormalizedName = "ADMIN" });
-            
+
         }
     }
 }

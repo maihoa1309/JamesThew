@@ -29,7 +29,6 @@ namespace Project3
 			builder.Services.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
 			builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 			builder.Services.AddScoped<IContestRepository, ContestRepository>();
-			builder.Services.AddScoped<IFAQRepository, FAQRepository>();
 			builder.Services.AddScoped<IIngerdientRepository, IngerdientRepository>();
 			builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
 			builder.Services.AddScoped<IRegisterRepository, RegisterRepository>();

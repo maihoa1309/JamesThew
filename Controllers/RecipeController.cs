@@ -8,8 +8,17 @@ namespace Project3.Controllers
 {
     public class RecipeController : BaseController<Recipe>
     {
-        public RecipeController(IBaseRepository<Recipe> repository) : base(repository)
+        private readonly IBaseRepository<Recipe> _repository;
+		private readonly IRecipeRepository _recipeRepository;
+		public RecipeController(IBaseRepository<Recipe> repository,IRecipeRepository recipeRepository) : base(repository)
         {
+            _recipeRepository= recipeRepository;
+        }
+        public IActionResult CreateRecipe ( Recipe request)
+        {
+           
+            return new JsonResult(request);
+
         }
     }
 }

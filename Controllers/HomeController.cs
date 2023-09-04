@@ -15,13 +15,14 @@ namespace Project3.Controllers
         {
             _logger = logger;
             _roleManager = roleManager;
-        }
+        }      
         //public async Task<IActionResult> SeedingRoleAsync()
         //{
         //    var dbSeedRole = new DbSeedRole(_roleManager);
         //    await dbSeedRole.RoleData();
         //    return Ok("Ok");
         //}
+
         public IActionResult Index()
         {
             return View();
@@ -64,10 +65,7 @@ namespace Project3.Controllers
         {
           return View();
         }
-        public IActionResult Feed()
-        {
-          return View();
-        }
+       
         public IActionResult FAQ()
         {
           return View();
