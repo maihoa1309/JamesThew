@@ -110,7 +110,7 @@
 							<div class="col-md-4" id="container">
 								<div class="input-group mb-3">
 									<input type="text" class="form-control" placeholder="Enter quantity and unit" name="quantity">
-									<select class="default-select form-control wide btn select2" name="ingredient">
+									<select class=" form-control wide btn select2" name="ingredient">
 										@foreach (var ingre in ingredients)
 										{
 											<option>@ingre.Name</option>
@@ -136,7 +136,7 @@
 @section Script{
 	<script>
 		$(document).ready(function () {
-			//$('.select2').select2();
+			$('.select2').select2();
 			$("#btnAlert").click(function () {
 				alert("yeah");
 				var newIngre = $(".input-group:last").clone(true); //clone div cuoi
