@@ -4,11 +4,11 @@ using Project3.Models;
 
 namespace Project3.Repository
 {
-    public interface IFAQRepository : IBaseRepository<FAQ>
+    public interface IFAQRepository : IBaseRepository<Announcement>
     {
 
     }
-    public class FAQRepository : BaseRepository<FAQ>, IFAQRepository
+    public class FAQRepository : BaseRepository<Announcement>, IFAQRepository
     {
         public FAQRepository(ApplicationDbContext dbContext, UserManager<CustomUser> userManager, IHttpContextAccessor httpContext) : base(dbContext, userManager, httpContext) { }
     }
