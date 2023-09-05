@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MessagePack.Formatters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Project3.DTO;
 using Project3.Models;
 using Project3.Repository;
 using System.Threading.Tasks;
@@ -14,11 +16,9 @@ namespace Project3.Controllers
         {
             _recipeRepository= recipeRepository;
         }
-        public IActionResult CreateRecipe ( Recipe request)
+        public IActionResult CreateRecipe ( RecipeDetaiDTO request)
         {
-           
-            return new JsonResult(request);
-
+            return Json(request);
         }
     }
 }

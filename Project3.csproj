@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\UploadImg\" />
     <Folder Include="wwwroot\point.moxcreative.com\FileContentIndex\merges\" />
     <Folder Include="wwwroot\point.moxcreative.com\v17\" />
   </ItemGroup>
