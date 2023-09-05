@@ -56,9 +56,9 @@ namespace Project3.Controllers
 		{
 			return View();
 		}
-		public IActionResult AddRecipe()
+		public IActionResult Feed()
 		{
-				return View();
+			return View();
 		}
 		public IActionResult FAQ
 			()

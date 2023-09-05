@@ -1,5 +1,4 @@
-﻿using Project3.Models;
-
+﻿
 namespace Project3.Models
 {
     public class FAQ : Base
