@@ -2,10 +2,11 @@
 @inject IIngerdientRepository ingredientRepository;
 @inject IRecipeRepository recipeRepository;
 @{
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-	var ingredients = await ingredientRepository.GetAllAsync();
+	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+	var ingredients = await ingredientRepository.SortNameByASC(); ;
 
 }
+
 <div class="content-body ">
 	<!-- row -->
 	<div class="container-fluid">
@@ -25,7 +26,7 @@
 			</div>
 			<div class="card-body">
 				<div class="basic-form">
-					<form method="post" action="/Recipe/CreateRecipe">
+					<form method="post" action="/Recipe/CreateRecipe" enctype="multipart/form-data">
 						<input type="hidden" name="_token" value="ML92rdCjbEmTftVXgNyoQXBHnoqjfV95zZ8HN7me">
 						<div class="row">
 							<div class="mb-3 col-md-4">
@@ -82,7 +83,7 @@
 							<div class="mb-3 col-md-4">
 								<label class="form-label">For:</label>
 								<select class="default-select form-control wide" name="isFree">
-									<option selected>Free user</option>
+									<option selected >Free user</option>
 									<option>Member of site</option>
 								</select>
 							</div>
@@ -90,37 +91,34 @@
 						<div class="row">
 							<span>Share photo of your recipe</span>
 							<div class="mb-3 col-xl-4 col-lg-4">
-								<input class="form-control" type="file" id="formFile">
+								<input class="form-control" type="file" id="formFile" name="img1" accept="image/jpeg, image/png, image/gif">
 							</div>
 							<div class="mb-3 col-xl-4 col-lg-4">
-								<input class="form-control" type="file" id="formFile">
+								<input class="form-control" type="file" id="formFile" name="img2" accept="image/jpeg, image/png, image/gif">
 							</div>
 							<div class="mb-3 col-xl-4 col-lg-4">
-								<input class="form-control" type="file" id="formFile">
+								<input class="form-control" type="file" id="formFile" name="img3" accept="image/jpeg, image/png, image/gif">
 							</div>
 						</div>
 						<div class="row">
 							<div class="mb-3 col-xl-12 col-lg-12">
 								<label class="form-label">Instruction:</label>
 								<textarea class="form-control" name="instruction"></textarea>
-
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-4">
+							<div class="col-md-4" id="container">
 								<div class="input-group mb-3">
-									<input type="text" class="form-control" placeholder="Enter quantity and unit">
-@*									<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">Ingredient</button>*@
-									<select class="default-select form-control wide btn" name="i">
+									<input type="text" class="form-control" placeholder="Enter quantity and unit" name="quantity">
+									<select class="default-select form-control wide btn select2" name="ingredient">
 										@foreach (var ingre in ingredients)
 										{
-											<option value="@ingre.Id">@ingre.Name</option>
+											<option>@ingre.Name</option>
 										}
 									</select>
-								
 								</div>
 								<div>
-									<button type="button" class="btn btn-rounded btn-primary">
+									<button type="button" class="btn btn-rounded btn-primary btn-add-ingre" id="btnAlert" >
 										<span class="btn-icon-start text-primary">
 											<i class="fa fa-plus color-info"></i>
 										</span>Add
@@ -135,4 +133,21 @@
 		</div>
 	</div>
 </div>
+@section Script{
+	<script>
+		$(document).ready(function () {
+			//$('.select2').select2();
+			$("#btnAlert").click(function () {
+				alert("yeah");
+				var newIngre = $(".input-group:last").clone(true); //clone div cuoi
+				newIngre.find("input").val("");
+				newIngre.find("select").prop("selectedIndex", 0);
+				$("#container").append(newIngre); // Thêm khối div mới vào container
+			});
+		});
+	</script>
+}
+
+
+
 
