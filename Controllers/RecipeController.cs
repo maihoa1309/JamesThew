@@ -1,5 +1,6 @@
 ﻿using MessagePack.Formatters;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Project3.DTO;
 using Project3.Models;
@@ -16,8 +17,10 @@ namespace Project3.Controllers
         {
             _recipeRepository= recipeRepository;
         }
-        public IActionResult CreateRecipe ( RecipeDetaiDTO request)
+        public IActionResult CreateRecipe ( FormAddRecipe request)
         {
+			
+            _recipeRepository.CreateRecipe(request);
             return Json(request);
         }
     }
