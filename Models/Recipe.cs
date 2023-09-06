@@ -16,7 +16,7 @@ namespace Project3.Models
         [ForeignKey("FeedbackId")]
         public Feedback? Feedback { get; set; }
         public string? Instruction { get; set; }
-        public int? UserId { get; set; }
+        public string? UserId { get; set; }
         public string? Cuisines { get; set; }
         public string? Img { get; set; }
         public bool? IsFree { get; set; }
