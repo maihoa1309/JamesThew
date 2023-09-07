@@ -4,24 +4,41 @@ using Project3.Data;
 using Project3.Models;
 using Project3.DTO;
 using Microsoft.Extensions.Primitives;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Project3.Repository
 {
     public interface IRecipeRepository : IBaseRepository<Recipe>
     {
         Task<bool> CreateRecipe(FormAddRecipe request);
+        Task<List<Recipe>> GetLatestCreatedRecipes(int count);
+        
+
     }
     public class RecipeRepository : BaseRepository<Recipe>, IRecipeRepository
     {
         public RecipeRepository(ApplicationDbContext dbContext, UserManager<CustomUser> userManager, IHttpContextAccessor httpContext) : base(dbContext, userManager, httpContext) { }
 
-        public List<Recipe> GetLatestCreatedRecipes(int count)
+        public async Task<List<Recipe>> GetLatestCreatedRecipes(int count)
         {
             // Sử dụng LINQ để truy vấn dữ liệu và lấy danh sách bản ghi được tạo gần nhất
-            List<Recipe> latestRecipes = _context.Recipes.OrderByDescending(r => r.CreatedTime)
-                                                       .Take(count)
-                                                       .ToList();
-            return latestRecipes;
+
+            try {
+                var query = _dbSet.OrderByDescending(r => r.CreatedTime)
+                                                       .Take(count);
+                var query2 = await _dbSet.OrderByDescending(r => r.CreatedTime)
+                                                       .FirstOrDefaultAsync();
+
+                return await query.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+                
+            }
+            
         }
         public async Task<bool>  CreateRecipe(FormAddRecipe request) 
         {
@@ -33,7 +50,7 @@ namespace Project3.Repository
             recipe.CookingTime = request.CookingTime;
             recipe.Servings = request.Servings;
             recipe.Instruction = request.Instruction;
-            recipe.UserId = currentUser.Id;
+            //recipe.UserId = currentUser.Id;
             recipe.Cuisines = request.Cuisines;
             recipe.IsFree = Convert.ToBoolean(request.IsFree);
             _dbSet.Add(recipe);
@@ -90,4 +107,4 @@ namespace Project3.Repository
         }
       }
     }
-}
+

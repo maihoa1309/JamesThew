@@ -12,7 +12,7 @@ namespace Project3.Data
         }
         public virtual DbSet<CustomUser> CustomUsers { get; set; }
         public virtual DbSet<Announcement> Announcements { get; set; }
-        public virtual DbSet<Category> Categorys { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Contest> Contests { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<Ingredient> Ingredients { get; set; }
