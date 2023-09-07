@@ -507,8 +507,8 @@ namespace Project3.Data.Migrations
                     b.Property<string>("UpdatedUser")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

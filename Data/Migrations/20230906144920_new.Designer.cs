@@ -12,7 +12,7 @@ using Project3.Data;
 namespace Project3.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230904053751_new")]
+    [Migration("20230906144920_new")]
     partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -509,8 +509,8 @@ namespace Project3.Data.Migrations
                     b.Property<string>("UpdatedUser")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

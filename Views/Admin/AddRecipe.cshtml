@@ -83,8 +83,8 @@
 							<div class="mb-3 col-md-4">
 								<label class="form-label">For:</label>
 								<select class="default-select form-control wide" name="isFree">
-									<option selected value="1" >Free user</option>
-									<option value="0">Member of site</option>
+									<option selected value="true">Free user</option>
+									<option value="false">Member of site</option>
 								</select>
 							</div>
 						</div>
@@ -113,7 +113,7 @@
 									<select class="default-select form-control wide btn select2" name="ingredient" id="selectIngredient">
 										@foreach (var ingre in ingredients)
 										{
-											<option>@ingre.Name</option>
+											<option value="@ingre.Id">@ingre.Name</option>
 										}
 									</select>
 								</div>
@@ -147,7 +147,7 @@
 				var selectName = "ingredient" + count;
 				var quantityName = "quantity" +count;
 				$('#selectIngredient').attr('name', selectName);
-				$('#quantity').attr('name', selectName);
+				$('#quantity').attr('name', quantityName
 				count++;
 			});
 		});

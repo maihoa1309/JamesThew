@@ -210,7 +210,7 @@ namespace Project3.Data.Migrations
                     Servings = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FeedbackId = table.Column<int>(type: "int", nullable: true),
                     Instruction = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<int>(type: "int", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Cuisines = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Img = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsFree = table.Column<bool>(type: "bit", nullable: true),

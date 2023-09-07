@@ -12,9 +12,11 @@ namespace Project3.Repository
     public interface IRecipeRepository : IBaseRepository<Recipe>
     {
         Task<bool> CreateRecipe(FormAddRecipe request);
+
+        Task<List<RecipeDetailDTO>> GetAllRecipes();
+
         Task<List<Recipe>> GetLatestCreatedRecipes(int count);
         
-
     }
     public class RecipeRepository : BaseRepository<Recipe>, IRecipeRepository
     {
@@ -42,7 +44,7 @@ namespace Project3.Repository
         }
         public async Task<bool>  CreateRecipe(FormAddRecipe request) 
         {
-            var currentUser = _userManager.GetUserAsync(_contextAccessor.HttpContext.User).GetAwaiter().GetResult();
+            //var currentUser = _userManager.GetUserAsync(_contextAccessor.HttpContext.User).GetAwaiter().GetResult();
 
             var recipe = new Recipe();
             recipe.Title = request.Title;
@@ -53,11 +55,8 @@ namespace Project3.Repository
             //recipe.UserId = currentUser.Id;
             recipe.Cuisines = request.Cuisines;
             recipe.IsFree = Convert.ToBoolean(request.IsFree);
-            _dbSet.Add(recipe);
-            _context.SaveChanges();
-            var recipeId = recipe.Id;
-            //upload anh 
-            recipe.Img = "";
+            recipe.CreatedTime = DateTime.Now;
+			
             List<IFormFile> imgs = new List<IFormFile>
             {
               request.Img1,
@@ -66,8 +65,8 @@ namespace Project3.Repository
             };
             foreach(var img in imgs) 
             {
-              if (img != null)
-              {
+                if (img != null)
+                {
                 //dat lai ten anh theo guid + phan extension
                 string uploadImgName = Guid.NewGuid() + Path.GetExtension(img.FileName);
                 //upload file
@@ -75,36 +74,50 @@ namespace Project3.Repository
                 //tao file moi vao duong dan upload copy img vao SreamUploadFile?
                 using (var StreamUploadFile = new FileStream(savePath, FileMode.CreateNew))
                 {
-                  img.CopyTo(StreamUploadFile);
+                    img.CopyTo(StreamUploadFile);
                 }
-                recipe.Img += uploadImgName;
-              }
+                recipe.Img += ';'+uploadImgName;
+                }
             }
-
-
-
-            string[] ingres = new string[]
+			_dbSet.Add(recipe);
+			_context.SaveChanges();
+			var recipeId = recipe.Id;
+			//upload anh 
+			string[] ingres = new string[]
             {
-              request.Ingredient,
-              request.Ingredient1,
-              request.Ingredient2,
-              request.Ingredient3,
-              request.Ingredient4,
-              request.Ingredient5
+                request.Ingredient,
+                request.Ingredient1,
+                request.Ingredient2,
+                request.Ingredient3,
+                request.Ingredient4,
+                request.Ingredient5
             };
             string[] quantities = new string[]
             {
-              request.Quantity,
-              request.Quantity1,
-              request.Quantity2,
-              request.Quantity3,
-              request.Quantity4,
-              request.Quantity5
+                request.Quantity,
+                request.Quantity1,
+                request.Quantity2,
+                request.Quantity3,
+                request.Quantity4,
+                request.Quantity5
             };
-
-
-            return true;
+            for(var i = 0; i < ingres.Length; i++)
+            {
+                if (ingres[i] != null)
+                {
+                    _context.RecipeDetail.Add(new RecipeDetail() { RecipeId = recipe.Id, IngredientId = int.Parse(ingres[i]), Unit = quantities[i] }) ;
+                }
+            }
+			_context.SaveChanges();
+			return true;
         }
-      }
+
+        public Task<List<RecipeDetailDTO>> GetAllRecipes()
+        {
+            var allRecipes = from r in _context.Recipes
+                             select r;
+
+            throw new NotImplementedException();
+        }
     }
 

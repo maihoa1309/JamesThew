@@ -17,10 +17,10 @@ namespace Project3.Controllers
         {
             _recipeRepository= recipeRepository;
         }
-        public IActionResult CreateRecipe ( FormAddRecipe request)
+        public async Task<IActionResult> CreateRecipe ( FormAddRecipe request)
         {
 			
-            _recipeRepository.CreateRecipe(request);
+            await _recipeRepository.CreateRecipe(request);
             return Json(request);
         }
     }

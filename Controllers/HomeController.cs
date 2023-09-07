@@ -15,7 +15,7 @@ namespace Project3.Controllers
         {
             _logger = logger;
             _roleManager = roleManager;
-        }      
+        }
         //public async Task<IActionResult> SeedingRoleAsync()
         //{
         //    var dbSeedRole = new DbSeedRole(_roleManager);
