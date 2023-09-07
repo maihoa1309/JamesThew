@@ -1,0 +1,57 @@
+﻿@using Project3;
+@model Recipe
+@if (Model != null)
+{
+<div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-d396ba5" data-id="d396ba5" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+    <div class="elementor-widget-wrap elementor-element-populated">
+        <div class="elementor-element elementor-element-db90170 elementor-widget elementor-widget-image" data-id="db90170" data-element_type="widget" data-widget_type="image.default">
+            <div class="elementor-widget-container">
+                <img decoding="async" width="1080" height="1618" src="https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/chicken-65.jpg" class="attachment-full size-full wp-image-775" style="height: 197px;" alt="Chicken 65" srcset="https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/chicken-65.jpg 1080w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/chicken-65-200x300.jpg 200w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/chicken-65-684x1024.jpg 684w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/chicken-65-768x1151.jpg 768w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/chicken-65-1025x1536.jpg 1025w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/chicken-65-800x1199.jpg 800w" sizes="(max-width: 1080px) 100vw, 1080px" />
+            </div>
+        </div>
+        <div class="elementor-element elementor-element-43c1969 elementor-widget__width-auto elementor-absolute elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="43c1969" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="icon-list.default">
+            <div class="elementor-widget-container">
+                <ul class="elementor-icon-list-items">
+                    <li class="elementor-icon-list-item">
+                        <span class="elementor-icon-list-icon">
+                            <i aria-hidden="true" class="icon icon-user"></i>
+                        </span>
+                        <span class="elementor-icon-list-text">by Bren</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="elementor-element elementor-element-fa8296c elementor-widget elementor-widget-heading" data-id="fa8296c" data-element_type="widget" data-widget_type="heading.default">
+            <div class="elementor-widget-container">
+                <h6 class="elementor-heading-title elementor-size-default">
+                    <a href="#">
+                        @Model.GetCategory.Name
+                    </a>
+                </h6>
+            </div>
+        </div>
+        <div class="elementor-element elementor-element-5a2399c elementor-widget elementor-widget-heading" data-id="5a2399c" data-element_type="widget" data-widget_type="heading.default">
+            <div class="elementor-widget-container">
+                <h4 class="elementor-heading-title elementor-size-default">
+                    <a href="#">
+                        @Model.Title
+                    </a>
+                </h4>
+            </div>
+        </div>
+        <div class="elementor-element elementor-element-00eb634 elementor--star-style-star_unicode elementor-widget elementor-widget-star-rating" data-id="00eb634" data-element_type="widget" data-widget_type="star-rating.default">
+            <div class="elementor-widget-container">
+
+                <div class="elementor-star-rating__wrapper">
+                    <div class="elementor-star-rating" title="4.5/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-5">&#9733;</i> <span itemprop="ratingValue" class="elementor-screen-only">4.5/5</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="elementor-element elementor-element-58417a0 elementor-widget elementor-widget-text-editor" data-id="58417a0" data-element_type="widget" data-widget_type="text-editor.default">
+            <div class="elementor-widget-container">
+                <p>@Model.Description</p>
+            </div>
+        </div>
+    </div>
+</div>
+}
