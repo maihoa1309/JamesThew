@@ -1,7 +1,10 @@
-﻿
+﻿@using Project3.Repository;
+@inject IRecipeRepository recipeRepository;
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var recipes = await recipeRepository.GetAllAsync();
 }
+
 <div class="content-body ">
     <!-- row -->
     <div class="container-fluid">
@@ -27,25 +30,28 @@
                 <div class="table-responsive ">
                     <table class="table order-request">
                         <tbody>
-                            <tr>
-                                <td style="width: 45%">
-                                    <div class="media align-items-center">
-                                        <img class="me-3 img-fluid rounded-circle" width="75" src="public/images/card/pic7.jpg" alt="DexignZone">
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-2"><a href="ecom-product-detail.html" class="text-black">Title recipe</a></h5>
-                                            <p class="mb-0 text-primary">Id?</p>
+                            @foreach(var recipe in recipes)
+                            {
+                                <tr>
+                                    <td style="width: 45%">
+                                        <div class="media align-items-center">
+                                            <img class="me-3 img-fluid rounded-circle" width="75" src="" >
+                                            <div class="media-body">
+                                                <h5 class="mt-0 mb-2"><a href="ecom-product-detail.html" class="text-black">@recipe.Title</a></h5>
+                                                <p class="mb-0 text-primary">@recipe.Id</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td style="width: 40%">
-                                    <h5 class="mb-2 text-black wspace-no">User name</h>
-                                </td>
-                                <td style="width: 10%">
-                                    <div class="d-flex align-items-center">
-                                        <a class="btn btn-danger light btn-sm" href="javascript:;">See detail</a>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td style="width: 40%">
+                                        <h5 class="mb-2 text-black wspace-no">James Thew</h5>
+                                    </td>
+                                    <td style="width: 10%">
+                                        <div class="d-flex align-items-center">
+                                            <a class="btn btn-danger light btn-sm" href="javascript:;">See detail</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                     <div class="card-footer border-0 pt-0 text-center">
