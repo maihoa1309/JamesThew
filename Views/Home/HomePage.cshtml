@@ -134,14 +134,12 @@
                         </div>
                     </div>
                     <div class="elementor-element elementor-element-06a0dc9 elementor-blockquote--skin-quotation elementor-blockquote--align-center elementor-widget__width-initial elementor-absolute elementor-blockquote--button-color-official elementor-invisible elementor-widget elementor-widget-blockquote" style="
-    width: 340px;
-    height: 192px;
-    background-color: rgba(255,255,255,0);
-    border-radius: 10px;
-    position: absolute;
-
-    top: -16px;
-" data-id="06a0dc9" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;,&quot;_animation&quot;:&quot;rotateInUpRight&quot;}" data-widget_type="blockquote.default">
+                        width: 340px;
+                        height: 192px;
+                        background-color: rgba(255,255,255,0);
+                        border-radius: 10px;
+                        position: absolute;
+                        top: -16px;" data-id="06a0dc9" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;,&quot;_animation&quot;:&quot;rotateInUpRight&quot;}" data-widget_type="blockquote.default">
                         <div class="elementor-widget-container">
                             <style>
                                 /*! elementor-pro - v3.10.1 - 09-01-2023 */
@@ -482,17 +480,17 @@
                                                         cursor: default
                                                     }
 
-                                                        .elementor-star-rating i:before {
-                                                            content: "\e934";
-                                                            display: block;
-                                                            font-size: inherit;
-                                                            font-family: inherit;
-                                                            position: absolute;
-                                                            overflow: hidden;
-                                                            color: #f0ad4e;
-                                                            top: 0;
-                                                            left: 0
-                                                        }
+                                                    .elementor-star-rating i:before {
+                                                        content: "\e934";
+                                                        display: block;
+                                                        font-size: inherit;
+                                                        font-family: inherit;
+                                                        position: absolute;
+                                                        overflow: hidden;
+                                                        color: #f0ad4e;
+                                                        top: 0;
+                                                        left: 0
+                                                    }
 
                                                     .elementor-star-rating .elementor-star-empty:before {
                                                         content: none
@@ -857,7 +855,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>                          <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-c0fc478 elementor-invisible" data-id="c0fc478" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;zoomIn&quot;,&quot;animation_delay&quot;:480}">
+                            </div>                          
+                            <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-c0fc478 elementor-invisible" data-id="c0fc478" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;zoomIn&quot;,&quot;animation_delay&quot;:480}">
                                 <div class="elementor-widget-wrap elementor-element-populated">
                                     <div class="elementor-element elementor-element-aa8c345 elementor-cta--skin-cover elementor-cta--valign-middle elementor-bg-transform elementor-bg-transform-zoom-out elementor-widget elementor-widget-call-to-action" data-id="aa8c345" data-element_type="widget" data-widget_type="call-to-action.default">
                                         <div class="elementor-widget-container">
@@ -880,7 +879,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>                          <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-c0fc478 elementor-invisible" data-id="c0fc478" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;zoomIn&quot;,&quot;animation_delay&quot;:480}">
+                            </div>                         
+                            <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-c0fc478 elementor-invisible" data-id="c0fc478" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;zoomIn&quot;,&quot;animation_delay&quot;:480}">
                                 <div class="elementor-widget-wrap elementor-element-populated">
                                     <div class="elementor-element elementor-element-aa8c345 elementor-cta--skin-cover elementor-cta--valign-middle elementor-bg-transform elementor-bg-transform-zoom-out elementor-widget elementor-widget-call-to-action" data-id="aa8c345" data-element_type="widget" data-widget_type="call-to-action.default">
                                         <div class="elementor-widget-container">
@@ -947,60 +947,59 @@
                     </section>
                     <section class="elementor-section elementor-inner-section elementor-element elementor-element-8e637d0 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="8e637d0" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeInRight&quot;}">
                         <div class="elementor-container elementor-column-gap-default">
-                           @* day la componenet*@
+                            @* day la componenet*@
                             
                             @foreach (var recipe in latestrecipe)
                             {
                                 @await Component.InvokeAsync("LatestRecipe", new { item = recipe })
                             }
                             <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class="elementor-element elementor-element-89f0cc9 elementor-widget elementor-widget-image" data-id="89f0cc9" data-element_type="widget" data-widget_type="image.default">
-                                        <div class="elementor-widget-container">
-                                            <img decoding="async" loading="lazy" width="720" height="1080" src="https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/baked-brie-with-cranberries-e1649757494180.jpg" class="attachment-full size-full wp-image-847" alt="Baked brie with cranberries" />
-                                        </div>
+                                <div class="elementor-element elementor-element-89f0cc9 elementor-widget elementor-widget-image" data-id="89f0cc9" data-element_type="widget" data-widget_type="image.default">
+                                    <div class="elementor-widget-container">
+                                        <img decoding="async" loading="lazy" width="720" height="1080" src="https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/baked-brie-with-cranberries-e1649757494180.jpg" class="attachment-full size-full wp-image-847" alt="Baked brie with cranberries" />
                                     </div>
-                                    <div class="elementor-element elementor-element-8352571 elementor-widget__width-auto elementor-absolute elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="8352571" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="icon-list.default">
-                                        <div class="elementor-widget-container">
-                                            <ul class="elementor-icon-list-items">
-                                                <li class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="icon icon-user"></i>
-                                                    </span>
-                                                    <span class="elementor-icon-list-text">by Wilgoz</span>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                </div>
+                                <div class="elementor-element elementor-element-8352571 elementor-widget__width-auto elementor-absolute elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="8352571" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="icon-list.default">
+                                    <div class="elementor-widget-container">
+                                        <ul class="elementor-icon-list-items">
+                                            <li class="elementor-icon-list-item">
+                                                <span class="elementor-icon-list-icon">
+                                                    <i aria-hidden="true" class="icon icon-user"></i>
+                                                </span>
+                                                <span class="elementor-icon-list-text">by Wilgoz</span>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <div class="elementor-element elementor-element-d42d75b elementor-widget elementor-widget-heading" data-id="d42d75b" data-element_type="widget" data-widget_type="heading.default">
-                                        <div class="elementor-widget-container">
-                                            <h6 class="elementor-heading-title elementor-size-default">
-                                                <a href="#">
-                                                    Appetizers and Snacks
-                                                </a>
-                                            </h6>
-                                        </div>
+                                </div>
+                                <div class="elementor-element elementor-element-d42d75b elementor-widget elementor-widget-heading" data-id="d42d75b" data-element_type="widget" data-widget_type="heading.default">
+                                    <div class="elementor-widget-container">
+                                        <h6 class="elementor-heading-title elementor-size-default">
+                                            <a href="#">
+                                                Appetizers and Snacks
+                                            </a>
+                                        </h6>
                                     </div>
-                                    <div class="elementor-element elementor-element-a3de5fe elementor-widget elementor-widget-heading" data-id="a3de5fe" data-element_type="widget" data-widget_type="heading.default">
-                                        <div class="elementor-widget-container">
-                                            <h4 class="elementor-heading-title elementor-size-default">
-                                                <a href="#">
-                                                    Jamie's Baked Brie
-                                                </a>
-                                            </h4>
-                                        </div>
+                                </div>
+                                <div class="elementor-element elementor-element-a3de5fe elementor-widget elementor-widget-heading" data-id="a3de5fe" data-element_type="widget" data-widget_type="heading.default">
+                                    <div class="elementor-widget-container">
+                                        <h4 class="elementor-heading-title elementor-size-default">
+                                            <a href="#">
+                                                Jamie's Baked Brie
+                                            </a>
+                                        </h4>
                                     </div>
-                                    <div class="elementor-element elementor-element-2f0986b elementor--star-style-star_unicode elementor-widget elementor-widget-star-rating" data-id="2f0986b" data-element_type="widget" data-widget_type="star-rating.default">
-                                        <div class="elementor-widget-container">
+                                </div>
+                                <div class="elementor-element elementor-element-2f0986b elementor--star-style-star_unicode elementor-widget elementor-widget-star-rating" data-id="2f0986b" data-element_type="widget" data-widget_type="star-rating.default">
+                                    <div class="elementor-widget-container">
 
-                                            <div class="elementor-star-rating__wrapper">
-                                                <div class="elementor-star-rating" title="4.5/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-5">&#9733;</i> <span itemprop="ratingValue" class="elementor-screen-only">4.5/5</span></div>
-                                            </div>
+                                        <div class="elementor-star-rating__wrapper">
+                                            <div class="elementor-star-rating" title="4.5/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-5">&#9733;</i> <span itemprop="ratingValue" class="elementor-screen-only">4.5/5</span></div>
                                         </div>
                                     </div>
-                                    <div class="elementor-element elementor-element-9572a03 elementor-widget elementor-widget-text-editor" data-id="9572a03" data-element_type="widget" data-widget_type="text-editor.default">
-                                        <div class="elementor-widget-container">
-                                            <p>Habitant accumsan suscipit sodales phasellus nulla elit placerat sapien quisque gravida tincidunt</p>
-                                        </div>
+                                </div>
+                                <div class="elementor-element elementor-element-9572a03 elementor-widget elementor-widget-text-editor" data-id="9572a03" data-element_type="widget" data-widget_type="text-editor.default">
+                                    <div class="elementor-widget-container">
+                                        <p>Habitant accumsan suscipit sodales phasellus nulla elit placerat sapien quisque gravida tincidunt</p>
                                     </div>
                                 </div>
                             </div>
@@ -1214,10 +1213,11 @@
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                </div>
+                      </section>
+                  </div>
             </div>
+        </div>
+
     </section>
 </div>
        
@@ -1295,8 +1295,7 @@
                 <div class="elementor-element elementor-element-88a662b elementor-grid-4 elementor-grid-tablet-2 elementor-grid-mobile-1 elementor-posts--thumbnail-top elementor-widget elementor-widget-posts" data-id="88a662b" data-element_type="widget" data-settings="{&quot;classic_columns&quot;:&quot;4&quot;,&quot;classic_row_gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:21,&quot;sizes&quot;:[]},&quot;classic_columns_tablet&quot;:&quot;2&quot;,&quot;classic_columns_mobile&quot;:&quot;1&quot;,&quot;classic_row_gap_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;classic_row_gap_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="posts.classic">
                     <div class="elementor-widget-container">
                         <link rel="stylesheet" href="https://point.moxcreative.com/yumma/wp-content/plugins/elementor-pro/assets/css/widget-posts.min.css">
-                        <div class="elementor-posts-container elementor-posts elementor-posts--skin-classic elementor-grid" style="display: flex;
-    gap: 20px;">
+                        <div class="elementor-posts-container elementor-posts elementor-posts--skin-classic elementor-grid" style="display: flex;gap: 20px;">
                             <article class="elementor-post elementor-grid-item post-80 post type-post status-publish format-standard has-post-thumbnail hentry category-kitchen-tips tag-cooking tag-food tag-kitchen tag-recipes">
                                 <a class="elementor-post__thumbnail__link" href="https://point.moxcreative.com/yumma/2022/04/09/how-to-peel-hard-boiled-eggs-perfectly-every-single-time/">
                                     <div class="elementor-post__thumbnail"><img decoding="async" loading="lazy" width="1080" height="755" src="https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/greek-salad-and-boiled-eggs-.jpg" class="attachment-full size-full wp-image-81" alt="Greek salad and boiled eggs." srcset="https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/greek-salad-and-boiled-eggs-.jpg 1080w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/greek-salad-and-boiled-eggs--300x210.jpg 300w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/greek-salad-and-boiled-eggs--1024x716.jpg 1024w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/greek-salad-and-boiled-eggs--768x537.jpg 768w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/greek-salad-and-boiled-eggs--1536x1074.jpg 1536w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/greek-salad-and-boiled-eggs--800x560.jpg 800w" sizes="(max-width: 1080px) 100vw, 1080px" /></div>
@@ -1385,4 +1384,3 @@
         </div>
     </div>
 </section>
-                            </div>
