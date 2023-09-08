@@ -26,22 +26,12 @@ namespace Project3.Repository
         {
             // Sử dụng LINQ để truy vấn dữ liệu và lấy danh sách bản ghi được tạo gần nhất
 
-            try
-            {
-                var query = _dbSet.OrderByDescending(r => r.CreatedTime)
-                                                       .Take(count);
-                var query2 = await _dbSet.OrderByDescending(r => r.CreatedTime)
-                                                       .FirstOrDefaultAsync();
+            var query = await _dbSet.OrderByDescending(r => r.CreatedTime)
+                                                    .Take(count).ToListAsync();
+            //var query2 = await _dbSet.OrderByDescending(r => r.CreatedTime)
+            //                                        .FirstOrDefaultAsync();
 
-                return await query.ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return null;
-
-            }
-
+            return query;
         }
         public async Task<bool> CreateRecipe(FormAddRecipe request)
         {
