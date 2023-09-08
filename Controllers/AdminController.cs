@@ -4,7 +4,7 @@ using System.Data;
 
 namespace Project3.Controllers
 {
-    [Authorize(Roles = "ADMIN")]
+   // [Authorize(Roles = "ADMIN")]
     public class AdminController : Controller
     {
         public IActionResult Index()
