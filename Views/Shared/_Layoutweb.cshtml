@@ -1,4 +1,7 @@
-﻿<!doctype html>
+﻿@{
+      ViewData["UrlImage"] = "\\wwwroot\\images\\nav";
+}
+<!doctype html>
 <html lang="en-US">
 
 <!-- Mirrored from point.moxcreative.com/yumma/template-kit/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 09:38:10 GMT -->
@@ -8,11 +11,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
-    <title>Templates &#8211; Yumma</title>
+    <title>Take Of Recipe</title>
     <meta name='robots' content='max-image-preview:large' />
-    <link rel="alternate" type="application/rss+xml" title="Yumma &raquo; Feed" href="~/feed/index.html" />
-    <link rel="alternate" type="application/rss+xml" title="Yumma &raquo; Comments Feed" href="~/comments/feed/index.html" />
-    <link rel="alternate" type="application/rss+xml" title="Yumma &raquo; Templates Feed" href="feed/index.html" />
+    <link rel="alternate" type="application/rss+xml"  href="~/feed/index.html" />
+    <link rel="alternate" type="application/rss+xml"  Comments Feed" href="~/comments/feed/index.html" />
+    <link rel="alternate" type="application/rss+xml"  href="feed/index.html" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script>
         window._wpemojiSettings = { "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/", "ext": ".png", "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/", "svgExt": ".svg", "source": { "concatemoji": "https:\/\/point.moxcreative.com\/yumma\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.3" } };
@@ -455,7 +458,7 @@
         .item-user {
             position: absolute;
             top: 50px;
-            left: 15px;
+            left: -35px;
             display: none;
             background-color: #ffff;
             box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
@@ -496,6 +499,111 @@
             display: block
         }
 
+        .elementor-widget:not(:last-child) {
+    margin-bottom: 0px;
+}
+ .bg-item{
+     background-color: var(--e-global-color-text );
+    border-radius: 10px 10px 10px 10px;
+    margin-right: 20px;
+    height:auto
+ }
+ .img-item img{
+         width: 100%;
+    max-width: 100%;
+    height: 260px;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 5px 5px 5px 5px;
+ }
+ .elementor-post__text{
+            padding: 21px 21px 21px 21px;
+      
+ }
+ .elementor-post__title a{
+         margin-bottom: 14px;
+ }
+ .elementor-post__meta-data{
+          margin-bottom: 14px;
+              color: var(--e-global-color-d7d34cf );
+ }
+ .elementor-post {
+    border-radius: 10px;
+    background-color: var(--e-global-color-text );
+}
+
+ .img-erros  {
+    height:200px;
+}
+
+.elementor-posts .elementor-post__meta-data {
+            line-height: 1.3em;
+            font-size: 14px;
+            margin-bottom: 13px;
+          
+            margin-top: 15px;
+        }
+
+        .elementor-post__meta-data .elementor-post-date {
+              color: var(--e-global-color-d7d34cf );
+            font-size: 14px;
+        }
+
+        .elementor-post__meta-data .elementor-post-avatar{
+              color: var(--e-global-color-d7d34cf );
+            font-size: 14px;
+        }
+
+        .elementor-1111 .elementor-element.elementor-element-fa6c104.elementor-view-stacked .elementor-icon {
+            background-color: #E9B83E2B;
+            fill: var(--e-global-color-def42f5 );
+            color: var(--e-global-color-def42f5 );
+        }
+
+        .elementor-1111 .elementor-element.elementor-element-f73aa2c.elementor-view-stacked .elementor-icon {
+            background-color: #E9B83E2B;
+            fill: var(--e-global-color-def42f5 );
+            color: var(--e-global-color-def42f5 );
+        }
+
+        .elementor-1111 .elementor-element.elementor-element-dae2ff1.elementor-view-stacked .elementor-icon {
+            background-color: #E9B83E2B;
+            fill: var(--e-global-color-def42f5 );
+            color: var(--e-global-color-def42f5 );
+        }
+
+        .elementor-animation- {
+            font-size:35px
+        }
+
+        /*
+
+        .theto{
+            width: 105px;
+            position: absolute;
+            left: 170px;
+}
+.thebe{
+
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+}
+.theul{
+    background-color: var(--e-global-color-d7d34cf );
+    width: 100%;
+    height: 100%;
+    border-radius: 20px 20px 20px 20px;
+}
+theli{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #ffff;
+            font-size: 12px;
+}
+        */
     </style>
 </head>
 
@@ -534,8 +642,8 @@
                                                         .elementor-widget-image img {
                                                             vertical-align: middle;
                                                             display: inline-block
-                                                        }</style>													<a href="https://point.moxcreative.com/yumma">
-                                                    <img src="~/wp-content/uploads/sites/2/2022/04/yumma_logo.png" title="yumma_logo" alt="yumma_logo" loading="lazy" />
+                                                        }</style>													<a href=/Home/TemPlateKit">
+                                                    <img src="~/images/nav//@p.ImageFile" title="Logo_Home" alt="Logo_Home" loading="lazy" />
                                                 </a>
                                             </div>
                                         </div>

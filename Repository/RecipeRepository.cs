@@ -32,7 +32,6 @@ namespace Project3.Repository
             //                                        .FirstOrDefaultAsync();
 
             return query;
-
         }
         public async Task<bool> CreateRecipe(FormAddRecipe request)
         {

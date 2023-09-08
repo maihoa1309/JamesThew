@@ -17,7 +17,7 @@ namespace Project3.Controllers
             _repository = repository;
         }
 
-        
+
         [Authorize(Roles = "ADMIN")]
         [HttpPost]
         public async Task<IActionResult> Create(T entity)
