@@ -5,10 +5,10 @@ namespace Project3.DTO
     public class RecipeDetailDTO
     {
         public Recipe? Recipe { get; set; }
-        public List<Ingredient>? Ingredients { get; set; }
-        public string? UserName { get; set; }
+        public List<IngredientDetail>? Ingredients { get; set; }
+        public CustomUser? User{ get; set; }
     }
-    public class  Ingredient
+    public class  IngredientDetail
     {
         public int? RecipeId { get; set; }  
         public int? IngredientId { get; set; }
