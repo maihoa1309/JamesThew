@@ -11,7 +11,8 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
+
             <h2>Create a new account.</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -20,6 +21,32 @@
             <div class="form-floating">
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <label asp-for="Input.Name"><strong>Name</strong></label>
+            <div class="form-floating">
+                <input asp-for="Input.Name" class="form-control" aria-required="true" />
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+
+            <label asp-for="Input.Age"><strong>Age</strong></label>
+            <div class="form-floating">
+                <input asp-for="Input.Age" class="form-control" aria-required="true" />
+                <span asp-validation-for="Input.Age" class="text-danger"></span>
+            </div>
+
+            <label asp-for="Input.AvatarFile"><strong>Avatar</strong></label>
+            <div class="form-floating">
+                <input asp-for="Input.AvatarFile" type="file" class="form-control" accept="image/*" aria-required="true" />
+                <span asp-validation-for="Input.AvatarFile" class="text-danger"></span>
+            </div>
+            <label asp-for="Input.Gender"><strong>Gender</strong></label>
+            <div class="form-floating">
+                <select asp-for="Input.Gender" class="form-select" aria-required="true">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Nonbinary">Nonbinary</option>
+                </select>
+                <span asp-validation-for="Input.Gender" class="text-danger"></span>
             </div>
             <label asp-for="Input.Password"><strong>Password</strong></label>
             <div class="form-floating">
