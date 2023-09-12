@@ -98,6 +98,30 @@ namespace Project3.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+            [Required]
+            [Display(Name = "Name")]
+            public string Name { get; set; }
+
+            [Required]
+            [Display(Name = "Age")]
+            public int Age { get; set; }
+
+            [Required]
+            [Display(Name = "Avatar")]
+            [DataType(DataType.Upload)]
+            public IFormFile AvatarFile { get; set; }
+
+            public enum GenderType
+            {
+                Male,
+                Female,
+                Nonbinary
+            }
+
+            [Required]
+            [Display(Name = "Gender")]
+            public GenderType Gender { get; set; }
+            
         }
 
 
@@ -115,6 +139,22 @@ namespace Project3.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
 
+                // Lưu giá trị của các trường vào đối tượng người dùng
+                user.Name = Input.Name;
+                user.Gender = Input.Gender.ToString();
+                // Xử lý tệp tin avatar và lưu đường dẫn vào đối tượng người dùng
+                if (Input.AvatarFile != null && Input.AvatarFile.Length > 0)
+                {
+                    var fileName = Path.GetFileName(Input.AvatarFile.FileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Uploads", fileName);
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await Input.AvatarFile.CopyToAsync(stream);
+                    }
+                    user.Avatar = filePath;
+                }
+                user.Age = Input.Age;
+
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
@@ -123,27 +163,13 @@ namespace Project3.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    var userId = await _userManager.GetUserIdAsync(user);
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    //var callbackUrl = Url.Page(
-                    //    "/Account/ConfirmEmail",
-                    //    pageHandler: null,
-                    //    values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
-                    //    protocol: Request.Scheme);
+                    // ...
+                    // Các bước tiếp theo của mã nguồn gốc không có sự thay đổi
 
-                    //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        //$"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    // ...
+                    await _signInManager.SignInAsync(user, isPersistent: false);
 
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
-                    {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
-                    }
-                    else
-                    {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
-                    }
+                    return LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)
                 {
