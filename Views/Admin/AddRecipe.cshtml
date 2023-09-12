@@ -43,8 +43,10 @@
         #image-container img {
             width: 100px;
             height: 100px;
-            object-fit: cover;
-            object-position: center;
+                /*width: 100%;*/
+            -webkit-transition: all 0.5s;
+            -ms-transition: all 0.5s;
+            transition: all 0.5s;
         }
 
         #image-container button {
@@ -52,11 +54,16 @@
             top: 0;
             right: 0;
             padding: 5px;
-            background-color: red;
             color: white;
             border: none;
             cursor: pointer;
-        }
+            border-radius: 50%; /* Thêm thuộc tính border-radius để làm tròn nút */
+            width: 24px; /* Đặt kích thước chiều rộng */
+            height: 24px; /* Đặt kích thước chiều cao */
+            display: flex; /* Sử dụng flexbox để căn giữa */
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            align-items: center; 
+         }
     </style>
 }
 <div class="content-body ">
@@ -271,7 +278,7 @@
 
                                     </div>
                                     <div class="offset-md-2 col-md-4">
-                                        <button type="button" class="btn btn-rounded btn-danger btn-add-ingre btn-delete-receip">
+                                        <button type="button" class="btn btn-rounded btn-danger btn-delete-receip">
                                             <span class="btn-icon-start text-danger">
                                                 <i class="fa fa-times color-infor"></i>
                                             </span>Delete
@@ -295,7 +302,7 @@
     </div>
 </div>
 @section Script{
-   
+
     <script src="~/js/controller/add-recipe.js"></script>
 }
 

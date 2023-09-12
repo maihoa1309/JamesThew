@@ -37,7 +37,8 @@
 
                     const closeButton = document.createElement('button');
                     closeButton.setAttribute('type', 'button');
-                    closeButton.innerHTML = 'x';
+                    closeButton.setAttribute('class', 'btn btn-danger');
+                    closeButton.innerHTML = '<i class="fas fa-times"></i>'
                     closeButton.onclick = function () {
                         imageContainer.removeChild(image);
                     };
@@ -81,24 +82,23 @@
         if (($('#title').val() === "")
             || ($('#description').val() === "")
             || ($('#instruction').val() === "")) {
-            Swal.fire("You must fill all information to add new recipe!", "error")
+            Swal.fire("Oops...", "You must fill all information to add new recipe!!!", "error");
             return;
         }
         if ($('#image-container img').attr('src') === null || $('#image-container img').attr('src') === undefined) {
-            alert("You must have at least an img for this recipe!");
+            Swal.fire("Oops...", "You must have at least an img for this recipe!!!", "error");
             return;
         }
         $('.recipe-item').each(function (i, v) {
             var quantityValue = $(v).find('.quantity').val();
             var regex = /^\d+\s\w$/;
             if (quantityValue === '') {
-                Swal.fire("Please enter the quantity of all your ingredient", "error");
-               /* alert("Please enter the quantity of all your ingredient" );*/
+                Swal.fire( "Oops...", "Please enter the quantity of all your ingredient!!!", "error");
                 return;
             }
 
             if (!regex.test(quantityValue)) {
-                alert("Please enter a valid quantity for the ingredient and omit the unit.");
+                Swal.fire("Oops...", "Please enter a valid quantity for the ingredient and omit the unit!!!", "error");
                 return;
             }
         });
