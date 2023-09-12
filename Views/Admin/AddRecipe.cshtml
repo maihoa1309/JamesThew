@@ -1,157 +1,302 @@
-﻿@using Project3.Repository;
+﻿@model int
+@using Project3.Repository;
 @inject IIngerdientRepository ingredientRepository;
 @inject IRecipeRepository recipeRepository;
+@inject ICategoryRepository categoryRepository;
 @{
-	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-	var ingredients = await ingredientRepository.SortNameByASC();
-
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var ingredients = await ingredientRepository.SortNameByASC();
+    var categories = await categoryRepository.SortNameByASCAsync();
+    var receipt = new Recipe();
+    var ingredientList = new List<Ingredient>();
+    var receiptDetail = new Project3.DTO.RecipeDetailDTO();
+    if(Model > 0)
+    {
+        receiptDetail = await recipeRepository.GetRecipeByIdAsync(Model);
+        //receipt = await recipeRepository.GetRecipeByIdAsync(Model);
+    }
 }
+@section Styles{
+    <style>
+        .select2-selection--single {
+            height: 2.5rem !important;
+        }
 
+        .select2-item {
+            width: 100px
+        }
+
+        .recipe-template {
+            display: none
+        }
+
+        #image-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #image-container div {
+            position: relative;
+            margin: 10px;
+        }
+
+        #image-container img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        #image-container button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 5px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+}
 <div class="content-body ">
-	<!-- row -->
-	<div class="container-fluid">
-		<div class="me-auto d-none d-lg-block mb-3">
-			<a class="text-primary d-flex align-items-center mb-3 font-w500" href="/Admin/Index">
-				<svg class="me-3" width="24" height="12" viewBox="0 0 24 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M0.274969 5.14888C0.27525 5.1486 0.275484 5.14827 0.275812 5.14799L5.17444 0.272997C5.54142 -0.0922061 6.135 -0.090847 6.5003 0.276184C6.86555 0.643168 6.86414 1.23675 6.49716 1.60199L3.20822 4.87499H23.0625C23.5803 4.87499 24 5.29471 24 5.81249C24 6.33027 23.5803 6.74999 23.0625 6.74999H3.20827L6.49711 10.023C6.86409 10.3882 6.8655 10.9818 6.50025 11.3488C6.13495 11.7159 5.54133 11.7171 5.17439 11.352L0.275764 6.47699C0.275483 6.47671 0.27525 6.47638 0.274921 6.4761C-0.0922505 6.10963 -0.0910778 5.51413 0.274969 5.14888Z" fill="#EA4989" />
-				</svg>
-				Back
-			</a>
-			<a class="mb-0 text-secondary fs-18 font-w500" href="#">Recipe  /</a>
-			<a class="mb-0 font-w500 fs-18" href="#"> Add new recipe </a>
-		</div>
-		<div class="card">
-			<div class="card-header">
-				<h4 class="card-title">New Recipe</h4>
-			</div>
-			<div class="card-body">
-				<div class="basic-form">
-					<form method="post" action="/Recipe/CreateRecipe" enctype="multipart/form-data">
-						<input type="hidden" name="_token" value="ML92rdCjbEmTftVXgNyoQXBHnoqjfV95zZ8HN7me">
-						<div class="row">
-							<div class="mb-3 col-md-4">
-								<label class="form-label">Recipe title:</label>
-								<input type="text" class="form-control" name="title">
-							</div>
-							<div class="mb-3 col-md-8">
-								<label class="form-label">Description about recipe:</label>
-								<textarea class="form-control" name="description"></textarea>
-							</div>
-						</div>
-						<div class="row">
-							<div class="mb-3 col-md-4">
-								<label class="form-label">Recipe cuisine:</label>
-								<select name="cuisines" class="default-select form-control wide">
-									<option selected>VietNamese</option>
-									<option>Japanese</option>
-									<option>Chinese</option>
-								</select>
-							</div>
-					
-							<div class="mb-3 col-md-4">
-								<label class="form-label">Quantity served:</label>
-								<select name="servings" class="default-select form-control wide">
-									<option selected>1-3</option>
-									<option>3-5</option>
-									<option>5-7</option>
-									<option>7-9</option>
-									<option>10+</option>
-								</select>
-							</div>
-							<div class="mb-3 col-md-4">
-								<label class="form-label">Cooking time:</label>
-								<select name="cookingTime" class="default-select form-control wide">
-									<option selected>00-15 min</option>
-									<option>15-30 min</option>
-									<option>30-60 min</option>
-									<option>1-3 hours</option>
-									<option>3+ hours</option>
-								</select>
-							</div>
-						</div>
-						<div class="row">
-							<div class="mb-3 col-xl-8 col-lg-8">
-								<label class="form-label">Select recipe type(at least one):</label>
-								<select multiple class="default-select form-control wide " name="categoryId">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-								</select>
-							</div>
-							<div class="mb-3 col-md-4">
-								<label class="form-label">For:</label>
-								<select class="default-select form-control wide" name="isFree">
-									<option selected value="true">Free user</option>
-									<option value="false">Member of site</option>
-								</select>
-							</div>
-						</div>
-						<div class="row">
-							<span>Share photo of your recipe</span>
-							<div class="mb-3 col-xl-4 col-lg-4">
-								<input class="form-control" type="file" id="formFile" name="img1" accept="image/jpeg, image/png, image/gif">
-							</div>
-							<div class="mb-3 col-xl-4 col-lg-4">
-								<input class="form-control" type="file" id="formFile" name="img2" accept="image/jpeg, image/png, image/gif">
-							</div>
-							<div class="mb-3 col-xl-4 col-lg-4">
-								<input class="form-control" type="file" id="formFile" name="img3" accept="image/jpeg, image/png, image/gif">
-							</div>
-						</div>
-						<div class="row">
-							<div class="mb-3 col-xl-12 col-lg-12">
-								<label class="form-label">Instruction:</label>
-								<textarea class="form-control" name="instruction"></textarea>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-4" id="container">
-								<div class="input-group mb-3 col-md-4">
-									<input type="text" class="form-control" placeholder="Enter quantity and unit" name="quantity" id="quantity">
-									<select class="default-select form-control wide btn select2" name="ingredient" id="selectIngredient">
-										@foreach (var ingre in ingredients)
-										{
-											<option value="@ingre.Id">@ingre.Name</option>
-										}
-									</select>
-								</div>
-							</div>
-							<div>
-								<button type="button" class="btn btn-rounded btn-primary btn-add-ingre" id="btnAdd">
-									<span class="btn-icon-start text-primary">
-										<i class="fa fa-plus color-info"></i>
-									</span>Add new ingredient
-								</button>
-							</div>
-						</div>
-						<button type="submit" class="btn btn-primary" style="float: right;">Add</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+    <!-- row -->
+    <div class="container-fluid">
+        <div class="me-auto d-none d-lg-block mb-3">
+            <a class="text-primary d-flex align-items-center mb-3 font-w500" href="/Admin/Index">
+                <svg class="me-3" width="24" height="12" viewBox="0 0 24 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.274969 5.14888C0.27525 5.1486 0.275484 5.14827 0.275812 5.14799L5.17444 0.272997C5.54142 -0.0922061 6.135 -0.090847 6.5003 0.276184C6.86555 0.643168 6.86414 1.23675 6.49716 1.60199L3.20822 4.87499H23.0625C23.5803 4.87499 24 5.29471 24 5.81249C24 6.33027 23.5803 6.74999 23.0625 6.74999H3.20827L6.49711 10.023C6.86409 10.3882 6.8655 10.9818 6.50025 11.3488C6.13495 11.7159 5.54133 11.7171 5.17439 11.352L0.275764 6.47699C0.275483 6.47671 0.27525 6.47638 0.274921 6.4761C-0.0922505 6.10963 -0.0910778 5.51413 0.274969 5.14888Z" fill="#EA4989" />
+                </svg>
+                Back
+            </a>
+            <a class="mb-0 text-secondary fs-18 font-w500" href="#">Recipe  /</a>
+            <a class="mb-0 font-w500 fs-18" href="#"> Add new recipe </a>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">New Recipe</h4>
+            </div>
+            <div class="card-body">
+                <div class="basic-form">
+                    <form class="save-recipe-form">
+                        <input type="hidden" name="_token" value="ML92rdCjbEmTftVXgNyoQXBHnoqjfV95zZ8HN7me">
+                        <input type="hidden" id="_id" value="@Model" />
+                        @*title*@
+                        <div class="row">
+                            <div class="mb-3 col-md-4">
+                                <label class="form-label">Recipe title:</label>
+                                <input type="text" class="form-control" name="title" id="title" value="@receiptDetail.Recipe.Title" required>
+                            </div>
+                            <div class="mb-3 col-md-8">
+                                <label class="form-label">Description about recipe:</label>
+                                <textarea class="form-control" name="description" id="description">@receiptDetail.Recipe.Description</textarea>
+                            </div>
+                        </div>
+                        @*cuisine*@
+                        <div class="row">
+                            <div class="mb-3 col-md-4">
+                                <label class="form-label">Recipe cuisine:</label>
+                                <select name="cuisines" id="cuisines" class="default-select form-control wide">
+                                    <option selected>VietNamese</option>
+                                    <option>Japanese</option>
+                                    <option>Chinese</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                <label class="form-label">Quantity served:</label>
+                                <select name="servings" id="servings" class="default-select form-control wide">
+                                    <option selected>1-3</option>
+                                    <option>3-5</option>
+                                    <option>5-7</option>
+                                    <option>7-9</option>
+                                    <option>10+</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-4">
+                                <label class="form-label">Cooking time:</label>
+                                <select name="cookingTime" id="cookingTime" class="default-select form-control wide">
+                                    <option selected>00-15 min</option>
+                                    <option>15-30 min</option>
+                                    <option>30-60 min</option>
+                                    <option>1-3 hours</option>
+                                    <option>3+ hours</option>
+                                </select>
+                            </div>
+                        </div>
+                        @*category*@
+                        <div class="row">
+                            <div class="mb-3 col-xl-8 col-lg-8 col-md-8">
+                                <label class="form-label">Select recipe type(at least one):</label>
+                                <select class="default-select form-control wide  select2-item " name="category" id="category">
+                                    @foreach(var cate in categories)
+                                    {
+                                        <option value="@cate.Id">@cate.Name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-4">
+                                <label class="form-label">For:</label>
+                                <select class="default-select form-control wide" name="isFree" id="isFree">
+                                    <option selected value="true">Free user</option>
+                                    <option value="false">Member of site</option>
+                                </select>
+                            </div>
+                        </div>
+                        @*imgs*@
+                        <div class="row">
+                            <span>Share photo of your recipe</span>
+                            <div class="mb-3 col-xl-4 col-lg-4">
+                                <input class="form-control" type="file" multiple id="formFile" name="img1" accept="image/jpeg, image/png, image/gif">
+                            </div>
+                            @*<div class="mb-3 col-xl-4 col-lg-4">
+                            <input class="form-control" type="file" id="formFile" name="img2" accept="image/jpeg, image/png, image/gif">
+                            </div>
+                            <div class="mb-3 col-xl-4 col-lg-4">
+                            <input class="form-control" type="file" id="formFile" name="img3" accept="image/jpeg, image/png, image/gif">
+                            </div>*@
+                        </div>
+                        <div id="image-container">
+
+                            @if (!string.IsNullOrEmpty(receiptDetail.Recipe.Img))
+                            {
+                                var splited = receiptDetail.Recipe.Img.Split(',');
+                                foreach(var item in splited)
+                                {
+                                    <div><img src="/@item"><button type="button">x</button></div>
+                                }
+                            }
+
+                        </div>
+                       @* <div class="row">
+                            <div class=" col-md-4 col-sm-6">
+                                <div class="card">
+                                    <div class="card-body product-grid-card">
+                                        <div class="new-arrival-product">
+                                            <div class="new-arrivals-img-contnent">
+                                                <img class="img-fluid" src="" alt="No img upload">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                        @*instruction*@
+                        <div class="row">
+                            <div class="mb-3 col-xl-12 col-lg-12">
+                                <label class="form-label">Instruction:</label>
+                                <textarea class="form-control" name="instruction" id="instruction"></textarea>
+                            </div>
+                        </div>
+                        @*ingres*@
+                        <div class="row recipe-container">
+                            <div class="col-md-8 recipe-template">
+
+                                <div class="d-flex">
+
+                                    <div class="input-group mb-3 col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control quantity" placeholder="Enter quantity and unit" name="quantity">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select class="default-select form-control wide btn select2-item" name="ingredient">
+                                                    @foreach (var ingre in ingredients)
+                                                    {
+                                                        <option value="@ingre.Id">@ingre.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="offset-md-2 col-md-4">
+                                        <button type="button" class="btn btn-rounded btn-danger btn-add-ingre btn-delete-receip">
+                                            <span class="btn-icon-start text-danger">
+                                                <i class="fa fa-times color-infor"></i>
+                                            </span>Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            @if(receiptDetail.Ingredients.Count > 0)
+                            {
+                                foreach(var item in receiptDetail.Ingredients)
+                                {
+                                    <div class="col-md-8 recipe-item">
+                                        <div class="d-flex">
+                                            <div class="input-group mb-3 col-md-8">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control quantity" placeholder="Enter quantity and unit" name="quantity" value="@item.Quantity">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <select class="default-select form-control wide btn select2-item" name="ingredient">
+                                                            @foreach (var ingre in ingredients)
+                                                            {
+                                                                <!option value="@ingre.Id" @(item.IngredientId == ingre.Id ? "selected" : "")>@ingre.Name</!option>
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="offset-md-2 col-md-4">
+                                                <button type="button" class="btn btn-rounded btn-danger btn-add-ingre btn-delete-receip">
+                                                    <span class="btn-icon-start text-danger">
+                                                        <i class="fa fa-times color-infor"></i>
+                                                    </span>Delete
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            <div class="col-md-8 recipe-item">
+                                <div class="d-flex">
+                                    <div class="input-group mb-3 col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control quantity" placeholder="Enter quantity and unit" name="quantity">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select class="default-select form-control wide btn select2-item" name="ingredient">
+                                                    @foreach (var ingre in ingredients)
+                                                    {
+                                                        <option value="@ingre.Id">@ingre.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="offset-md-2 col-md-4">
+                                        <button type="button" class="btn btn-rounded btn-danger btn-add-ingre btn-delete-receip">
+                                            <span class="btn-icon-start text-danger">
+                                                <i class="fa fa-times color-infor"></i>
+                                            </span>Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-rounded btn-primary btn-add-ingre" id="btnAdd">
+                                <span class="btn-icon-start text-primary">
+                                    <i class="fa fa-plus color-info"></i>
+                                </span>Add
+                            </button>
+                        </div>
+                        <button type="submit" class="btn btn-primary save-recipe" style="float: right;">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @section Script{
-	<script>
-		$(document).ready(function () {
-			//$('.select2').
-			var count = 1;
-			$("#btnAdd").click(function () {
-				alert(count);
-				var newIngre = $(".input-group:last").clone(true); //clone input group cuoi 
-				newIngre.find("input").val("");
-				newIngre.find("select").prop("selectedIndex", 0);
-				$("#container").append(newIngre); // Thêm khối div mới vào container
-				var selectName = "ingredient" + count;
-				var quantityName = "quantity" +count;
-				$('#selectIngredient').attr('name', selectName);
-				$('#quantity').attr('name', quantityName);
-				count++;
-			});
-		});
-	</script>
+   
+    <script src="~/js/controller/add-recipe.js"></script>
 }
 
 

@@ -6,8 +6,5 @@ namespace Project3.Models
     {
         public string? Name { get; set; }
 
-        public int? RecipeId { get; set; }
-        [ForeignKey("RecipeId")]
-        public Recipe GetRecipe { get; set; }
     }
 }

@@ -23,6 +23,7 @@ namespace Project3.Repository
         Task<T> UpdateAsync(T entity);
         Task<T> DeleteAsync(T entity);
 
+
     }
     public class BaseRepository<T> : IBaseRepository<T> where T : Base
     {
@@ -126,5 +127,6 @@ namespace Project3.Repository
 
         }
 
-    }
+	
+	}
 }

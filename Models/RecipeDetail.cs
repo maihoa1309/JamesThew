@@ -11,6 +11,6 @@ namespace Project3.Models
         [ForeignKey("IngredientId")]
         public Ingredient? GetIngredient { get; set; }
         public string? Quantity { get; set; }
-        public string? Unit { get; set; }
+
     }
 }

@@ -4,7 +4,7 @@ using System.Data;
 
 namespace Project3.Controllers
 {
-    [Authorize(Roles = "ADMIN")]
+    //[Authorize(Roles = "ADMIN")]
     public class AdminController : Controller
     {
         public IActionResult Index()
@@ -15,9 +15,13 @@ namespace Project3.Controllers
         {
             return View();
         }
-		public IActionResult AddRecipe()
+        public IActionResult RecipesByUser()
+        {
+            return View();
+        }
+        public IActionResult AddRecipe(int id)
 		{
-			return View();
+			return View(id);
 		}
         public IActionResult FeedbackWeb()
         {
@@ -31,6 +35,19 @@ namespace Project3.Controllers
 		{
 			return View();
 		}
+        public IActionResult AddCategory() 
+        {
+            return View();
+        }
+        public IActionResult UpdateRecipe(int id)
+        {
+          
 
+            return View(id);
+        }
+        public IActionResult Ingredients()
+        {
+            return View();
+        }
 	}
 }
