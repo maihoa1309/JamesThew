@@ -64,6 +64,8 @@
             event.preventDefault();
             AddRecipe.SaveRecipe();
         })
+
+        
     },
     InitSelect2: function () {
         $('.recipe-item .select2-item').each((i, v) => {

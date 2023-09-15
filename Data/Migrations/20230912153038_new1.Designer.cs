@@ -12,8 +12,8 @@ using Project3.Data;
 namespace Project3.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230912095309_new_2")]
-    partial class new_2
+    [Migration("20230912153038_new1")]
+    partial class new1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
