@@ -1,5 +1,4 @@
-﻿
-using Project3.Models;
+﻿using Project3.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project3.Models

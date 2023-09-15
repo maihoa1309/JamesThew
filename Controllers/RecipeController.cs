@@ -29,5 +29,12 @@ namespace Project3.Controllers
             var result = await _recipeRepository.SaveRecipeAsync(request);
             return Ok(result);
         }
+
+        public async Task<List<RecipeDetailDTO>> GetByName(string keyword, int index = 1, int size = 10)
+        {
+            var result = await _recipeRepository.GetByNameAsync(keyword, index, size);
+            return result; 
+        }
+       
     }
 }

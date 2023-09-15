@@ -19,7 +19,7 @@ namespace Project3.Controllers
         {
             return View();
         }
-        public IActionResult AddRecipe(int id)
+        public IActionResult AddOrUpdateRecipe(int id)
 		{
 			return View(id);
 		}

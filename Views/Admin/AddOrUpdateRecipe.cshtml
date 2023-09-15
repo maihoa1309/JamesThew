@@ -7,12 +7,12 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     var ingredients = await ingredientRepository.SortNameByASC();
     var categories = await categoryRepository.SortNameByASCAsync();
-    var receipt = new Recipe();
+    var recipe = new Recipe();
     var ingredientList = new List<Ingredient>();
-    var receiptDetail = new Project3.DTO.RecipeDetailDTO();
+    var recipeDetail = new Project3.DTO.RecipeDetailDTO();
     if(Model > 0)
     {
-        receiptDetail = await recipeRepository.GetRecipeByIdAsync(Model);
+        recipeDetail = await recipeRepository.GetRecipeByIdAsync(Model);
         //receipt = await recipeRepository.GetRecipeByIdAsync(Model);
     }
 }
@@ -57,11 +57,11 @@
             color: white;
             border: none;
             cursor: pointer;
-            border-radius: 50%; /* Thêm thuộc tính border-radius để làm tròn nút */
-            width: 24px; /* Đặt kích thước chiều rộng */
-            height: 24px; /* Đặt kích thước chiều cao */
-            display: flex; /* Sử dụng flexbox để căn giữa */
-            justify-content: center; /* Căn giữa theo chiều ngang */
+            border-radius: 50%;         /* Thêm thuộc tính border-radius để làm tròn nút */
+            width: 24px;               /* Đặt kích thước chiều rộng */
+            height: 24px;              /* Đặt kích thước chiều cao */
+            display: flex;             /* Sử dụng flexbox để căn giữa */
+            justify-content: center;/* Căn giữa theo chiều ngang */
             align-items: center; 
          }
     </style>
@@ -92,11 +92,11 @@
                         <div class="row">
                             <div class="mb-3 col-md-4">
                                 <label class="form-label">Recipe title:</label>
-                                <input type="text" class="form-control" name="title" id="title" value="@receiptDetail.Recipe.Title" required>
+                                <input type="text" class="form-control" name="title" id="title" value="@recipeDetail.Recipe.Title">
                             </div>
                             <div class="mb-3 col-md-8">
                                 <label class="form-label">Description about recipe:</label>
-                                <textarea class="form-control" name="description" id="description">@receiptDetail.Recipe.Description</textarea>
+                                <textarea class="form-control" name="description" id="description">@recipeDetail.Recipe.Description</textarea>
                             </div>
                         </div>
                         @*cuisine*@
@@ -113,21 +113,21 @@
                             <div class="mb-3 col-md-4">
                                 <label class="form-label">Quantity served:</label>
                                 <select name="servings" id="servings" class="default-select form-control wide">
-                                    <option selected>1-3</option>
-                                    <option>3-5</option>
-                                    <option>5-7</option>
-                                    <option>7-9</option>
-                                    <option>10+</option>
+                                    <!option @( recipeDetail.Recipe.Servings == "1-3"? "selected" : "")>1-3</!option>
+                                    <!option @( recipeDetail.Recipe.Servings == "3-5"? "selected" : "")>3-5</!option>
+                                    <!option @( recipeDetail.Recipe.Servings == "5-7"? "selected" : "")>5-7</!option>
+                                    <!option @( recipeDetail.Recipe.Servings == "7-9"? "selected" : "")>7-9</!option>
+                                    <!option @( recipeDetail.Recipe.Servings == "10+"? "selected" : "")>10+</!option>
                                 </select>
                             </div>
                             <div class="mb-3 col-md-4">
                                 <label class="form-label">Cooking time:</label>
                                 <select name="cookingTime" id="cookingTime" class="default-select form-control wide">
-                                    <option selected>00-15 min</option>
-                                    <option>15-30 min</option>
-                                    <option>30-60 min</option>
-                                    <option>1-3 hours</option>
-                                    <option>3+ hours</option>
+                                    <!option @( recipeDetail.Recipe.CookingTime == "00-15 min"? "selected" : "")>00-15 min</!option>
+                                    <!option @( recipeDetail.Recipe.CookingTime == "15-30 min"? "selected" : "")>15-30 min</!option>
+                                    <!option @( recipeDetail.Recipe.CookingTime == "30-60 min"? "selected" : "")>30-60 min</!option>
+                                    <!option @( recipeDetail.Recipe.CookingTime == "1-3 hours"? "selected" : "")>1-3 hours</!option>
+                                    <!option @( recipeDetail.Recipe.CookingTime == "3+ hours"? "selected" : "")>3+ hours</!option>
                                 </select>
                             </div>
                         </div>
@@ -138,15 +138,15 @@
                                 <select class="default-select form-control wide  select2-item " name="category" id="category">
                                     @foreach(var cate in categories)
                                     {
-                                        <option value="@cate.Id">@cate.Name</option>
+                                        <!option @(recipeDetail.Recipe.CategoryId == cate.Id ? "selected":"") value="@cate.Id">@cate.Name</!option>
                                     }
                                 </select>
                             </div>
                             <div class="mb-3 col-md-4">
                                 <label class="form-label">For:</label>
                                 <select class="default-select form-control wide" name="isFree" id="isFree">
-                                    <option selected value="true">Free user</option>
-                                    <option value="false">Member of site</option>
+                                    <!option @( recipeDetail.Recipe.IsFree == true ? "selected" : "") value="true">Free user</!option>
+                                    <!option @( recipeDetail.Recipe.IsFree == false ? "selected" : "") value="false">Member of site</!option>
                                 </select>
                             </div>
                         </div>
@@ -165,9 +165,9 @@
                         </div>
                         <div id="image-container">
 
-                            @if (!string.IsNullOrEmpty(receiptDetail.Recipe.Img))
+                            @if (!string.IsNullOrEmpty(recipeDetail.Recipe.Img))
                             {
-                                var splited = receiptDetail.Recipe.Img.Split(',');
+                                var splited = recipeDetail.Recipe.Img.Split(',');
                                 foreach(var item in splited)
                                 {
                                     <div><img src="/@item"><button type="button">x</button></div>
@@ -192,7 +192,7 @@
                         <div class="row">
                             <div class="mb-3 col-xl-12 col-lg-12">
                                 <label class="form-label">Instruction:</label>
-                                <textarea class="form-control" name="instruction" id="instruction"></textarea>
+                                <textarea class="form-control" name="instruction" id="instruction">@recipeDetail.Recipe.Instruction</textarea>
                             </div>
                         </div>
                         @*ingres*@
@@ -226,9 +226,9 @@
                                     </div>
                                 </div>
                             </div>
-                            @if(receiptDetail.Ingredients.Count > 0)
+                            @if(recipeDetail.Ingredients.Count > 0)
                             {
-                                foreach(var item in receiptDetail.Ingredients)
+                                foreach(var item in recipeDetail.Ingredients)
                                 {
                                     <div class="col-md-8 recipe-item">
                                         <div class="d-flex">
@@ -241,7 +241,7 @@
                                                         <select class="default-select form-control wide btn select2-item" name="ingredient">
                                                             @foreach (var ingre in ingredients)
                                                             {
-                                                                <!option value="@ingre.Id" @(item.IngredientId == ingre.Id ? "selected" : "")>@ingre.Name</!option>
+                                                                <!option value="@ingre.Id" @(item.IngredientId == ingre.Id ? "selected" : "")>@item.Name</!option>
                                                             }
                                                         </select>
                                                     </div>
@@ -288,13 +288,22 @@
                             </div>
                         </div>
                         <div>
-                            <button type="button" class="btn btn-rounded btn-primary btn-add-ingre" id="btnAdd">
+                            <button type="button" class="btn btn-rounded btn-primary btn-add-ingre mb-3" id="btnAdd">
                                 <span class="btn-icon-start text-primary">
                                     <i class="fa fa-plus color-info"></i>
                                 </span>Add
                             </button>
                         </div>
-                        <button type="submit" class="btn btn-primary save-recipe" style="float: right;">Add</button>
+                        @if(Model > 0)
+                        {
+                            <button type="submit" class="btn btn-primary save-recipe" style="float: right;">Update</button>
+                            <button class="btn btn-danger pl-10">Delete</button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-primary save-recipe" style="float: right;">Add</button>
+                        }
+                        
                     </form>
                 </div>
             </div>
@@ -302,7 +311,6 @@
     </div>
 </div>
 @section Script{
-
     <script src="~/js/controller/add-recipe.js"></script>
 }
 
