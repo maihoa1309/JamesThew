@@ -11,6 +11,7 @@ namespace Project3.DTO
         public Recipe? Recipe { get; set; } = new Recipe();
         public List<IngredientDetail>? Ingredients { get; set; } = new List<IngredientDetail>();
         public CustomUser? User { get; set; } = new CustomUser();
+        public CategoryDetail? Category { get; set; }
     }
     public class  IngredientDetail
     {
@@ -18,7 +19,10 @@ namespace Project3.DTO
         public int? IngredientId { get; set; }
         public string? Name { get; set; }
         public string? Quantity { get; set; }
-
-
+    }
+    public class CategoryDetail
+    {
+        public int? CategoryId { get; set; }
+        public string? CategoryName { get; set;}
     }
 }
