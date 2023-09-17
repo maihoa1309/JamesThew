@@ -7,29 +7,42 @@
     RegisterEvent: function () {
         $("#btnSearch").off('click').on('click', function () {
             recipeByAdmin.LoadData();
+            recipeByAdmin.RegisterEvent();
         })
-        $("li.page-item").off('click').on('click', function () {
-            console.log("da click");
-        /*    recipeByAdmin.PageList();*/
-        })
+        $(".page-link").off('click').on('click', function () {
 
+            //var index = $(this).text();
+
+            //alert("on click" + index);
+
+            recipeByAdmin.LoadData($(this).text());
+            recipeByAdmin.RegisterEvent();
+            
+        })
     },
-    LoadData: function () { 
+    LoadData: function (pageLink) { 
         var keyword = $("#search").val();
-        var index = 1;
+        var index = pageLink ?? 1;
+        /*  var index = 1;*/
+        console.log(index);
+        console.log(pageLink)
         var size = 5
         var url = `/Recipe/GetByName?keyword=${keyword}&index=${index}&size=${size}`
+
+        $('#content').empty();
+        $('#pageList').empty();
         
         $.get(url, function (response) {
-  /*          console.log(response);*/
+         /*   console.log(response);*/
             var totalRow = response[0].totalRow;
-            console.log(totalRow);
+        /*    console.log(totalRow);*/
             var html = '';
             var pages = (totalRow / size);
             if (totalRow % size > 0) {
                 pages += 1;
             }
             $.each(response, function (i, v) {
+               
                 var row = '<tr>'
                     + '<td style="width: 45%">'
                     + '<div class="media align-items-center">'
@@ -53,33 +66,39 @@
                 html += row;
             });
             $('#content').append(html);
+            
+            var pageNumber = 1;
             var pageList = '<li class="page-item page-indicator">' +
-                '<a class="page-link" href="javascript:void(0)">' +
+                '<button class="page-link">' +
                 '<i class="la la-angle-left"></i>' +
-                '</a>' +
+                '</button>' +
                 '</li>';
             do {
                 pageList += '<li class="page-item">'
-                                + '<a class="page-link">' + index + '</a >'
-                            + '	</li > ';
-                index++;
-            } while (index <= pages);
+                    + '<button class="page-link">' + pageNumber + '</button>'
+                    + '</li>';
+                pageNumber++;
+            } while (pageNumber <= pages);
             pageList += '<li class="page-item page-indicator">' +
-                '<a class="page-link" href="javascript:void(0)">' +
+                '<button class="page-link" >' +
                 '<i class="la la-angle-right"></i>' +
-                '</a>' +
+                '</button>' +
                 '</li>';
             $('#pageList').append(pageList);
+            $("#pageList button.page-link").filter(function () {
+                return $(this).text() === pageLink;
+            }).closest('li').addClass("active");
+
+
+            recipeByAdmin.RegisterEvent();
+
         })
 
-     
-        recipeByAdmin.RegisterEvent();
     },
-    PageList: function () {
-        var index = $(".page-link").text();
-        console.log(index);
-
-        recipeByAdmin.RegisterEvent();
-    }
+    //pagelist: function () {
+    //    var index = $(".page-link").text();
+    //    console.log(index);
+    //    recipebyadmin.registerevent();
+    //}
 }
 recipeByAdmin.Init();
