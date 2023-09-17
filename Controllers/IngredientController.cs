@@ -21,6 +21,15 @@ namespace Project3.Controllers
 			return new JsonResult(request);
 		}
 
+		public IActionResult DeleteIngredient (Ingredient entity)
+		{
+
+			_ingredientRepository.DeleteAsync(entity).Wait();
+			return RedirectToAction("Ingredients", "Admin");
+			//return Json(entity);
+		}
+
+
 	}
 }
 

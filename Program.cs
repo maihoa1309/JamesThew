@@ -18,13 +18,24 @@ namespace Project3
                 options.UseSqlServer(connectionString));
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-            builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            
 
             builder.Services.AddIdentity<CustomUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
-            var app = builder.Build();
+			builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+			builder.Services.AddScoped<IFeedBackRepository, FeedBackRepository>();
+			builder.Services.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
+			builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+			builder.Services.AddScoped<IContestRepository, ContestRepository>();
+			builder.Services.AddScoped<IIngerdientRepository, IngerdientRepository>();
+			builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
+			builder.Services.AddScoped<IRegisterRepository, RegisterRepository>();
+			builder.Services.AddScoped<ISubmissionRepository, SubmissionRepository>();
+			builder.Services.AddScoped<ITipRepository, TipRepository>();
+
+			var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

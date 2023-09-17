@@ -23,6 +23,7 @@ namespace Project3.Repository
         Task<T> UpdateAsync(T entity);
         Task<T> DeleteAsync(T entity);
 
+
     }
     public class BaseRepository<T> : IBaseRepository<T> where T : Base
     {
@@ -106,6 +107,8 @@ namespace Project3.Repository
             }
 
             //total = dataRows.Count();
+
+
             dataRows = dataRows.Skip((index - 1) * size).Take(size);
 
             var propertyInfo = typeof(T).GetProperty(columnName);
@@ -126,5 +129,6 @@ namespace Project3.Repository
 
         }
 
-    }
+	
+	}
 }
