@@ -14,7 +14,7 @@ namespace Project3.Repository
 
         Task<Recipe> SaveRecipeAsync(FormAddRecipe request);
         Task<List<RecipeDetailDTO>> GetAllRecipesAsync();
-        Task<List<Recipe>> GetLatestCreatedRecipes(int count);
+        Task<List<RecipeDetailDTO>> GetLatestCreatedRecipes(int count);
         Task<RecipeDetailDTO> GetRecipeByIdAsync (int id);
         Task<List<RecipeDetailDTO>> GetRecipeByUserAsync();
         Task<List<RecipeDetailDTO>> GetByNameAsync(string keyword, int index = 1, int size = 10);
@@ -26,18 +26,35 @@ namespace Project3.Repository
             _hostingEnvironment = hostingEnviroment;
         }
 
+        public async Task<List<RecipeDetailDTO>> GetLatestCreatedRecipes(int count)
 
-        public async Task<List<Recipe>> GetLatestCreatedRecipes(int count)
         {
             // Sử dụng LINQ để truy vấn dữ liệu và lấy danh sách bản ghi được tạo gần nhất
 
             var query = await _dbSet.OrderByDescending(r => r.CreatedTime)
                                                     .Take(count).ToListAsync();
-        
-            return query;
-        }
-       
 
+
+            var categories = (from r in _context.Recipes
+                          join c in _context.Categories on r.CategoryId equals c.Id
+                          select new CategoryDetail
+                          {
+                            CategoryId = c.Id,
+                            CategoryName = c.Name
+                          }).ToList();
+            var result = (from q in query
+                         join c in categories on q.CategoryId equals c.CategoryId
+                         group c by q into grouped
+                         select new RecipeDetailDTO
+                         {
+                            Recipe = grouped.Key,
+                            Category = grouped.First()
+                         }).ToList();
+            return result;
+
+        
+
+        }
         public async Task<List<RecipeDetailDTO>> GetAllRecipesAsync()
         {
             List<Recipe> allRecipes = await (from r in _context.Recipes
@@ -60,15 +77,17 @@ namespace Project3.Repository
                              RecipeId = grouped.Key.Id,
                              RecipeName = grouped.Key.Title,
                              Ingredients = grouped.ToList(),
-                             Username = grouped.Key.UserName,
+
+                             Username = grouped.Key.UserName
                          }).ToList();
-           
+
              return query;
         }
-
         public async Task<RecipeDetailDTO> GetRecipeByIdAsync(int id)
         {
+			
             RecipeDetailDTO result = new RecipeDetailDTO();
+
             var recipe = (from r in _context.Recipes
                           where r.Id == id select r).FirstOrDefault();
             var allIngredients = await (from rd in _context.RecipeDetail
@@ -101,6 +120,7 @@ namespace Project3.Repository
             return result;
 
         }
+
 
         public Task<List<RecipeDetailDTO>> GetRecipeByUserAsync()
         {
@@ -145,7 +165,9 @@ namespace Project3.Repository
                     if(Recipe.Id <= 0)
                     {
                         _context.Recipes.Add(Recipe);
+
                     }                                        
+
                     await _context.SaveChangesAsync();
                     //Lay ra duoc cai RecipeId
                     var RecipeId = Recipe.Id;
@@ -199,19 +221,14 @@ namespace Project3.Repository
                 {
                     // Tạo tên file duy nhất bằng guid
                     var fileName = $"{Guid.NewGuid()}.jpg";
-
                     // Giải mã base64 thành mảng byte
                     var imageBytes = Convert.FromBase64String(item.Substring(item.IndexOf(',') + 1));
-
                     // Tạo đường dẫn tới file ảnh
                     var imagePath = Path.Combine(uploadPath, fileName);
-
                     // Lưu file ảnh vào thư mục UploadImg
                     System.IO.File.WriteAllBytes(imagePath, imageBytes);
-
                     // Trả về đường dẫn của file ảnh đã lưu
                     var imageUrl = Path.Combine("UploadImg", fileName);
-
                     result.Add(imageUrl);
                 }
             }

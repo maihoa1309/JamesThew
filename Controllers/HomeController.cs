@@ -50,9 +50,9 @@ namespace Project3.Controllers
 		{
 			return View();
 		}
-		public IActionResult SingleRecipe()
+		public IActionResult SingleRecipe(int id)
 		{
-			return View();
+			return View(id);
 		}
 		public IActionResult RecipeList()
 		{

@@ -12,8 +12,10 @@ namespace Project3.DTO
         public Recipe? Recipe { get; set; } = new Recipe();
         public List<IngredientDetail>? Ingredients { get; set; } = new List<IngredientDetail>();
         public CustomUser? User { get; set; } = new CustomUser();
+
         public CategoryDetail? Category { get; set; } = new CategoryDetail();
         public int? TotalRow { get; set; }
+
     }
     public class  IngredientDetail
 
