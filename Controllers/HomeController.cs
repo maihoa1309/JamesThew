@@ -1,22 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Project3.Models;
 using System.Diagnostics;
+using Project3.Models;
+using Microsoft.AspNetCore.Identity;
+using Project3.Data;
 
 namespace Project3.Controllers
 {
-	public class HomeController : Controller
-	{
-		private readonly ILogger<HomeController> _logger;
+    public class HomeController : Controller
+    {
+        private readonly ILogger<HomeController> _logger;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-		public HomeController(ILogger<HomeController> logger)
-		{
-			_logger = logger;
-		}
+        public HomeController(ILogger<HomeController> logger,RoleManager<IdentityRole> roleManager)
+        {
+            _logger = logger;
+            _roleManager = roleManager;
+        }
+		//public async Task<IActionResult> SeedingRoleAsync()
+		//{
+		//	var dbSeedRole = new DbSeedRole(_roleManager);
+		//	await dbSeedRole.RoleData();
+		//	return Ok("Ok");
+		//}
 
 		public IActionResult Index()
-		{
-			return View();
-		}
+        {
+            return View();
+        }
 
 		public IActionResult Privacy()
 		{
@@ -66,6 +76,10 @@ namespace Project3.Controllers
 			return View();
 		}
 		public IActionResult TemPlateKit()
+		{
+			return View();
+		}
+		public IActionResult Category()
 		{
 			return View();
 		}
