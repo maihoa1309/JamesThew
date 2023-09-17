@@ -20,6 +20,7 @@ namespace Project3.Controllers
 			_ingredientRepository.CreateAsync(request).Wait();
 			return new JsonResult(request);
 		}
+
 		public IActionResult DeleteIngredient (Ingredient entity)
 		{
 
@@ -27,6 +28,7 @@ namespace Project3.Controllers
 			return RedirectToAction("Ingredients", "Admin");
 			//return Json(entity);
 		}
+
 
 	}
 }

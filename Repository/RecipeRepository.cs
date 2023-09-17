@@ -11,6 +11,7 @@ namespace Project3.Repository
 {
     public interface IRecipeRepository : IBaseRepository<Recipe>
     {
+
         Task<Recipe> SaveRecipeAsync(FormAddRecipe request);
         Task<List<RecipeDetailDTO>> GetAllRecipesAsync();
         Task<List<Recipe>> GetLatestCreatedRecipes(int count);
@@ -25,9 +26,11 @@ namespace Project3.Repository
             _hostingEnvironment = hostingEnviroment;
         }
 
+
         public async Task<List<Recipe>> GetLatestCreatedRecipes(int count)
         {
             // Sử dụng LINQ để truy vấn dữ liệu và lấy danh sách bản ghi được tạo gần nhất
+
             var query = await _dbSet.OrderByDescending(r => r.CreatedTime)
                                                     .Take(count).ToListAsync();
         
@@ -234,6 +237,7 @@ namespace Project3.Repository
             query = query.OrderByDescending(r => r.RecipeId).Skip((index - 1) * size).Take(size).ToList();
             query[0].TotalRow = total;
             return query;
+
         }
     }
 }

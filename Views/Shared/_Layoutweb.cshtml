@@ -639,13 +639,13 @@ theli{
                                                         width: 48px
                                                     }
 
-                                                    .elementor-widget-image img {
-                                                        vertical-align: middle;
-                                                        display: inline-block
-                                                    }
-                                                </style>													
-                                                <a href="/Home/HomePage">
-                                                <img src="~/images/nav/Logo.png" title="Logo_Home" alt="Logo_Home" loading="lazy" />
+                                                        .elementor-widget-image img {
+                                                            vertical-align: middle;
+                                                            display: inline-block
+                                                        }</style>											
+                                                        <a href="/Home/TemPlateKit">
+                                                    <img style="height:auto;width:80px" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/373339511_7114076998613115_7786940881507392194_n.png?_nc_cat=103&ccb=1-7&_nc_sid=aee45a&_nc_ohc=Q0GYntpXjA0AX-tiy8D&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdS4y-XLxlwgT0w6GRZ1SDOrG4ImDHYESGRlAWmKlOeChw&oe=65267862"  />
+
                                                 </a>
                                             </div>
                                         </div>
@@ -655,7 +655,8 @@ theli{
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div class="elementor-element elementor-element-a14687c elementor-nav-menu__align-center elementor-nav-menu--stretch elementor-nav-menu--dropdown-tablet elementor-nav-menu__text-align-aside elementor-nav-menu--toggle elementor-nav-menu--burger elementor-widget elementor-widget-nav-menu" data-id="a14687c" data-element_type="widget" data-settings="{&quot;submenu_icon&quot;:{&quot;value&quot;:&quot;&lt;svg class=\&quot;e-font-icon-svg e-fas-angle-down\&quot; viewBox=\&quot;0 0 320 512\&quot; xmlns=\&quot;http:\/\/www.w3.org\/2000\/svg\&quot;&gt;&lt;path d=\&quot;M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z\&quot;&gt;&lt;\/path&gt;&lt;\/svg&gt;&quot;,&quot;library&quot;:&quot;fa-solid&quot;},&quot;full_width&quot;:&quot;stretch&quot;,&quot;layout&quot;:&quot;horizontal&quot;,&quot;toggle&quot;:&quot;burger&quot;}" data-widget_type="nav-menu.default">
                                             <div class="elementor-widget-container">
-                                                <link rel="stylesheet" href="~/wp-content/plugins/elementor-pro/assets/css/widget-nav-menu.min.css">			<nav migration_allowed="1" migrated="0" class="elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-horizontal e--pointer-none">
+                                                <link rel="stylesheet" href="~/wp-content/plugins/elementor-pro/assets/css/widget-nav-menu.min.css">			
+                                                <nav migration_allowed="1" migrated="0" class="elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-horizontal e--pointer-none">
                                                     <ul id="menu-1-a14687c" class="elementor-nav-menu">
                                                         <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-22"><a href="/Home/HomePage" class="elementor-item">Home</a></li>
                                                         <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23"><a href="/Home/AboutUs" class="elementor-item">About Us</a></li>
@@ -663,6 +664,7 @@ theli{
                                                             <a href="/Home/RecipeList" class="elementor-item">Recipes List</a>
                                                             <ul class="sub-menu elementor-nav-menu--dropdown">
                                                                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-26"><a href="/Home/SingleRecipe" class="elementor-sub-item">Single Recipe</a></li>
+                                                                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-26"><a href="/Home/Category" class="elementor-sub-item">Category</a></li>
                                                             </ul>
                                                         </li>
                                                         <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33"><a href="/Home/JoinContributor" class="elementor-item">Join Contributor</a></li>
@@ -691,6 +693,7 @@ theli{
                                                             <a href="/Home/RecipeList" class="elementor-item" tabindex="-1">Recipes List</a>
                                                             <ul class="sub-menu elementor-nav-menu--dropdown"
                                                                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-26"><a href="/Home/SingleRecipe" class="elementor-sub-item" tabindex="-1">Single Recipe</a></li>
+                                                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-26"><a href="/Home/Category" class="elementor-sub-item">Category</a></li>
                                                             </ul>
                                                         </li>
                                                         <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33"><a href="/Home/JoinContributor" class="elementor-item" tabindex="-1">Join Contributor</a></li>
@@ -773,15 +776,15 @@ theli{
 
                                     <div class="item-user">
                                         <ul class="ul-user">
+                                            
                                             <li>
-                                                <a>
+
+                                                <a asp-area="Identity" asp-page="/Account/Login">
                                                     Đăng nhập
                                                 </a>
                                             </li>
-                                            <li><a>Đăng kí</a> </li>
-                                            <li><a>Đăng kí</a> </li>
-                                            <li><a>Đăng kí</a> </li>
-                                            <li><a>Đăng kí</a> </li>
+                                            <li><a asp-area="Identity" asp-page="/Account/Register">Đăng kí</a> </li>
+                                   
 
                                         </ul>
                                     </div>
@@ -809,7 +812,7 @@ theli{
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div class="elementor-element elementor-element-a6c7ed4 elementor-widget elementor-widget-image" data-id="a6c7ed4" data-element_type="widget" data-widget_type="image.default">
                                             <div class="elementor-widget-container">
-                                                <img src="~/wp-content/uploads/sites/2/2022/04/yumma_logo.png" title="yumma_logo" alt="yumma_logo" loading="lazy" />
+                                                <img style="height:auto;width:80px" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/373339511_7114076998613115_7786940881507392194_n.png?_nc_cat=103&ccb=1-7&_nc_sid=aee45a&_nc_ohc=Q0GYntpXjA0AX-tiy8D&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdS4y-XLxlwgT0w6GRZ1SDOrG4ImDHYESGRlAWmKlOeChw&oe=65267862"  />
                                             </div>
                                         </div>
                                         <div class="elementor-element elementor-element-edbad76 elementor-widget elementor-widget-text-editor" data-id="edbad76" data-element_type="widget" data-widget_type="text-editor.default">
@@ -850,75 +853,7 @@ theli{
                                         </div>
                                     </div>
                                 </div>
-                                <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-f0b0ae4" data-id="f0b0ae4" data-element_type="column">
-                                    <div class="elementor-widget-wrap elementor-element-populated">
-                                        <div class="elementor-element elementor-element-92377bf elementor-widget elementor-widget-heading" data-id="92377bf" data-element_type="widget" data-widget_type="heading.default">
-                                            <div class="elementor-widget-container">
-                                                <h4 class="elementor-heading-title elementor-size-default">Categories</h4>
-                                            </div>
-                                        </div>
-                                        <div class="elementor-element elementor-element-5d9a416 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="5d9a416" data-element_type="widget" data-widget_type="icon-list.default">
-                                            <div class="elementor-widget-container">
-                                                <ul class="elementor-icon-list-items">
-                                                    <li class="elementor-icon-list-item">
-                                                        <a href="#">
-
-                                                            <span class="elementor-icon-list-icon">
-
-                                                            </span>
-                                                            <span class="elementor-icon-list-text">Breakfast Recipes</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="elementor-icon-list-item">
-                                                        <a href="#">
-
-                                                            <span class="elementor-icon-list-icon">
-
-                                                            </span>
-                                                            <span class="elementor-icon-list-text">Lunch Recipes</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="elementor-icon-list-item">
-                                                        <a href="#">
-
-                                                            <span class="elementor-icon-list-icon">
-
-                                                            </span>
-                                                            <span class="elementor-icon-list-text">Dinner Recipes</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="elementor-icon-list-item">
-                                                        <a href="#">
-
-                                                            <span class="elementor-icon-list-icon">
-
-                                                            </span>
-                                                            <span class="elementor-icon-list-text">Drink Recipes</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="elementor-icon-list-item">
-                                                        <a href="#">
-
-                                                            <span class="elementor-icon-list-icon">
-
-                                                            </span>
-                                                            <span class="elementor-icon-list-text">Appetizer & Snack</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="elementor-icon-list-item">
-                                                        <a href="#">
-
-                                                            <span class="elementor-icon-list-icon">
-
-                                                            </span>
-                                                            <span class="elementor-icon-list-text">Kitchen Tips</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                              
                                 <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-f5acf73" data-id="f5acf73" data-element_type="column">
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div class="elementor-element elementor-element-ea892d6 elementor-widget elementor-widget-heading" data-id="ea892d6" data-element_type="widget" data-widget_type="heading.default">
@@ -1319,7 +1254,7 @@ theli{
                                         <div class="elementor-element elementor-element-d6d0f22 elementor-widget elementor-widget-button" data-id="d6d0f22" data-element_type="widget" data-widget_type="button.default">
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-button-wrapper">
-                                                    <a class="elementor-button elementor-button-link elementor-size-md" href="#">
+                                                    <a class="elementor-button elementor-button-link elementor-size-md" href="#`">
                                                         <span class="elementor-button-content-wrapper">
                                                             <span class="elementor-button-text">Contact Us</span>
                                                         </span>
@@ -1335,55 +1270,7 @@ theli{
                 </div>
             </div>
         </section>
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-f545bc2 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="f545bc2" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-            <div class="elementor-container elementor-column-gap-default">
-                <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-1aa5b9f" data-id="1aa5b9f" data-element_type="column">
-                    <div class="elementor-widget-wrap elementor-element-populated">
-                        <div class="elementor-element elementor-element-35bca88 elementor-widget elementor-widget-heading" data-id="35bca88" data-element_type="widget" data-widget_type="heading.default">
-                            <div class="elementor-widget-container">
-                                <div class="elementor-heading-title elementor-size-default">
-                                    Copyright © 2022 yumma, All rights reserved. Powered by MoxCreative.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-f380232" data-id="f380232" data-element_type="column">
-                    <div class="elementor-widget-wrap elementor-element-populated">
-                        <div class="elementor-element elementor-element-0ff7438 elementor-icon-list--layout-inline elementor-align-right elementor-tablet-align-center elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="0ff7438" data-element_type="widget" data-widget_type="icon-list.default">
-                            <div class="elementor-widget-container">
-                                <ul class="elementor-icon-list-items elementor-inline-items">
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <a href="#">
-
-                                            <span class="elementor-icon-list-text">Term of use</span>
-                                        </a>
-                                    </li>
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <a href="#">
-
-                                            <span class="elementor-icon-list-text">Privacy policy</span>
-                                        </a>
-                                    </li>
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <a href="#">
-
-                                            <span class="elementor-icon-list-text">Cookie policy</span>
-                                        </a>
-                                    </li>
-                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                        <a href="#">
-
-                                            <span class="elementor-icon-list-text">Sitemap</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
     </div>
 
 

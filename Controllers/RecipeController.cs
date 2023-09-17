@@ -17,6 +17,7 @@ namespace Project3.Controllers
         {
             _recipeRepository= recipeRepository;
         }
+
         //public async Task<IActionResult> CreateRecipe ( FormAddRecipe request)
         //{
 			
@@ -41,5 +42,6 @@ namespace Project3.Controllers
             return RedirectToAction("RecipesByAdmin", "Admin");
         }
        
+
     }
 }

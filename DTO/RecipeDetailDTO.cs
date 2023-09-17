@@ -5,6 +5,7 @@ namespace Project3.DTO
     public class RecipeDetailDTO
     {
 
+
         public int? RecipeId { get; set; }
         public string? RecipeName { get; set; }
         public string? Username { get; set; }
@@ -15,15 +16,18 @@ namespace Project3.DTO
         public int? TotalRow { get; set; }
     }
     public class  IngredientDetail
+
     {
         public int? RecipeId { get; set; }  
         public int? IngredientId { get; set; }
         public string? Name { get; set; }
         public string? Quantity { get; set; }
+
     }
     public class CategoryDetail
     {
         public int? CategoryId { get; set; }
         public string? CategoryName { get; set;}
+
     }
 }
