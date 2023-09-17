@@ -155,13 +155,7 @@
                             <span>Share photo of your recipe</span>
                             <div class="mb-3 col-xl-4 col-lg-4">
                                 <input class="form-control" type="file" multiple id="formFile" name="img1" accept="image/jpeg, image/png, image/gif">
-                            </div>
-                            @*<div class="mb-3 col-xl-4 col-lg-4">
-                            <input class="form-control" type="file" id="formFile" name="img2" accept="image/jpeg, image/png, image/gif">
-                            </div>
-                            <div class="mb-3 col-xl-4 col-lg-4">
-                            <input class="form-control" type="file" id="formFile" name="img3" accept="image/jpeg, image/png, image/gif">
-                            </div>*@
+                            </div>                           
                         </div>
                         <div id="image-container">
 
@@ -297,7 +291,10 @@
                         @if(Model > 0)
                         {
                             <button type="submit" class="btn btn-primary save-recipe" style="float: right;">Update</button>
-                            <button class="btn btn-danger pl-10">Delete</button>
+                            <a href="@Url.Action("DeleteRecipe","Recipe", new {entity = recipeDetail})">
+                                <button type="button" class="btn btn-danger pl-10">Delete</button>
+
+                            </a>
                         }
                         else
                         {

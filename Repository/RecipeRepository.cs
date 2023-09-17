@@ -215,7 +215,7 @@ namespace Project3.Repository
             return result;
         }
 
-        public async Task<List<RecipeDetailDTO>> GetByNameAsync(string keyword, int index = 1, int size = 10)
+        public async Task<List<RecipeDetailDTO>> GetByNameAsync(string keyword, int index , int size)
         {
             List<Recipe> allRecipes = await _context.Recipes.ToListAsync();
             if (!string.IsNullOrEmpty(keyword))
@@ -230,8 +230,9 @@ namespace Project3.Repository
                              Recipe = r,
                              User = u,
                          }).ToList();
-            query[0].TotalRow = query.Count();
+            var total = query.Count();
             query = query.OrderByDescending(r => r.RecipeId).Skip((index - 1) * size).Take(size).ToList();
+            query[0].TotalRow = total;
             return query;
         }
     }
