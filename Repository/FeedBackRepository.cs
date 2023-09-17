@@ -8,7 +8,7 @@ namespace Project3.Repository
     public interface IFeedBackRepository : IBaseRepository<Feedback>
     {
         Task<List<Feedback>> GetFeedbackByType(string word);
-        
+
     }
     public class FeedBackRepository : BaseRepository<Feedback>, IFeedBackRepository
     {

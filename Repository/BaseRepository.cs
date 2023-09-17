@@ -107,6 +107,8 @@ namespace Project3.Repository
             }
 
             //total = dataRows.Count();
+
+
             dataRows = dataRows.Skip((index - 1) * size).Take(size);
 
             var propertyInfo = typeof(T).GetProperty(columnName);

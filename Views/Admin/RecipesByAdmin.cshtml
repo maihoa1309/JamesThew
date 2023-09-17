@@ -3,6 +3,7 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     var recipes = await recipeRepository.GetAllAsync();
+    recipes = recipes.Where(r => r.IsDeleted == false).ToList();
 }
 
 <div class="content-body ">
@@ -19,9 +20,9 @@
 				<a class="mb-0 font-w500 fs-18" href="#"> Recipe by admin </a>
 			</div>
             <div class="input-group search-area ms-auto d-md-flex align-items-center d-inline-flex">
-				<input type="text" class="form-control" placeholder="Search here">
+				<input type="text" class="form-control" placeholder="Search here" id="search">
 				<div class="input-group-append">
-					<a href="javascript:void" class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></a>
+					<a href="javascript:void" class="input-group-text"><i class="fa-solid fa-magnifying-glass" id="btnSearch"></i></a>
 				</div>
 			</div>
         </div>
@@ -29,37 +30,19 @@
             <div class="card-body p-0">
                 <div class="table-responsive ">
                     <table class="table order-request">
-                        <tbody>
-                            @foreach(var recipe in recipes)
-                            {
-                                <tr>
-                                    <td style="width: 45%">
-                                        <div class="media align-items-center">
-                                            <img class="me-3 img-fluid rounded-circle" width="75" src="" >
-                                            <div class="media-body">
-                                                <h5 class="mt-0 mb-2"><a href="ecom-product-detail.html" class="text-black">@recipe.Title</a></h5>
-                                                <p class="mb-0 text-primary">@recipe.Id</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td style="width: 40%">
-                                        <h5 class="mb-2 text-black wspace-no">James Thew</h5>
-                                    </td>
-                                    <td style="width: 10%">
-                                        <div class="d-flex align-items-center">
-                                            <a class="btn btn-danger light btn-sm" href="@Url.Action("UpdateRecipe","Admin", new {id = recipe.Id})">See detail</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            }
+                        <tbody id="content">
                         </tbody>
                     </table>
                     <div class="card-footer border-0 pt-0 text-center">
-                        <a href="ecom-product-list.html" class="btn-link">View More &gt;&gt;</a>
+                        <ul class="pagination pagination-gutter pagination-primary no-bg" id="pageList">
+						</ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@section Script{
+    <script src="~/js/controller/recipeByAdmin.js"></script>
+}
 

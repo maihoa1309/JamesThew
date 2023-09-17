@@ -11,11 +11,13 @@ namespace Project3.Repository
 {
     public interface IRecipeRepository : IBaseRepository<Recipe>
     {
+
         Task<Recipe> SaveRecipeAsync(FormAddRecipe request);
         Task<List<RecipeDetailDTO>> GetAllRecipesAsync();
         Task<List<RecipeDetailDTO>> GetLatestCreatedRecipes(int count);
         Task<RecipeDetailDTO> GetRecipeByIdAsync (int id);
         Task<List<RecipeDetailDTO>> GetRecipeByUserAsync();
+        Task<List<RecipeDetailDTO>> GetByNameAsync(string keyword, int index = 1, int size = 10);
     }
     public class RecipeRepository : BaseRepository<Recipe>, IRecipeRepository
     {
@@ -25,11 +27,13 @@ namespace Project3.Repository
         }
 
         public async Task<List<RecipeDetailDTO>> GetLatestCreatedRecipes(int count)
+
         {
             // Sử dụng LINQ để truy vấn dữ liệu và lấy danh sách bản ghi được tạo gần nhất
 
             var query = await _dbSet.OrderByDescending(r => r.CreatedTime)
                                                     .Take(count).ToListAsync();
+
 
             var categories = (from r in _context.Recipes
                           join c in _context.Categories on r.CategoryId equals c.Id
@@ -47,75 +51,80 @@ namespace Project3.Repository
                             Category = grouped.First()
                          }).ToList();
             return result;
+
+        
+
         }
         public async Task<List<RecipeDetailDTO>> GetAllRecipesAsync()
         {
             List<Recipe> allRecipes = await (from r in _context.Recipes
                                     select r).ToListAsync();
-            var allIngredients =await (from rd in _context.RecipeDetail
+            var allIngredients = await (from rd in _context.RecipeDetail
                                 join i in _context.Ingredients on rd.IngredientId equals i.Id
                                 select new IngredientDetail
                                 {
                                     RecipeId = rd.RecipeId,
                                     IngredientId = rd.IngredientId,
                                     Quantity = rd.Quantity,
-                                    Name = i.Name
+                                    Name = i.Name 
                                 }).ToListAsync();
             var query = (from r in allRecipes
                          join i in allIngredients on r.Id equals i.RecipeId
                          join u in _userManager.Users on r.UserId equals u.UserName
-                         group i by new { r.Id, r.Title, u.UserName }  into grouped
+                         group i by new { r.Id, r.Title, u.UserName}  into grouped
                          select new RecipeDetailDTO
                          {
                              RecipeId = grouped.Key.Id,
                              RecipeName = grouped.Key.Title,
                              Ingredients = grouped.ToList(),
+
                              Username = grouped.Key.UserName
                          }).ToList();
+
              return query;
         }
         public async Task<RecipeDetailDTO> GetRecipeByIdAsync(int id)
         {
 			
             RecipeDetailDTO result = new RecipeDetailDTO();
-			var recipe = (from r in _context.Recipes
-						  where r.Id == id
-						  select r).FirstOrDefault();
-			var allIngredients = await (from rd in _context.RecipeDetail
-										join i in _context.Ingredients on rd.IngredientId equals i.Id
-										where rd.RecipeId == id
-										select new IngredientDetail
-										{
-											RecipeId = rd.RecipeId,
-											IngredientId = rd.IngredientId,
-											Quantity = rd.Quantity,
-											Name = i.Name
-										}).ToListAsync();
-			var category = (from c in _context.Categories
-							join r in _context.Recipes on c.Id equals r.CategoryId
-							where r.Id == id
-							select new CategoryDetail
-							{
-								CategoryId = c.Id,
-								CategoryName = c.Name
-							}).FirstOrDefault();
 
-			var user = (from r in _context.Recipes
-						join u in _userManager.Users on r.UserId equals u.Id
-						where r.Id == id
-						select u).FirstOrDefault();
-			result.User = user;
-			result.Recipe = recipe;
-			result.Ingredients = allIngredients;
-			result.Category = category;
-			return result;
-		}
+            var recipe = (from r in _context.Recipes
+                          where r.Id == id select r).FirstOrDefault();
+            var allIngredients = await (from rd in _context.RecipeDetail
+                                        join i in _context.Ingredients on rd.IngredientId equals i.Id
+                                        where rd.RecipeId == id
+                                        select new IngredientDetail
+                                        {
+                                            RecipeId = rd.RecipeId,
+                                            IngredientId = rd.IngredientId,
+                                            Quantity = rd.Quantity,
+                                            Name = i.Name
+                                        }).ToListAsync();
+            var category = (from c in _context.Categories
+                            join r in _context.Recipes on c.Id equals r.CategoryId
+                            where r.Id == id
+                            select new CategoryDetail
+                            {
+                                CategoryId = c.Id,
+                                CategoryName = c.Name
+                            }).FirstOrDefault();
+                         
+            var user = (from r in _context.Recipes 
+                        join u in _userManager.Users on r.UserId equals u.Id
+                        where r.Id == id
+                        select u).FirstOrDefault();
+            result.User = user;
+            result.Recipe= recipe;
+            result.Ingredients= allIngredients;
+            result.Category = category;
+            return result;
+
+        }
+
 
         public Task<List<RecipeDetailDTO>> GetRecipeByUserAsync()
         {
             var currentUser = _userManager.GetUserAsync(_contextAccessor.HttpContext.User).GetAwaiter().GetResult();
-
-
             throw new NotImplementedException();
         }
 
@@ -127,7 +136,6 @@ namespace Project3.Repository
                 var Recipe = new Recipe();
                 if(request.id > 0)
                 {
-
                     Recipe = _dbSet.Find(request.id);
                 }
 
@@ -157,7 +165,9 @@ namespace Project3.Repository
                     if(Recipe.Id <= 0)
                     {
                         _context.Recipes.Add(Recipe);
-                    }
+
+                    }                                        
+
                     await _context.SaveChangesAsync();
                     //Lay ra duoc cai RecipeId
                     var RecipeId = Recipe.Id;
@@ -223,6 +233,28 @@ namespace Project3.Repository
                 }
             }
             return result;
+        }
+
+        public async Task<List<RecipeDetailDTO>> GetByNameAsync(string keyword, int index , int size)
+        {
+            List<Recipe> allRecipes = await _context.Recipes.ToListAsync();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                allRecipes = allRecipes.Where(r => r.Title.ToLower().Contains(keyword.ToLower())).ToList();
+            }
+
+            var query = (from r in allRecipes
+                         join u in _userManager.Users on r.UserId equals u.Id
+                         select new RecipeDetailDTO
+                         {
+                             Recipe = r,
+                             User = u,
+                         }).ToList();
+            var total = query.Count();
+            query = query.OrderByDescending(r => r.RecipeId).Skip((index - 1) * size).Take(size).ToList();
+            query[0].TotalRow = total;
+            return query;
+
         }
     }
 }

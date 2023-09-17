@@ -17,6 +17,7 @@ namespace Project3.Controllers
         {
             _recipeRepository= recipeRepository;
         }
+
         //public async Task<IActionResult> CreateRecipe ( FormAddRecipe request)
         //{
 			
@@ -29,5 +30,18 @@ namespace Project3.Controllers
             var result = await _recipeRepository.SaveRecipeAsync(request);
             return Ok(result);
         }
+
+        public async Task<List<RecipeDetailDTO>> GetByName(string keyword, int index , int size)
+        {
+            var result = await _recipeRepository.GetByNameAsync(keyword, index, size);
+            return result; 
+        }
+        public IActionResult DeleteRecipe (Recipe entity)
+        {
+            _recipeRepository.DeleteAsync(entity).Wait();
+            return RedirectToAction("RecipesByAdmin", "Admin");
+        }
+       
+
     }
 }

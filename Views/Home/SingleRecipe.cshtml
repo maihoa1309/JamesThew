@@ -1,3 +1,4 @@
+
 ﻿@using Project3.Repository
 @using Project3.DTO
 @inject IRecipeRepository recipeRepository;
@@ -6,7 +7,9 @@
 	Layout = "~/Views/Shared/_Layoutweb.cshtml";
 	var recipe = await recipeRepository.GetRecipeByIdAsync(Model);
 
+
 }
+
 <div data-elementor-type="wp-post" data-elementor-id="983" class="elementor elementor-983">
 	<section class="elementor-section elementor-top-section elementor-element elementor-element-13b02ac elementor-reverse-mobile elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="13b02ac" data-element_type="section">
 		<div class="elementor-container elementor-column-gap-default">
@@ -245,6 +248,7 @@
 									font-size: 50px
 								}
 
+
 								.elementor-widget-text-editor .elementor-drop-cap-letter {
 									display: inline-block
 								}</style>				<p>@recipe.Recipe.Description</p>
@@ -321,6 +325,7 @@
 			</div>
 		</div>
 	</section>
+
 	<section class="elementor-section elementor-top-section elementor-element elementor-element-ca136dd elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="ca136dd" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 		<div class="elementor-container elementor-column-gap-default">
 			<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-cdb83d1 animated-slow elementor-invisible" data-id="cdb83d1" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeIn&quot;}">
@@ -332,7 +337,7 @@
 					</div>
 					<div class="elementor-element elementor-element-86d4f90 elementor-widget elementor-widget-text-editor" data-id="86d4f90" data-element_type="widget" data-widget_type="text-editor.default">
 						<div class="elementor-widget-container">
-							<p>Metus porttitor facilisis velit blandit ante fringilla sit neque ultrices quis. Inceptos nibh sociosqu ad volutpat nisi natoque posuere cras sollicitudin. Nulla dignissim commodo si libero hac neque sodales litora.</p>
+
 						</div>
 					</div>
 					<div class="elementor-element elementor-element-fb9deb7 elementor-widget elementor-widget-text-editor" data-id="fb9deb7" data-element_type="widget" data-widget_type="text-editor.default">
