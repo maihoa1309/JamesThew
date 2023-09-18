@@ -1,10 +1,10 @@
 @using Project3.Repository
 @using Project3.DTO
 @inject IRecipeRepository recipeRepository;
-@model int;
+@model RecipeDetailDTO;
 @{
 	Layout = "~/Views/Shared/_Layoutweb.cshtml";
-	var recipe = await recipeRepository.GetRecipeByIdAsync(Model);
+	var recipe = Model;
 	var i = 0;
 	
 }
@@ -280,21 +280,21 @@
 								<div class="elementor-main-swiper swiper-container">
 									<div class="swiper-wrapper">
 										<div class="swiper-slide">
-											<div class="elementor-carousel-image" style="background-image: src=@recipe.Recipe.Img.Split(',')[0])">
+											<div class="elementor-carousel-image" style="background-image: url(/@recipe.Recipe.Img.Split(',')[0])">
 											</div>
 										</div>
 										<div class="swiper-slide">
-											<div class="elementor-carousel-image" style="background-image: url(@recipe.Recipe.Img.Split(',')[0])">
+											<div class="elementor-carousel-image" style="background-image: url(/@recipe.Recipe.Img.Split(',')[0])">
 											</div>
 										</div>
 										<div class="swiper-slide">
-											<div class="elementor-carousel-image" style="background-image: url(@recipe.Recipe.Img.Split(',')[0])">
+											<div class="elementor-carousel-image" style="background-image: url(/@recipe.Recipe.Img.Split(',')[0])">
 										
 											</div>
 										</div>
 										<div class="swiper-slide">
 											<a data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="dcf05e9" data-elementor-lightbox-title="Glass of mojito" data-elementor-lightbox-description="Glass of mojito" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTAwMywidXJsIjoiaHR0cHM6XC9cL3BvaW50Lm1veGNyZWF0aXZlLmNvbVwveXVtbWFcL3dwLWNvbnRlbnRcL3VwbG9hZHNcL3NpdGVzXC8yXC8yMDIyXC8wNFwvZ2xhc3Mtb2YtbW9qaXRvLTEuanBnIiwic2xpZGVzaG93IjoiZGNmMDVlOSJ9" data-elementor-lightbox-video="">
-												<div class="elementor-carousel-image" style="background-image: url(@recipe.Recipe.Img.Split(',')[0])">
+												<div class="elementor-carousel-image" style="background-image: url(/@recipe.Recipe.Img.Split(',')[0])">
 													<div class="elementor-custom-embed-play">
 														<svg aria-hidden="true" class="e-font-icon-svg e-eicon-play" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path d="M838 162C746 71 633 25 500 25 371 25 258 71 163 162 71 254 25 367 25 500 25 633 71 746 163 837 254 929 367 979 500 979 633 979 746 933 838 837 929 746 975 633 975 500 975 367 929 254 838 162M808 192C892 279 933 379 933 500 933 621 892 725 808 808 725 892 621 938 500 938 379 938 279 896 196 808 113 725 67 621 67 500 67 379 108 279 196 192 279 108 383 62 500 62 621 62 721 108 808 192M438 392V642L642 517 438 392Z"></path></svg>					<span class="elementor-screen-only">Play</span>
 													</div>
@@ -314,19 +314,19 @@
 								<div class="elementor-thumbnails-swiper swiper-container">
 									<div class="swiper-wrapper">
 										<div class="swiper-slide">
-											<div class="elementor-fit-aspect-ratio elementor-carousel-image" style="background-image: url(@recipe.Recipe.Img.Split(',')[0])">
+											<div class="elementor-fit-aspect-ratio elementor-carousel-image" style="background-image: url(/@recipe.Recipe.Img.Split(',')[0])">
 											</div>
 										</div>
 										<div class="swiper-slide">
-											<div class="elementor-fit-aspect-ratio elementor-carousel-image" style="background-image: url(@recipe.Recipe.Img.Split(',')[0])">
+											<div class="elementor-fit-aspect-ratio elementor-carousel-image" style="background-image: url(/@recipe.Recipe.Img.Split(',')[0])">
 											</div>
 										</div>
 										<div class="swiper-slide">
-											<div class="elementor-fit-aspect-ratio elementor-carousel-image" style="background-image: url(@recipe.Recipe.Img.Split(',')[0])">
+											<div class="elementor-fit-aspect-ratio elementor-carousel-image" style="background-image: url(/@recipe.Recipe.Img.Split(',')[0])">
 											</div>
 										</div>
 										<div class="swiper-slide">
-											<div class="elementor-fit-aspect-ratio elementor-carousel-image" style="background-image: url(@recipe.Recipe.Img.Split(',')[0])">
+											<div class="elementor-fit-aspect-ratio elementor-carousel-image" style="background-image: url(/@recipe.Recipe.Img.Split(',')[0])">
 											</div>
 											</a>
 										</div>
