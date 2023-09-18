@@ -252,7 +252,7 @@ namespace Project3.Repository
                     // Lưu file ảnh vào thư mục UploadImg
                     System.IO.File.WriteAllBytes(imagePath, imageBytes);
                     // Trả về đường dẫn của file ảnh đã lưu
-                    var imageUrl = Path.Combine("UploadImg", fileName);
+                    var imageUrl = Path.Combine("UploadImg/", fileName);
                     result.Add(imageUrl);
                 }
             }
