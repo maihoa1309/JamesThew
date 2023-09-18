@@ -141,14 +141,11 @@
             contentType: 'application/json',
             success: function (response) {
                 // Xử lý khi yêu cầu thành công
-                console.log('Yêu cầu thành công');
-                console.log(response);
                 Swal.fire("Hey, Good job !!", "You clicked the button !!", "success").then(function () {
                     window.location = "/admin/RecipesByAdmin";
                 });
             },
             error: function (xhr, status, error) {
-                console.log('Yêu cầu thất bại');
                 console.log(data);
                 console.log(error);
             }

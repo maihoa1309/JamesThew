@@ -291,7 +291,7 @@
                         @if(Model > 0)
                         {
                             <button type="submit" class="btn btn-primary save-recipe" style="float: right;">Update</button>
-                            <a href="@Url.Action("DeleteRecipe","Recipe", new {entity = recipeDetail})">
+                            <a href="@Url.Action("DeleteRecipe","Recipe", new {id = Model})">
                                 <button type="button" class="btn btn-danger pl-10">Delete</button>
 
                             </a>

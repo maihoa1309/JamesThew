@@ -52,5 +52,11 @@ namespace Project3.Controllers
             return View();
         }
 
+        public IActionResult AddOrUpdateContest(int id)
+        {
+
+            return View(id);
+        }
+
 	}
 }
