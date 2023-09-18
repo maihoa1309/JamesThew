@@ -21,7 +21,7 @@ namespace Project3.Data
         public virtual DbSet<Register> Registers { get; set; }
         public virtual DbSet<Submission> Submissions { get; set; }
         public virtual DbSet<Tip> Tips { get; set; }
-        public virtual DbSet<RecipeDetail> RecipeDetail { get; set; }
+      
 
 
 
