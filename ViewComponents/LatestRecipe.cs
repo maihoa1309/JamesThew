@@ -7,7 +7,7 @@ namespace Project3.ViewComponents
     public class LatestRecipe : ViewComponent
     {
 
-        public IViewComponentResult Invoke(Recipe item)
+        public IViewComponentResult Invoke(RecipeDetailDTO item)
         {
             // Logic và dữ liệu của ViewComponent
 

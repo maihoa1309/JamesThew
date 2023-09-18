@@ -4,7 +4,9 @@ using System.Data;
 
 namespace Project3.Controllers
 {
+
     //[Authorize(Roles = "ADMIN")]
+
     public class AdminController : Controller
     {
         public IActionResult Index()
@@ -35,6 +37,8 @@ namespace Project3.Controllers
 		{
 			return View();
 		}
+
+
         public IActionResult AddCategory() 
         {
             return View();
@@ -47,10 +51,12 @@ namespace Project3.Controllers
         {
             return View();
         }
+
         public IActionResult AddOrUpdateContest(int id)
         {
 
             return View(id);
         }
+
 	}
 }

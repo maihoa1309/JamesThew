@@ -269,7 +269,7 @@ namespace Project3.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Announcements");
+                    b.ToTable("Announcements", (string)null);
                 });
 
             modelBuilder.Entity("Project3.Models.Category", b =>
@@ -306,7 +306,7 @@ namespace Project3.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("Project3.Models.Contest", b =>
@@ -360,7 +360,7 @@ namespace Project3.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Contests");
+                    b.ToTable("Contests", (string)null);
                 });
 
             modelBuilder.Entity("Project3.Models.Feedback", b =>
@@ -403,7 +403,7 @@ namespace Project3.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Feedbacks");
+                    b.ToTable("Feedbacks", (string)null);
                 });
 
             modelBuilder.Entity("Project3.Models.Ingredient", b =>
@@ -440,7 +440,7 @@ namespace Project3.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Ingredients");
+                    b.ToTable("Ingredients", (string)null);
                 });
 
             modelBuilder.Entity("Project3.Models.Recipe", b =>
@@ -511,7 +511,7 @@ namespace Project3.Data.Migrations
 
                     b.HasIndex("FeedbackId");
 
-                    b.ToTable("Recipes");
+                    b.ToTable("Recipes", (string)null);
                 });
 
             modelBuilder.Entity("Project3.Models.RecipeDetail", b =>
@@ -559,7 +559,7 @@ namespace Project3.Data.Migrations
 
                     b.HasIndex("RecipeId");
 
-                    b.ToTable("RecipeDetail");
+                    b.ToTable("RecipeDetail", (string)null);
                 });
 
             modelBuilder.Entity("Project3.Models.Register", b =>
@@ -605,7 +605,7 @@ namespace Project3.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Registers");
+                    b.ToTable("Registers", (string)null);
                 });
 
             modelBuilder.Entity("Project3.Models.Submission", b =>
@@ -658,7 +658,7 @@ namespace Project3.Data.Migrations
 
                     b.HasIndex("RecipeId");
 
-                    b.ToTable("Submissions");
+                    b.ToTable("Submissions", (string)null);
                 });
 
             modelBuilder.Entity("Project3.Models.Tip", b =>
@@ -703,7 +703,7 @@ namespace Project3.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Tips");
+                    b.ToTable("Tips", (string)null);
                 });
 
             modelBuilder.Entity("Project3.Models.CustomUser", b =>

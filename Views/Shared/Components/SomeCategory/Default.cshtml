@@ -1,0 +1,32 @@
+﻿@using Project3.DTO;
+@model CategoryDetail;
+
+@if (Model != null)
+{
+
+<div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-c0fc478 elementor-invisible" data-id="c0fc478" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;zoomIn&quot;,&quot;animation_delay&quot;:480}">
+    <div class="elementor-widget-wrap elementor-element-populated">
+        <div class="elementor-element elementor-element-aa8c345 elementor-cta--skin-cover elementor-cta--valign-middle elementor-bg-transform elementor-bg-transform-zoom-out elementor-widget elementor-widget-call-to-action" data-id="aa8c345" data-element_type="widget" data-widget_type="call-to-action.default">
+            <div class="elementor-widget-container" style="    border-style: solid;border-width: 14px 14px 14px 14px;border-color: var(--e-global-color-text );border-radius: 50% 50% 50% 50%;">
+                <link rel="stylesheet" href="https://point.moxcreative.com/yumma/wp-content/plugins/elementor-pro/assets/css/widget-call-to-action.min.css"><div class="elementor-cta">
+                    <div class="elementor-cta__bg-wrapper" style="border-radius:70%">
+                        <div class="elementor-cta__bg elementor-bg" style="background-image: url(https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/roasted-prawns-shrimps-in-frying-pan-with-lemon-and-chili-pepper-e1649757645348.jpg);">
+                        </div>
+                        <div class="elementor-cta__bg-overlay"></div>
+                    </div>
+                    <div class="elementor-cta__content">
+
+                        <h4 class="elementor-cta__title elementor-cta__content-item elementor-content-item">@Model.CategoryName</h4>
+
+                        <div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item ">
+                            <a class="elementor-cta__button elementor-button elementor-size-xs" style=" color: var(--e-global-color-text );background-color: var(--e-global-color-d49ac81 );border-width: 0px;" href="#">
+                                Discover recipes 🡥
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}

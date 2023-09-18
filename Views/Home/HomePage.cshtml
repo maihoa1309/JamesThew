@@ -1,8 +1,12 @@
 ﻿@using Project3.Repository
+@using Project3.DTO
 @inject IRecipeRepository recipeRepository;
 
 @{
     Layout = "~/Views/Shared/_Layoutweb.cshtml";
+    List<RecipeDetailDTO> alllatestrecipe = await recipeRepository.GetLatestCreatedRecipes(4);
+    List<CategoryDetail> categories = await recipeRepository.GetRandomCategories(4);
+
 }
 <div data-elementor-type="wp-post" data-elementor-id="1220" class="elementor elementor-1220">
     <section class="elementor-section elementor-top-section elementor-element elementor-element-e3dc6de elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="e3dc6de" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;slideshow&quot;,&quot;background_slideshow_gallery&quot;:[{&quot;id&quot;:1235,&quot;url&quot;:&quot;http:\/\/point.moxcreative.com\/yumma\/wp-content\/uploads\/sites\/2\/2022\/04\/concept-of-tasty-food-with-bell-pepper-on-white-background.jpg&quot;},{&quot;id&quot;:1233,&quot;url&quot;:&quot;http:\/\/point.moxcreative.com\/yumma\/wp-content\/uploads\/sites\/2\/2022\/04\/flat-lay-with-takeaway-food-on-wooden-background-food-delivery.jpg&quot;},{&quot;id&quot;:1231,&quot;url&quot;:&quot;http:\/\/point.moxcreative.com\/yumma\/wp-content\/uploads\/sites\/2\/2022\/04\/chinese-food-white-background.jpg&quot;}],&quot;background_slideshow_lazyload&quot;:&quot;yes&quot;,&quot;background_slideshow_ken_burns&quot;:&quot;yes&quot;,&quot;background_slideshow_loop&quot;:&quot;yes&quot;,&quot;background_slideshow_slide_duration&quot;:5000,&quot;background_slideshow_slide_transition&quot;:&quot;fade&quot;,&quot;background_slideshow_transition_duration&quot;:500,&quot;background_slideshow_ken_burns_zoom_direction&quot;:&quot;in&quot;}">
@@ -70,7 +74,7 @@
                     </div>
 
                     <div class="elementor-element elementor-element-06a0dc9 elementor-blockquote--skin-quotation elementor-blockquote--align-center elementor-widget__width-initial elementor-absolute elementor-blockquote--button-color-official elementor-invisible elementor-widget elementor-widget-blockquote"
-                    style="width: 340px;
+                         style="width: 340px;
                         height: 192px;
                         background-color: #fff;
                         border-radius: 10px;
@@ -101,9 +105,9 @@
                                     color: #55595c
                                 }
 
-                                .elementor-widget-blockquote blockquote .e-q-footer:after, .elementor-widget-blockquote blockquote .e-q-footer:before, .elementor-widget-blockquote blockquote:after, .elementor-widget-blockquote blockquote:before, .elementor-widget-blockquote blockquote cite:after, .elementor-widget-blockquote blockquote cite:before {
-                                    content: none
-                                }
+                                    .elementor-widget-blockquote blockquote .e-q-footer:after, .elementor-widget-blockquote blockquote .e-q-footer:before, .elementor-widget-blockquote blockquote:after, .elementor-widget-blockquote blockquote:before, .elementor-widget-blockquote blockquote cite:after, .elementor-widget-blockquote blockquote cite:before {
+                                        content: none
+                                    }
 
                                 .elementor-blockquote {
                                     transition: .3s
@@ -135,27 +139,27 @@
                                     width: max-content
                                 }
 
-                                .elementor-blockquote__tweet-button:hover {
-                                    color: #0967a0
-                                }
+                                    .elementor-blockquote__tweet-button:hover {
+                                        color: #0967a0
+                                    }
 
-                                .elementor-blockquote__tweet-button span {
-                                    font-weight: 600
-                                }
+                                    .elementor-blockquote__tweet-button span {
+                                        font-weight: 600
+                                    }
 
-                                .elementor-blockquote__tweet-button i, .elementor-blockquote__tweet-button span {
-                                    vertical-align: middle
-                                }
+                                    .elementor-blockquote__tweet-button i, .elementor-blockquote__tweet-button span {
+                                        vertical-align: middle
+                                    }
 
-                                .elementor-blockquote__tweet-button i + span, .elementor-blockquote__tweet-button svg + span {
-                                    margin-left: .5em
-                                }
+                                        .elementor-blockquote__tweet-button i + span, .elementor-blockquote__tweet-button svg + span {
+                                            margin-left: .5em
+                                        }
 
-                                .elementor-blockquote__tweet-button svg {
-                                    fill: #1da1f2;
-                                    height: 1em;
-                                    width: 1em
-                                }
+                                    .elementor-blockquote__tweet-button svg {
+                                        fill: #1da1f2;
+                                        height: 1em;
+                                        width: 1em
+                                    }
 
                                 .elementor-blockquote__tweet-label {
                                     white-space: pre-wrap
@@ -169,20 +173,20 @@
                                     font-size: 15px
                                 }
 
-                                .elementor-blockquote--button-skin-bubble .elementor-blockquote__tweet-button:hover, .elementor-blockquote--button-skin-classic .elementor-blockquote__tweet-button:hover {
-                                    background-color: #0967a0;
-                                    color: #fff
-                                }
+                                    .elementor-blockquote--button-skin-bubble .elementor-blockquote__tweet-button:hover, .elementor-blockquote--button-skin-classic .elementor-blockquote__tweet-button:hover {
+                                        background-color: #0967a0;
+                                        color: #fff
+                                    }
 
-                                .elementor-blockquote--button-skin-bubble .elementor-blockquote__tweet-button:hover:before, .elementor-blockquote--button-skin-classic .elementor-blockquote__tweet-button:hover:before {
-                                    border-right-color: #0967a0
-                                }
+                                        .elementor-blockquote--button-skin-bubble .elementor-blockquote__tweet-button:hover:before, .elementor-blockquote--button-skin-classic .elementor-blockquote__tweet-button:hover:before {
+                                            border-right-color: #0967a0
+                                        }
 
-                                .elementor-blockquote--button-skin-bubble .elementor-blockquote__tweet-button svg, .elementor-blockquote--button-skin-classic .elementor-blockquote__tweet-button svg {
-                                    fill: #fff;
-                                    height: 1em;
-                                    width: 1em
-                                }
+                                    .elementor-blockquote--button-skin-bubble .elementor-blockquote__tweet-button svg, .elementor-blockquote--button-skin-classic .elementor-blockquote__tweet-button svg {
+                                        fill: #fff;
+                                        height: 1em;
+                                        width: 1em
+                                    }
 
                                 .elementor-blockquote--button-skin-bubble.elementor-blockquote--button-view-icon .elementor-blockquote__tweet-button, .elementor-blockquote--button-skin-classic.elementor-blockquote--button-view-icon .elementor-blockquote__tweet-button {
                                     padding: 0;
@@ -277,14 +281,15 @@
                                     text-align: center
                                 }
 
-                                .elementor-blockquote--align-center .elementor-blockquote .e-q-footer, .elementor-blockquote--align-center .elementor-blockquote__author {
-                                    display: block
-                                }
+                                    .elementor-blockquote--align-center .elementor-blockquote .e-q-footer, .elementor-blockquote--align-center .elementor-blockquote__author {
+                                        display: block
+                                    }
 
                                 .elementor-blockquote--align-center .elementor-blockquote__tweet-button {
                                     margin-right: auto;
                                     margin-left: auto
-                                }</style>		<blockquote class="elementor-blockquote">
+                                }
+                            </style>		<blockquote class="elementor-blockquote">
                                 <p class="elementor-blockquote__content" style="color:black">
                                     “Ask not what you can do for your country. Ask what’s for lunch.”
                                 </p>
@@ -313,13 +318,11 @@
                     </div>
                     <div class="elementor-element elementor-element-c09b182 elementor-widget elementor-widget-text-editor" data-id="c09b182" data-element_type="widget" data-widget_type="text-editor.default">
                         <div class="elementor-widget-container">
-                            <p>Tortor scelerisque feugiat nibh ridiculus nisi si. Enim penatibus ac sed primis convallis fames taciti dolor tempor. Faucibus morbi posuere sagittis turpis class vivamus penatibus ornare mollis donec scelerisque.</p>
+                            <p>James Thew is one of the famous cook working in one of the five star hotels in the city. He is so famous that the publishers approach him to write recipes book, and provide some of the tips pertaining to the recipes, etc. Also some of the producers want him to work for their recipe shows where he needs to cook two or three recipes of different categories like juices, non-vegetarian and vegetarian recipes, Italian recipes, etc.</p>
                         </div>
                     </div>
                     <div class="elementor-element elementor-element-c48f60d elementor-widget elementor-widget-text-editor" data-id="c48f60d" data-element_type="widget" data-widget_type="text-editor.default">
-                        <div class="elementor-widget-container">
-                            <p>Tortor scelerisque feugiat nibh ridiculus nisi si. Enim penatibus ac sed primis convallis fames taciti dolor tempor. Faucibus morbi posuere sagittis turpis class vivamus penatibus ornare mollis donec scelerisque.</p>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -426,64 +429,64 @@
                                                     display: inline-block
                                                 }
 
-                                                .elementor-star-rating i {
-                                                    display: inline-block;
-                                                    position: relative;
-                                                    font-style: normal;
-                                                    cursor: default
-                                                }
+                                                    .elementor-star-rating i {
+                                                        display: inline-block;
+                                                        position: relative;
+                                                        font-style: normal;
+                                                        cursor: default
+                                                    }
 
-                                                .elementor-star-rating i:before {
-                                                    content: "\e934";
-                                                    display: block;
-                                                    font-size: inherit;
-                                                    font-family: inherit;
-                                                    position: absolute;
-                                                    overflow: hidden;
-                                                    color: #f0ad4e;
-                                                    top: 0;
-                                                    left: 0
-                                                }
+                                                        .elementor-star-rating i:before {
+                                                            content: "\e934";
+                                                            display: block;
+                                                            font-size: inherit;
+                                                            font-family: inherit;
+                                                            position: absolute;
+                                                            overflow: hidden;
+                                                            color: #f0ad4e;
+                                                            top: 0;
+                                                            left: 0
+                                                        }
 
-                                                .elementor-star-rating .elementor-star-empty:before {
-                                                    content: none
-                                                }
+                                                    .elementor-star-rating .elementor-star-empty:before {
+                                                        content: none
+                                                    }
 
-                                                .elementor-star-rating .elementor-star-1:before {
-                                                    width: 10%
-                                                }
+                                                    .elementor-star-rating .elementor-star-1:before {
+                                                        width: 10%
+                                                    }
 
-                                                .elementor-star-rating .elementor-star-2:before {
-                                                    width: 20%
-                                                }
+                                                    .elementor-star-rating .elementor-star-2:before {
+                                                        width: 20%
+                                                    }
 
-                                                .elementor-star-rating .elementor-star-3:before {
-                                                    width: 30%
-                                                }
+                                                    .elementor-star-rating .elementor-star-3:before {
+                                                        width: 30%
+                                                    }
 
-                                                .elementor-star-rating .elementor-star-4:before {
-                                                    width: 40%
-                                                }
+                                                    .elementor-star-rating .elementor-star-4:before {
+                                                        width: 40%
+                                                    }
 
-                                                .elementor-star-rating .elementor-star-5:before {
-                                                    width: 50%
-                                                }
+                                                    .elementor-star-rating .elementor-star-5:before {
+                                                        width: 50%
+                                                    }
 
-                                                .elementor-star-rating .elementor-star-6:before {
-                                                    width: 60%
-                                                }
+                                                    .elementor-star-rating .elementor-star-6:before {
+                                                        width: 60%
+                                                    }
 
-                                                .elementor-star-rating .elementor-star-7:before {
-                                                    width: 70%
-                                                }
+                                                    .elementor-star-rating .elementor-star-7:before {
+                                                        width: 70%
+                                                    }
 
-                                                .elementor-star-rating .elementor-star-8:before {
-                                                    width: 80%
-                                                }
+                                                    .elementor-star-rating .elementor-star-8:before {
+                                                        width: 80%
+                                                    }
 
-                                                .elementor-star-rating .elementor-star-9:before {
-                                                    width: 90%
-                                                }
+                                                    .elementor-star-rating .elementor-star-9:before {
+                                                        width: 90%
+                                                    }
 
                                                 .elementor-star-rating__wrapper {
                                                     display: flex;
@@ -565,7 +568,8 @@
 
                                                     .elementor--star-style-star_unicode .elementor-star-rating i:not(.elementor-star-empty):before {
                                                         content: "★"
-                                                    }</style>
+                                                    }
+                                            </style>
                                             <div class="elementor-star-rating__wrapper">
                                                 <div class="elementor-star-rating" title="4.5/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-5">&#9733;</i> <span itemprop="ratingValue" class="elementor-screen-only">4.5/5</span></div>
                                             </div>
@@ -783,7 +787,7 @@
     </section>
     <section class="elementor-section elementor-top-section elementor-element elementor-element-246ca6d elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="246ca6d" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
         <div class="elementor-background-overlay">
-            <img style="width:100%;height:550px" src="https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/home-cooked-happiness-1536x1024.jpg" alt="" />
+            <img style="width:100%;height:550px" src="https://s.net.vn/yHN1" alt="" />
         </div>
         <div class="elementor-container elementor-column-gap-default">
             <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-24a2bd7 elementor-invisible" style="display:flex;justify-content:center" data-id="24a2bd7" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
@@ -813,113 +817,10 @@
                 <div class="elementor-widget-wrap elementor-element-populated">
                     <section class="elementor-section elementor-inner-section elementor-element elementor-element-444be29 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="444be29" data-element_type="section">
                         <div class="elementor-container elementor-column-gap-default">
-                            <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-c0fc478 elementor-invisible" data-id="c0fc478" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;zoomIn&quot;,&quot;animation_delay&quot;:480}">
-                                <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class="elementor-element elementor-element-aa8c345 elementor-cta--skin-cover elementor-cta--valign-middle elementor-bg-transform elementor-bg-transform-zoom-out elementor-widget elementor-widget-call-to-action" data-id="aa8c345" data-element_type="widget" data-widget_type="call-to-action.default">
-                                        <div class="elementor-widget-container" style="    border-style: solid;
-                                            border-width: 15px 15px 15px 15px;
-                                            border-color: var(--e-global-color-text );
-                                            border-radius: 50% 50% 50% 50%;">
-                                            <link rel="stylesheet" href="https://point.moxcreative.com/yumma/wp-content/plugins/elementor-pro/assets/css/widget-call-to-action.min.css">		<div class="elementor-cta">
-                                                <div class="elementor-cta__bg-wrapper" style="border-radius:70%">
-                                                    <div class="elementor-cta__bg elementor-bg" style="background-image: url(https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/roasted-prawns-shrimps-in-frying-pan-with-lemon-and-chili-pepper-e1649757645348.jpg);">
-                                                    </div>
-                                                    <div class="elementor-cta__bg-overlay"></div>
-                                                </div>
-                                                <div class="elementor-cta__content">
-
-                                                    <h4 class="elementor-cta__title elementor-cta__content-item elementor-content-item">Main Dish</h4>
-
-                                                    <div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item ">
-                                                        <a class="elementor-cta__button elementor-button elementor-size-xs" style=" color: var(--e-global-color-text );background-color: var(--e-global-color-d49ac81 );border-width: 0px;" href="#">
-                                                            Discover recipes 🡥
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>  
-                            <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-c0fc478 elementor-invisible" data-id="c0fc478" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;zoomIn&quot;,&quot;animation_delay&quot;:480}">
-                                <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class="elementor-element elementor-element-aa8c345 elementor-cta--skin-cover elementor-cta--valign-middle elementor-bg-transform elementor-bg-transform-zoom-out elementor-widget elementor-widget-call-to-action" data-id="aa8c345" data-element_type="widget" data-widget_type="call-to-action.default">
-                                        <div class="elementor-widget-container" style="    border-style: solid;
-                                            border-width: 15px 15px 15px 15px;
-                                            border-color: var(--e-global-color-text );
-                                            border-radius: 50% 50% 50% 50%;">
-                                            <link rel="stylesheet" href="https://point.moxcreative.com/yumma/wp-content/plugins/elementor-pro/assets/css/widget-call-to-action.min.css">		<div class="elementor-cta">
-                                                <div class="elementor-cta__bg-wrapper" style="border-radius:70%">
-                                                    <div class="elementor-cta__bg elementor-bg" style="background-image: url(https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/roasted-prawns-shrimps-in-frying-pan-with-lemon-and-chili-pepper-e1649757645348.jpg);"></div>
-                                                    <div class="elementor-cta__bg-overlay"></div>
-                                                </div>
-                                                <div class="elementor-cta__content">
-                                                    <h4 class="elementor-cta__title elementor-cta__content-item elementor-content-item">Main Dish</h4>
-                                                    <div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item ">
-                                                        <a class="elementor-cta__button elementor-button elementor-size-xs" style=" color: var(--e-global-color-text );background-color: var(--e-global-color-d49ac81 );border-width: 0px;" href="#">
-                                                            Discover recipes 🡥
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>                          
-                            <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-c0fc478 elementor-invisible" data-id="c0fc478" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;zoomIn&quot;,&quot;animation_delay&quot;:480}">
-                                <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class="elementor-element elementor-element-aa8c345 elementor-cta--skin-cover elementor-cta--valign-middle elementor-bg-transform elementor-bg-transform-zoom-out elementor-widget elementor-widget-call-to-action" data-id="aa8c345" data-element_type="widget" data-widget_type="call-to-action.default">
-                                        <div class="elementor-widget-container" style="    border-style: solid;
-                                            border-width: 15px 15px 15px 15px;
-                                            border-color: var(--e-global-color-text );
-                                            border-radius: 50% 50% 50% 50%;">
-                                            <link rel="stylesheet" href="https://point.moxcreative.com/yumma/wp-content/plugins/elementor-pro/assets/css/widget-call-to-action.min.css">		<div class="elementor-cta">
-                                                <div class="elementor-cta__bg-wrapper" style="border-radius:70%">
-                                                    <div class="elementor-cta__bg elementor-bg" style="background-image: url(https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/roasted-prawns-shrimps-in-frying-pan-with-lemon-and-chili-pepper-e1649757645348.jpg);"></div>
-                                                    <div class="elementor-cta__bg-overlay"></div>
-                                                </div>
-                                                <div class="elementor-cta__content">
-
-                                                    <h4 class="elementor-cta__title elementor-cta__content-item elementor-content-item">Main Dish</h4>
-
-                                                    <div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item ">
-                                                        <a class="elementor-cta__button elementor-button elementor-size-xs" style=" color: var(--e-global-color-text );background-color: var(--e-global-color-d49ac81 );border-width: 0px;" href="#">
-                                                            Discover recipes 🡥
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>                         
-                            <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-c0fc478 elementor-invisible" data-id="c0fc478" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;zoomIn&quot;,&quot;animation_delay&quot;:480}">
-                                <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class="elementor-element elementor-element-aa8c345 elementor-cta--skin-cover elementor-cta--valign-middle elementor-bg-transform elementor-bg-transform-zoom-out elementor-widget elementor-widget-call-to-action" data-id="aa8c345" data-element_type="widget" data-widget_type="call-to-action.default">
-                                        <div class="elementor-widget-container" style="    border-style: solid;
-                                            border-width: 15px 15px 15px 15px;
-                                            border-color: var(--e-global-color-text );
-                                            border-radius: 50% 50% 50% 50%;">
-                                            <link rel="stylesheet" href="https://point.moxcreative.com/yumma/wp-content/plugins/elementor-pro/assets/css/widget-call-to-action.min.css">		<div class="elementor-cta">
-                                                <div class="elementor-cta__bg-wrapper" style="border-radius:70%">
-                                                    <div class="elementor-cta__bg elementor-bg" style="background-image: url(https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/roasted-prawns-shrimps-in-frying-pan-with-lemon-and-chili-pepper-e1649757645348.jpg);"></div>
-                                                    <div class="elementor-cta__bg-overlay"></div>
-                                                </div>
-                                                <div class="elementor-cta__content">
-
-                                                    <h4 class="elementor-cta__title elementor-cta__content-item elementor-content-item">Main Dish</h4>
-
-                                                    <div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item ">
-                                                        <a class="elementor-cta__button elementor-button elementor-size-xs" style=" color: var(--e-global-color-text );background-color: var(--e-global-color-d49ac81 );border-width: 0px;" href="#">
-                                                            Discover recipes 🡥
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @foreach (var category in categories)
+                            {
+                                @await  Component.InvokeAsync("SomeCategory", new { item = category})
+                            }
                         </div>
                     </section>
                 </div>
@@ -963,266 +864,24 @@
                     </section>
                     <section class="elementor-section elementor-inner-section elementor-element elementor-element-8e637d0 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="8e637d0" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeInRight&quot;}">
                         <div class="elementor-container elementor-column-gap-default" style="margin-bottom:50px">
-                            <div class="  bg-item elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-d396ba5" data-id="d396ba5" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                                <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class="elementor-element elementor-element-db90170 elementor-widget elementor-widget-image" data-id="db90170" data-element_type="widget" data-widget_type="image.default">
-                                        <div class="elementor-widget-container img-item">
-                                            <img decoding="async" width="1080" height="1618" src="https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/chicken-65.jpg" class="attachment-full size-full wp-image-775" alt="Chicken 65" srcset="https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/chicken-65.jpg 1080w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/chicken-65-200x300.jpg 200w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/chicken-65-684x1024.jpg 684w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/chicken-65-768x1151.jpg 768w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/chicken-65-1025x1536.jpg 1025w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/chicken-65-800x1199.jpg 800w" sizes="(max-width: 1080px) 100vw, 1080px" />
-                                        </div>
-                                    </div>
-                                    <div style="  width: 105px;
-                                        position: absolute;
-                                        left: 170px;" class=" elementor-element elementor-element-43c1969 elementor-widget__width-auto elementor-absolute elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="43c1969" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="icon-list.default">
-                                        <div style="  width: 100%;
-                                            height: 30px;
-                                            margin-top: 10px;" class="elementor-widget-container ">
-                                            <ul style="  background-color: var(--e-global-color-d7d34cf );
-                                                width: 100%;
-                                                height: 100%;
-                                                border-radius: 20px 20px 20px 20px;" class="elementor-icon-list-items ">
-                                                <li style=" display: flex;
-                                                    align-items: center;
-                                                    justify-content: center;
-                                                    height: 100%;
-                                                    color: #ffff;
-                                                    font-size: 12px;" class="elementor-icon-list-item ">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="icon icon-user"></i>
-                                                    </span>
-                                                    <span class="elementor-icon-list-text">by Bren</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="elementor-element elementor-element-fa8296c elementor-widget elementor-widget-heading" data-id="fa8296c" data-element_type="widget" data-widget_type="heading.default">
-                                        <div class="elementor-widget-container">
-                                            <h6 class="elementor-heading-title elementor-size-default">
-                                                <a href="#">
-                                                    Main Dishes
-                                                </a>
-                                            </h6>
-                                        </div>
-                                    </div>
-                                    <div class="elementor-element elementor-element-5a2399c elementor-widget elementor-widget-heading" data-id="5a2399c" data-element_type="widget" data-widget_type="heading.default">
-                                        <div class="elementor-widget-container">
-                                            <h4 class="elementor-heading-title elementor-size-default">
-                                                <a href="#">
-                                                    Quick Chicken Piccata
-                                                </a>
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div class="elementor-element elementor-element-00eb634 elementor--star-style-star_unicode elementor-widget elementor-widget-star-rating" data-id="00eb634" data-element_type="widget" data-widget_type="star-rating.default">
-                                        <div class="elementor-widget-container">
-
-                                            <div class="elementor-star-rating__wrapper">
-                                                <div class="elementor-star-rating" title="4.5/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-5">&#9733;</i> <span itemprop="ratingValue" class="elementor-screen-only">4.5/5</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="elementor-element elementor-element-58417a0 elementor-widget elementor-widget-text-editor" data-id="58417a0" data-element_type="widget" data-widget_type="text-editor.default">
-                                        <div class="elementor-widget-container">
-                                            <p>Habitant accumsan suscipit sodales phasellus nulla elit placerat sapien quisque gravida tincidunt</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bg-item elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-a19cd6e" data-id="a19cd6e" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                                <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class=" elementor-element elementor-element-543a794 elementor-widget elementor-widget-image" data-id="543a794" data-element_type="widget" data-widget_type="image.default">
-                                        <div class="elementor-widget-container img-item">
-                                            <img decoding="async" width="1080" height="720" src="https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/homemade-kung-pao-chicken-with-peppers-and-vegetables-chinese-food-stir-fry-.jpg" class="attachment-full size-full wp-image-830" alt="Homemade kung pao chicken with peppers and vegetables. Chinese food. Stir fry." srcset="https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/homemade-kung-pao-chicken-with-peppers-and-vegetables-chinese-food-stir-fry-.jpg 1080w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/homemade-kung-pao-chicken-with-peppers-and-vegetables-chinese-food-stir-fry--300x200.jpg 300w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/homemade-kung-pao-chicken-with-peppers-and-vegetables-chinese-food-stir-fry--1024x682.jpg 1024w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/homemade-kung-pao-chicken-with-peppers-and-vegetables-chinese-food-stir-fry--768x512.jpg 768w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/homemade-kung-pao-chicken-with-peppers-and-vegetables-chinese-food-stir-fry--1536x1024.jpg 1536w, https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/homemade-kung-pao-chicken-with-peppers-and-vegetables-chinese-food-stir-fry--800x533.jpg 800w" sizes="(max-width: 1080px) 100vw, 1080px" />
-                                        </div>
-                                    </div>
-                                    <div style="     width: 105px;
-                                        position: absolute;
-                                        left: 170px;" class="elementor-element elementor-element-44ac836 elementor-widget__width-auto elementor-absolute elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="44ac836" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="icon-list.default">
-                                        <div style="    width: 100%;
-                                            height: 30px;
-                                            margin-top: 10px;" class="elementor-widget-container">
-                                            <ul style="    background-color: var(--e-global-color-d7d34cf );
-                                                width: 100%;
-                                                height: 100%;
-                                                border-radius: 20px 20px 20px 20px;" class="elementor-icon-list-items">
-                                                <li style="      display: flex;
-                                                    align-items: center;
-                                                    justify-content: center;
-                                                    height: 100%;
-                                                    color: #ffff;
-                                                    font-size: 12px;" class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="icon icon-user"></i>
-                                                    </span>
-                                                    <span class="elementor-icon-list-text">by Morra</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="elementor-element elementor-element-35543e4 elementor-widget elementor-widget-heading" data-id="35543e4" data-element_type="widget" data-widget_type="heading.default">
-                                        <div class="elementor-widget-container">
-                                            <h6 class="elementor-heading-title elementor-size-default">
-                                                <a href="#">
-                                                    Main Dishes
-                                                </a>
-                                            </h6>
-                                        </div>
-                                    </div>
-                                    <div class="elementor-element elementor-element-70dcee0 elementor-widget elementor-widget-heading" data-id="70dcee0" data-element_type="widget" data-widget_type="heading.default">
-                                        <div class="elementor-widget-container">
-                                            <h4 class="elementor-heading-title elementor-size-default">
-                                                <a href="#">
-                                                    Kung Pao Chicken
-                                                </a>
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div class="elementor-element elementor-element-29646cd elementor--star-style-star_unicode elementor-widget elementor-widget-star-rating" data-id="29646cd" data-element_type="widget" data-widget_type="star-rating.default">
-                                        <div class="elementor-widget-container">
-
-                                            <div class="elementor-star-rating__wrapper">
-                                                <div class="elementor-star-rating" title="4.5/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-5">&#9733;</i> <span itemprop="ratingValue" class="elementor-screen-only">4.5/5</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="elementor-element elementor-element-e85e156 elementor-widget elementor-widget-text-editor" data-id="e85e156" data-element_type="widget" data-widget_type="text-editor.default">
-                                        <div class="elementor-widget-container">
-                                            <p>Habitant accumsan suscipit sodales phasellus nulla elit placerat sapien quisque gravida tincidunt</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bg-item elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-2b6d39d" data-id="2b6d39d" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                                <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class=" elementor-element elementor-element-9c5278b elementor-widget elementor-widget-image" data-id="9c5278b" data-element_type="widget" data-widget_type="image.default">
-                                        <div class="elementor-widget-container img-item">
-                                            <img decoding="async" loading="lazy" width="840" height="561" src="https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/sweet-and-spicy-honey-grilled-chicken-thighs-e1649757466220.jpg" class="attachment-full size-full wp-image-834" alt="Sweet and spicy honey grilled chicken thighs" />
-                                        </div>
-                                    </div>
-                                    <div style="     width: 105px;
-                                        position: absolute;
-                                        left: 170px;" class="elementor-element elementor-element-a2acb42 elementor-widget__width-auto elementor-absolute elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="a2acb42" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="icon-list.default">
-                                        <div style="   width: 100%;
-                                            height: 30px;
-                                            margin-top: 10px;" class="elementor-widget-container">
-                                            <ul style="   background-color: var(--e-global-color-d7d34cf );
-                                                width: 100%;
-                                                height: 100%;
-                                                border-radius: 20px 20px 20px 20px;" class="elementor-icon-list-items">
-                                                <li style="    display: flex;
-                                                    align-items: center;
-                                                    justify-content: center;
-                                                    height: 100%;
-                                                    color: #ffff;
-                                                    font-size: 12px;" class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="icon icon-user"></i>
-                                                    </span>
-                                                    <span class="elementor-icon-list-text">by Chef Juna</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="elementor-element elementor-element-68272ea elementor-widget elementor-widget-heading" data-id="68272ea" data-element_type="widget" data-widget_type="heading.default">
-                                        <div class="elementor-widget-container">
-                                            <h6 class="elementor-heading-title elementor-size-default">
-                                                <a href="#">
-                                                    Main Dishes
-                                                </a>
-                                            </h6>
-                                        </div>
-                                    </div>
-                                    <div class="elementor-element elementor-element-2b92ffc elementor-widget elementor-widget-heading" data-id="2b92ffc" data-element_type="widget" data-widget_type="heading.default">
-                                        <div class="elementor-widget-container">
-                                            <h4 class="elementor-heading-title elementor-size-default"><a href="#">Honey-Garlic Slow Cooker Chicken Thighs</a></h4>
-                                        </div>
-                                    </div>
-                                    <div class="elementor-element elementor-element-a9997dd elementor--star-style-star_unicode elementor-widget elementor-widget-star-rating" data-id="a9997dd" data-element_type="widget" data-widget_type="star-rating.default">
-                                        <div class="elementor-widget-container">
-
-                                            <div class="elementor-star-rating__wrapper">
-                                                <div class="elementor-star-rating" title="4.5/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-5">&#9733;</i> <span itemprop="ratingValue" class="elementor-screen-only">4.5/5</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="elementor-element elementor-element-46696f8 elementor-widget elementor-widget-text-editor" data-id="46696f8" data-element_type="widget" data-widget_type="text-editor.default">
-                                        <div class="elementor-widget-container">
-                                            <p>Habitant accumsan suscipit sodales phasellus nulla elit placerat sapien quisque gravida tincidunt</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bg-item elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-8608c4d" data-id="8608c4d" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                                <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class=" elementor-element elementor-element-89f0cc9 elementor-widget elementor-widget-image" data-id="89f0cc9" data-element_type="widget" data-widget_type="image.default">
-                                        <div class="elementor-widget-container img-item">
-                                            <img decoding="async" loading="lazy" width="720" height="1080" src="https://point.moxcreative.com/yumma/wp-content/uploads/sites/2/2022/04/baked-brie-with-cranberries-e1649757494180.jpg" class="attachment-full size-full wp-image-847" alt="Baked brie with cranberries" />
-                                        </div>
-                                    </div>
-                                    <div style="      width: 105px;
-                                        position: absolute;
-                                        left: 170px;" class="elementor-element elementor-element-8352571 elementor-widget__width-auto elementor-absolute elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="8352571" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="icon-list.default">
-                                        <div style="    width: 100%;
-                                            height: 30px;
-                                            margin-top: 10px;" class="elementor-widget-container">
-                                            <ul style="    background-color: var(--e-global-color-d7d34cf );
-                                                width: 100%;
-                                                height: 100%;
-                                                border-radius: 20px 20px 20px 20px;" class="elementor-icon-list-items">
-                                                <li style="
-                                                    display: flex;
-                                                    align-items: center;
-                                                    justify-content: center;
-                                                    height: 100%;
-                                                    color: #ffff;
-                                                    font-size: 12px;" class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="icon icon-user"></i>
-                                                    </span>
-                                                    <span class="elementor-icon-list-text">by Wilgoz</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="elementor-element elementor-element-d42d75b elementor-widget elementor-widget-heading" data-id="d42d75b" data-element_type="widget" data-widget_type="heading.default">
-                                    <div class="elementor-widget-container">
-                                        <h6 class="elementor-heading-title elementor-size-default">
-                                            <a href="#">
-                                                Appetizers and Snacks
-                                            </a>
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="elementor-element elementor-element-a3de5fe elementor-widget elementor-widget-heading" data-id="a3de5fe" data-element_type="widget" data-widget_type="heading.default">
-                                    <div class="elementor-widget-container">
-                                        <h4 class="elementor-heading-title elementor-size-default">
-                                            <a href="#">
-                                                Jamie's Baked Brie
-                                            </a>
-                                        </h4>
-                                    </div>
-                                </div>
-                                <div class="elementor-element elementor-element-2f0986b elementor--star-style-star_unicode elementor-widget elementor-widget-star-rating" data-id="2f0986b" data-element_type="widget" data-widget_type="star-rating.default">
-                                    <div class="elementor-widget-container">
-
-                                        <div class="elementor-star-rating__wrapper">
-                                            <div class="elementor-star-rating" title="4.5/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-full">&#9733;</i><i class="elementor-star-5">&#9733;</i> <span itemprop="ratingValue" class="elementor-screen-only">4.5/5</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="elementor-element elementor-element-9572a03 elementor-widget elementor-widget-text-editor" data-id="9572a03" data-element_type="widget" data-widget_type="text-editor.default">
-                                    <div class="elementor-widget-container">
-                                        <p>Habitant accumsan suscipit sodales phasellus nulla elit placerat sapien quisque gravida tincidunt</p>
-                                    </div>
+                            @foreach (var recipe in alllatestrecipe)
+                            {
+                                @await  Component.InvokeAsync("LatestRecipe", new { item = recipe })
+                            }
+                        </div>
+                    </section>
+                    <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-a21452c elementor-invisible" data-id="a21452c" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInLeft&quot;}">
+                        <div class="elementor-widget-wrap elementor-element-populated">
+                            <div class="elementor-element elementor-element-bca8a19 elementor-widget elementor-widget-heading" data-id="bca8a19" data-element_type="widget" data-widget_type="heading.default">
+                                <div class="elementor-widget-container">
+                                    <h3 class="elementor-heading-title elementor-size-default">Latest Recipes</h3>
                                 </div>
                             </div>
                         </div>
-                    </section>
-
+                    </div>
                     <section class="elementor-section elementor-inner-section elementor-element elementor-element-2035e13 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="2035e13" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeInLeft&quot;}">
                         <div class="elementor-container elementor-column-gap-default">
-                            <div class=" bg-item elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-2840293" data-id="2840293" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                            <div class="bg-item elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-2840293" data-id="2840293" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
                                 <div class="elementor-widget-wrap elementor-element-populated">
                                     <div class="elementor-element elementor-element-54026eb elementor-widget elementor-widget-image" data-id="54026eb" data-element_type="widget" data-widget_type="image.default">
                                         <div class="elementor-widget-container img-item">
@@ -1482,8 +1141,11 @@
             </div>
         </div>
     </section>
-</div>
-      
+
+
+       
+
+
 
 
 <section class="elementor-section elementor-top-section elementor-element elementor-element-efe9885 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="efe9885" data-element_type="section">
@@ -1507,7 +1169,7 @@
                                 <div class="elementor-element elementor-element-a9d60ed elementor-widget elementor-widget-button" data-id="a9d60ed" data-element_type="widget" data-widget_type="button.default">
                                     <div class="elementor-widget-container">
                                         <div class="elementor-button-wrapper">
-                                            <a class="elementor-button elementor-button-link elementor-size-md" href="#">
+                                            <a class="elementor-button elementor-button-link elementor-size-md" href="/Home/PricingPlan">
                                                 <span class="elementor-button-content-wrapper">
                                                     <span class="elementor-button-text">Join Now</span>
                                                 </span>
@@ -1654,3 +1316,4 @@
         </div>
     </div>
 </section>
+</div>

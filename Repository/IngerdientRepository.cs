@@ -8,12 +8,14 @@ namespace Project3.Repository
     public interface IIngerdientRepository : IBaseRepository<Ingredient>
     {
 		Task<List<Ingredient>> SortNameByASC();
+
 		Task<List<Ingredient>> GetByNameAsync(string keyword, int index, int size);
-	
+
 	}
     public class IngerdientRepository : BaseRepository<Ingredient>, IIngerdientRepository
     {
         public IngerdientRepository(ApplicationDbContext dbContext, UserManager<CustomUser> userManager, IHttpContextAccessor httpContext) : base(dbContext, userManager, httpContext) { }
+
 
         public async Task<List<Ingredient>> GetByNameAsync(string keyword, int index, int size)
         {
@@ -28,10 +30,12 @@ namespace Project3.Repository
 			return ingredients;
         }
 
+
         public async Task<List<Ingredient>> SortNameByASC()
 		{
 			var result = from i in _context.Ingredients
 						 orderby i.Name
+
 						 where i.IsDeleted == false
 						 select i;
 			return await result.ToListAsync();

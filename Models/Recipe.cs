@@ -21,6 +21,5 @@ namespace Project3.Models
         public string? Img { get; set; }
         public bool? IsFree { get; set; }
 
-
     }
 }

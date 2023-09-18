@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Project3.DTO
 {
 
+
     public class FormAddRecipe
     {
         public int? id { get; set; } = 0;

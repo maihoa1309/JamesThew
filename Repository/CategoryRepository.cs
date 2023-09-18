@@ -13,6 +13,7 @@ namespace Project3.Repository
     {
         public CategoryRepository(ApplicationDbContext dbContext, UserManager<CustomUser> userManager, IHttpContextAccessor httpContext) : base(dbContext, userManager, httpContext) { }
 
+
         public async Task<List<Category>> SortNameByASCAsync()
         {
             var result = from c in _context.Categories
@@ -22,5 +23,6 @@ namespace Project3.Repository
             return await result.ToListAsync();
 
         }
+
     }
 }
