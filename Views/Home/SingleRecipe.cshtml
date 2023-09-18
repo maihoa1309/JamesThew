@@ -1,15 +1,30 @@
-
-﻿@using Project3.Repository
+@using Project3.Repository
 @using Project3.DTO
 @inject IRecipeRepository recipeRepository;
-@model RecipeDetailDTO;
+@model int;
 @{
 	Layout = "~/Views/Shared/_Layoutweb.cshtml";
 	var recipe = await recipeRepository.GetRecipeByIdAsync(Model);
-
-
+	var i = 0;
+	
 }
+<style>
+	.column-container {
+		display: flex;
+		justify-content: space-between;
+	}
 
+	.column {
+		flex-basis: calc(50% - 10px); /* Điều chỉnh chiều rộng của cột theo ý muốn */
+		/* Thêm các kiểu CSS khác theo nhu cầu */
+	}
+
+		/* Điều chỉnh margin để tạo khoảng cách giữa các cột */
+		.column + .column {
+			margin-left: 20px;
+		}
+
+</style>
 <div data-elementor-type="wp-post" data-elementor-id="983" class="elementor elementor-983">
 	<section class="elementor-section elementor-top-section elementor-element elementor-element-13b02ac elementor-reverse-mobile elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="13b02ac" data-element_type="section">
 		<div class="elementor-container elementor-column-gap-default">
@@ -49,7 +64,9 @@
 
 								.elementor-widget-heading .elementor-heading-title.elementor-size-xxl {
 									font-size: 59px
-								}</style><h6 class="elementor-heading-title elementor-size-default">@recipe.Category.CategoryName</h6>
+								}
+								</style>
+								<h6 class="elementor-heading-title elementor-size-default">@recipe.Category.CategoryName</h6>
 						</div>
 					</div>
 					<div class="elementor-element elementor-element-884bae1 elementor-widget elementor-widget-heading" data-id="884bae1" data-element_type="widget" data-widget_type="heading.default">
@@ -240,15 +257,12 @@
 									width: 1em;
 									height: 1em
 								}
-
 								.elementor-widget-text-editor .elementor-drop-cap {
 									float: left;
 									text-align: center;
 									line-height: 1;
 									font-size: 50px
 								}
-
-
 								.elementor-widget-text-editor .elementor-drop-cap-letter {
 									display: inline-block
 								}</style>				<p>@recipe.Recipe.Description</p>
@@ -266,21 +280,21 @@
 								<div class="elementor-main-swiper swiper-container">
 									<div class="swiper-wrapper">
 										<div class="swiper-slide">
-											<div class="elementor-carousel-image" style="background-image: url(@Model.Recipe.Img.Split(',')[0])">
+											<div class="elementor-carousel-image" style="background-image: src=@recipe.Recipe.Img.Split(',')[0])">
 											</div>
 										</div>
 										<div class="swiper-slide">
-											<div class="elementor-carousel-image" style="background-image: url(@Model.Recipe.Img.Split(',')[0])">
+											<div class="elementor-carousel-image" style="background-image: url(@recipe.Recipe.Img.Split(',')[0])">
 											</div>
 										</div>
 										<div class="swiper-slide">
-											<div class="elementor-carousel-image" style="background-image: url(@Model.Recipe.Img.Split(',')[2])">
+											<div class="elementor-carousel-image" style="background-image: url(@recipe.Recipe.Img.Split(',')[0])">
 										
 											</div>
 										</div>
 										<div class="swiper-slide">
-											<a href="@Model.Recipe.Img.Split(',')[0]" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="dcf05e9" data-elementor-lightbox-title="Glass of mojito" data-elementor-lightbox-description="Glass of mojito" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTAwMywidXJsIjoiaHR0cHM6XC9cL3BvaW50Lm1veGNyZWF0aXZlLmNvbVwveXVtbWFcL3dwLWNvbnRlbnRcL3VwbG9hZHNcL3NpdGVzXC8yXC8yMDIyXC8wNFwvZ2xhc3Mtb2YtbW9qaXRvLTEuanBnIiwic2xpZGVzaG93IjoiZGNmMDVlOSJ9" data-elementor-lightbox-video="">
-												<div class="elementor-carousel-image" style="background-image: url(@Model.Recipe.Img.Split(',')[0])">
+											<a data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="dcf05e9" data-elementor-lightbox-title="Glass of mojito" data-elementor-lightbox-description="Glass of mojito" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTAwMywidXJsIjoiaHR0cHM6XC9cL3BvaW50Lm1veGNyZWF0aXZlLmNvbVwveXVtbWFcL3dwLWNvbnRlbnRcL3VwbG9hZHNcL3NpdGVzXC8yXC8yMDIyXC8wNFwvZ2xhc3Mtb2YtbW9qaXRvLTEuanBnIiwic2xpZGVzaG93IjoiZGNmMDVlOSJ9" data-elementor-lightbox-video="">
+												<div class="elementor-carousel-image" style="background-image: url(@recipe.Recipe.Img.Split(',')[0])">
 													<div class="elementor-custom-embed-play">
 														<svg aria-hidden="true" class="e-font-icon-svg e-eicon-play" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path d="M838 162C746 71 633 25 500 25 371 25 258 71 163 162 71 254 25 367 25 500 25 633 71 746 163 837 254 929 367 979 500 979 633 979 746 933 838 837 929 746 975 633 975 500 975 367 929 254 838 162M808 192C892 279 933 379 933 500 933 621 892 725 808 808 725 892 621 938 500 938 379 938 279 896 196 808 113 725 67 621 67 500 67 379 108 279 196 192 279 108 383 62 500 62 621 62 721 108 808 192M438 392V642L642 517 438 392Z"></path></svg>					<span class="elementor-screen-only">Play</span>
 													</div>
@@ -300,19 +314,19 @@
 								<div class="elementor-thumbnails-swiper swiper-container">
 									<div class="swiper-wrapper">
 										<div class="swiper-slide">
-											<div class="elementor-fit-aspect-ratio elementor-carousel-image" style="background-image: url(@Model.Recipe.Img.Split(',')[0])">
+											<div class="elementor-fit-aspect-ratio elementor-carousel-image" style="background-image: url(@recipe.Recipe.Img.Split(',')[0])">
 											</div>
 										</div>
 										<div class="swiper-slide">
-											<div class="elementor-fit-aspect-ratio elementor-carousel-image" style="background-image: url(@Model.Recipe.Img.Split(',')[0])">
+											<div class="elementor-fit-aspect-ratio elementor-carousel-image" style="background-image: url(@recipe.Recipe.Img.Split(',')[0])">
 											</div>
 										</div>
 										<div class="swiper-slide">
-											<div class="elementor-fit-aspect-ratio elementor-carousel-image" style="background-image: url(@Model.Recipe.Img.Split(',')[0])">
+											<div class="elementor-fit-aspect-ratio elementor-carousel-image" style="background-image: url(@recipe.Recipe.Img.Split(',')[0])">
 											</div>
 										</div>
 										<div class="swiper-slide">
-											<div class="elementor-fit-aspect-ratio elementor-carousel-image" style="background-image: url(@Model.Recipe.Img.Split(',')[0])">
+											<div class="elementor-fit-aspect-ratio elementor-carousel-image" style="background-image: url(@recipe.Recipe.Img.Split(',')[0])">
 											</div>
 											</a>
 										</div>
@@ -325,7 +339,6 @@
 			</div>
 		</div>
 	</section>
-
 	<section class="elementor-section elementor-top-section elementor-element elementor-element-ca136dd elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="ca136dd" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 		<div class="elementor-container elementor-column-gap-default">
 			<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-cdb83d1 animated-slow elementor-invisible" data-id="cdb83d1" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeIn&quot;}">
@@ -337,7 +350,7 @@
 					</div>
 					<div class="elementor-element elementor-element-86d4f90 elementor-widget elementor-widget-text-editor" data-id="86d4f90" data-element_type="widget" data-widget_type="text-editor.default">
 						<div class="elementor-widget-container">
-
+							<p>Metus porttitor facilisis velit blandit ante fringilla sit neque ultrices quis. Inceptos nibh sociosqu ad volutpat nisi natoque posuere cras sollicitudin. Nulla dignissim commodo si libero hac neque sodales litora.</p>
 						</div>
 					</div>
 					<div class="elementor-element elementor-element-fb9deb7 elementor-widget elementor-widget-text-editor" data-id="fb9deb7" data-element_type="widget" data-widget_type="text-editor.default">
@@ -391,50 +404,45 @@
 									</div>
 									<div class="elementor-element elementor-element-15dc124 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="15dc124" data-element_type="widget" data-widget_type="icon-list.default">
 										<div class="elementor-widget-container">
-											<link rel="stylesheet" href="~/wp-content/plugins/elementor/assets/css/widget-icon-list.min.css">	
-											<ul class="elementor-icon-list-items">
-												@foreach (var ingre in recipe.Ingredients)
-												{
-													<li class="elementor-icon-list-item">
-														<span class="elementor-icon-list-icon">
-															<i aria-hidden="true" class="icon icon-checkmark"></i>
-														</span>
-														<span class="elementor-icon-list-text">@ingre.Quantity @ingre.Name</span>
-													</li>
-													
-												}
-												
-												@*<li class="elementor-icon-list-item">
-													<span class="elementor-icon-list-icon">
-														<i aria-hidden="true" class="icon icon-checkmark"></i>
-													</span>
-													<span class="elementor-icon-list-text">½ medium lime, cut into 3 wedges, divided</span>
-												</li>
-												<li class="elementor-icon-list-item">
-													<span class="elementor-icon-list-icon">
-														<i aria-hidden="true" class="icon icon-checkmark"></i>
-													</span>
-													<span class="elementor-icon-list-text">2 tablespoons white sugar, or to taste</span>
-												</li>
-												<li class="elementor-icon-list-item">
-													<span class="elementor-icon-list-icon">
-														<i aria-hidden="true" class="icon icon-checkmark"></i>
-													</span>
-													<span class="elementor-icon-list-text">1 cup ice cubes, or as needed</span>
-												</li>
-												<li class="elementor-icon-list-item">
-													<span class="elementor-icon-list-icon">
-														<i aria-hidden="true" class="icon icon-checkmark"></i>
-													</span>
-													<span class="elementor-icon-list-text">1 ½ fluid ounces white rum</span>
-												</li>
-												<li class="elementor-icon-list-item">
-													<span class="elementor-icon-list-icon">
-														<i aria-hidden="true" class="icon icon-checkmark"></i>
-													</span>
-													<span class="elementor-icon-list-text">½ cup club soda, or as needed</span>
-												</li>*@
-											</ul>
+											<link rel="stylesheet" href="~/wp-content/plugins/elementor/assets/css/widget-icon-list.min.css">
+											<div class="column-container">
+												<div class="column">
+													<ul class="elementor-icon-list-items">
+														@foreach (var ingre in recipe.Ingredients)
+														{
+															i++;
+															if (i <= (recipe.Ingredients.Count()/2))
+															{
+																<li class="elementor-icon-list-item">
+																	<span class="elementor-icon-list-icon">
+																		<i aria-hidden="true" class="icon icon-checkmark"></i>
+																	</span>
+																	<span class="elementor-icon-list-text">@ingre.Quantity @ingre.Name</span>
+																</li>
+															}
+															else
+															{
+																break;
+																 
+															}
+														}
+													</ul>
+												</div>
+												<div class="column">
+													<ul class="elementor-icon-list-items">
+														@for (int j = (recipe.Ingredients.Count() / 2); j < recipe.Ingredients.Count(); j++)
+														{
+															var ingre = recipe.Ingredients[j];
+															<li class="elementor-icon-list-item">
+																<span class="elementor-icon-list-icon">
+																	<i aria-hidden="true" class="icon icon-checkmark"></i>
+																</span>
+																<span class="elementor-icon-list-text">@ingre.Quantity @ingre.Name</span>
+															</li>
+														}
+													</ul>
+												</div>
+											</div>
 										</div>
 									</div>
 									<div class="elementor-element elementor-element-7cc9104 elementor-widget elementor-widget-heading" data-id="7cc9104" data-element_type="widget" data-widget_type="heading.default">

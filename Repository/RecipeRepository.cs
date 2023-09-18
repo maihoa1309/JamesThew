@@ -6,6 +6,9 @@ using Project3.DTO;
 using Microsoft.Extensions.Primitives;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.Linq;
 
 namespace Project3.Repository
 {
@@ -18,6 +21,7 @@ namespace Project3.Repository
         Task<RecipeDetailDTO> GetRecipeByIdAsync (int id);
         Task<List<RecipeDetailDTO>> GetRecipeByUserAsync();
         Task<List<RecipeDetailDTO>> GetByNameAsync(string keyword, int index = 1, int size = 10);
+        Task<List<CategoryDetail>> GetRandomCategories(int count);
     }
     public class RecipeRepository : BaseRepository<Recipe>, IRecipeRepository
     {
@@ -48,13 +52,33 @@ namespace Project3.Repository
                          select new RecipeDetailDTO
                          {
                             Recipe = grouped.Key,
-                            Category = grouped.First()
+                            Category = grouped.FirstOrDefault()
                          }).ToList();
             return result;
 
         
 
         }
+
+        public async Task<List<CategoryDetail>> GetRandomCategories(int count)
+        {
+            var randomCategories = await _context.Categories
+                .OrderBy(x => Guid.NewGuid()) // Sắp xếp danh mục ngẫu nhiên
+                .Take(count)
+                .Select(c => new CategoryDetail
+                {
+                    CategoryId = c.Id,
+                    CategoryName = c.Name
+                })
+                .ToListAsync();
+
+            return randomCategories;
+        }
+
+
+
+
+
         public async Task<List<RecipeDetailDTO>> GetAllRecipesAsync()
         {
             List<Recipe> allRecipes = await (from r in _context.Recipes

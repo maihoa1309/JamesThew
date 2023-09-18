@@ -7,7 +7,9 @@
         <div class="elementor-widget-wrap elementor-element-populated">
             <div class="elementor-element elementor-element-db90170 elementor-widget elementor-widget-image" data-id="db90170" data-element_type="widget" data-widget_type="image.default">
                 <div class="elementor-widget-container img-item">
-                    <img decoding="async" width="1080" height="1618" src="@Model.Recipe.Img.Split(',')[0]" class="attachment-full size-full wp-image-775" alt="Chicken 65" srcset="@Model.Recipe.Img.Split(',')[0] 1080w, @Model.Recipe.Img.Split(',')[0] 200w,@Model.Recipe.Img.Split(',')[0] 684w, @Model.Recipe.Img.Split(',')[0] 768w, @Model.Recipe.Img.Split(',')[0] 1025w, @Model.Recipe.Img.Split(',')[0] 800w" sizes="(max-width: 1080px) 100vw, 1080px" />
+                    <a href="@Url.Action("SingleRecipe", new {id = Model.Recipe.Id})">
+                    <img decoding="async" width="1080" height="1618" src="@Model.Recipe.Img.Split(',')[0]" class="attachment-full size-full wp-image-775" alt="huhu" srcset="@Model.Recipe.Img.Split(',')[0] 1080w, @Model.Recipe.Img.Split(',')[0] 200w,@Model.Recipe.Img.Split(',')[0] 684w, @Model.Recipe.Img.Split(',')[0] 768w, @Model.Recipe.Img.Split(',')[0] 1025w, @Model.Recipe.Img.Split(',')[0] 800w" sizes="(max-width: 1080px) 100vw, 1080px" />
+                    </a>
                 </div>
             </div>
             <div style="  width: 105px;
@@ -37,7 +39,8 @@
             <div class="elementor-element elementor-element-fa8296c elementor-widget elementor-widget-heading" data-id="fa8296c" data-element_type="widget" data-widget_type="heading.default">
                 <div class="elementor-widget-container">
                     <h6 class="elementor-heading-title elementor-size-default">
-                        <a href="#">
+                        <a href="@Url.Action("Category", new {id = Model.Category.CategoryId})">
+                            
                             @Model.Category.CategoryName
 
                         </a>
@@ -47,7 +50,7 @@
             <div class="elementor-element elementor-element-5a2399c elementor-widget elementor-widget-heading" data-id="5a2399c" data-element_type="widget" data-widget_type="heading.default">
                 <div class="elementor-widget-container">
                     <h4 class="elementor-heading-title elementor-size-default">
-                        <a href="#">
+                        <a href="@Url.Action("SingleRecipe", new {id = Model.Recipe.Id})">
                             @Model.Recipe.Title
                         </a>
                     </h4>
