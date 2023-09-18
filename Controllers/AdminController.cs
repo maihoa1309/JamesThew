@@ -41,13 +41,16 @@ namespace Project3.Controllers
         }
         public IActionResult UpdateRecipe(int id)
         {
-          
-
             return View(id);
         }
         public IActionResult Ingredients()
         {
             return View();
+        }
+        public IActionResult AddOrUpdateContest(int id)
+        {
+
+            return View(id);
         }
 	}
 }

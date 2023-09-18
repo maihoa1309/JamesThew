@@ -22,6 +22,7 @@ namespace Project3.Repository
         Task<T> CreateAsync(T entity);
         Task<T> UpdateAsync(T entity);
         Task<T> DeleteAsync(T entity);
+        T FindById(int id);
 
 
     }
@@ -129,6 +130,10 @@ namespace Project3.Repository
 
         }
 
-	
-	}
+        public T FindById(int id)
+        {
+            var result =  _dbSet.Find(id);
+            return result;
+        }
+    }
 }

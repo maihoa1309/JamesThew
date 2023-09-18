@@ -14,10 +14,8 @@
             //var index = $(this).text();
 
             //alert("on click" + index);
-
             recipeByAdmin.LoadData($(this).text());
             recipeByAdmin.RegisterEvent();
-            
         })
     },
     LoadData: function (pageLink) { 
@@ -25,7 +23,7 @@
         var index = pageLink ?? 1;
         /*  var index = 1;*/
         console.log(index);
-        console.log(pageLink)
+        console.log(keyword);
         var size = 5
         var url = `/Recipe/GetByName?keyword=${keyword}&index=${index}&size=${size}`
 
@@ -35,12 +33,11 @@
         $.get(url, function (response) {
          /*   console.log(response);*/
             var totalRow = response[0].totalRow;
-        /*    console.log(totalRow);*/
-            var html = '';
             var pages = (totalRow / size);
             if (totalRow % size > 0) {
                 pages += 1;
             }
+            var html = '';
             $.each(response, function (i, v) {
                
                 var row = '<tr>'
@@ -62,7 +59,7 @@
                     + '</div>'
                     + '</td>'
                     + '</tr>';
-                    ;
+                     
                 html += row;
             });
             $('#content').append(html);
@@ -95,10 +92,6 @@
         })
 
     },
-    //pagelist: function () {
-    //    var index = $(".page-link").text();
-    //    console.log(index);
-    //    recipebyadmin.registerevent();
-    //}
+   
 }
 recipeByAdmin.Init();

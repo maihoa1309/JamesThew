@@ -3,11 +3,10 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     var recipes = await recipeRepository.GetAllAsync();
-    recipes = recipes.Where(r => r.IsDeleted == false).ToList();
+    recipes = recipes.Where(r => r.IsDeleted != true).ToList();
 }
 
 <div class="content-body ">
-    <!-- row -->
     <div class="container-fluid">
         <div class="form-head d-flex mb-3 mb-lg-5 align-items-start">
            <div class="me-auto d-none d-lg-block">
@@ -43,6 +42,5 @@
     </div>
 </div>
 @section Script{
-    <script src="~/js/controller/recipeByAdmin.js"></script>
+    <script src="~/js/controller/allRecipes.js"></script>
 }
-
