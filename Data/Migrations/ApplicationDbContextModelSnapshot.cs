@@ -292,6 +292,9 @@ namespace Project3.Data.Migrations
                     b.Property<string>("DeletedUser")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Img")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
 

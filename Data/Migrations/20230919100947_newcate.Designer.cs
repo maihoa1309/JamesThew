@@ -12,8 +12,8 @@ using Project3.Data;
 namespace Project3.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230912153038_new1")]
-    partial class new1
+    [Migration("20230919100947_newcate")]
+    partial class newcate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -292,6 +292,9 @@ namespace Project3.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DeletedUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Img")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("IsDeleted")
