@@ -21,7 +21,6 @@ namespace Project3.Repository
                          where c.IsDeleted == false
                          select c;
             return await result.ToListAsync();
-
         }
 
     }

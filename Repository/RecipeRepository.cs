@@ -76,9 +76,6 @@ namespace Project3.Repository
         }
 
 
-
-
-
         public async Task<List<RecipeDetailDTO>> GetAllRecipesAsync()
         {
             List<Recipe> allRecipes = await (from r in _context.Recipes
@@ -101,7 +98,6 @@ namespace Project3.Repository
                              RecipeId = grouped.Key.Id,
                              RecipeName = grouped.Key.Title,
                              Ingredients = grouped.ToList(),
-
                              Username = grouped.Key.UserName
                          }).ToList();
 

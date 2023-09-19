@@ -1,7 +1,8 @@
 
 ﻿using Microsoft.AspNetCore.Mvc;
-using Project3.Models;
 using Project3.Repository;
+using Ingredient = Project3.Models.Ingredient;
+using IngredientDTO = Project3.DTO.IngredientDTO;
 
 namespace Project3.Controllers
 {
@@ -28,7 +29,7 @@ namespace Project3.Controllers
 			//return Json(entity);
 		}
 
-		public async Task<List<Ingredient>> GetByName(string keyword, int index, int size)
+		public async Task<IngredientDTO> GetByName(string keyword, int index, int size)
 		{
 			var result = await _ingredientRepository.GetByNameAsync(keyword, index, size);
 			return result;
