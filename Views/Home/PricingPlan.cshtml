@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
 	Layout = "~/Views/Shared/_Layoutweb.cshtml";
 }
 <div data-elementor-type="wp-post" data-elementor-id="479" class="elementor elementor-479">
@@ -60,7 +61,10 @@
 													background-color: #69727d;
 													color: #fff
 												}
-
+												.minhbeo{
+													padding-left: 3%;
+													padding-right: 3%;
+												}
 												.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap {
 													color: #69727d;
 													border: 3px solid;
@@ -116,15 +120,19 @@
 							</div>
 						</div>
 					</section>
-					<section class="elementor-section elementor-inner-section elementor-element elementor-element-57ba9da elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="57ba9da" data-element_type="section" >
-						<div class="elementor-container elementor-column-gap-default" >
-							<div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-9c6b773 elementor-invisible" style="background-color:#fff ; border-radius:15px;margin-right:10px" data-id="9c6b773" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInLeft&quot;}" >
-								<div class="elementor-widget-wrap elementor-element-populated" style="display: flex; align-content: center; text-align: center; padding:55px">
-									<div class="elementor-element elementor-element-4fb54f9 elementor-widget__width-auto elementor-absolute elementor-widget elementor-widget-heading" style="    position: absolute; top: -15px; left: 245px; background-color: #e7b037;  padding: 8px 20px; width: 146px; border-radius: 15px; color:#fff" data-id="4fb54f9" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="heading.default">
-										<div class="elementor-widget-container">
-											<div class="elementor-heading-title elementor-size-default">Save 50% Off</div>
+					
+					<section class="minhbeo elementor-section elementor-inner-section elementor-element elementor-element-57ba9da elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="57ba9da" data-element_type="section" >
+                        
+                           <div class="elementor-container elementor-column-gap-default " >
+								<div class="elementor-column elementor-col-40 elementor-inner-column elementor-element elementor-element-9c6b773 elementor-invisible" style="background-color:#fff ; border-radius:15px;margin-right:10px" data-id="9c6b773" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInLeft&quot;}" >
+									<div class="elementor-widget-wrap elementor-element-populated" style="display: flex; align-content: center; text-align: center; padding:55px">
+										<div class="elementor-element elementor-element-4fb54f9 elementor-widget__width-auto elementor-widget elementor-widget-heading" style="  top: -15px; left: 245px; background-color: #e7b037;  padding: 8px 20px; width: 146px; border-radius: 15px; color:#fff" data-id="4fb54f9" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="heading.default">
+											<div class="elementor-widget-container">
+												<div class="elementor-heading-title elementor-size-default">
+													Save 2 month off
+												</div>
+											</div>
 										</div>
-									</div>
 
 									<div class="elementor-element elementor-element-41033cb elementor-widget elementor-widget-heading" data-id="41033cb" data-element_type="widget" data-widget_type="heading.default">
 										<div class="elementor-widget-container">
@@ -134,7 +142,7 @@
 
 									<div class="elementor-element elementor-element-48f1711 elementor-widget elementor-widget-heading" data-id="48f1711" data-element_type="widget" data-widget_type="heading.default">
 										<div class="elementor-widget-container">
-											<div class="elementor-heading-title elementor-size-default">Billed $29.99 per year</div>
+											<div class="elementor-heading-title elementor-size-default">Billed $100 per year</div>
 										</div>
 									</div>
 									<div class="elementor-element elementor-element-dbc49a1 elementor-widget__width-auto elementor-widget elementor-widget-heading" data-id="dbc49a1" data-element_type="widget" data-widget_type="heading.default">
@@ -144,7 +152,7 @@
 									</div>
 									<div class="elementor-element elementor-element-6aef676 elementor-widget__width-auto elementor-widget elementor-widget-heading" data-id="6aef676" data-element_type="widget" data-widget_type="heading.default">
 										<div class="elementor-widget-container">
-											<h2 class="elementor-heading-title elementor-size-default">2.49</h2>
+											<h2 class="elementor-heading-title elementor-size-default">8.33</h2>
 										</div>
 									</div>
 									<div class="elementor-element elementor-element-6077968 elementor-widget__width-auto elementor-widget elementor-widget-heading" data-id="6077968" data-element_type="widget" data-widget_type="heading.default">
@@ -158,76 +166,27 @@
 										</div>
 									</div>
 									<div class="elementor-element elementor-element-b73b7d8 elementor-align-justify elementor-widget elementor-widget-button" data-id="b73b7d8" data-element_type="widget" data-widget_type="button.default">
-										<div class="elementor-widget-container">
+                                        <div class="elementor-widget-container">
 											<div class="elementor-button-wrapper">
-												<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+												<form method="post" action="/PricingPlan/ProcessPayment">
 													<span class="elementor-button-content-wrapper">
-														<span class="elementor-button-text">Subscribe now</span>
+                                                        <button type="submit" id="amount" name="amount" value="100" class="elementor-button elementor-button-link elementor-size-sm">
+															<span class="elementor-button-text">Subscribe now</span>
+														</button>
 													</span>
-												</a>
+												</form>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-9c6b773 animated fadeInLeft" style="background-color:#fff ; border-radius:15px;margin-right:10px" data-id="9c6b773" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInLeft&quot;}">
-								<div class="elementor-widget-wrap elementor-element-populated" style="display: flex; align-content: center; text-align: center; padding:55px">
-									<div class="elementor-element elementor-element-4fb54f9 elementor-widget__width-auto elementor-absolute elementor-widget elementor-widget-heading" style="    position: absolute; top: -15px; left: 245px; background-color: #e7b037;  padding: 8px 20px; width: 146px; border-radius: 15px; color:#fff" data-id="4fb54f9" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="heading.default">
-										<div class="elementor-widget-container">
-											<div class="elementor-heading-title elementor-size-default">Most Popular</div>
-										</div>
-									</div>
-
-									<div class="elementor-element elementor-element-41033cb elementor-widget elementor-widget-heading" data-id="41033cb" data-element_type="widget" data-widget_type="heading.default">
-										<div class="elementor-widget-container">
-											<h4 class="elementor-heading-title elementor-size-default">Quarterly Plan</h4>
-										</div>
-									</div>
-
-									<div class="elementor-element elementor-element-48f1711 elementor-widget elementor-widget-heading" data-id="48f1711" data-element_type="widget" data-widget_type="heading.default">
-										<div class="elementor-widget-container">
-											<div class="elementor-heading-title elementor-size-default">Billed $11.97 per 3 month</div>
-										</div>
-									</div>
-									<div class="elementor-element elementor-element-dbc49a1 elementor-widget__width-auto elementor-widget elementor-widget-heading" data-id="dbc49a1" data-element_type="widget" data-widget_type="heading.default">
-										<div class="elementor-widget-container">
-											<h4 class="elementor-heading-title elementor-size-default">$</h4>
-										</div>
-									</div>
-									<div class="elementor-element elementor-element-6aef676 elementor-widget__width-auto elementor-widget elementor-widget-heading" data-id="6aef676" data-element_type="widget" data-widget_type="heading.default">
-										<div class="elementor-widget-container">
-											<h2 class="elementor-heading-title elementor-size-default">3.99</h2>
-										</div>
-									</div>
-									<div class="elementor-element elementor-element-6077968 elementor-widget__width-auto elementor-widget elementor-widget-heading" data-id="6077968" data-element_type="widget" data-widget_type="heading.default">
-										<div class="elementor-widget-container">
-											<h5 class="elementor-heading-title elementor-size-default">/mo</h5>
-										</div>
-									</div>
-									<div class="elementor-element elementor-element-301b4a8 elementor-widget elementor-widget-text-editor" data-id="301b4a8" data-element_type="widget" data-widget_type="text-editor.default">
-										<div class="elementor-widget-container">
-											<p>At et non ornare tincidunt semper torquent turpis platea tellus lacus congue</p>
-										</div>
-									</div>
-									<div class="elementor-element elementor-element-b73b7d8 elementor-align-justify elementor-widget elementor-widget-button" data-id="b73b7d8" data-element_type="widget" data-widget_type="button.default">
-										<div class="elementor-widget-container">
-											<div class="elementor-button-wrapper">
-												<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
-													<span class="elementor-button-content-wrapper">
-														<span class="elementor-button-text">Subscribe now</span>
-													</span>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-9c6b773 animated fadeInLeft" style="background-color:#fff ; border-radius:15px" data-id="9c6b773" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInLeft&quot;}">
+							<div class="elementor-col-10 elementor-column elementor-inner-column">&nbsp;</div>
+							<div class="elementor-column elementor-col-40 elementor-inner-column elementor-element elementor-element-9c6b773 animated fadeInLeft" style="background-color:#fff ; border-radius:15px" data-id="9c6b773" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInLeft&quot;}">
 								<div class="elementor-widget-wrap elementor-element-populated" style="display: flex; align-content: center; text-align: center; padding:55px">
 									<div class="elementor-element elementor-element-41033cb elementor-widget elementor-widget-heading" data-id="41033cb" data-element_type="widget" data-widget_type="heading.default">
 										<div class="elementor-widget-container">
 											<h4 class="elementor-heading-title elementor-size-default">
-												Monthly Plan
+												Month
 											
 											</h4>
 										</div>
@@ -235,7 +194,7 @@
 
 									<div class="elementor-element elementor-element-48f1711 elementor-widget elementor-widget-heading" data-id="48f1711" data-element_type="widget" data-widget_type="heading.default">
 										<div class="elementor-widget-container">
-											<div class="elementor-heading-title elementor-size-default">Billed $4.99 per month</div>
+											<div class="elementor-heading-title elementor-size-default">Billed $10 per month</div>
 										</div>
 									</div>
 									<div class="elementor-element elementor-element-dbc49a1 elementor-widget__width-auto elementor-widget elementor-widget-heading" data-id="dbc49a1" data-element_type="widget" data-widget_type="heading.default">
@@ -245,7 +204,7 @@
 									</div>
 									<div class="elementor-element elementor-element-6aef676 elementor-widget__width-auto elementor-widget elementor-widget-heading" data-id="6aef676" data-element_type="widget" data-widget_type="heading.default">
 										<div class="elementor-widget-container">
-											<h2 class="elementor-heading-title elementor-size-default">4.99</h2>
+											<h2 class="elementor-heading-title elementor-size-default">10</h2>
 										</div>
 									</div>
 									<div class="elementor-element elementor-element-6077968 elementor-widget__width-auto elementor-widget elementor-widget-heading" data-id="6077968" data-element_type="widget" data-widget_type="heading.default">
@@ -257,21 +216,25 @@
 										<div class="elementor-widget-container">
 											<p>At et non ornare tincidunt semper torquent turpis platea tellus lacus congue</p>
 										</div>
-									</div>
+                                    </div>
+									
 									<div class="elementor-element elementor-element-b73b7d8 elementor-align-justify elementor-widget elementor-widget-button" data-id="b73b7d8" data-element_type="widget" data-widget_type="button.default">
 										<div class="elementor-widget-container">
 											<div class="elementor-button-wrapper">
-												<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
-													<span class="elementor-button-content-wrapper">
-														<span class="elementor-button-text">Subscribe now</span>
-													</span>
-												</a>
+												<form method="post" action="/PricingPlan/ProcessPayment">
+													<button type="submit" id="amount" name="amount" value="10" class="elementor-button elementor-button-link elementor-size-sm">
+														<span class="elementor-button-content-wrapper">
+															<span class="elementor-button-text">Subscribe now</span>
+														</span>
+													</button>
+												</form>
 											</div>
 										</div>
 									</div>
-								</div>
+                                </div>
 							</div>
 						</div>
+						
 					</section>
 				</div>
 			</div>
@@ -481,3 +444,44 @@
 		</div>
 	</section>
 </div>
+@{
+	string WelcomeMessage = TempData["WelcomeMessage"] as string;
+}
+<style>
+	#overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+	}
+
+	#content {
+		position: absolute;
+		background-color: #f8f8f8;
+		padding: 5%;
+		text-align: center;
+		border: green solid;
+	}
+</style>
+@if (!string.IsNullOrEmpty(WelcomeMessage))
+{
+	<div id="overlay">
+		<div id="content">
+            <h1><p style="color: green;">@WelcomeMessage</p></h1>
+		</div>
+	</div>
+}
+<script>
+	window.addEventListener('load', function () {
+		document.getElementById('overlay').style.display = 'flex';
+	});
+	document.getElementById('overlay').addEventListener('click', function () {
+		this.style.display = 'none';
+	});w
+</script>
