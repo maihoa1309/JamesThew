@@ -9,7 +9,7 @@ namespace Project3.Models
         public int? ContestId { get; set; }
         [ForeignKey("ContestId")]
         public Contest? GetContest { get; set; }
-        public int? UserId { get; set; }
+        public string? UserId { get; set; }
         public int? RecipeId { get; set; }
         [ForeignKey("RecipeId")]
         public Recipe? GetRecipe { get; set; }

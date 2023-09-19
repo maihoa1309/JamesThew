@@ -37,8 +37,6 @@ namespace Project3.Controllers
 		{
 			return View();
 		}
-
-
         public IActionResult AddCategory() 
         {
             return View();
@@ -56,6 +54,10 @@ namespace Project3.Controllers
         {
 
             return View(id);
+        }
+        public IActionResult Contests()
+        {
+            return View();
         }
 
 	}
