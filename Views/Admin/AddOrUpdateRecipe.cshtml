@@ -158,7 +158,6 @@
                             </div>                           
                         </div>
                         <div id="image-container">
-
                             @if (!string.IsNullOrEmpty(recipeDetail.Recipe.Img))
                             {
                                 var splited = recipeDetail.Recipe.Img.Split(',');
@@ -229,7 +228,7 @@
                                                         <input type="text" class="form-control quantity" placeholder="Enter quantity and unit" name="quantity" value="@item.Quantity">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <select class="default-select form-control wide btn select2-item" name="ingredient">
+                                                        <select class="default-select form-control wide btn" name="ingredient">
                                                             @foreach (var ingre in ingredients)
                                                             {
                                                                 <!option value="@ingre.Id" @(item.IngredientId == ingre.Id ? "selected" : "")>@ingre.Name</!option>
