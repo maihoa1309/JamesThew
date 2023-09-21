@@ -217,7 +217,7 @@ namespace Project3.Repository
             return null;
         }
 
-        private List<string> UploadImageFromBase64(List<string> imgsBase64)
+        public List<string> UploadImageFromBase64(List<string> imgsBase64)
         {
             var result = new List<string>();
             // Lấy đường dẫn tới thư mục wwwroot/UploadImg

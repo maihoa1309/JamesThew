@@ -16,7 +16,42 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" />
     <link href="~/vendor/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
     <link href="~/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        #image-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
 
+        #image-container div {
+            position: relative;
+            margin: 10px;
+        }
+
+        #image-container img {
+            width: 100px;
+            height: 100px;
+            /*width: 100%;*/
+            -webkit-transition: all 0.5s;
+            -ms-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+
+        #image-container button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 5px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 50%; /* Thêm thuộc tính border-radius để làm tròn nút */
+            width: 24px; /* Đặt kích thước chiều rộng */
+            height: 24px; /* Đặt kích thước chiều cao */
+            display: flex; /* Sử dụng flexbox để căn giữa */
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            align-items: center;
+        }
+    </style>
 
     
 }
@@ -77,6 +112,22 @@
                                     <input name="datepicker" class="datepicker-default form-control" id="endDate">
                                 </div>
                             </div>
+                        </div>
+                          <div class="row">
+                            <span>Share photo of your recipe</span>
+                            <div class="mb-3 col-xl-4 col-lg-4">
+                                <input class="form-control" type="file" multiple id="formFile" name="img1" accept="image/jpeg, image/png, image/gif">
+                            </div>                           
+                        </div>
+                        <div id="image-container">
+                            @*@if (!string.IsNullOrEmpty(recipeDetail.Recipe.Img))
+                            {
+                                var splited = recipeDetail.Recipe.Img.Split(',');
+                                foreach(var item in splited)
+                                {
+                                    <div><img src="/@item"><button type="button">x</button></div>
+                                }
+                            }*@
                         </div>
                         <button type="submit" class="btn btn-primary" id="submit" style="float: right;">Add</button>
                     </form>

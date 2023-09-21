@@ -37,13 +37,9 @@ namespace Project3.Controllers
 		{
 			return View();
 		}
-        public IActionResult AddCategory() 
+        public IActionResult AddOrUpdateCategory(int id) 
         {
             return View();
-        }
-        public IActionResult UpdateRecipe(int id)
-        {
-            return View(id);
         }
         public IActionResult Ingredients()
         {

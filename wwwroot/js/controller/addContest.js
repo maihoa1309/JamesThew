@@ -6,7 +6,42 @@
         $(".saveContest").off('submit').on('submit', function (event) {
             event.preventDefault();
             addContest.SaveContest();
+        }),
+        $('#formFile').off('change').on('change', function () {
+            const files = $(this)[0].files;
+            const imageContainer = document.getElementById('image-container');
+            const file = files[0];
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const image = document.createElement('img');
+                image.src = e.target.result;
+
+                const closeButton = document.createElement('button');
+                closeButton.setAttribute('type', 'button');
+                closeButton.setAttribute('class', 'btn btn-danger');
+                closeButton.setAttribute('id', 'deleteImg');
+                closeButton.innerHTML = '<i class="fas fa-times"></i>'
+                closeButton.onclick = function () {
+                    imageContainer.removeChild(image);
+                };
+
+                const div = document.createElement('div');
+                div.appendChild(image);
+                div.appendChild(closeButton);
+
+                imageContainer.appendChild(div);
+                addContest.RegisterEvent();
+            };
+
+                reader.readAsDataURL(file);
         })
+
+        $('#deleteImg').off('click').on('click', function () {
+            $(this).parent().remove();
+            addContest.RegisterEvent();
+        })
+
     },
     SaveContest: function () {
         if (($('#title').val() === "")
