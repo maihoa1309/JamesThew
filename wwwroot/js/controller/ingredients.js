@@ -17,12 +17,12 @@ var ingredients =
             alert("clicked");
             ingredients.RegisterEvent();
         })
-        //$(".linkDelete").off('click').on('click'), function () {
+        $(".linkDelete").off('click').on('click'), function () {
 
-        //    alert("clicked");
-        //    ingredients.RegisterEvent();
-        //   /* /Ingredient/DeleteIngredient /*/
-        //}
+            alert("clicked");
+            ingredients.RegisterEvent();
+           /* /Ingredient/DeleteIngredient /*/
+        }
     },
     LoadData: function (pageLink) {
         var keyword = $("#search").val();

@@ -135,7 +135,7 @@
                         <div class="row">
                             <div class="mb-3 col-xl-8 col-lg-8 col-md-8">
                                 <label class="form-label">Select recipe type(at least one):</label>
-                                <select class="default-select form-control wide  select2-item " name="category" id="category">
+                                <select class="default-select form-control wide" name="category" id="single-select">
                                     @foreach(var cate in categories)
                                     {
                                         <!option @(recipeDetail.Recipe.CategoryId == cate.Id ? "selected":"") value="@cate.Id">@cate.Name</!option>
@@ -192,9 +192,7 @@
                         @*ingres*@
                         <div class="row recipe-container">
                             <div class="col-md-8 recipe-template">
-
                                 <div class="d-flex">
-
                                     <div class="input-group mb-3 col-md-8">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -209,7 +207,6 @@
                                                 </select>
                                             </div>
                                         </div>
-
                                     </div>
                                     <div class="offset-md-2 col-md-4">
                                         <button type="button" class="btn btn-rounded btn-danger btn-add-ingre btn-delete-receip">
@@ -235,7 +232,7 @@
                                                         <select class="default-select form-control wide btn select2-item" name="ingredient">
                                                             @foreach (var ingre in ingredients)
                                                             {
-                                                                <!option value="@ingre.Id" @(item.IngredientId == ingre.Id ? "selected" : "")>@item.Name</!option>
+                                                                <!option value="@ingre.Id" @(item.IngredientId == ingre.Id ? "selected" : "")>@ingre.Name</!option>
                                                             }
                                                         </select>
                                                     </div>
@@ -308,6 +305,12 @@
     </div>
 </div>
 @section Script{
+
+    <script src="~/vendor/bootstrap-select/dist/js/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="~/vendor/select2/js/select2.full.min.js" type="text/javascript"></script>
+    <script src="~/js/plugins-init/select2-init.js" type="text/javascript"></script>
+    <script src="~/js/custom.min.js" type="text/javascript"></script>
+    <script src="~/js/deznav-init.js" type="text/javascript"></script>
     <script src="~/js/controller/add-recipe.js"></script>
 }
 

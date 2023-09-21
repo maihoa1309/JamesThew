@@ -4,8 +4,8 @@ namespace Project3.DTO
 {
 	public class ContestDetailDTO
 	{
-		public int? ContestId { get; set; }
-
+	
+		public string? ContestTitle { get; set; }
 		public List<SubmissionDetail>? Submissions { get; set; } = new List<SubmissionDetail>();
 
 		public int? TotalRow { get; set; }
@@ -15,9 +15,10 @@ namespace Project3.DTO
 	{
 		public int? SubmissionId { get; set; }
 		public int? RecipeId{ get; set; }
-		public string? RecipeName { get; set; }
-		public string? UserName { get; set; }
+		public string? RecipeTitle { get; set; }
 		public string? ImgRecipe { get; set; }
+		public string? UserName { get; set; }
+		
 	}
 
 

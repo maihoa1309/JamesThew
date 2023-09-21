@@ -39,12 +39,11 @@ namespace Project3.Repository
 
         public async Task<List<Ingredient>> SortNameByASC()
 		{
-			var result = from i in _context.Ingredients
+			var result = await (from i in _context.Ingredients
 						 orderby i.Name
-
 						 where i.IsDeleted == false
-						 select i;
-			return await result.ToListAsync();
+						 select i).ToListAsync();
+			return  result;
 		}
 
 	}
