@@ -1,4 +1,4 @@
-html {
+/*html {
   font-size: 14px;
 }
 
@@ -15,4 +15,22 @@ html {
 
 body {
   margin-bottom: 60px;
+}*/
+.listPage {
+    padding: 10px;
+    text-align: center;
+    list-style: none;
 }
+
+    .listPage li {
+        background-color: #ffffffBD;
+        padding: 20px;
+        display: inline-block;
+        margin: 0 10px;
+        cursor: pointer;
+    }
+
+    .listPage .active {
+        background-color: #B192EF;
+        color: #fff;
+    }
