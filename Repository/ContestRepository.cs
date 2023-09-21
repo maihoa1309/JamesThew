@@ -9,6 +9,7 @@ namespace Project3.Repository
     public interface IContestRepository : IBaseRepository<Contest>
     {
         Task<ContestDetailDTO> GetSubmissionAsync(int ContestId, string keyword, int index, int size);
+        Task<bool> SaveContestAsync(Contest request);
 
     }
     public class ContestRepository : BaseRepository<Contest>, IContestRepository
@@ -45,5 +46,17 @@ namespace Project3.Repository
 
 			return result;
 		}
-	}
+
+        public async Task<bool> SaveContestAsync(Contest request)
+        {
+            Contest contest = new Contest();
+            if (request.Id > 0)
+            {
+                _dbSet.Find(request.Id);
+            }
+            return true;
+        }
+      
+
+    }
 }

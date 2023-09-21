@@ -28,6 +28,22 @@
 								<input type="text" class="form-control" name="name">
 							</div>
 						</div>
+						<div class="row">
+							<span>Share photo of your recipe</span>
+							<div class="mb-3 col-xl-4 col-lg-4">
+								<input class="form-control" type="file" id="formFile" name="img1" accept="image/jpeg, image/png, image/gif">
+							</div>
+						</div>
+						<div id="image-container">
+							@*@if (!string.IsNullOrEmpty(recipeDetail.Recipe.Img))
+							{
+								var splited = recipeDetail.Recipe.Img.Split(',');
+								foreach (var item in splited)
+								{
+									<div><img src="/@item"><button type="button">x</button></div>
+								}
+							}*@
+						</div>
 						<button type="submit" class="btn btn-primary" style="float: right;">Add</button>
 					</form>
 				</div>
@@ -35,4 +51,5 @@
 		</div>
 	</div>
 </div>
+
 
