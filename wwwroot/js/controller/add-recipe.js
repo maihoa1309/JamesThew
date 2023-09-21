@@ -113,7 +113,7 @@
             cuisines: $('#cuisines').val(),
             servings: $('#servings').val(),
             cookingTime: $('#cookingTime').val(),
-            category: $('#single-select').val(),
+            category: parseInt($('#single-select').val()),
             isFree: $('#isFree').val(),
             instruction: $('#instruction').val()
         };
@@ -134,8 +134,9 @@
         })
         data.imgs = imgArr;
         data.ingredients = ingredientArr;
-     
+        console.log(data);
         $.ajax({
+           
             url: 'https://localhost:7034/Recipe/SaveRecipe', 
             type: 'POST',
             data: JSON.stringify(data),

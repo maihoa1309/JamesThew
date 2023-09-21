@@ -43,7 +43,7 @@
                 var row = '<tr>'
                     + '<td style="width: 45%">'
                     + '<div class="media align-items-center">'
-                    + '<img class="me-3 img-fluid rounded-circle" width="75" src="' + v.recipe.img.split(',')[0] + '">'
+                    + '<img class="me-3 img-fluid rounded-circle" width="75" src="/' + v.recipe.img.split(',')[0] + '">'
                     + '<div class="media-body">'
                     + '<h5 class="mt-0 mb-2"><a href="ecom-product-detail.html" class="text-black">' + v.recipe.title + '</a></h5>'
                     + '<p class="mb-0 text-primary" >' + v.recipe.id + '</p >'
