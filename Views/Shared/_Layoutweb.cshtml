@@ -1,5 +1,5 @@
 ﻿@{
-      ViewData["UrlImage"] = "\\wwwroot\\images\\nav";
+    ViewData["UrlImage"] = "\\wwwroot\\images\\nav";
 }
 <!doctype html>
 <html lang="en-US">
@@ -8,14 +8,16 @@
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
+    @RenderSection("css", false)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
-    <title>Taste Of Recipe</title>
+    <title>Take Of Recipe</title>
     <meta name='robots' content='max-image-preview:large' />
-    <link rel="alternate" type="application/rss+xml"  href="~/feed/index.html" />
-    <link rel="alternate" type="application/rss+xml"  Comments Feed" href="~/comments/feed/index.html" />
-    <link rel="alternate" type="application/rss+xml"  href="feed/index.html" />
+    <link rel="alternate" type="application/rss+xml" href="~/feed/index.html" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="alternate" type="application/rss+xml" Comments Feed" href="~/comments/feed/index.html" />
+    <link rel="alternate" type="application/rss+xml" href="feed/index.html" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script>
         window._wpemojiSettings = { "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/", "ext": ".png", "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/", "svgExt": ".svg", "source": { "concatemoji": "https:\/\/point.moxcreative.com\/yumma\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.3" } };
@@ -471,44 +473,46 @@
             padding-left: 0;
         }
 
-        .ul-user li {
-            width: 100%;
-            padding: 7px 0px 10px 18px;
-            font-family: var(--e-global-typography-520c191-font-family ), Sans-serif;
-            cursor: pointer;
-        }
+            .ul-user li {
+                width: 100%;
+                padding: 7px 0px 10px 18px;
+                font-family: var(--e-global-typography-520c191-font-family ), Sans-serif;
+                cursor: pointer;
+            }
 
-        .ul-user li:hover {
-            background-color: #D54215;
-            color: #fff;
-        }
+                .ul-user li:hover {
+                    background-color: #D54215;
+                    color: #fff;
+                }
 
-        .ul-user li:first-child:hover {
-            background-color: #D54215;
-            color: #fff;
-            border-radius: 8px 8px 0 0;
-        }
+                .ul-user li:first-child:hover {
+                    background-color: #D54215;
+                    color: #fff;
+                    border-radius: 8px 8px 0 0;
+                }
 
-        .ul-user li:last-child:hover {
-            background-color: #D54215;
-            color: #fff;
-            border-radius: 0px 0px 8px 8px;
-        }
+                .ul-user li:last-child:hover {
+                    background-color: #D54215;
+                    color: #fff;
+                    border-radius: 0px 0px 8px 8px;
+                }
 
         .ctn-user:hover .item-user {
             display: block
         }
 
         .elementor-widget:not(:last-child) {
-         margin-bottom: 0px;
+            margin-bottom: 0px;
         }
-        .bg-item{
+
+        .bg-item {
             background-color: var(--e-global-color-text );
             border-radius: 10px 10px 10px 10px;
             margin-right: 20px;
-            height:auto
+            height: auto
         }
-        .img-item img{
+
+        .img-item img {
             width: 100%;
             max-width: 100%;
             height: 260px;
@@ -516,41 +520,43 @@
             object-position: center center;
             border-radius: 5px 5px 5px 5px;
         }
-        .elementor-post__text{
+
+        .elementor-post__text {
             padding: 21px 21px 21px 21px;
-      
         }
-        .elementor-post__title a{
+
+        .elementor-post__title a {
             margin-bottom: 14px;
         }
-        .elementor-post__meta-data{
+
+        .elementor-post__meta-data {
             margin-bottom: 14px;
             color: var(--e-global-color-d7d34cf );
         }
+
         .elementor-post {
             border-radius: 10px;
             background-color: var(--e-global-color-text );
         }
 
-        .img-erros  {
-            height:200px;
+        .img-erros {
+            height: 200px;
         }
 
         .elementor-posts .elementor-post__meta-data {
             line-height: 1.3em;
             font-size: 14px;
             margin-bottom: 13px;
-          
             margin-top: 15px;
         }
 
         .elementor-post__meta-data .elementor-post-date {
-              color: var(--e-global-color-d7d34cf );
+            color: var(--e-global-color-d7d34cf );
             font-size: 14px;
         }
 
-        .elementor-post__meta-data .elementor-post-avatar{
-              color: var(--e-global-color-d7d34cf );
+        .elementor-post__meta-data .elementor-post-avatar {
+            color: var(--e-global-color-d7d34cf );
             font-size: 14px;
         }
 
@@ -573,37 +579,37 @@
         }
 
         .elementor-animation- {
-            font-size:35px
+            font-size: 35px
         }
 
         /*
 
-        .theto{
-            width: 105px;
-            position: absolute;
-            left: 170px;
-}
-.thebe{
+                .theto{
+                    width: 105px;
+                    position: absolute;
+                    left: 170px;
+        }
+        .thebe{
 
-    width: 100%;
-    height: 30px;
-    margin-top: 10px;
-}
-.theul{
-    background-color: var(--e-global-color-d7d34cf );
-    width: 100%;
-    height: 100%;
-    border-radius: 20px 20px 20px 20px;
-}
-theli{
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 100%;
+            height: 30px;
+            margin-top: 10px;
+        }
+        .theul{
+            background-color: var(--e-global-color-d7d34cf );
+            width: 100%;
             height: 100%;
-            color: #ffff;
-            font-size: 12px;
-}
-        */
+            border-radius: 20px 20px 20px 20px;
+        }
+        theli{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
+                    color: #ffff;
+                    font-size: 12px;
+        }
+                */
     </style>
 </head>
 
@@ -631,21 +637,20 @@ theli{
                                                         text-align: center
                                                     }
 
-                                                    .elementor-widget-image a {
-                                                        display: inline-block
-                                                    }
+                                                        .elementor-widget-image a {
+                                                            display: inline-block
+                                                        }
 
-                                                    .elementor-widget-image a img[src$=".svg"] {
-                                                        width: 48px
-                                                    }
+                                                            .elementor-widget-image a img[src$=".svg"] {
+                                                                width: 48px
+                                                            }
 
                                                         .elementor-widget-image img {
                                                             vertical-align: middle;
                                                             display: inline-block
-                                                        }</style>											
-                                                        <a href="/Home/TemPlateKit">
-                                                    <img style="height:auto;width:80px" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/373339511_7114076998613115_7786940881507392194_n.png?_nc_cat=103&ccb=1-7&_nc_sid=aee45a&_nc_ohc=Q0GYntpXjA0AX-tiy8D&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdS4y-XLxlwgT0w6GRZ1SDOrG4ImDHYESGRlAWmKlOeChw&oe=65267862"  />
-
+                                                        }</style>
+                                                <a href="/Home/TemPlateKit">
+                                                    <img style="height:auto;width:80px" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/373339511_7114076998613115_7786940881507392194_n.png?_nc_cat=103&ccb=1-7&_nc_sid=aee45a&_nc_ohc=Q0GYntpXjA0AX-tiy8D&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdS4y-XLxlwgT0w6GRZ1SDOrG4ImDHYESGRlAWmKlOeChw&oe=65267862" />
                                                 </a>
                                             </div>
                                         </div>
@@ -655,7 +660,7 @@ theli{
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div class="elementor-element elementor-element-a14687c elementor-nav-menu__align-center elementor-nav-menu--stretch elementor-nav-menu--dropdown-tablet elementor-nav-menu__text-align-aside elementor-nav-menu--toggle elementor-nav-menu--burger elementor-widget elementor-widget-nav-menu" data-id="a14687c" data-element_type="widget" data-settings="{&quot;submenu_icon&quot;:{&quot;value&quot;:&quot;&lt;svg class=\&quot;e-font-icon-svg e-fas-angle-down\&quot; viewBox=\&quot;0 0 320 512\&quot; xmlns=\&quot;http:\/\/www.w3.org\/2000\/svg\&quot;&gt;&lt;path d=\&quot;M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z\&quot;&gt;&lt;\/path&gt;&lt;\/svg&gt;&quot;,&quot;library&quot;:&quot;fa-solid&quot;},&quot;full_width&quot;:&quot;stretch&quot;,&quot;layout&quot;:&quot;horizontal&quot;,&quot;toggle&quot;:&quot;burger&quot;}" data-widget_type="nav-menu.default">
                                             <div class="elementor-widget-container">
-                                                <link rel="stylesheet" href="~/wp-content/plugins/elementor-pro/assets/css/widget-nav-menu.min.css">			
+                                                <link rel="stylesheet" href="~/wp-content/plugins/elementor-pro/assets/css/widget-nav-menu.min.css">
                                                 <nav migration_allowed="1" migrated="0" class="elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-horizontal e--pointer-none">
                                                     <ul id="menu-1-a14687c" class="elementor-nav-menu">
                                                         <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-22"><a href="/Home/HomePage" class="elementor-item">Home</a></li>
@@ -664,7 +669,7 @@ theli{
                                                             <a href="/Home/RecipeList" class="elementor-item">Recipes List</a>
                                                             <ul class="sub-menu elementor-nav-menu--dropdown">
                                                                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-26"><a href="/Home/SingleRecipe" class="elementor-sub-item">Single Recipe</a></li>
-                                                                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-26"><a href="/Home/Category" class="elementor-sub-item">Category</a></li>
+                                                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-26"><a href="/Home/Category" class="elementor-sub-item">Category</a></li>
                                                             </ul>
                                                         </li>
                                                         <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33"><a href="/Home/JoinContributor" class="elementor-item">Join Contributor</a></li>
@@ -776,7 +781,7 @@ theli{
 
                                     <div class="item-user">
                                         <ul class="ul-user">
-                                            
+
                                             <li>
 
                                                 <a asp-area="Identity" asp-page="/Account/Login">
@@ -784,7 +789,7 @@ theli{
                                                 </a>
                                             </li>
                                             <li><a asp-area="Identity" asp-page="/Account/Register">Đăng kí</a> </li>
-                                   
+
 
                                         </ul>
                                     </div>
@@ -812,7 +817,7 @@ theli{
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div class="elementor-element elementor-element-a6c7ed4 elementor-widget elementor-widget-image" data-id="a6c7ed4" data-element_type="widget" data-widget_type="image.default">
                                             <div class="elementor-widget-container">
-                                                <img style="height:auto;width:80px" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/373339511_7114076998613115_7786940881507392194_n.png?_nc_cat=103&ccb=1-7&_nc_sid=aee45a&_nc_ohc=Q0GYntpXjA0AX-tiy8D&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdS4y-XLxlwgT0w6GRZ1SDOrG4ImDHYESGRlAWmKlOeChw&oe=65267862"  />
+                                                <img style="height:auto;width:80px" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/373339511_7114076998613115_7786940881507392194_n.png?_nc_cat=103&ccb=1-7&_nc_sid=aee45a&_nc_ohc=Q0GYntpXjA0AX-tiy8D&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdS4y-XLxlwgT0w6GRZ1SDOrG4ImDHYESGRlAWmKlOeChw&oe=65267862" />
                                             </div>
                                         </div>
                                         <div class="elementor-element elementor-element-edbad76 elementor-widget elementor-widget-text-editor" data-id="edbad76" data-element_type="widget" data-widget_type="text-editor.default">
@@ -853,7 +858,7 @@ theli{
                                         </div>
                                     </div>
                                 </div>
-                              
+
                                 <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-f5acf73" data-id="f5acf73" data-element_type="column">
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div class="elementor-element elementor-element-ea892d6 elementor-widget elementor-widget-heading" data-id="ea892d6" data-element_type="widget" data-widget_type="heading.default">
@@ -1270,7 +1275,7 @@ theli{
                 </div>
             </div>
         </section>
-        
+
     </div>
 
 
@@ -1287,6 +1292,7 @@ theli{
             resturl: 'https://point.moxcreative.com/yumma/wp-json/elementskit/v1/',
         }
 
+
     </script>
     <script src='~/wp-content/plugins/elementskit-lite/widgets/init/assets/js/widget-scripts5b0a.js?ver=2.9.0' id='ekit-widget-scripts-js'></script>
     <script src='~/wp-content/plugins/elementor-pro/assets/lib/smartmenus/jquery.smartmenus.minf269.js?ver=1.0.1' id='smartmenus-js'></script>
@@ -1295,6 +1301,7 @@ theli{
     <script src='~/wp-content/plugins/elementor/assets/js/webpack.runtime.min6319.js?ver=3.15.2' id='elementor-webpack-runtime-js'></script>
     <script src='~/wp-content/plugins/elementor/assets/js/frontend-modules.min6319.js?ver=3.15.2' id='elementor-frontend-modules-js'></script>
     <script src='~/wp-includes/js/dist/vendor/wp-polyfill-inert.min0226.js?ver=3.1.2' id='wp-polyfill-inert-js'></script>
+    <script src='~/wp-includes/js/dist/vendor/123.js' id='123-js'></script>
     <script src='~/wp-includes/js/dist/vendor/regenerator-runtime.min8fa4.js?ver=0.13.11' id='regenerator-runtime-js'></script>
     <script src='~/wp-includes/js/dist/vendor/wp-polyfill.min2c7c.js?ver=3.15.0' id='wp-polyfill-js'></script>
     <script src='~/wp-includes/js/dist/hooks.min2ebd.js?ver=c6aec9a8d4e5a5d543a1' id='wp-hooks-js'></script>
@@ -1318,6 +1325,7 @@ theli{
         var ekit_config = { "ajaxurl": "https:\/\/point.moxcreative.com\/yumma\/wp-admin\/admin-ajax.php", "nonce": "6628911249" };
     </script>
     <script src='~/wp-content/plugins/elementskit-lite/widgets/init/assets/js/elementor5b0a.js?ver=2.9.0' id='elementskit-elementor-js'></script>
+    <script src='~/js/site.js' id='elementskit-elementor-js'></script>
 
 </body>
 
