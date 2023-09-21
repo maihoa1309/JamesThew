@@ -93,16 +93,17 @@
         }
         $('.recipe-item').each(function (i, v) {
             var quantityValue = $(v).find('.quantity').val();
+      
             var regex = /^\d+\s\w$/;
             if (quantityValue === '') {
                 Swal.fire( "Oops...", "Please enter the quantity of all your ingredient!!!", "error");
                 return;
             }
 
-            if (!regex.test(quantityValue)) {
-                Swal.fire("Oops...", "Please enter a valid quantity for the ingredient and omit the unit!!!", "error");
-                return;
-            }
+            //if (!regex.test(quantityValue)) {
+            //    Swal.fire("Oops...", "Please enter a valid quantity for the ingredient and omit the unit!!!", "error");
+            //    return;
+            //}
         });
 
         const data = {
@@ -112,7 +113,7 @@
             cuisines: $('#cuisines').val(),
             servings: $('#servings').val(),
             cookingTime: $('#cookingTime').val(),
-            category: $('#category').val(),
+            category: $('#single-select').val(),
             isFree: $('#isFree').val(),
             instruction: $('#instruction').val()
         };
@@ -133,7 +134,7 @@
         })
         data.imgs = imgArr;
         data.ingredients = ingredientArr;
-        //goi ajax submit form
+     
         $.ajax({
             url: 'https://localhost:7034/Recipe/SaveRecipe', 
             type: 'POST',
@@ -146,7 +147,6 @@
                 });
             },
             error: function (xhr, status, error) {
-                console.log(data);
                 console.log(error);
             }
         });

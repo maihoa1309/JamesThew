@@ -22,6 +22,7 @@ namespace Project3.Repository
         Task<List<RecipeDetailDTO>> GetRecipeByUserAsync();
         Task<List<RecipeDetailDTO>> GetByNameAsync(string keyword, int index = 1, int size = 10);
         Task<List<CategoryDetail>> GetRandomCategories(int count);
+    
     }
     public class RecipeRepository : BaseRepository<Recipe>, IRecipeRepository
     {
@@ -31,7 +32,6 @@ namespace Project3.Repository
         }
 
         public async Task<List<RecipeDetailDTO>> GetLatestCreatedRecipes(int count)
-
         {
             // Sử dụng LINQ để truy vấn dữ liệu và lấy danh sách bản ghi được tạo gần nhất
 
@@ -55,9 +55,6 @@ namespace Project3.Repository
                             Category = grouped.FirstOrDefault()
                          }).ToList();
             return result;
-
-        
-
         }
 
         public async Task<List<CategoryDetail>> GetRandomCategories(int count)
@@ -235,7 +232,8 @@ namespace Project3.Repository
             {
                 if (item.StartsWith("/UploadImg"))
                 {
-                    result.Add(item);
+                    
+                    result.Add(item.TrimStart('/'));
                 }
                 else
                 {
@@ -276,6 +274,8 @@ namespace Project3.Repository
             return query;
 
         }
-    }
+
+	
+	}
 }
 

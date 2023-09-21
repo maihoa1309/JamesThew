@@ -60,5 +60,10 @@ namespace Project3.Controllers
             return View();
         }
 
+        public IActionResult RecipesSubmitted()
+        {
+            return View();
+        }
+
 	}
 }

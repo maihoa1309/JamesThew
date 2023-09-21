@@ -23,5 +23,9 @@ namespace Project3.Controllers
             var result = await _contestRepository.CreateAsync(request);
             return Json(request);
         }
+        public async Task<ContestDetailDTO>  GetSubmission (int ContestId, string keyword, int index, int size){
+            var result = await _contestRepository.GetSubmissionAsync(ContestId, keyword, index, size);
+            return result;
+        }
     }
 }
