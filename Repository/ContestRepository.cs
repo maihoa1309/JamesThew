@@ -14,7 +14,11 @@ namespace Project3.Repository
     }
     public class ContestRepository : BaseRepository<Contest>, IContestRepository
     {
-        public ContestRepository(ApplicationDbContext dbContext, UserManager<CustomUser> userManager, IHttpContextAccessor httpContext) : base(dbContext, userManager, httpContext) { }
+        private readonly IWebHostEnvironment _hostingEnvironment;
+        public ContestRepository(ApplicationDbContext dbContext, UserManager<CustomUser> userManager, IHttpContextAccessor httpContext, IWebHostEnvironment hostingEnviroment) : base(dbContext, userManager, httpContext)
+        {
+            _hostingEnvironment = hostingEnviroment;
+        }
 
 		public async Task<ContestDetailDTO> GetSubmissionAsync(int ContestId, string keyword, int index, int size)
 		{
@@ -49,14 +53,60 @@ namespace Project3.Repository
 
         public async Task<bool> SaveContestAsync(Contest request)
         {
-            Contest contest = new Contest();
+            var contest = new Contest();
             if (request.Id > 0)
             {
-                _dbSet.Find(request.Id);
+                contest = _dbSet.Find(request.Id);
+                
             }
+            contest.Title = request.Title;
+            contest.StartDate = request.StartDate;
+            contest.EndDate = request.EndDate;
+            contest.CategoryId= request.CategoryId;
+            contest.Img = UploadImageFromBase64(request.Img);
+            contest.CreatedTime= DateTime.Now;
+            contest.Description = request.Description;
+            if (request.Id > 0)
+            {
+                _dbSet.Update(contest);
+            }else
+            {
+                _dbSet.Add(contest);
+            }
+            await _context.SaveChangesAsync();
             return true;
         }
-      
+
+        private string UploadImageFromBase64(string imgsBase64)
+        {
+            string result = "";
+            // Lấy đường dẫn tới thư mục wwwroot/UploadImg
+            var uploadPath = Path.Combine(_hostingEnvironment.WebRootPath, "UploadImg");
+
+            // Tạo thư mục UploadImg nếu chưa tồn tại
+          
+            if (imgsBase64.StartsWith("/UploadImg"))
+            {
+                result+=imgsBase64.TrimStart('/');
+            }
+            else
+            {
+                // Tạo tên file duy nhất bằng guid
+                var fileName = $"{Guid.NewGuid()}.jpg";
+                // Giải mã base64 thành mảng byte
+                var imageBytes = Convert.FromBase64String(imgsBase64.Substring(imgsBase64.IndexOf(',') + 1));
+                // Tạo đường dẫn tới file ảnh
+                var imagePath = Path.Combine(uploadPath, fileName);
+                // Lưu file ảnh vào thư mục UploadImg
+                System.IO.File.WriteAllBytes(imagePath, imageBytes);
+                // Trả về đường dẫn của file ảnh đã lưu
+                var imageUrl = Path.Combine("UploadImg/", fileName);
+                result+=imageUrl;
+            }
+          
+            return result;
+        }
+
 
     }
 }

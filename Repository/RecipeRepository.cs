@@ -217,7 +217,7 @@ namespace Project3.Repository
             return null;
         }
 
-        public List<string> UploadImageFromBase64(List<string> imgsBase64)
+        private List<string> UploadImageFromBase64(List<string> imgsBase64)
         {
             var result = new List<string>();
             // Lấy đường dẫn tới thư mục wwwroot/UploadImg
@@ -232,7 +232,6 @@ namespace Project3.Repository
             {
                 if (item.StartsWith("/UploadImg"))
                 {
-                    
                     result.Add(item.TrimStart('/'));
                 }
                 else

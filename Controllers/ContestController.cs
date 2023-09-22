@@ -20,7 +20,7 @@ namespace Project3.Controllers
         public async Task<IActionResult> SaveContest([FromBody] Contest request)
         {
             //var result = await _contestRepository.(request);
-            var result = await _contestRepository.CreateAsync(request);
+            var result = await _contestRepository.SaveContestAsync(request);
             return Json(request);
         }
         public async Task<ContestDetailDTO>  GetSubmission (int ContestId, string keyword, int index, int size){

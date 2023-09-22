@@ -59,13 +59,13 @@
             $(this).parent().remove();
         })
 
-       
+
         $('.save-recipe-form').off('submit').on('submit', function (event) {
             event.preventDefault();
             AddRecipe.SaveRecipe();
         })
 
-        
+
     },
     InitSelect2: function () {
         $('.recipe-item .select2-item').each((i, v) => {
@@ -80,7 +80,7 @@
 
     },
     SaveRecipe: function () {
- 
+
         if (($('#title').val() === "")
             || ($('#description').val() === "")
             || ($('#instruction').val() === "")) {
@@ -93,10 +93,9 @@
         }
         $('.recipe-item').each(function (i, v) {
             var quantityValue = $(v).find('.quantity').val();
-      
             var regex = /^\d+\s\w$/;
             if (quantityValue === '') {
-                Swal.fire( "Oops...", "Please enter the quantity of all your ingredient!!!", "error");
+                Swal.fire("Oops...", "Please enter the quantity of all your ingredient!!!", "error");
                 return;
             }
 
@@ -113,7 +112,7 @@
             cuisines: $('#cuisines').val(),
             servings: $('#servings').val(),
             cookingTime: $('#cookingTime').val(),
-            category: parseInt($('#single-select').val()),
+            category: $('#category').val(),
             isFree: $('#isFree').val(),
             instruction: $('#instruction').val()
         };
@@ -134,10 +133,9 @@
         })
         data.imgs = imgArr;
         data.ingredients = ingredientArr;
-        console.log(data);
+        //goi ajax submit form
         $.ajax({
-           
-            url: 'https://localhost:7034/Recipe/SaveRecipe', 
+            url: 'https://localhost:7034/Recipe/SaveRecipe',
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
@@ -148,6 +146,7 @@
                 });
             },
             error: function (xhr, status, error) {
+                console.log(data);
                 console.log(error);
             }
         });
