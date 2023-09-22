@@ -150,7 +150,6 @@
                 console.log(error);
             }
         });
-
     }
 }
 AddRecipe.Init();
