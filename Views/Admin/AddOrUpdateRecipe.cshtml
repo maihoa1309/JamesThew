@@ -279,7 +279,6 @@
                                     </div>
                                 </div>
                             }
-                          
                         </div>
                         <div>
                             <button type="button" class="btn btn-rounded btn-primary btn-add-ingre mb-3" id="btnAdd">
@@ -291,16 +290,17 @@
                         @if (Model > 0)
                         {
                             <button type="submit" class="btn btn-primary save-recipe" style="float: right;">Update</button>
-                            <a href="@Url.Action("DeleteRecipe","Recipe", new {id = Model})">
-                                <button type="button" class="btn btn-danger pl-10">Delete</button>
+                            
+                            <button type="button" class="btn btn-danger pl-10">
+                                <a href="@Url.Action("DeleteRecipe","Recipe", new {id = Model})">Delete  </a>
+                            </button>
 
-                            </a>
+                          
                         }
                         else
                         {
                             <button type="submit" class="btn btn-primary save-recipe" style="float: right;">Add</button>
                         }
-
                     </form>
                 </div>
             </div>
