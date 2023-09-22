@@ -50,6 +50,7 @@ namespace Project3.Repository
         {
             if (entity != null)
             {
+                entity.IsDeleted= false;
                 entity.CreatedTime = DateTime.Now;
                 await _dbSet.AddAsync(entity);
                 await _context.SaveChangesAsync();
