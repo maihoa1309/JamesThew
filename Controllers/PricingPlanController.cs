@@ -42,7 +42,7 @@ namespace Project3.Controllers
             {
                 //nhận tên người dùng
                 var currentUser = _userManager.GetUserAsync(_contextAccessor.HttpContext.User).Result;
-                var userId = currentUser.UserName;
+                var userId = currentUser.Id;
                 //phân loại thanh toán
                 if (amount == "10")
                 {
@@ -56,7 +56,7 @@ namespace Project3.Controllers
                 }
                 //kiểm tra ngày hết hạn sử dụng người dùng đăng kí chưa
                 var abcd = _dbContext.Registers
-                .Where(p => p.CreatedUser == userId)
+                .Where(p => p.UserId == userId)
                 .Select(p => p.DueDate)
                 .Max();
                 //kiểm tra xem người dùng còn đã đăng kí bh chưa
@@ -67,7 +67,7 @@ namespace Project3.Controllers
                     {
                         var register = new Register
                         {
-                            CreatedUser = userId,
+                            UserId = userId,
                             FromDate = DateTime.Now,
                             DueDate = DateTime.Now.AddDays(usd),
                             TypeMembership = type
@@ -77,7 +77,7 @@ namespace Project3.Controllers
                     {
                         var register = new Register
                         {
-                            CreatedUser = userId,
+                            UserId = userId,
                             FromDate = abcd,
                             DueDate = abcd + TimeSpan.FromDays(usd),
                             TypeMembership = type
@@ -89,7 +89,7 @@ namespace Project3.Controllers
                 {
                     var register = new Register
                     {
-                        CreatedUser = userId,
+                        UserId = userId,
                         FromDate = DateTime.Now,
                         DueDate = DateTime.Now.AddDays(usd),
                         TypeMembership = type
@@ -144,19 +144,18 @@ namespace Project3.Controllers
                 {
                     var registerData = TempData["RegisterData"] as string;
                     var register = JsonConvert.DeserializeObject<Register>(registerData);
-                    var currentUser = _userManager.GetUserAsync(_contextAccessor.HttpContext.User).Result;
-                    var userId = currentUser.UserName;
+                    
                     _dbContext.Registers.Add(register);
                     _dbContext.SaveChanges();
                 }
                 TempData["WelcomeMessage"] = "PaymentSuccess";
-                return View("../Home/PricingPlan");
+				return Redirect("/Home/PricingPlan");
 			}
 			else
 			{
                 // Thanh toán thất bại
                 TempData["WelcomeMessage"] = "PaymentFail";
-                return View("../Home/PricingPlan");
+				return Redirect("/Home/PricingPlan");
 			}
 		}
 		public IActionResult PaymentCancelled()
@@ -164,8 +163,8 @@ namespace Project3.Controllers
             // Xử lý khi người dùng hủy thanh toán
             
             TempData["WelcomeMessage"] = "PaymentCancelled";
-            return View("../Home/PricingPlan");
+			return Redirect("/Home/PricingPlan");
 
-        }
+		}
 	}
 }

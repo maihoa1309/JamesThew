@@ -3,6 +3,7 @@ using System.Diagnostics;
 using Project3.Models;
 using Microsoft.AspNetCore.Identity;
 using Project3.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Project3.Controllers
 {
@@ -10,12 +11,14 @@ namespace Project3.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly RoleManager<IdentityRole> _roleManager;
+		private readonly ApplicationDbContext _dbContext;
 
-        public HomeController(ILogger<HomeController> logger,RoleManager<IdentityRole> roleManager)
+		public HomeController(ApplicationDbContext dbContext, ILogger<HomeController> logger,RoleManager<IdentityRole> roleManager)
         {
             _logger = logger;
             _roleManager = roleManager;
-        }
+			_dbContext = dbContext;
+		}
 		//public async Task<IActionResult> SeedingRoleAsync()
 		//{
 		//	var dbSeedRole = new DbSeedRole(_roleManager);
@@ -48,7 +51,9 @@ namespace Project3.Controllers
 
 		public IActionResult Team()
 		{
-			return View();
+			var Contests = _dbContext.Contests.ToList();
+			
+			return View(Contests);
 		}
 		public IActionResult SingleRecipe(int id)
 		{
@@ -75,9 +80,12 @@ namespace Project3.Controllers
 		{
 			return View();
 		}
-		public IActionResult TemPlateKit()
+		public IActionResult TemPlateKit(int id)
 		{
-			return View();
+			var Contests = _dbContext.Contests.Where(p => p.Id == id).ToList();
+
+			return View(Contests);
+			
 		}
 		public IActionResult Category()
 		{

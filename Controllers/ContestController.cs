@@ -8,8 +8,11 @@ namespace Project3.Controllers
 {
     public class ContestController : BaseController<Contest>
     {
-        public ContestController(IBaseRepository<Contest> repository) : base(repository)
+        private readonly IContestRepository _contestRepository;
+        public ContestController(IBaseRepository<Contest> repository, IContestRepository contestRepository) : base(repository)
         {
-        }
+            contestRepository = _contestRepository;
+		}
+        
     }
 }

@@ -11,5 +11,6 @@ namespace Project3.Repository
     public class ContestRepository : BaseRepository<Contest>, IContestRepository
     {
         public ContestRepository(ApplicationDbContext dbContext, UserManager<CustomUser> userManager, IHttpContextAccessor httpContext) : base(dbContext, userManager, httpContext) { }
+        
     }
 }
