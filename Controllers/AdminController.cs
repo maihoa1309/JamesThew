@@ -37,17 +37,30 @@ namespace Project3.Controllers
 		{
 			return View();
 		}
-
-
-        public IActionResult AddCategory() 
-        {
-            return View();
-        }
-        public IActionResult UpdateRecipe(int id)
+        public IActionResult AddOrUpdateCategory(int id) 
         {
             return View(id);
         }
         public IActionResult Ingredients()
+        {
+            return View();
+        }
+
+        public IActionResult AddOrUpdateContest(int id)
+        {
+
+            return View(id);
+        }
+        public IActionResult Contests()
+        {
+            return View();
+        }
+
+        public IActionResult RecipesSubmitted()
+        {
+            return View();
+        }
+        public IActionResult AccountUser()
         {
             return View();
         }

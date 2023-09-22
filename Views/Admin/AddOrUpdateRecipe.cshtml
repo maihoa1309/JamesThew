@@ -10,7 +10,7 @@
     var recipe = new Recipe();
     var ingredientList = new List<Ingredient>();
     var recipeDetail = new Project3.DTO.RecipeDetailDTO();
-    if(Model > 0)
+    if (Model > 0)
     {
         recipeDetail = await recipeRepository.GetRecipeByIdAsync(Model);
         //receipt = await recipeRepository.GetRecipeByIdAsync(Model);
@@ -35,35 +35,35 @@
             flex-wrap: wrap;
         }
 
-        #image-container div {
-            position: relative;
-            margin: 10px;
-        }
+            #image-container div {
+                position: relative;
+                margin: 10px;
+            }
 
-        #image-container img {
-            width: 100px;
-            height: 100px;
+            #image-container img {
+                width: 100px;
+                height: 100px;
                 /*width: 100%;*/
-            -webkit-transition: all 0.5s;
-            -ms-transition: all 0.5s;
-            transition: all 0.5s;
-        }
+                -webkit-transition: all 0.5s;
+                -ms-transition: all 0.5s;
+                transition: all 0.5s;
+            }
 
-        #image-container button {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 5px;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 50%;         /* Thêm thuộc tính border-radius để làm tròn nút */
-            width: 24px;               /* Đặt kích thước chiều rộng */
-            height: 24px;              /* Đặt kích thước chiều cao */
-            display: flex;             /* Sử dụng flexbox để căn giữa */
-            justify-content: center;/* Căn giữa theo chiều ngang */
-            align-items: center; 
-         }
+            #image-container button {
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 5px;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 50%; /* Thêm thuộc tính border-radius để làm tròn nút */
+                width: 24px; /* Đặt kích thước chiều rộng */
+                height: 24px; /* Đặt kích thước chiều cao */
+                display: flex; /* Sử dụng flexbox để căn giữa */
+                justify-content: center; /* Căn giữa theo chiều ngang */
+                align-items: center;
+            }
     </style>
 }
 <div class="content-body ">
@@ -103,11 +103,7 @@
                         <div class="row">
                             <div class="mb-3 col-md-4">
                                 <label class="form-label">Recipe cuisine:</label>
-                                <select name="cuisines" id="cuisines" class="default-select form-control wide">
-                                    <option selected>VietNamese</option>
-                                    <option>Japanese</option>
-                                    <option>Chinese</option>
-                                </select>
+                                <input name="cuisines" id="cuisines" class="form-control" value="@recipeDetail.Recipe.Cuisines">
                             </div>
 
                             <div class="mb-3 col-md-4">
@@ -136,7 +132,7 @@
                             <div class="mb-3 col-xl-8 col-lg-8 col-md-8">
                                 <label class="form-label">Select recipe type(at least one):</label>
                                 <select class="default-select form-control wide  select2-item " name="category" id="category">
-                                    @foreach(var cate in categories)
+                                    @foreach (var cate in categories)
                                     {
                                         <!option @(recipeDetail.Recipe.CategoryId == cate.Id ? "selected":"") value="@cate.Id">@cate.Name</!option>
                                     }
@@ -155,32 +151,32 @@
                             <span>Share photo of your recipe</span>
                             <div class="mb-3 col-xl-4 col-lg-4">
                                 <input class="form-control" type="file" multiple id="formFile" name="img1" accept="image/jpeg, image/png, image/gif">
-                            </div>                           
+                            </div>
                         </div>
                         <div id="image-container">
 
                             @if (!string.IsNullOrEmpty(recipeDetail.Recipe.Img))
                             {
                                 var splited = recipeDetail.Recipe.Img.Split(',');
-                                foreach(var item in splited)
+                                foreach (var item in splited)
                                 {
                                     <div><img src="/@item"><button type="button">x</button></div>
                                 }
                             }
 
                         </div>
-                       @* <div class="row">
-                            <div class=" col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body product-grid-card">
-                                        <div class="new-arrival-product">
-                                            <div class="new-arrivals-img-contnent">
-                                                <img class="img-fluid" src="" alt="No img upload">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        @* <div class="row">
+                        <div class=" col-md-4 col-sm-6">
+                        <div class="card">
+                        <div class="card-body product-grid-card">
+                        <div class="new-arrival-product">
+                        <div class="new-arrivals-img-contnent">
+                        <img class="img-fluid" src="" alt="No img upload">
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
                         </div>*@
                         @*instruction*@
                         <div class="row">
@@ -220,9 +216,9 @@
                                     </div>
                                 </div>
                             </div>
-                            @if(recipeDetail.Ingredients.Count > 0)
+                            @if (recipeDetail.Ingredients.Count > 0)
                             {
-                                foreach(var item in recipeDetail.Ingredients)
+                                foreach (var item in recipeDetail.Ingredients)
                                 {
                                     <div class="col-md-8 recipe-item">
                                         <div class="d-flex">
@@ -235,7 +231,7 @@
                                                         <select class="default-select form-control wide btn select2-item" name="ingredient">
                                                             @foreach (var ingre in ingredients)
                                                             {
-                                                                <!option value="@ingre.Id" @(item.IngredientId == ingre.Id ? "selected" : "")>@item.Name</!option>
+                                                                <!option value="@ingre.Id" @(item.IngredientId == ingre.Id ? "selected" : "")>@ingre.Name</!option>
                                                             }
                                                         </select>
                                                     </div>
@@ -253,33 +249,36 @@
                                     </div>
                                 }
                             }
-                            <div class="col-md-8 recipe-item">
-                                <div class="d-flex">
-                                    <div class="input-group mb-3 col-md-8">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <input type="text" class="form-control quantity" placeholder="Enter quantity and unit" name="quantity">
+                            @if(Model < 0)
+                            {
+                                <div class="col-md-8 recipe-item">
+                                    <div class="d-flex">
+                                        <div class="input-group mb-3 col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control quantity" placeholder="Enter quantity and unit" name="quantity">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <select class="default-select form-control wide btn select2-item" name="ingredient">
+                                                        @foreach (var ingre in ingredients)
+                                                        {
+                                                            <option value="@ingre.Id">@ingre.Name</option>
+                                                        }
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <select class="default-select form-control wide btn select2-item" name="ingredient">
-                                                    @foreach (var ingre in ingredients)
-                                                    {
-                                                        <option value="@ingre.Id">@ingre.Name</option>
-                                                    }
-                                                </select>
-                                            </div>
-                                        </div>
 
-                                    </div>
-                                    <div class="offset-md-2 col-md-4">
-                                        <button type="button" class="btn btn-rounded btn-danger btn-delete-receip">
-                                            <span class="btn-icon-start text-danger">
-                                                <i class="fa fa-times color-infor"></i>
-                                            </span>Delete
-                                        </button>
+                                        </div>
+                                        <div class="offset-md-2 col-md-4">
+                                            <button type="button" class="btn btn-rounded btn-danger btn-delete-receip">
+                                                <span class="btn-icon-start text-danger">
+                                                    <i class="fa fa-times color-infor"></i>
+                                                </span>Delete
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            }
                         </div>
                         <div>
                             <button type="button" class="btn btn-rounded btn-primary btn-add-ingre mb-3" id="btnAdd">
@@ -288,19 +287,20 @@
                                 </span>Add
                             </button>
                         </div>
-                        @if(Model > 0)
+                        @if (Model > 0)
                         {
                             <button type="submit" class="btn btn-primary save-recipe" style="float: right;">Update</button>
-                            <a href="@Url.Action("DeleteRecipe","Recipe", new {entity = recipeDetail})">
-                                <button type="button" class="btn btn-danger pl-10">Delete</button>
+                            
+                            <button type="button" class="btn btn-danger pl-10">
+                                <a href="@Url.Action("DeleteRecipe","Recipe", new {id = Model})">Delete  </a>
+                            </button>
 
-                            </a>
+                          
                         }
                         else
                         {
                             <button type="submit" class="btn btn-primary save-recipe" style="float: right;">Add</button>
                         }
-                        
                     </form>
                 </div>
             </div>

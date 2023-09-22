@@ -8,8 +8,18 @@ namespace Project3.Controllers
 {
     public class CategoryController : BaseController<Category>
     {
-        public CategoryController(IBaseRepository<Category> repository) : base(repository)
+
+        private readonly ICategoryRepository _categoryRepository;
+
+        public CategoryController(IBaseRepository<Category> repository, ICategoryRepository categoryRepository) : base(repository)
         {
+            _categoryRepository = categoryRepository;
+        }
+
+        public async Task<IActionResult> SaveCategory([FromBody] Category category)
+        {
+            _categoryRepository.SaveCategoryAsync(category);
+            return Json(category);
         }
 
         // Các phương thức cụ thể cho CategoryController (nếu cần)

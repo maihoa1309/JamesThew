@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -10,7 +10,6 @@ using Project3.Data;
 using Project3.Models;
 using System;
 using System.Collections.Generic;
-
 namespace Project3.Controllers
 {
 	public class PricingPlanController : Controller
@@ -97,47 +96,6 @@ namespace Project3.Controllers
                     //lưu dữ liệu để thêm vào db
                     TempData["RegisterData"] = JsonConvert.SerializeObject(register);
 
-                }
-                //hoạt động thanh toán qua paypal 
-                var apiContext = new APIContext(new OAuthTokenCredential(_configuration["AppSettings:PayPalClientId"], _configuration["AppSettings:PayPalSecretKey"]).GetAccessToken());
-
-                var payment = Payment.Create(apiContext, new Payment
-                {
-                    intent = "sale",
-                    payer = new Payer { payment_method = "paypal" },
-                    transactions = new List<Transaction>
-                {
-                    new Transaction
-                    {
-                        amount = new Amount { total = amount, currency = "USD" },
-                        description = "Thanh toán PayPal"
-                    }
-                },
-                    redirect_urls = new RedirectUrls
-                    {
-                        return_url = Url.Action("PaymentSuccess", "PricingPlan", null, Request.Scheme),
-                        cancel_url = Url.Action("PaymentCancelled", "PricingPlan", null, Request.Scheme)
-                    }
-                });
-                
-                //chuyển hướng sau khi bắt đầu thanh toán
-                var redirectUrl = payment.links.Find(x => x.rel == "approval_url").href;
-                return Redirect(redirectUrl);
-            }
-            else
-            {//chưa đăng nhập
-                return Redirect("/Identity/Account/Login");
-            }
-            
-		}
-
-		public IActionResult PaymentSuccess(string paymentId, string token, string PayerID)
-		{
-			var apiContext = new APIContext(new OAuthTokenCredential(_configuration["AppSettings:PayPalClientId"], _configuration["AppSettings:PayPalSecretKey"]).GetAccessToken());
-
-			var paymentExecution = new PaymentExecution { payer_id = PayerID };
-			var payment = new Payment { id = paymentId }.Execute(apiContext, paymentExecution);
-
             if (payment.state.ToLower() == "approved")
 			{
                 if (TempData.ContainsKey("RegisterData"))
@@ -168,3 +126,4 @@ namespace Project3.Controllers
 		}
 	}
 }
+

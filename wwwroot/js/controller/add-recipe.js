@@ -59,13 +59,13 @@
             $(this).parent().remove();
         })
 
-       
+
         $('.save-recipe-form').off('submit').on('submit', function (event) {
             event.preventDefault();
             AddRecipe.SaveRecipe();
         })
 
-        
+
     },
     InitSelect2: function () {
         $('.recipe-item .select2-item').each((i, v) => {
@@ -80,7 +80,7 @@
 
     },
     SaveRecipe: function () {
- 
+
         if (($('#title').val() === "")
             || ($('#description').val() === "")
             || ($('#instruction').val() === "")) {
@@ -95,14 +95,14 @@
             var quantityValue = $(v).find('.quantity').val();
             var regex = /^\d+\s\w$/;
             if (quantityValue === '') {
-                Swal.fire( "Oops...", "Please enter the quantity of all your ingredient!!!", "error");
+                Swal.fire("Oops...", "Please enter the quantity of all your ingredient!!!", "error");
                 return;
             }
 
-            if (!regex.test(quantityValue)) {
-                Swal.fire("Oops...", "Please enter a valid quantity for the ingredient and omit the unit!!!", "error");
-                return;
-            }
+            //if (!regex.test(quantityValue)) {
+            //    Swal.fire("Oops...", "Please enter a valid quantity for the ingredient and omit the unit!!!", "error");
+            //    return;
+            //}
         });
 
         const data = {
@@ -135,26 +135,21 @@
         data.ingredients = ingredientArr;
         //goi ajax submit form
         $.ajax({
-            url: 'https://localhost:7034/Recipe/SaveRecipe', 
+            url: 'https://localhost:7034/Recipe/SaveRecipe',
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
             success: function (response) {
                 // Xử lý khi yêu cầu thành công
-                console.log('Yêu cầu thành công');
-                console.log(response);
                 Swal.fire("Hey, Good job !!", "You clicked the button !!", "success").then(function () {
                     window.location = "/admin/RecipesByAdmin";
                 });
             },
             error: function (xhr, status, error) {
-                console.log('Yêu cầu thất bại');
                 console.log(data);
                 console.log(error);
             }
         });
-
     }
 }
-
 AddRecipe.Init();

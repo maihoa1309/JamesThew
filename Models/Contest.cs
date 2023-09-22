@@ -13,6 +13,7 @@ namespace Project3.Models
         public Category? GetCategory { get; set; }
         public DateTime? StartDate { get; set; }
         public string? EndDate { get; set; }
+        public string? Img { get; set; }
 
     }
 }

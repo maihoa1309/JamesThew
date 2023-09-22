@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.Hosting.Internal;
 using Microsoft.Extensions.Logging;
 using Project3.Models;
 
@@ -29,22 +30,25 @@ namespace Project3.Areas.Identity.Pages.Account
         private readonly IUserStore<CustomUser> _userStore;
         private readonly IUserEmailStore<CustomUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
-        //private readonly IEmailSender _emailSender;
+		//private readonly IEmailSender _emailSender;
+		private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public RegisterModel(
+		public RegisterModel(
             UserManager<CustomUser> userManager,
             IUserStore<CustomUser> userStore,
             SignInManager<CustomUser> signInManager,
-            ILogger<RegisterModel> logger
-            )
+            ILogger<RegisterModel> logger,
+			  IWebHostEnvironment hostingEnvironment
+			)
         {
             _userManager = userManager;
             _userStore = userStore;
             _emailStore = GetEmailStore();
             _signInManager = signInManager;
             _logger = logger;
-            //_emailSender = emailSender;
-        }
+			_hostingEnvironment = hostingEnvironment;
+			//_emailSender = emailSender;
+		}
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -131,57 +135,74 @@ namespace Project3.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
-        {
-            returnUrl ??= Url.Content("~/");
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-            if (ModelState.IsValid)
-            {
-                var user = CreateUser();
+		public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+		{
+			returnUrl ??= Url.Content("~/");
+			ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+			if (ModelState.IsValid)
+			{
+				var user = CreateUser();
 
-                // Lưu giá trị của các trường vào đối tượng người dùng
-                user.Name = Input.Name;
-                user.Gender = Input.Gender.ToString();
-                // Xử lý tệp tin avatar và lưu đường dẫn vào đối tượng người dùng
-                if (Input.AvatarFile != null && Input.AvatarFile.Length > 0)
-                {
-                    var fileName = Path.GetFileName(Input.AvatarFile.FileName);
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Uploads", fileName);
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await Input.AvatarFile.CopyToAsync(stream);
-                    }
-                    user.Avatar = filePath;
-                }
-                user.Age = Input.Age;
+				// Lưu giá trị của các trường vào đối tượng người dùng
+				user.Name = Input.Name;
+				user.Gender = Input.Gender.ToString();
 
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
-                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
-                var result = await _userManager.CreateAsync(user, Input.Password);
+				// Xử lý tệp tin avatar và lưu đường dẫn vào đối tượng người dùng
+				if (Input.AvatarFile != null && Input.AvatarFile.Length > 0)
+				{
+					// Đổi tên tệp thành một tên duy nhất bằng guid
+					var fileName = $"{Guid.NewGuid()}.jpg";
 
-                if (result.Succeeded)
-                {
-                    _logger.LogInformation("User created a new account with password.");
+					// Lấy đường dẫn tới thư mục wwwroot/UploadImg
+					var uploadPath = Path.Combine(_hostingEnvironment.WebRootPath, "UploadImg");
 
-                    // ...
-                    // Các bước tiếp theo của mã nguồn gốc không có sự thay đổi
+					// Tạo thư mục UploadImg nếu chưa tồn tại
+					if (!Directory.Exists(uploadPath))
+					{
+						Directory.CreateDirectory(uploadPath);
+					}
 
-                    // ...
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+					// Tạo đường dẫn tới file ảnh
+					var imagePath = Path.Combine(uploadPath, fileName);
 
-                    return LocalRedirect(returnUrl);
-                }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
-            }
+					using (var stream = new FileStream(imagePath, FileMode.Create))
+					{
+						await Input.AvatarFile.CopyToAsync(stream);
+					}
 
-            // If we got this far, something failed, redisplay form
-            return Page();
-        }
+					// Lưu đường dẫn của file ảnh vào đối tượng người dùng
+					user.Avatar = Path.Combine("UploadImg", fileName);
+				}
 
-        private CustomUser CreateUser()
+				user.Age = Input.Age;
+
+				await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+				await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+				var result = await _userManager.CreateAsync(user, Input.Password);
+
+				if (result.Succeeded)
+				{
+					_logger.LogInformation("User created a new account with password.");
+
+					// ...
+					// Các bước tiếp theo của mã nguồn gốc không có sự thay đổi
+
+					// ...
+					await _signInManager.SignInAsync(user, isPersistent: false);
+
+					return LocalRedirect(returnUrl);
+				}
+				foreach (var error in result.Errors)
+				{
+					ModelState.AddModelError(string.Empty, error.Description);
+				}
+			}
+
+			// If we got this far, something failed, redisplay form
+			return Page();
+		}
+
+		private CustomUser CreateUser()
         {
             try
             {

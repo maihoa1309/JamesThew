@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Project3.Models;
 using Microsoft.AspNetCore.Identity;
 using Project3.Data;
-using Microsoft.EntityFrameworkCore;
+using Project3.Repository;
 
 namespace Project3.Controllers
 {
@@ -11,14 +11,14 @@ namespace Project3.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly RoleManager<IdentityRole> _roleManager;
-		private readonly ApplicationDbContext _dbContext;
+		private readonly IRecipeRepository _recipeRepository;
 
-		public HomeController(ApplicationDbContext dbContext, ILogger<HomeController> logger,RoleManager<IdentityRole> roleManager)
+        public HomeController(ILogger<HomeController> logger,RoleManager<IdentityRole> roleManager , IRecipeRepository recipeRepository)
         {
             _logger = logger;
             _roleManager = roleManager;
-			_dbContext = dbContext;
-		}
+			_recipeRepository = recipeRepository;
+        }
 		//public async Task<IActionResult> SeedingRoleAsync()
 		//{
 		//	var dbSeedRole = new DbSeedRole(_roleManager);
@@ -30,6 +30,10 @@ namespace Project3.Controllers
         {
             return View();
         }
+		public IActionResult User()
+		{
+			return View();
+		}
 
 		public IActionResult Privacy()
 		{
@@ -51,13 +55,13 @@ namespace Project3.Controllers
 
 		public IActionResult Team()
 		{
-			var Contests = _dbContext.Contests.ToList();
-			
-			return View(Contests);
+			return View();
 		}
-		public IActionResult SingleRecipe(int id)
+		public async Task<IActionResult> SingleRecipe(int id)
 		{
-			return View(id);
+            var recipe = await _recipeRepository.GetRecipeByIdAsync(id);
+            return View(recipe);
+
 		}
 		public IActionResult RecipeList()
 		{
@@ -80,12 +84,9 @@ namespace Project3.Controllers
 		{
 			return View();
 		}
-		public IActionResult TemPlateKit(int id)
+		public IActionResult TemPlateKit()
 		{
-			var Contests = _dbContext.Contests.Where(p => p.Id == id).ToList();
-
-			return View(Contests);
-			
+			return View();
 		}
 		public IActionResult Category()
 		{
