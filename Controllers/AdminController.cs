@@ -39,7 +39,7 @@ namespace Project3.Controllers
 		}
         public IActionResult AddOrUpdateCategory(int id) 
         {
-            return View();
+            return View(id);
         }
         public IActionResult Ingredients()
         {

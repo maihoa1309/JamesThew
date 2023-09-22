@@ -1,11 +1,11 @@
-﻿var addContest = {
+﻿var addCategory = {
     Init: function () {
-        addContest.RegisterEvent();
+        addCategory.RegisterEvent();
     },
     RegisterEvent: function () {
-        $(".saveContest").off('submit').on('submit', function (event) {
+        $(".saveCategory").off('submit').on('submit', function (event) {
             event.preventDefault();
-            addContest.SaveContest();
+            addCategory.SaveContest();
         }),
         $('#formFile').off('change').on('change', function () {
             const files = $(this)[0].files;
@@ -32,7 +32,7 @@
                     div.appendChild(closeButton);
 
                     imageContainer.appendChild(div);
-                    addContest.RegisterEvent();
+                    addCategory.RegisterEvent();
                 };
 
                 reader.readAsDataURL(file);
@@ -41,31 +41,23 @@
 
         $('#deleteImg').off('click').on('click', function () {
             $(this).parent().remove();
-            addContest.RegisterEvent();
+            addCategory.RegisterEvent();
         })
 
     },
     SaveContest: function () {
-        if (($('#title').val() === "")
-            || ($('#description').val() === "")) {
-            Swal.fire("Oops...", "You must fill all information to add new contest!", "error");
+        if (($('#name').val() === "")) {
+            Swal.fire("Oops...", "You must fill all information to save category!", "error");
             return;
         }
-        if ((moment($('#endDate').val(), 'DD MMMM, YYYY')).isBefore(moment($('#startDate').val(), 'DD MMMM, YYYY'))) {
-            Swal.fire("Oops...", "End date must after start date!", "error");
-            return;
-        } 
+
         const data = {
             Id: parseInt($("#_id").val()),
-            Title: $('#title').val(),
-            Description: $('#description').val(),
-            CategoryId: parseInt($('#single-select').val()),
-            StartDate: moment($('#startDate').val(), 'DD MMMM, YYYY'),
-            EndDate: moment($('#endDate').val(), 'DD MMMM, YYYY'),
-            Img : $('#image-container img').attr('src')
+            Name: $('#name').val(),
+            Img: $('#image-container img').attr('src')
         };
         $.ajax({
-            url: 'https://localhost:7034/Contest/SaveContest',
+            url: 'https://localhost:7034/Category/SaveCategory',
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
@@ -78,8 +70,8 @@
                 console.log(error);
             }
         });
-        addContest.RegisterEvent();
+        addCategory.RegisterEvent();
     }
 }
 
-addContest.Init();
+addCategory.Init();

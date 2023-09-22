@@ -1,5 +1,51 @@
-﻿@{
+﻿@model int 
+@using Project3.Repository;
+@inject ICategoryRepository categoryRepository;
+@{
 	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+	var cate = new Category();
+	if(Model > 0)
+	{
+		cate = categoryRepository.FindById(Model);
+	}
+}
+@section Styles{
+		<style>
+		#image-container {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		#image-container div {
+			position: relative;
+			margin: 10px;
+		}
+
+		#image-container img {
+			width: 100px;
+			height: 100px;
+			/*width: 100%;*/
+			-webkit-transition: all 0.5s;
+			-ms-transition: all 0.5s;
+			transition: all 0.5s;
+		}
+
+		#image-container button {
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 5px;
+			color: white;
+			border: none;
+			cursor: pointer;
+			border-radius: 50%; /* Thêm thuộc tính border-radius để làm tròn nút */
+			width: 24px; /* Đặt kích thước chiều rộng */
+			height: 24px; /* Đặt kích thước chiều cao */
+			display: flex; /* Sử dụng flexbox để căn giữa */
+			justify-content: center; /* Căn giữa theo chiều ngang */
+			align-items: center;
+		}
+	</style>
 }
 <div class="content-body ">
 	<!-- row -->
@@ -20,12 +66,13 @@
 			</div>
 			<div class="card-body">
 				<div class="basic-form">
-					<form method="post" action="/Category/CreateCategory">
+					<form method="post" class="saveCategory">
 						<input type="hidden" name="_token" value="ML92rdCjbEmTftVXgNyoQXBHnoqjfV95zZ8HN7me">
+						<input type="hidden" id="_id" value="@cate.Id"/>
 						<div class="row">
 							<div class="mb-3 col-md-12">
 								<label class="form-label">Category name:</label>
-								<input type="text" class="form-control" name="name">
+								<input type="text" class="form-control" name="name" id="name" value="@cate.Name">
 							</div>
 						</div>
 						<div class="row">
@@ -35,14 +82,12 @@
 							</div>
 						</div>
 						<div id="image-container">
-							@*@if (!string.IsNullOrEmpty(recipeDetail.Recipe.Img))
+							@if (!string.IsNullOrEmpty(cate.Img))
 							{
-								var splited = recipeDetail.Recipe.Img.Split(',');
-								foreach (var item in splited)
-								{
-									<div><img src="/@item"><button type="button">x</button></div>
-								}
-							}*@
+						
+								<div><img src="/@cate.Img"><button type="button">x</button></div>
+								
+							}
 						</div>
 						<button type="submit" class="btn btn-primary" style="float: right;">Add</button>
 					</form>
@@ -51,5 +96,7 @@
 		</div>
 	</div>
 </div>
-
+@section Script{
+	<script src="~/js/controller/addCategory.js"></script>
+}
 
