@@ -5,7 +5,6 @@ namespace Project3.Models
 {
     public class Submission : Base
     {
-
         public int? ContestId { get; set; }
         [ForeignKey("ContestId")]
         public Contest? GetContest { get; set; }
@@ -15,8 +14,5 @@ namespace Project3.Models
         public Recipe? GetRecipe { get; set; }
         public string? Status { get; set; }
         public int? Point { get; set; }
-
-
-
     }
 }
