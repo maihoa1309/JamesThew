@@ -103,11 +103,7 @@
                         <div class="row">
                             <div class="mb-3 col-md-4">
                                 <label class="form-label">Recipe cuisine:</label>
-                                <select name="cuisines" id="cuisines" class="default-select form-control wide">
-                                    <option selected>VietNamese</option>
-                                    <option>Japanese</option>
-                                    <option>Chinese</option>
-                                </select>
+                                <input name="cuisines" id="cuisines" class="form-control" value="@recipeDetail.Recipe.Cuisines">
                             </div>
 
                             <div class="mb-3 col-md-4">
@@ -253,33 +249,37 @@
                                     </div>
                                 }
                             }
-                            <div class="col-md-8 recipe-item">
-                                <div class="d-flex">
-                                    <div class="input-group mb-3 col-md-8">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <input type="text" class="form-control quantity" placeholder="Enter quantity and unit" name="quantity">
+                            @if(Model < 0)
+                            {
+                                <div class="col-md-8 recipe-item">
+                                    <div class="d-flex">
+                                        <div class="input-group mb-3 col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control quantity" placeholder="Enter quantity and unit" name="quantity">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <select class="default-select form-control wide btn select2-item" name="ingredient">
+                                                        @foreach (var ingre in ingredients)
+                                                        {
+                                                            <option value="@ingre.Id">@ingre.Name</option>
+                                                        }
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <select class="default-select form-control wide btn select2-item" name="ingredient">
-                                                    @foreach (var ingre in ingredients)
-                                                    {
-                                                        <option value="@ingre.Id">@ingre.Name</option>
-                                                    }
-                                                </select>
-                                            </div>
-                                        </div>
 
-                                    </div>
-                                    <div class="offset-md-2 col-md-4">
-                                        <button type="button" class="btn btn-rounded btn-danger btn-delete-receip">
-                                            <span class="btn-icon-start text-danger">
-                                                <i class="fa fa-times color-infor"></i>
-                                            </span>Delete
-                                        </button>
+                                        </div>
+                                        <div class="offset-md-2 col-md-4">
+                                            <button type="button" class="btn btn-rounded btn-danger btn-delete-receip">
+                                                <span class="btn-icon-start text-danger">
+                                                    <i class="fa fa-times color-infor"></i>
+                                                </span>Delete
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            }
+                          
                         </div>
                         <div>
                             <button type="button" class="btn btn-rounded btn-primary btn-add-ingre mb-3" id="btnAdd">

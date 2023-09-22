@@ -27,5 +27,10 @@ namespace Project3.Controllers
             var result = await _contestRepository.GetSubmissionAsync(ContestId, keyword, index, size);
             return result;
         }
+        public async Task<ContestDTO> GetByName( string keyword, int index, int size)
+        {
+            var result = await _contestRepository.GetByNameAsync(keyword, index, size);
+            return result;
+        }
     }
 }

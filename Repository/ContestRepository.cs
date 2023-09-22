@@ -10,7 +10,7 @@ namespace Project3.Repository
     {
         Task<ContestDetailDTO> GetSubmissionAsync(int ContestId, string keyword, int index, int size);
         Task<bool> SaveContestAsync(Contest request);
-
+        Task<ContestDTO> GetByNameAsync (string keyword, int index, int size);
     }
     public class ContestRepository : BaseRepository<Contest>, IContestRepository
     {
@@ -19,6 +19,20 @@ namespace Project3.Repository
         {
             _hostingEnvironment = hostingEnviroment;
         }
+
+		public async Task<ContestDTO> GetByNameAsync(string keyword, int index, int size)
+		{
+            var result = new ContestDTO();
+            var contests = await _context.Contests.ToListAsync();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+				contests = contests.Where( r => r.Title.ToLower().Contains(keyword.ToLower())).ToList();
+            }
+            result.TotalRow = contests.Count;
+            result.Contests = contests.Skip((index - 1) * size).Take(size).ToList();
+
+			return result;
+		}
 
 		public async Task<ContestDetailDTO> GetSubmissionAsync(int ContestId, string keyword, int index, int size)
 		{
