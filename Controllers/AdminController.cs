@@ -60,6 +60,10 @@ namespace Project3.Controllers
         {
             return View();
         }
+        public IActionResult AccountUser()
+        {
+            return View();
+        }
 
 	}
 }
