@@ -21,8 +21,11 @@ namespace Project3.Repository
         Task<RecipeDetailDTO> GetRecipeByIdAsync (int id);
         Task<List<RecipeDetailDTO>> GetRecipeByUserAsync();
         Task<List<RecipeDetailDTO>> GetByNameAsync(string keyword, int index = 1, int size = 10);
-        Task<List<CategoryDetail>> GetRandomCategories(int count);
-    
+        Task<List<Category>> GetRandomCategories(int count);
+        Task<List<RecipeDetailDTO>> GetRecipesByCategoryId(int categoryId);
+        Task<List<RecipeDetailDTO>> GetRandomRecipes(int count);
+
+
     }
     public class RecipeRepository : BaseRepository<Recipe>, IRecipeRepository
     {
@@ -30,7 +33,44 @@ namespace Project3.Repository
         public RecipeRepository(ApplicationDbContext dbContext, UserManager<CustomUser> userManager, IHttpContextAccessor httpContext, IWebHostEnvironment hostingEnviroment) : base(dbContext, userManager, httpContext) {
             _hostingEnvironment = hostingEnviroment;
         }
+        public async Task<List<RecipeDetailDTO>> GetRandomRecipes(int count)
+        {
+            var allRecipes = await _dbSet.ToListAsync();
 
+            var randomRecipes = GetRandomItems(allRecipes, count);
+
+            var categories = await _context.Categories.ToListAsync();
+
+            var result = (from q in randomRecipes
+                          join c in categories on q.CategoryId equals c.Id
+                          select new RecipeDetailDTO
+                          {
+                              Recipe = q,
+                              Category = new CategoryDetail
+                              {
+                                  CategoryId = c.Id,
+                                  CategoryName = c.Name
+                              }
+                          }).ToList();
+            return result;
+        }
+        private List<Recipe> GetRandomItems(List<Recipe> sourceList, int count)
+        {
+            if (count <= 0)
+            {
+                throw new ArgumentException("Count must be greater than zero.");
+            }
+
+            if (count >= sourceList.Count)
+            {
+                return sourceList;
+            }
+
+            var random = new Random();
+            var randomRecipes = sourceList.OrderBy(x => random.Next()).Take(count).ToList();
+
+            return randomRecipes;
+        }
         public async Task<List<RecipeDetailDTO>> GetLatestCreatedRecipes(int count)
         {
             // Sử dụng LINQ để truy vấn dữ liệu và lấy danh sách bản ghi được tạo gần nhất
@@ -57,15 +97,16 @@ namespace Project3.Repository
             return result;
         }
 
-        public async Task<List<CategoryDetail>> GetRandomCategories(int count)
+        public async Task<List<Category>> GetRandomCategories(int count)
         {
             var randomCategories = await _context.Categories
                 .OrderBy(x => Guid.NewGuid()) // Sắp xếp danh mục ngẫu nhiên
                 .Take(count)
-                .Select(c => new CategoryDetail
+                .Select(c => new Category
                 {
-                    CategoryId = c.Id,
-                    CategoryName = c.Name
+                    Id = c.Id,
+                    Name = c.Name,
+                    Img = c.Img
                 })
                 .ToListAsync();
 
@@ -138,6 +179,36 @@ namespace Project3.Repository
 
         }
 
+        public async Task<List<RecipeDetailDTO>> GetRecipesByCategoryId(int categoryId)
+        {
+            // Sử dụng LINQ để lấy các Recipe có CategoryId tương ứng
+            var recipes = await _context.Recipes
+                .Where(r => r.CategoryId == categoryId)
+                .ToListAsync();
+
+            var recipeDetails = new List<RecipeDetailDTO>();
+
+            foreach (var recipe in recipes)
+            {
+                var recipeDetail = new RecipeDetailDTO
+                {
+                    RecipeId = recipe.Id,
+                    RecipeName = recipe.Title,
+                    Recipe = recipe,
+                    Category = new CategoryDetail
+                    {
+                        CategoryId = recipe.CategoryId,
+                        CategoryName = recipe.GetCategory?.Name
+                    }
+                };
+
+                recipeDetails.Add(recipeDetail);
+            }
+
+            return recipeDetails;
+        }
+
+        
 
         public Task<List<RecipeDetailDTO>> GetRecipeByUserAsync()
         {

@@ -1,6 +1,8 @@
-﻿@{
+﻿@model IEnumerable<Project3.Models.Contest>
+@{
 	Layout = "~/Views/Shared/_Layoutweb.cshtml";
 }
+
 <div data-elementor-type="archive" data-elementor-id="83" class="elementor elementor-83 elementor-location-archive">
 	<section class="elementor-section elementor-top-section elementor-element elementor-element-9c87ac0 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="9c87ac0" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 		<div class="elementor-background-overlay"></div>
@@ -16,13 +18,13 @@
 									margin: 0;
 									line-height: 1
 								}
-
+								
 								.elementor-widget-heading .elementor-heading-title[class*=elementor-size-] > a {
 									color: inherit;
 									font-size: inherit;
 									line-height: inherit
 								}
-
+								
 								.elementor-widget-heading .elementor-heading-title.elementor-size-small {
 									font-size: 15px
 								}
@@ -85,258 +87,82 @@
 					<div class="elementor-element elementor-element-d539eaf elementor-grid-1 elementor-grid-tablet-1 elementor-posts--thumbnail-right elementor-grid-mobile-1 elementor-widget elementor-widget-archive-posts" data-id="d539eaf" data-element_type="widget" data-settings="{&quot;archive_classic_columns&quot;:&quot;1&quot;,&quot;archive_classic_columns_tablet&quot;:&quot;1&quot;,&quot;archive_classic_columns_mobile&quot;:&quot;1&quot;,&quot;archive_classic_row_gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:35,&quot;sizes&quot;:[]},&quot;archive_classic_row_gap_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;archive_classic_row_gap_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;pagination_type&quot;:&quot;numbers&quot;}" data-widget_type="archive-posts.archive_classic">
 						<div class="elementor-widget-container">
 							<link rel="stylesheet" href="~/wp-content/plugins/elementor-pro/assets/css/widget-posts.min.css">		<div class="elementor-posts-container elementor-posts elementor-posts--skin-classic elementor-grid">
-								<article class="elementor-post elementor-grid-item post-1220 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
-									<a class="elementor-post__thumbnail__link" href="/Home/HomePage">
-										<div class="elementor-post__thumbnail"><img width="1080" height="6284" src="~/wp-content/uploads/sites/2/2022/04/Homepage.jpg" class="attachment-full size-full wp-image-1314" alt="" loading="lazy" /></div>
-									</a>
-									<div class="elementor-post__text">
-										<h3 class="elementor-post__title">
-											<a href="/Home/HomePage">
-												Homepage
-											</a>
-										</h3>
-										<div class="elementor-post__meta-data">
-											<span class="elementor-post-author">
-												rocken
-											</span>
-											<span class="elementor-post-date">
-												April 12, 2022
-											</span>
-										</div>
-										<div class="elementor-post__excerpt">
-											<p>Boiled Steamed Fried Baked no matter how you cook, Yumma has many the recipes Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,</p>
-										</div>
+								@foreach (var item in Model)
+								{
+									<article class="elementor-post elementor-grid-item post-254 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
 
-										<a class="elementor-post__read-more" href="/Home/HomePage">
-											Read More 🡥
-										</a>
+										<div class="elementor-post__text">
+											<center>
+												<h1 style="color:orangered">@Html.DisplayFor(modelItem => item.Title)</h1>
+											</center>
+											<div class="elementor-post__meta-data">
+												<span class="elementor-post-date">
+													<span>StartDate:@Html.DisplayFor(modelItem => item.StartDate)</span>
+													
+												</span>
+												<br>
+												<span class="elementor-post-date">
+													<span>EndDate:@Html.DisplayFor(modelItem => item.EndDate)</span>
+												</span>
+											</div>
+											<div class="elementor-post__excerpt">
+												<p>Category:</p>
+												<p>@Html.DisplayFor(modelItem => item.CategoryId)</p>
+											</div>
+											<div class="elementor-post__excerpt">
+												<p>Description:</p>
+												<p>@Html.DisplayFor(modelItem => item.Description)</p>
+											</div>
+											<div class="elementor-post__excerpt">
+												<p>Rule:</p>
+												<p>@Html.DisplayFor(modelItem => item.Rule)</p>
+											</div>
+											<div>anh A</div>
+											<div>anh B</div>
+											<div>anh C</div>
+											<div>anh D</div>
+											<div class="elementor-element elementor-element-07251aa elementor-author-box--avatar-yes elementor-author-box--name-yes elementor-author-box--biography-yes elementor-author-box--link-no elementor-widget elementor-widget-author-box" data-id="07251aa" data-element_type="widget" data-widget_type="author-box.default">
+												<div class="elementor-widget-container">
+													<div class="elementor-author-box">
+														<div class="elementor-author-box__avatar">
+															<img src="https://secure.gravatar.com/avatar/c36f29293de5ca5aa9992586ff858f15?s=300&amp;d=mm&amp;r=g" alt="rocken">
+														</div>
 
-									</div>
-								</article>
-								<article class="elementor-post elementor-grid-item post-1111 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
-									<a class="elementor-post__thumbnail__link" href="/Home/JoinContributor">
-										<div class="elementor-post__thumbnail"><img width="1600" height="3368" src="~/wp-content/uploads/sites/2/2022/04/Join-Contributor.jpg" class="attachment-full size-full wp-image-1315" alt="" loading="lazy" /></div>
-									</a>
-									<div class="elementor-post__text">
-										<h3 class="elementor-post__title">
-											<a href="/Home/JoinContributor">
-												Join Contributor
-											</a>
-										</h3>
-										<div class="elementor-post__meta-data">
-											<span class="elementor-post-author">
-												rocken
-											</span>
-											<span class="elementor-post-date">
-												April 12, 2022
-											</span>
+														<div class="elementor-author-box__text">
+															<div>
+																<h5 class="elementor-author-box__name">
+																	
+																</h5>
+															</div>
+
+															<div class="elementor-author-box__bio">
+															</div>
+
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="elementor-element elementor-element-a5d8648 elementor-widget elementor-widget-post-comments" data-id="a5d8648" data-element_type="widget" data-widget_type="post-comments.theme_comments">
+												<div class="elementor-widget-container">
+											<section id="comments" class="comments-area">
+												<div id="respond" class="comment-respond">
+													<h2 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://point.moxcreative.com/yumma/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+														<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p><p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required /></p>
+														<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required /></p>
+														<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" autocomplete="url" /></p>
+														<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+														<p class="form-submit">
+															<input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='77' id='comment_post_ID' />
+															<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+														</p>
+													</form>
+												</div><!-- #respond -->
+
+											</section><!-- .comments-area -->
+
 										</div>
-										<div class="elementor-post__excerpt">
-											<p>Join Contributor Interested to share your recipes? Netus tempor ex feugiat mauris consectetuer primis aliquet tempus viverra purus. Lacinia arcu habitant vehicula condimentum cras venenatis</p>
-										</div>
-
-										<a class="elementor-post__read-more" href="/Home/JoinContributor">
-											Read More 🡥
-										</a>
-
-									</div>
-								</article>
-								<article class="elementor-post elementor-grid-item post-983 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
-									<a class="elementor-post__thumbnail__link" href="/Home/SingleRecipe">
-										<div class="elementor-post__thumbnail"><img width="1600" height="3240" src="~/wp-content/uploads/sites/2/2022/04/Single-Recipes.jpg" class="attachment-full size-full wp-image-1319" alt="" loading="lazy" /></div>
-									</a>
-									<div class="elementor-post__text">
-										<h3 class="elementor-post__title">
-											<a href="/Home/SingleRecipe">
-												Single Recipe
-											</a>
-										</h3>
-										<div class="elementor-post__meta-data">
-											<span class="elementor-post-author">
-												rocken
-											</span>
-											<span class="elementor-post-date">
-												April 11, 2022
-											</span>
-										</div>
-										<div class="elementor-post__excerpt">
-											<p>Drink Recipes The Real Mojito 187 Reviews &#9733;&#9733;&#9733;&#9733;&#9733; 4.5/5 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar</p>
-										</div>
-
-										<a class="elementor-post__read-more" href="/Home/SingleRecipe">
-											Read More 🡥
-										</a>
-
-									</div>
-								</article>
-								<article class="elementor-post elementor-grid-item post-713 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
-									<a class="elementor-post__thumbnail__link" href="/Home/RecipeList">
-										<div class="elementor-post__thumbnail"><img width="1080" height="3825" src="~/wp-content/uploads/sites/2/2022/04/Recipe-List.jpg" class="attachment-full size-full wp-image-1317" alt="" loading="lazy" /></div>
-									</a>
-									<div class="elementor-post__text">
-										<h3 class="elementor-post__title">
-											<a href="/Home/RecipeList">
-												Recipes List
-											</a>
-										</h3>
-										<div class="elementor-post__meta-data">
-											<span class="elementor-post-author">
-												rocken
-											</span>
-											<span class="elementor-post-date">
-												April 11, 2022
-											</span>
-										</div>
-										<div class="elementor-post__excerpt">
-											<p>What are your favorite food? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Popular search</p>
-										</div>
-
-										<a class="elementor-post__read-more" href="/Home/RecipeList">
-											Read More 🡥
-										</a>
-
-									</div>
-								</article>
-								<article class="elementor-post elementor-grid-item post-569 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
-									<a class="elementor-post__thumbnail__link" href="/Home/AboutUs">
-										<div class="elementor-post__thumbnail"><img width="1600" height="4635" src="~/wp-content/uploads/sites/2/2022/04/About-Us.jpg" class="attachment-full size-full wp-image-1307" alt="" loading="lazy" /></div>
-									</a>
-									<div class="elementor-post__text">
-										<h3 class="elementor-post__title">
-											<a href="/Home/AboutUs">
-												About Us
-											</a>
-										</h3>
-										<div class="elementor-post__meta-data">
-											<span class="elementor-post-author">
-												rocken
-											</span>
-											<span class="elementor-post-date">
-												April 10, 2022
-											</span>
-										</div>
-										<div class="elementor-post__excerpt">
-											<p>Beyond the boundaries of taste. “Ask not what you can do for your country. Ask what’s for lunch.” &#8211; Orson Welles Who we are One</p>
-										</div>
-
-										<a class="elementor-post__read-more" href="/Home/AboutUs">
-											Read More 🡥
-										</a>
-
-									</div>
-								</article>
-								<article class="elementor-post elementor-grid-item post-479 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
-									<a class="elementor-post__thumbnail__link" href="/Home/PricingPlan">
-										<div class="elementor-post__thumbnail"><img width="1600" height="3189" src="~/wp-content/uploads/sites/2/2022/04/Pricing-Plan.jpg" class="attachment-full size-full wp-image-1316" alt="" loading="lazy" /></div>
-									</a>
-									<div class="elementor-post__text">
-										<h3 class="elementor-post__title">
-											<a href="/Home/PricingPlan">
-												Pricing Plan
-											</a>
-										</h3>
-										<div class="elementor-post__meta-data">
-											<span class="elementor-post-author">
-												rocken
-											</span>
-											<span class="elementor-post-date">
-												April 10, 2022
-											</span>
-										</div>
-										<div class="elementor-post__excerpt">
-											<p>Pricing plan Choose your plan &#038; Try for free with a 30-day trial Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus</p>
-										</div>
-
-										<a class="elementor-post__read-more" href="/Home/PricingPlan">
-											Read More 🡥
-										</a>
-
-									</div>
-								</article>
-								<article class="elementor-post elementor-grid-item post-371 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
-									<a class="elementor-post__thumbnail__link" href="/Home/Team">
-										<div class="elementor-post__thumbnail"><img width="1600" height="2702" src="~/wp-content/uploads/sites/2/2022/04/Team.jpg" class="attachment-full size-full wp-image-1320" alt="" loading="lazy" /></div>
-									</a>
-									<div class="elementor-post__text">
-										<h3 class="elementor-post__title">
-											<a href="/Home/Team">
-												Team
-											</a>
-										</h3>
-										<div class="elementor-post__meta-data">
-											<span class="elementor-post-author">
-												rocken
-											</span>
-											<span class="elementor-post-date">
-												April 10, 2022
-											</span>
-										</div>
-										<div class="elementor-post__excerpt">
-											<p>If you can laugh together, you can work together. Meet our team It takes two flints to make a fire. Reuben Palmer Founder Danielle George</p>
-										</div>
-
-										<a class="elementor-post__read-more" href="/Home/Team">
-											Read More 🡥
-										</a>
-
-									</div>
-								</article>
-								<article class="elementor-post elementor-grid-item post-254 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
-									<a class="elementor-post__thumbnail__link" href="/Home/FAQ">
-										<div class="elementor-post__thumbnail"><img width="1600" height="3626" src="~/wp-content/uploads/sites/2/2022/04/FAQ.jpg" class="attachment-full size-full wp-image-1311" alt="" loading="lazy" /></div>
-									</a>
-									<div class="elementor-post__text">
-										<h3 class="elementor-post__title">
-											<a href="/Home/FAQ">
-												FAQ
-											</a>
-										</h3>
-										<div class="elementor-post__meta-data">
-											<span class="elementor-post-author">
-												rocken
-											</span>
-											<span class="elementor-post-date">
-												April 10, 2022
-											</span>
-										</div>
-										<div class="elementor-post__excerpt">
-											<p>Frequently Asked Questions We&#8217;re here to help you Basic Knowledge Vitae finibus tincidunt dictum integer elit facilisis. Posuere phasellus auctor tortor sodales mauris aenean suspendisse</p>
-										</div>
-
-										<a class="elementor-post__read-more" href="/Home/FAQ">
-											Read More 🡥
-										</a>
-
-									</div>
-								</article>
-								<article class="elementor-post elementor-grid-item post-141 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
-									<a class="elementor-post__thumbnail__link" href="/Home/ContactUs">
-										<div class="elementor-post__thumbnail"><img width="1600" height="3234" src="~/wp-content/uploads/sites/2/2022/04/Contact-Us.jpg" class="attachment-full size-full wp-image-1309" alt="" loading="lazy" /></div>
-									</a>
-									<div class="elementor-post__text">
-										<h3 class="elementor-post__title">
-											<a href="/Home/ContactUs">
-												Contact Us
-											</a>
-										</h3>
-										<div class="elementor-post__meta-data">
-											<span class="elementor-post-author">
-												rocken
-											</span>
-											<span class="elementor-post-date">
-												April 9, 2022
-											</span>
-										</div>
-										<div class="elementor-post__excerpt">
-											<p>We would love to hear from you. Send us a message Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper</p>
-										</div>
-
-										<a class="elementor-post__read-more" href="/Home/ContactUs">
-											Read More 🡥
-										</a>
-
-									</div>
-								</article>
+									</article>
+								}
 							</div>
 
 						</div>

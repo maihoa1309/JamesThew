@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Project3.Models;
 using Microsoft.AspNetCore.Identity;
@@ -88,9 +88,9 @@ namespace Project3.Controllers
 		{
 			return View();
 		}
-		public IActionResult Category()
+		public IActionResult Category(int id)
 		{
-			return View();
+			return View(id);
 		}
         [HttpPost]
         

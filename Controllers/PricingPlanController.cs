@@ -1,4 +1,4 @@
-﻿//using Microsoft.AspNetCore.Http;
+//using Microsoft.AspNetCore.Http;
 //using Microsoft.AspNetCore.Identity;
 //using Microsoft.AspNetCore.Mvc;
 //using Microsoft.Extensions.Configuration;
@@ -62,7 +62,7 @@
 //                //kiểm tra xem người dùng còn đã đăng kí bh chưa
 //                if (abcd != null)
 //                { //đã từng đăng kí
-                    
+
 //                    if (DateTime.Now > abcd)//khi người dùng hết hạn
 //                    {
 //                        var register = new Register
@@ -119,7 +119,7 @@
 //                        cancel_url = Url.Action("PaymentCancelled", "PricingPlan", null, Request.Scheme)
 //                    }
 //                });
-                
+
 //                //chuyển hướng sau khi bắt đầu thanh toán
 //                var redirectUrl = payment.links.Find(x => x.rel == "approval_url").href;
 //                return Redirect(redirectUrl);
@@ -128,7 +128,7 @@
 //            {//chưa đăng nhập
 //                return Redirect("/Identity/Account/Login");
 //            }
-            
+
 //		}
 
 //		public IActionResult PaymentSuccess(string paymentId, string token, string PayerID)
@@ -162,7 +162,7 @@
 //		public IActionResult PaymentCancelled()
 //		{
 //            // Xử lý khi người dùng hủy thanh toán
-            
+
 //            TempData["WelcomeMessage"] = "PaymentCancelled";
 //            return View("../Home/PricingPlan");
 
