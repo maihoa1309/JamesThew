@@ -35,12 +35,16 @@ namespace Project3.Controllers
         {
             return View();
         }
-		public IActionResult User()
+		public IActionResult InforUser(string email)
 		{
-			return View();
+			return View(email);
 		}
+        public IActionResult UpdateUser()
+        {
+            return View();
+        }
 
-		public IActionResult Privacy()
+        public IActionResult Privacy()
 		{
 			return View();
 		}
@@ -105,9 +109,9 @@ namespace Project3.Controllers
 
 			return View();
 		}
-		public IActionResult Category()
+		public IActionResult Category(int id)
 		{
-			return View();
+			return View(id);
 		}
         [HttpPost]
         
@@ -116,5 +120,10 @@ namespace Project3.Controllers
 		{
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 		}
+		public IActionResult AddOrUpdateRecipe(int id)
+		{
+			return View(id);
+		}
 	}
+
 }

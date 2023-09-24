@@ -1,0 +1,140 @@
+﻿@using Project3.Repository;
+@inject IUserRepository userRepository;
+@{
+	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="content-body ">
+	<div class="container-fluid">
+		<div class="form-head d-flex mb-3 mb-lg-5 align-items-start">
+			<div class="me-auto d-none d-lg-block">
+				<a class="text-primary d-flex align-items-center mb-3 font-w500" href="/Admin/Index">
+					<svg class="me-3" width="24" height="12" viewBox="0 0 24 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0.274969 5.14888C0.27525 5.1486 0.275484 5.14827 0.275812 5.14799L5.17444 0.272997C5.54142 -0.0922061 6.135 -0.090847 6.5003 0.276184C6.86555 0.643168 6.86414 1.23675 6.49716 1.60199L3.20822 4.87499H23.0625C23.5803 4.87499 24 5.29471 24 5.81249C24 6.33027 23.5803 6.74999 23.0625 6.74999H3.20827L6.49711 10.023C6.86409 10.3882 6.8655 10.9818 6.50025 11.3488C6.13495 11.7159 5.54133 11.7171 5.17439 11.352L0.275764 6.47699C0.275483 6.47671 0.27525 6.47638 0.274921 6.4761C-0.0922505 6.10963 -0.0910778 5.51413 0.274969 5.14888Z" fill="#EA4989" />
+					</svg>
+					Back
+				</a>
+				<a class="mb-0 text-secondary fs-18 font-w500" href="#"> Register Manage </a>
+				
+			</div>
+			<div class="input-group search-area ms-auto d-md-flex align-items-center d-inline-flex">
+				<input type="text" class="form-control" placeholder="Search here" id="search">
+				<div class="input-group-append">
+					<a href="javascript:void" class="input-group-text"><i class="fa-solid fa-magnifying-glass" id="btnSearch"></i></a>
+				</div>
+			</div>
+		</div>
+        <div class="card">
+			<div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-responsive-md">
+                        <thead>
+                            <tr>
+                                <th style="width:80px;">#</th>
+                                <th>NAME</th>
+                                <th>EXPIRED DATE</th>
+                                <th>TYPE</th>
+                                <th>STATUS</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong class="text-black">1</strong></td>
+                                <td>Huu Tho</td>
+                                <td>2023-07-31</td>
+                                <td>Month</td>
+                                <td><span class="badge light badge-danger">Expired</span></td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-danger light sharp" data-bs-toggle="dropdown">
+                                            <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24" /><circle fill="#000000" cx="5" cy="12" r="2" /><circle fill="#000000" cx="12" cy="12" r="2" /><circle fill="#000000" cx="19" cy="12" r="2" /></g></svg>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong class="text-black">2</strong></td>
+                                <td>Huu Tho</td>
+                                <td>2023-09-12</td>
+                                <td>Month</td>
+                                <td><span class="badge light badge-danger">Expired</span></td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-danger light sharp" data-bs-toggle="dropdown">
+                                            <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24" /><circle fill="#000000" cx="5" cy="12" r="2" /><circle fill="#000000" cx="12" cy="12" r="2" /><circle fill="#000000" cx="19" cy="12" r="2" /></g></svg>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong class="text-black">3</strong></td>
+                                <td>Huu Tho</td>
+                                <td>2023-10-05</td>
+                                <td>Month</td>
+                                <td><span class="badge light badge-success">Active</span></td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-success light sharp" data-bs-toggle="dropdown">
+                                            <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24" /><circle fill="#000000" cx="5" cy="12" r="2" /><circle fill="#000000" cx="12" cy="12" r="2" /><circle fill="#000000" cx="19" cy="12" r="2" /></g></svg>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong class="text-black">5</strong></td>
+                                <td>Mai Hoa</td>
+                                <td>2023-11-25</td>
+                                <td>Year</td>
+                                <td><span class="badge light badge-success">Active</span></td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-success light sharp" data-bs-toggle="dropdown">
+                                            <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24" /><circle fill="#000000" cx="5" cy="12" r="2" /><circle fill="#000000" cx="12" cy="12" r="2" /><circle fill="#000000" cx="19" cy="12" r="2" /></g></svg>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong class="text-black">6</strong></td>
+                                <td>Tran Xuan Tien</td>
+                                <td>2023-10-31</td>
+                                <td>Month</td>
+                                <td><span class="badge light badge-success">Active</span></td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-success light sharp" data-bs-toggle="dropdown">
+                                            <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24" /><circle fill="#000000" cx="5" cy="12" r="2" /><circle fill="#000000" cx="12" cy="12" r="2" /><circle fill="#000000" cx="19" cy="12" r="2" /></g></svg>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+		</div>
+       
+
+	</div>
+</div>
+

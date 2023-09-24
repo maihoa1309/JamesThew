@@ -1,0 +1,73 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layoutweb.cshtml";
+}
+@using Project3.Repository
+@inject IUserRepository userRepository;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<CustomUser> SignInManager
+@inject UserManager<CustomUser> UserManager
+
+@{
+    var email = @User.Identity.Name;
+    Layout = "~/Views/Shared/_Layoutweb.cshtml";
+    var in4 = await userRepository.FindByEmailAsync(email);
+}
+@section css{
+    <link rel="stylesheet" href="~/css/site.css" />
+}
+<div class="container">
+    <div class="info-user">
+        <h3>Update InforUser</h3>
+        <div>
+
+            <span>
+                Fullname <span style=" color: #ff2424">*</span>
+            </span>
+            <input type="text" name="Name" placeholder="Enter FullName" value="@in4.Name"/>
+        </div>
+
+        <div>
+            <span>
+                Gender<span style=" color: #ff2424">*</span>
+            </span>
+            <input type="text" name="Gender" placeholder="Enter Gender" value="@in4.Gender"/>
+        </div>
+        <div>
+            <span>
+                Email<span style=" color: #ff2424">*</span>
+            </span>
+            <input type="text" name="Email" placeholder="Enter Email" value="@in4.Email"/>
+        </div>
+        <div>
+            <span>
+                Age<span style=" color: #ff2424">*</span>
+            </span>
+            <input type="number" name="Age" placeholder="Enter Age" value="@in4.Age"/> 
+        </div>
+        <div class="btn-save">
+            <button>Save</button>
+        </div>
+    </div>
+    <div class="img-infor">
+        <div class="left-infor">
+            <div class="img-user">
+                <img style="width: 80px; height: 80px"
+                     src="/@in4.Avatar"
+                     alt="" />
+                <span>
+                    <i class="fa-solid fa-camera"></i>
+                </span>
+            </div>
+            <div>
+                <div>
+                    <p>Helloo,</p>
+                    <h2 style="font-size:15px">@in4.Name</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Script{
+    <script src="~/js/controller/user.js"></script>
+}

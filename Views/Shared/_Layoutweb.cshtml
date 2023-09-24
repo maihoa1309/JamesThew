@@ -1,6 +1,10 @@
 ﻿@{
     ViewData["UrlImage"] = "\\wwwroot\\images\\nav";
 }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<CustomUser> SignInManager
+@inject UserManager<CustomUser> UserManager
+
 <!doctype html>
 <html lang="en-US">
 
@@ -13,7 +17,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
-    <title>Take Of Recipe</title>
+    <title>Taste Of Recipe</title>
     <meta name='robots' content='max-image-preview:large' />
     <link rel="alternate" type="application/rss+xml" href="~/feed/index.html" />
     <link rel="stylesheet" href="~/css/site.css"  />
@@ -1056,23 +1060,35 @@
 
                                     <div class="item-user">
                                         <ul class="ul-user">
-
-                                            <li>
-
-                                                <a asp-area="Identity" asp-page="/Account/Login">
-                                                    Đăng nhập
-                                                </a>
-                                            </li>
-                                            <li><a asp-area="Identity" asp-page="/Account/Register">Đăng kí</a> </li>
-
-                                            <li>
-
-                                                <a asp-area="User" asp-page="/Home/User">
-                                                   User Profile
-                                                </a>
-                                            </li>
+                                            @if (SignInManager.IsSignedIn(User))
+                                            {
+                                                <li>
+                                                    <a asp-controller="Home" asp-action="InforUser" asp-route-id="@User.Identity.Name">
+                                                        User Profile
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("HomePage", "Home")" >
+                                                        Đăng xuất
+                                                    </a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li>
+                                                    <a asp-area="Identity" asp-page="/Account/Login">
+                                                        Đăng nhập
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="Identity" asp-page="/Account/Register">
+                                                        Đăng kí
+                                                    </a>
+                                                </li>
+                                            }
                                         </ul>
                                     </div>
+
                                 </div>
                             </div>
                         </section>
@@ -1133,7 +1149,13 @@
 
                                                     .elementor-widget-text-editor .elementor-drop-cap-letter {
                                                         display: inline-block
-                                                    }</style>				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                                                    }</style>
+                                                <p>
+                                                   Welcome to Taste of Recipe, where culinary inspiration awaits. Explore a world of flavors, 
+                                                   discover mouthwatering recipes, and embark on a culinary journey like no other.
+                                                   Join our passionate community of food lovers, share your culinary creations, and learn from the best. 
+                                                    Happy cooking!
+                                                </p>
                                             </div>
                                         </div>
                                     </div>

@@ -17,54 +17,54 @@
     }
 }
 @section Styles{
-    <style>
-        .select2-selection--single {
-            height: 2.5rem !important;
-        }
-
-        .select2-item {
-            width: 100px
-        }
-
-        .recipe-template {
-            display: none
-        }
-
-        #image-container {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-            #image-container div {
-            position: relative;
-            margin: 10px;
-        }
-
-        #image-container img {
-            width: 100px;
-            height: 100px;
-            /*width: 100%;*/
-            -webkit-transition: all 0.5s;
-            -ms-transition: all 0.5s;
-            transition: all 0.5s;
-        }
-
-        #image-container button {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 5px;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 50%; /* Thêm thuộc tính border-radius để làm tròn nút */
-            width: 24px; /* Đặt kích thước chiều rộng */
-            height: 24px; /* Đặt kích thước chiều cao */
-            display: flex; /* Sử dụng flexbox để căn giữa */
-            justify-content: center; /* Căn giữa theo chiều ngang */
-            align-items: center;
+        <style>
+            .select2-selection--single {
+                height: 2.5rem !important;
             }
-    </style>
+
+            .select2-item {
+                width: 100px
+            }
+
+            .recipe-template {
+                display: none
+            }
+
+            #image-container {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+                #image-container div {
+                position: relative;
+                margin: 10px;
+            }
+
+            #image-container img {
+                width: 100px;
+                height: 100px;
+                /*width: 100%;*/
+                -webkit-transition: all 0.5s;
+                -ms-transition: all 0.5s;
+                transition: all 0.5s;
+            }
+
+            #image-container button {
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 5px;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 50%; /* Thêm thuộc tính border-radius để làm tròn nút */
+                width: 24px; /* Đặt kích thước chiều rộng */
+                height: 24px; /* Đặt kích thước chiều cao */
+                display: flex; /* Sử dụng flexbox để căn giữa */
+                justify-content: center; /* Căn giữa theo chiều ngang */
+                align-items: center;
+                }
+        </style>
 }
 <div class="content-body ">
     <!-- row -->
@@ -134,7 +134,7 @@
                                 <select class="default-select form-control wide  select2-item " name="category" id="category">
                                     @foreach (var cate in categories)
                                     {
-                                        <!option @(recipeDetail.Recipe.CategoryId == cate.Id ? "selected":"") value="@cate.Id">@cate.Name</!option>
+                                            <!option @(recipeDetail.Recipe.CategoryId == cate.Id ? "selected":"") value="@cate.Id">@cate.Name</!option>
                                     }
                                 </select>
                             </div>
@@ -160,7 +160,7 @@
                                 var splited = recipeDetail.Recipe.Img.Split(',');
                                 foreach (var item in splited)
                                 {
-                                    <div><img src="/@item"><button type="button">x</button></div>
+                                            <div><img src="/@item"><button type="button">x</button></div>
                                 }
                             }
 
@@ -200,7 +200,7 @@
                                                 <select class="default-select form-control wide btn select2-item" name="ingredient">
                                                     @foreach (var ingre in ingredients)
                                                     {
-                                                        <option value="@ingre.Id">@ingre.Name</option>
+                                                            <option value="@ingre.Id">@ingre.Name</option>
                                                     }
                                                 </select>
                                             </div>
@@ -220,26 +220,57 @@
                             {
                                 foreach (var item in recipeDetail.Ingredients)
                                 {
+                                            <div class="col-md-8 recipe-item">
+                                                <div class="d-flex">
+                                                    <div class="input-group mb-3 col-md-8">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <input type="text" class="form-control quantity" placeholder="Enter quantity and unit" name="quantity" value="@item.Quantity">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <select class="default-select form-control wide btn select2-item" name="ingredient">
+                                                            @foreach (var ingre in ingredients)
+                                                            {
+                                                                            <!option value="@ingre.Id" @(item.IngredientId == ingre.Id ? "selected" : "")>@ingre.Name</!option>
+                                                            }
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="offset-md-2 col-md-4">
+                                                        <button type="button" class="btn btn-rounded btn-danger btn-add-ingre btn-delete-receip">
+                                                            <span class="btn-icon-start text-danger">
+                                                                <i class="fa fa-times color-infor"></i>
+                                                            </span>Delete
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                }
+                            }
+                            @if (Model < 0)
+                            {
                                     <div class="col-md-8 recipe-item">
                                         <div class="d-flex">
                                             <div class="input-group mb-3 col-md-8">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <input type="text" class="form-control quantity" placeholder="Enter quantity and unit" name="quantity" value="@item.Quantity">
+                                                        <input type="text" class="form-control quantity" placeholder="Enter quantity and unit" name="quantity">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <select class="default-select form-control wide btn select2-item" name="ingredient">
-                                                            @foreach (var ingre in ingredients)
-                                                            {
-                                                                <!option value="@ingre.Id" @(item.IngredientId == ingre.Id ? "selected" : "")>@ingre.Name</!option>
-                                                            }
+                                                        @foreach (var ingre in ingredients)
+                                                        {
+                                                                    <option value="@ingre.Id">@ingre.Name</option>
+                                                        }
                                                         </select>
                                                     </div>
                                                 </div>
 
                                             </div>
                                             <div class="offset-md-2 col-md-4">
-                                                <button type="button" class="btn btn-rounded btn-danger btn-add-ingre btn-delete-receip">
+                                                <button type="button" class="btn btn-rounded btn-danger btn-delete-receip">
                                                     <span class="btn-icon-start text-danger">
                                                         <i class="fa fa-times color-infor"></i>
                                                     </span>Delete
@@ -247,37 +278,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                }
-                            }
-                            @if(Model < 0)
-                            {
-                                <div class="col-md-8 recipe-item">
-                                    <div class="d-flex">
-                                        <div class="input-group mb-3 col-md-8">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <input type="text" class="form-control quantity" placeholder="Enter quantity and unit" name="quantity">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <select class="default-select form-control wide btn select2-item" name="ingredient">
-                                                        @foreach (var ingre in ingredients)
-                                                        {
-                                                            <option value="@ingre.Id">@ingre.Name</option>
-                                                        }
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="offset-md-2 col-md-4">
-                                            <button type="button" class="btn btn-rounded btn-danger btn-delete-receip">
-                                                <span class="btn-icon-start text-danger">
-                                                    <i class="fa fa-times color-infor"></i>
-                                                </span>Delete
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
                             }
                         </div>
                         <div>
@@ -289,17 +289,17 @@
                         </div>
                         @if (Model > 0)
                         {
-                            <button type="submit" class="btn btn-primary save-recipe" style="float: right;">Update</button>
-                            
-                            <button type="button" class="btn btn-danger pl-10">
-                                <a href="@Url.Action("DeleteRecipe","Recipe", new {id = Model})">Delete  </a>
-                            </button>
+                                <button type="submit" class="btn btn-primary save-recipe" style="float: right;">Update</button>
 
-                          
+                                <button type="button" class="btn btn-danger pl-10">
+                                    <a href="@Url.Action("DeleteRecipe","Recipe", new {id = Model})">Delete  </a>
+                                </button>
+
+
                         }
                         else
                         {
-                            <button type="submit" class="btn btn-primary save-recipe" style="float: right;">Add</button>
+                                <button type="submit" class="btn btn-primary save-recipe" style="float: right;">Add</button>
                         }
                     </form>
                 </div>
@@ -308,7 +308,7 @@
     </div>
 </div>
 @section Script{
-    <script src="~/js/controller/add-recipe.js"></script>
+        <script src="~/js/controller/add-recipe.js"></script>
 }
 
 

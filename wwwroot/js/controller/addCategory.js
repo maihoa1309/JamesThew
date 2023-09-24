@@ -11,8 +11,11 @@
             const files = $(this)[0].files;
             const imageContainer = document.getElementById('image-container');
 
-            for (let i = 0; i < files.length; i++) {
-                const file = files[i];
+            // Xóa các ảnh hiện có trong imageContainer (nếu có)
+            imageContainer.innerHTML = '';
+
+            if (files.length > 0) {
+                const file = files[0];
                 const reader = new FileReader();
 
                 reader.onload = function (e) {
@@ -24,7 +27,7 @@
                     closeButton.setAttribute('class', 'btn btn-danger');
                     closeButton.innerHTML = '<i class="fas fa-times"></i>'
                     closeButton.onclick = function () {
-                        imageContainer.remove(image);
+                        div.remove();
                     };
 
                     const div = document.createElement('div');
@@ -32,14 +35,14 @@
                     div.appendChild(closeButton);
 
                     imageContainer.appendChild(div);
-                    addCategory.RegisterEvent();
+                    updateUser.RegisterEvent();
                 };
 
                 reader.readAsDataURL(file);
             }
-        })
+        });
 
-        $('#deleteImg').off('click').on('click', function () {
+        $('#image-container button').off('click').on('click', function () {
             $(this).parent().remove();
             addCategory.RegisterEvent();
         })
@@ -63,7 +66,6 @@
             contentType: 'application/json',
             success: function (response) {
                 console.log(data);
-                console.log("yeah");
             },
             error: function (xhr, status, error) {
                 console.log(xhr);

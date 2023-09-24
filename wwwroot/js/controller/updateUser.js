@@ -1,11 +1,11 @@
-﻿var addContest = {
+﻿var updateUser = {
     Init: function () {
-        addContest.RegisterEvent();
+        updateUser.RegisterEvent();
     },
     RegisterEvent: function () {
-        $(".saveContest").off('submit').on('submit', function (event) {
+        $(".saveCategory").off('submit').on('submit', function (event) {
             event.preventDefault();
-            addContest.SaveContest();
+            updateUser.SaveUser();
         }),
         $('#formFile').off('change').on('change', function () {
             const files = $(this)[0].files;
@@ -42,38 +42,31 @@
             }
         });
 
-        $('#deleteImg').off('click').on('click', function () {
+        $('#image-container button').off('click').on('click', function () {
             $(this).parent().remove();
-            addContest.RegisterEvent();
+            updateUser.RegisterEvent();
         })
 
     },
-    SaveContest: function () {
-        if (($('#title').val() === "")
-            || ($('#description').val() === "")) {
-            Swal.fire("Oops...", "You must fill all information to add new contest!", "error");
+    SaveUser: function () {
+        if (($('#name').val() === "") || ($('#gender').val() === "") || ($('#age').val() === "")) {
+            Swal.fire("Oops...", "You must fill all information to save user!", "error");
             return;
         }
-        if ((moment($('#endDate').val(), 'DD MMMM, YYYY')).isBefore(moment($('#startDate').val(), 'DD MMMM, YYYY'))) {
-            Swal.fire("Oops...", "End date must after start date!", "error");
-            return;
-        } 
+
         const data = {
-            Id: parseInt($("#_id").val()),
-            Title: $('#title').val(),
-            Description: $('#description').val(),
-            CategoryId: parseInt($('#single-select').val()),
-            StartDate: moment($('#startDate').val(), 'DD MMMM, YYYY'),
-            EndDate: moment($('#endDate').val(), 'DD MMMM, YYYY'),
-            Img : $('#image-container img').attr('src')
+            Id: $("#_id").val(),
+            Gender: $('#gender').val(),
+            Name: $('#name').val(),
+            Age: parseInt($('#age').val()),
+            Avatar: $('#image-container img').attr('src')
         };
         $.ajax({
-            url: 'https://localhost:7034/Contest/SaveContest',
+            url: 'https://localhost:7034/CustomUser/SaveUser',
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
             success: function (response) {
-                console.log(data);
                 console.log("yeah");
             },
             error: function (xhr, status, error) {
@@ -81,8 +74,8 @@
                 console.log(error);
             }
         });
-        addContest.RegisterEvent();
+        updateUser.RegisterEvent();
     }
 }
 
-addContest.Init();
+updateUser.Init();
