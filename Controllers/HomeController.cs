@@ -30,12 +30,16 @@ namespace Project3.Controllers
         {
             return View();
         }
-		public IActionResult User()
+		public IActionResult UpdateUser()
 		{
 			return View();
 		}
+        public IActionResult InforUser()
+        {
+            return View();
+        }
 
-		public IActionResult Privacy()
+        public IActionResult Privacy()
 		{
 			return View();
 		}
@@ -89,6 +93,10 @@ namespace Project3.Controllers
 			return View();
 		}
 		public IActionResult Category()
+		{
+			return View();
+		}
+		public IActionResult Tips()
 		{
 			return View();
 		}
