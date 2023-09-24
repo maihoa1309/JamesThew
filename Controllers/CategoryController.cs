@@ -18,13 +18,9 @@ namespace Project3.Controllers
 
         public async Task<IActionResult> SaveCategory([FromBody] Category category)
         {
-            _categoryRepository.SaveCategoryAsync(category);
+            await _categoryRepository.SaveCategoryAsync(category);
             return Json(category);
         }
-
-        // Các phương thức cụ thể cho CategoryController (nếu cần)
-
-        // Ví dụ phương thức tùy chỉnh
 
     }
 }
