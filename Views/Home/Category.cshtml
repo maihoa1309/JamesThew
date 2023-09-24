@@ -10,7 +10,8 @@
     List<RecipeDetailDTO> allrecipe = await recipeRepository.GetRecipesByCategoryId(Model);
     var category = categoryRepository.FindById(Model);
     var i = 0;
-
+    int itemsPerSection = 4;
+    int sectionCount = (int)Math.Ceiling((double)allrecipe.Count / itemsPerSection);
 }
 <div data-elementor-type="wp-post" data-elementor-id="1220" class="elementor elementor-1220">
     <section class="elementor-section elementor-top-section elementor-element elementor-element-e3dc6de elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="e3dc6de" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;slideshow&quot;,&quot;background_slideshow_gallery&quot;:[{&quot;id&quot;:1235,&quot;url&quot;:&quot;http:\/\/point.moxcreative.com\/yumma\/wp-content\/uploads\/sites\/2\/2022\/04\/concept-of-tasty-food-with-bell-pepper-on-white-background.jpg&quot;},{&quot;id&quot;:1233,&quot;url&quot;:&quot;http:\/\/point.moxcreative.com\/yumma\/wp-content\/uploads\/sites\/2\/2022\/04\/flat-lay-with-takeaway-food-on-wooden-background-food-delivery.jpg&quot;},{&quot;id&quot;:1231,&quot;url&quot;:&quot;http:\/\/point.moxcreative.com\/yumma\/wp-content\/uploads\/sites\/2\/2022\/04\/chinese-food-white-background.jpg&quot;}],&quot;background_slideshow_lazyload&quot;:&quot;yes&quot;,&quot;background_slideshow_ken_burns&quot;:&quot;yes&quot;,&quot;background_slideshow_loop&quot;:&quot;yes&quot;,&quot;background_slideshow_slide_duration&quot;:5000,&quot;background_slideshow_slide_transition&quot;:&quot;fade&quot;,&quot;background_slideshow_transition_duration&quot;:500,&quot;background_slideshow_ken_burns_zoom_direction&quot;:&quot;in&quot;}">
@@ -101,25 +102,26 @@
                             </div>
                         </div>
                     </section>
-                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-8e637d0 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="8e637d0" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeInRight&quot;}">
-                        <div class="elementor-container elementor-column-gap-default" style="margin-bottom:50px">
-                            @for (int index = 0; index < allrecipe.Count; index++)
-                            {
-                                var recipe = allrecipe[index];
-                                @await Component.InvokeAsync("RecipeByCategory", new { item = recipe })
+                   
 
-                                @if ((index + 1) % 4 == 0)
+                    @for (int sectionIndex = 0; sectionIndex < sectionCount; sectionIndex++)
+                    {
+                        <section class="elementor-section elementor-inner-section elementor-element elementor-element-8e637d0 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="8e637d0" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeInRight&quot;}">
+                            <div class="elementor-container elementor-column-gap-default" style="margin-bottom:50px">
+                                @for (int itemIndex = sectionIndex * itemsPerSection; itemIndex < Math.Min((sectionIndex + 1) * itemsPerSection, allrecipe.Count); itemIndex++)
                                 {
-                                    <div style="clear:both;"></div>
+                                    var recipe = allrecipe[itemIndex];
+                                    @await Component.InvokeAsync("RecipeByCategory", new { item = recipe })
                                 }
-                            }
-                        </div>
-                        
-                    </section>
+                            </div>
+                        </section>
+                    }
+
                 </div>
             </div>
         </div>
     </section>
+
 
     <section class="elementor-section elementor-top-section elementor-element elementor-element-e0fd804 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="e0fd804" data-element_type="section">
         <div class="elementor-container elementor-column-gap-default ">
