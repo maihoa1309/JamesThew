@@ -1,6 +1,10 @@
 ﻿@{
     ViewData["UrlImage"] = "\\wwwroot\\images\\nav";
 }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<CustomUser> SignInManager
+@inject UserManager<CustomUser> UserManager
+
 <!doctype html>
 <html lang="en-US">
 
@@ -1056,23 +1060,35 @@
 
                                     <div class="item-user">
                                         <ul class="ul-user">
-
-                                            <li>
-
-                                                <a asp-area="Identity" asp-page="/Account/Login">
-                                                    Đăng nhập
-                                                </a>
-                                            </li>
-                                            <li><a asp-area="Identity" asp-page="/Account/Register">Đăng kí</a> </li>
-
-                                            <li>
-
-                                                <a asp-area="User" asp-page="/Home/User">
-                                                   User Profile
-                                                </a>
-                                            </li>
+                                            @if (SignInManager.IsSignedIn(User))
+                                            {
+                                                <li>
+                                                    <a asp-controller="Home" asp-action="InforUser" asp-route-id="@User.Identity.Name">
+                                                        User Profile
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("HomePage", "Home")" >
+                                                        Đăng xuất
+                                                    </a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li>
+                                                    <a asp-area="Identity" asp-page="/Account/Login">
+                                                        Đăng nhập
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="Identity" asp-page="/Account/Register">
+                                                        Đăng kí
+                                                    </a>
+                                                </li>
+                                            }
                                         </ul>
                                     </div>
+
                                 </div>
                             </div>
                         </section>

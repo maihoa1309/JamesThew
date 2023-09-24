@@ -123,7 +123,7 @@ namespace Project3.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        return RedirectToAction("Index", "");
+                        return RedirectToAction("HomePage", "");
                     }
                     //return LocalRedirect(returnUrl);
                 }
@@ -131,9 +131,7 @@ namespace Project3.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-
                     // Kiểm tra vai trò của người dùng và chuyển hướng tương ứng
-
                 }
                 if (result.RequiresTwoFactor)
                 {

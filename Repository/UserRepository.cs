@@ -12,7 +12,9 @@ namespace Project3.Repository
 		Task<bool> DeleteAsync(string id);
 		Task<CustomUser> FindByIdAsync(string id);
 		Task<bool> UpdateUserAsync(CustomUser req);
-	}
+		Task<CustomUser> FindByEmailAsync(string email);
+
+    }
 	public class UserRepository : IUserRepository
 	{
 		private readonly IWebHostEnvironment _hostingEnvironment;
@@ -67,7 +69,14 @@ namespace Project3.Repository
 			await _context.SaveChangesAsync();
 			return true;
 		}
-		private string UploadImageFromBase64(string imgsBase64)
+	
+        public async Task<CustomUser> FindByEmailAsync(string email)
+        {
+            var infor = await _userManager.FindByEmailAsync(email);
+			return infor;
+        }
+
+        private string UploadImageFromBase64(string imgsBase64)
 		{
 			string result = "";
 			// Lấy đường dẫn tới thư mục wwwroot/UploadImg

@@ -30,9 +30,9 @@ namespace Project3.Controllers
         {
             return View();
         }
-		public IActionResult InforUser()
+		public IActionResult InforUser(string email)
 		{
-			return View();
+			return View(email);
 		}
         public IActionResult UpdateUser()
         {
