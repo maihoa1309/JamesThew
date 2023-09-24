@@ -70,5 +70,13 @@ namespace Project3.Controllers
         {
             return View((object)id);
         }
+        public IActionResult Tips()
+        {
+            return View();
+        }
+        public IActionResult RegisterManage()
+        {
+            return View();
+        }
 	}
 }
