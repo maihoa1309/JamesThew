@@ -12,5 +12,6 @@ namespace Project3.Models
         public string? Avatar {get ; set; } 
 
         public int? Age { get; set; }
-    }       
+		public bool? IsDeleted { get; set; }
+	}       
 }
