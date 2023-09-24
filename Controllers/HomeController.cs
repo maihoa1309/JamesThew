@@ -103,5 +103,10 @@ namespace Project3.Controllers
 		{
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 		}
+		public IActionResult AddOrUpdateRecipe(int id)
+		{
+			return View(id);
+		}
 	}
+
 }

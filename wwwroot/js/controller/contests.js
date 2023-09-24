@@ -75,7 +75,7 @@
             $('#content').append(html);
 
             var pageNumber = 1;
-            var pageList = '<li class="page-item page-indicator ">' +
+            var pageList = '<li class="page-item page-indicator">' +
                 '<button class="page-link">' +
                 '<i class="la la-angle-left"></i>' +
                 '</button>' +
