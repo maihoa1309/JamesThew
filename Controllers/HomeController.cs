@@ -30,12 +30,16 @@ namespace Project3.Controllers
         {
             return View();
         }
-		public IActionResult User()
+		public IActionResult InforUser()
 		{
 			return View();
 		}
+        public IActionResult UpdateUser()
+        {
+            return View();
+        }
 
-		public IActionResult Privacy()
+        public IActionResult Privacy()
 		{
 			return View();
 		}
