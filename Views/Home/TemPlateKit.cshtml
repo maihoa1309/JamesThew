@@ -1,4 +1,7 @@
-﻿@model IEnumerable<Project3.Models.Contest>
+﻿@using Project3.Repository
+@using Project3.DTO
+@inject IContestRepository contestRepository;
+@model ContestDTO;
 @{
 	Layout = "~/Views/Shared/_Layoutweb.cshtml";
 }
@@ -87,37 +90,37 @@
 					<div class="elementor-element elementor-element-d539eaf elementor-grid-1 elementor-grid-tablet-1 elementor-posts--thumbnail-right elementor-grid-mobile-1 elementor-widget elementor-widget-archive-posts" data-id="d539eaf" data-element_type="widget" data-settings="{&quot;archive_classic_columns&quot;:&quot;1&quot;,&quot;archive_classic_columns_tablet&quot;:&quot;1&quot;,&quot;archive_classic_columns_mobile&quot;:&quot;1&quot;,&quot;archive_classic_row_gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:35,&quot;sizes&quot;:[]},&quot;archive_classic_row_gap_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;archive_classic_row_gap_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;pagination_type&quot;:&quot;numbers&quot;}" data-widget_type="archive-posts.archive_classic">
 						<div class="elementor-widget-container">
 							<link rel="stylesheet" href="~/wp-content/plugins/elementor-pro/assets/css/widget-posts.min.css">		<div class="elementor-posts-container elementor-posts elementor-posts--skin-classic elementor-grid">
-								@foreach (var item in Model)
+								@foreach (var item in ViewBag.Result)
 								{
 									<article class="elementor-post elementor-grid-item post-254 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
 
 										<div class="elementor-post__text">
 											<center>
-												<h1 style="color:orangered">@Html.DisplayFor(modelItem => item.Title)</h1>
+												<h1 style="color:orangered">@item.Title</h1>
 											</center>
 											<div class="elementor-post__meta-data">
 												<span class="elementor-post-date">
-													<span>StartDate:@Html.DisplayFor(modelItem => item.StartDate)</span>
+													<span>StartDate:@item.StartDate</span>
 													
 												</span>
 												<br>
 												<span class="elementor-post-date">
-													<span>EndDate:@Html.DisplayFor(modelItem => item.EndDate)</span>
+													<span>EndDate:@item.EndDate</span>
 												</span>
 											</div>
 											<div class="elementor-post__excerpt">
 												<p>Category:</p>
-												<p>@Html.DisplayFor(modelItem => item.CategoryId)</p>
+												<p>@item.CategoryId</p>
 											</div>
 											<div class="elementor-post__excerpt">
 												<p>Description:</p>
-												<p>@Html.DisplayFor(modelItem => item.Description)</p>
+												<p>@item.Description</p>
 											</div>
 											<div class="elementor-post__excerpt">
 												<p>Rule:</p>
-												<p>@Html.DisplayFor(modelItem => item.Rule)</p>
+												<p>@item.Rule</p>
 											</div>
-											<div>anh A</div>
+											<div>@item.Img</div>
 											<div>anh B</div>
 											<div>anh C</div>
 											<div>anh D</div>
