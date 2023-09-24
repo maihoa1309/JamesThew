@@ -40,13 +40,16 @@ namespace Project3.Repository
 		public async Task<CustomUser> FindByIdAsync(string id)
 		{
 			return await _userManager.Users.Where(r => r.Id.Equals(id)).FirstOrDefaultAsync();
-			
 		}
 
 		public async Task<UserDTO> GetAllAsync(string keyword, int index, int size)
 		{
 			var users = new UserDTO();
 			var result = await _userManager.Users.ToListAsync();
+			if (!string.IsNullOrEmpty(keyword))
+			{
+				result = result.Where(r => r.Name.ToLower().Contains(keyword.ToLower())).ToList();
+			}
 			users.TotalRow = result.Count;
 			users.Users = result.Where(r => r.IsDeleted != true).Skip((index - 1) * size).Take(size).ToList();
 			return users;
