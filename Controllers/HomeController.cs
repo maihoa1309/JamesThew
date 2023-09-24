@@ -84,9 +84,9 @@ namespace Project3.Controllers
 		{
 			return View();
 		}
-		public IActionResult Category()
+		public IActionResult Category(int id)
 		{
-			return View();
+			return View(id);
 		}
         [HttpPost]
         
