@@ -7,7 +7,7 @@ namespace Project3.ViewComponents
 	public class SomeCategory : ViewComponent
 	{
 
-		public IViewComponentResult Invoke(CategoryDetail item)
+		public IViewComponentResult Invoke(Category item)
 		{
 			// Logic và dữ liệu của ViewComponent
 
