@@ -4,6 +4,8 @@ using Project3.Models;
 using Microsoft.AspNetCore.Identity;
 using Project3.Data;
 using Project3.Repository;
+using Newtonsoft.Json;
+using static Project3.Repository.ContestRepository;
 
 namespace Project3.Controllers
 {
@@ -12,13 +14,16 @@ namespace Project3.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly RoleManager<IdentityRole> _roleManager;
 		private readonly IRecipeRepository _recipeRepository;
+		private readonly IContestRepository _contestRepository;
 
-        public HomeController(ILogger<HomeController> logger,RoleManager<IdentityRole> roleManager , IRecipeRepository recipeRepository)
+        public HomeController(ILogger<HomeController> logger,RoleManager<IdentityRole> roleManager , IRecipeRepository recipeRepository, IContestRepository contestRepository)
         {
             _logger = logger;
             _roleManager = roleManager;
 			_recipeRepository = recipeRepository;
-        }
+			_contestRepository = contestRepository;
+
+		}
 		//public async Task<IActionResult> SeedingRoleAsync()
 		//{
 		//	var dbSeedRole = new DbSeedRole(_roleManager);
@@ -57,8 +62,15 @@ namespace Project3.Controllers
 			return View();
 		}
 
-		public IActionResult Team()
+		public async Task<IActionResult> Team()
 		{
+			string result = await _contestRepository.Burn();
+			List<Contest> contests = JsonConvert.DeserializeObject<List<Contest>>(result);
+
+			ViewBag.Result = contests;
+			string jsonResult = await _contestRepository.Bunny();
+			List<Resultt> results = JsonConvert.DeserializeObject<List<Resultt>>(jsonResult);
+			ViewBag.JsonResult = jsonResult;
 			return View();
 		}
 		public async Task<IActionResult> SingleRecipe(int id)
@@ -83,13 +95,18 @@ namespace Project3.Controllers
 		{
 			return View();
 		}
-		public IActionResult FAQ
-			()
+		public IActionResult FAQ()
 		{
 			return View();
 		}
-		public IActionResult TemPlateKit()
+		public async Task<IActionResult> TemPlateKit(int id)
 		{
+			string result = await _contestRepository.Burn();
+			List<Contest> contests = JsonConvert.DeserializeObject<List<Contest>>(result);
+
+			ViewBag.Result = contests.Where(p => p.Id == id);
+				
+
 			return View();
 		}
 		public IActionResult Category(int id)

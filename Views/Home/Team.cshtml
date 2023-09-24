@@ -1,8 +1,12 @@
-﻿@model IEnumerable<Project3.Models.Contest>
-
+﻿
+@using Project3.Repository
+@using Project3.DTO
+@inject IContestRepository contestRepository;
+@model ContestDTO;
 @{
 	Layout = "~/Views/Shared/_Layoutweb.cshtml";
 	ViewData["Title"] = "Team";
+	var contest = Model;
 }
 
 <div data-elementor-type="archive" data-elementor-id="83" class="elementor elementor-83 elementor-location-archive">
@@ -89,43 +93,51 @@
 					<div class="elementor-element elementor-element-d539eaf elementor-grid-1 elementor-grid-tablet-1 elementor-posts--thumbnail-right elementor-grid-mobile-1 elementor-widget elementor-widget-archive-posts" data-id="d539eaf" data-element_type="widget" data-settings="{&quot;archive_classic_columns&quot;:&quot;1&quot;,&quot;archive_classic_columns_tablet&quot;:&quot;1&quot;,&quot;archive_classic_columns_mobile&quot;:&quot;1&quot;,&quot;archive_classic_row_gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:35,&quot;sizes&quot;:[]},&quot;archive_classic_row_gap_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;archive_classic_row_gap_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;pagination_type&quot;:&quot;numbers&quot;}" data-widget_type="archive-posts.archive_classic">
 						<div class="elementor-widget-container">
 							<link rel="stylesheet" href="~/wp-content/plugins/elementor-pro/assets/css/widget-posts.min.css">		<div class="elementor-posts-container elementor-posts elementor-posts--skin-classic elementor-grid">
-								@foreach (var item in Model)
+							
+								@foreach (var item in ViewBag.Result)
 								{
-								<article class="elementor-post elementor-grid-item post-254 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
-									
-									<div class="elementor-post__text">
-										<h3 class="elementor-post__title">
+									<article class="elementor-post elementor-grid-item post-254 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
+									<a class="elementor-post__thumbnail__link" href="join-contributor/index.html">
+										<div class="elementor-post__thumbnail"><img width="1600" height="3368" src="@item.Img" class="attachment-full size-full wp-image-1315" alt="" loading="lazy" /></div>
+									</a>
+										<div class="elementor-post__text">
+											
+											<h3 class="elementor-post__title">
 												<a asp-area="" asp-controller="Home" asp-action="TemPlateKit" asp-route-id="@item.Id">
-												@Html.DisplayFor(modelItem => item.Title)
-											</a>
-										</h3>
-										<div class="elementor-post__meta-data">
-											<span class="elementor-post-date">
-												<span>StartDate:</span>
-												@Html.DisplayFor(modelItem => item.StartDate)
-											</span>
-											<span class="elementor-post-date">
-												<span>EndDate:</span>
-												@Html.DisplayFor(modelItem => item.EndDate)
-											</span>
-										</div>
+													@item.Title
+												</a>
+											</h3>
+											<div class="elementor-post__meta-data">
+												<span class="elementor-post-date">
+													<span>StartDate:</span>
+													@item.StartDate
+												</span>
+												<span class="elementor-post-date">
+													<span>EndDate:</span>
+													@item.EndDate
+												</span>
+												<span class="elementor-post-date">
+													
+												</span>
+											</div>
 											<div class="elementor-post__excerpt">
-											<p id="content">@Html.DisplayFor(modelItem => item.Description)</p>
+												<p id="content">@item.Description</p>
 												<script>
 													var contentElement = document.getElementById('content');
 													var content = contentElement.innerHTML;
 													var trimmedContent = content.substring(0, 200) + '...';
-														contentElement.innerHTML = trimmedContent;
+													contentElement.innerHTML = trimmedContent;
 												</script>
-										</div>
+											</div>
 
 											<a class="elementor-post__read-more" asp-area="" asp-controller="Home" asp-action="TemPlateKit" asp-route-id="@item.Id">
-											Read More 🡥
-										</a>
+												Read More 🡥
+											</a>
 
-									</div>
-								</article>
+										</div>
+									</article>
 								}
+								
 							</div>
 
 						</div>
