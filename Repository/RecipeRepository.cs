@@ -52,8 +52,6 @@ namespace Project3.Repository
                                   CategoryName = c.Name
                               }
                           }).ToList();
-
-
             return result;
         }
         private List<Recipe> GetRandomItems(List<Recipe> sourceList, int count)
