@@ -1,6 +1,10 @@
 ﻿@{
     ViewData["UrlImage"] = "\\wwwroot\\images\\nav";
 }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<CustomUser> SignInManager
+@inject UserManager<CustomUser> UserManager
+
 <!doctype html>
 <html lang="en-US">
 
@@ -13,10 +17,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
-    <title>Take Of Recipe</title>
+    <title>Taste Of Recipe</title>
     <meta name='robots' content='max-image-preview:large' />
     <link rel="alternate" type="application/rss+xml" href="~/feed/index.html" />
-    <link rel="stylesheet" href="~/css/site.css"  />
+    <link rel="stylesheet" href="~/css/site.css" />
     <link rel="alternate" type="application/rss+xml" Comments Feed" href="~/comments/feed/index.html" />
     <link rel="alternate" type="application/rss+xml" href="feed/index.html" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -125,7 +129,7 @@ figure:hover+span {
             padding: 0 !important;
         }
     </style>
-    
+
     <style>
         .container {
             margin: 20px;
@@ -801,46 +805,48 @@ figure:hover+span {
 
         /*
 
-                .theto{
-                    width: 105px;
-                    position: absolute;
-                    left: 170px;
-        }
-        .thebe{
+                        .theto{
+                            width: 105px;
+                            position: absolute;
+                            left: 170px;
+                }
+                .thebe{
 
-            width: 100%;
-            height: 30px;
-            margin-top: 10px;
-        }
-        .theul{
-            background-color: var(--e-global-color-d7d34cf );
-            width: 100%;
-            height: 100%;
-            border-radius: 20px 20px 20px 20px;
-        }
-        theli{
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+                    width: 100%;
+                    height: 30px;
+                    margin-top: 10px;
+                }
+                .theul{
+                    background-color: var(--e-global-color-d7d34cf );
+                    width: 100%;
                     height: 100%;
-                    color: #ffff;
-                    font-size: 12px;
-        }
-                */
+                    border-radius: 20px 20px 20px 20px;
+                }
+                theli{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 100%;
+                            color: #ffff;
+                            font-size: 12px;
+                }
+                        */
     </style>
     <style>
-        .pb-3{
-            width:100%;
+        .pb-3 {
+            width: 100%;
         }
-        .display{
-    display: flex;
+
+        .display {
+            display: flex;
             align-items: flex-start;
-}
+        }
+
         .container {
             margin: 20px;
             height: 100%;
             display: flex;
-            margin-bottom:50px !important;
+            margin-bottom: 50px !important;
             justify-content: center;
         }
 
@@ -940,8 +946,8 @@ figure:hover+span {
             list-style: none;
         }
 
-        .list ul  {
-            padding:inherit;
+        .list ul {
+            padding: inherit;
         }
 
             .list ul li div {
@@ -963,7 +969,7 @@ figure:hover+span {
                     width: 42px;
                     height: 35px
                 }
-            
+
 
                 .list ul li div p {
                     border: 1px solid #ddd;
@@ -1071,8 +1077,10 @@ figure:hover+span {
                                                                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-27"><a href="/Home/PricingPlan" class="elementor-sub-item" tabindex="-1">Pricing Plan</a></li>
                                                                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24"><a href="/Home/Team" class="elementor-sub-item" tabindex="-1">Team</a></li>
                                                                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29"><a href="~/index81b6.html?elementor_library=yumma-v1-archive" class="elementor-sub-item" tabindex="-1">Blog</a></li>
+
                                                                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-30"><a href="~/2022/04/09/whats-the-difference-between-prawns-shrimp/index.html" class="elementor-sub-item" tabindex="-1">Single Post</a></li>
                                                                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32"><a href="/Home/Tips" class="elementor-sub-item" tabindex="-1">Tips</a></li>
+
                                                             </ul>
                                                         </li>
                                                     </ul>
@@ -1143,22 +1151,36 @@ figure:hover+span {
                                     <div class="item-user">
                                         <ul class="ul-user">
 
-                                            <li>
+                                            @if (SignInManager.IsSignedIn(User))
+                                            {
+                                                <li>
+                                                    <a asp-controller="Home" asp-action="InforUser" asp-route-id="@User.Identity.Name">
+                                                        User Profile
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("HomePage", "Home")">
+                                                        Đăng xuất
+                                                    </a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li>
+                                                    <a asp-area="Identity" asp-page="/Account/Login">
+                                                        Đăng nhập
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a asp-area="Identity" asp-page="/Account/Register">
+                                                        Đăng kí
+                                                    </a>
+                                                </li>
+                                            }
 
-                                                <a asp-area="Identity" asp-page="/Account/Login">
-                                                    Đăng nhập
-                                                </a>
-                                            </li>
-                                            <li><a asp-area="Identity" asp-page="/Account/Register">Đăng kí</a> </li>
-
-                                            <li>
-
-                                                <a href="/Home/User">
-                                                   User Profile
-                                                </a>
-                                            </li>
                                         </ul>
                                     </div>
+
                                 </div>
                             </div>
                         </section>
@@ -1219,7 +1241,13 @@ figure:hover+span {
 
                                                     .elementor-widget-text-editor .elementor-drop-cap-letter {
                                                         display: inline-block
-                                                    }</style>				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                                                    }</style>
+                                                <p>
+                                                    Welcome to Taste of Recipe, where culinary inspiration awaits. Explore a world of flavors,
+                                                    discover mouthwatering recipes, and embark on a culinary journey like no other.
+                                                    Join our passionate community of food lovers, share your culinary creations, and learn from the best.
+                                                    Happy cooking!
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -1648,7 +1676,7 @@ figure:hover+span {
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+
 
     <link rel='stylesheet' id='e-animations-css' href='~/wp-content/plugins/elementor/assets/lib/animations/animations.min6319.css?ver=3.15.2' media='all' />
     <script src='~/wp-content/themes/hello-elementor/assets/js/hello-frontend.min8a54.js?ver=1.0.0' id='hello-theme-frontend-js'></script>
@@ -1667,7 +1695,6 @@ figure:hover+span {
     <script src='~/wp-content/plugins/elementor/assets/js/webpack.runtime.min6319.js?ver=3.15.2' id='elementor-webpack-runtime-js'></script>
     <script src='~/wp-content/plugins/elementor/assets/js/frontend-modules.min6319.js?ver=3.15.2' id='elementor-frontend-modules-js'></script>
     <script src='~/wp-includes/js/dist/vendor/wp-polyfill-inert.min0226.js?ver=3.1.2' id='wp-polyfill-inert-js'></script>
-    <script src='~/wp-includes/js/dist/vendor/123.js' id='123-js'></script>
     <script src='~/wp-includes/js/dist/vendor/regenerator-runtime.min8fa4.js?ver=0.13.11' id='regenerator-runtime-js'></script>
     <script src='~/wp-includes/js/dist/vendor/wp-polyfill.min2c7c.js?ver=3.15.0' id='wp-polyfill-js'></script>
     <script src='~/wp-includes/js/dist/hooks.min2ebd.js?ver=c6aec9a8d4e5a5d543a1' id='wp-hooks-js'></script>
@@ -1692,7 +1719,7 @@ figure:hover+span {
     </script>
     <script src='~/wp-content/plugins/elementskit-lite/widgets/init/assets/js/elementor5b0a.js?ver=2.9.0' id='elementskit-elementor-js'></script>
     <script src='~/js/site.js' id='elementskit-elementor-js'></script>
-
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 <!-- Mirrored from point.moxcreative.com/yumma/template-kit/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 09:38:42 GMT -->

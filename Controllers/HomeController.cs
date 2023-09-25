@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Project3.Models;
 using Microsoft.AspNetCore.Identity;
@@ -7,18 +7,18 @@ using Project3.Repository;
 
 namespace Project3.Controllers
 {
-    public class HomeController : Controller
-    {
-        private readonly ILogger<HomeController> _logger;
-        private readonly RoleManager<IdentityRole> _roleManager;
+	public class HomeController : Controller
+	{
+		private readonly ILogger<HomeController> _logger;
+		private readonly RoleManager<IdentityRole> _roleManager;
 		private readonly IRecipeRepository _recipeRepository;
 
-        public HomeController(ILogger<HomeController> logger,RoleManager<IdentityRole> roleManager , IRecipeRepository recipeRepository)
-        {
-            _logger = logger;
-            _roleManager = roleManager;
+		public HomeController(ILogger<HomeController> logger, RoleManager<IdentityRole> roleManager, IRecipeRepository recipeRepository)
+		{
+			_logger = logger;
+			_roleManager = roleManager;
 			_recipeRepository = recipeRepository;
-        }
+		}
 		//public async Task<IActionResult> SeedingRoleAsync()
 		//{
 		//	var dbSeedRole = new DbSeedRole(_roleManager);
@@ -27,10 +27,14 @@ namespace Project3.Controllers
 		//}
 
 		public IActionResult Index()
-        {
-            return View();
-        }
-		public IActionResult User()
+		{
+			return View();
+		}
+		public IActionResult InforUser(string email)
+		{
+			return View(email);
+		}
+		public IActionResult UpdateUser()
 		{
 			return View();
 		}
@@ -53,14 +57,14 @@ namespace Project3.Controllers
 			return View();
 		}
 
-		public IActionResult Team()
+		public IActionResult Contest	()
 		{
 			return View();
 		}
 		public async Task<IActionResult> SingleRecipe(int id)
 		{
-            var recipe = await _recipeRepository.GetRecipeByIdAsync(id);
-            return View(recipe);
+			var recipe = await _recipeRepository.GetRecipeByIdAsync(id);
+			return View(recipe);
 
 		}
 		public IActionResult RecipeList()
@@ -88,10 +92,11 @@ namespace Project3.Controllers
 		{
 			return View();
 		}
-		public IActionResult Category()
+		public IActionResult Category(int id)
 		{
-			return View();
+			return View(id);
 		}
+
         public IActionResult Tips()
         {
             return View();
@@ -103,9 +108,15 @@ namespace Project3.Controllers
         [HttpPost]
         
             [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+
 		public IActionResult Error()
 		{
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 		}
+		public IActionResult AddOrUpdateRecipe(int id)
+		{
+			return View(id);
+		}
 	}
+
 }

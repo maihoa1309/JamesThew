@@ -10,5 +10,6 @@ namespace Project3.Models
         public int? CategoryId { get; set; }
         [ForeignKey("CategoryId")]
         public Category? GetCategory { get; set; }
+        public string? Img { get; set; }
     }
 }

@@ -1,0 +1,229 @@
+﻿@using Project3.Repository;
+@{
+	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="content-body ">
+	<div class="container-fluid">
+		<div class="form-head d-flex mb-3 mb-lg-5 align-items-start">
+			<div class="me-auto d-none d-lg-block">
+				<a class="text-primary d-flex align-items-center mb-3 font-w500" href="/Admin/Index">
+					<svg class="me-3" width="24" height="12" viewBox="0 0 24 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0.274969 5.14888C0.27525 5.1486 0.275484 5.14827 0.275812 5.14799L5.17444 0.272997C5.54142 -0.0922061 6.135 -0.090847 6.5003 0.276184C6.86555 0.643168 6.86414 1.23675 6.49716 1.60199L3.20822 4.87499H23.0625C23.5803 4.87499 24 5.29471 24 5.81249C24 6.33027 23.5803 6.74999 23.0625 6.74999H3.20827L6.49711 10.023C6.86409 10.3882 6.8655 10.9818 6.50025 11.3488C6.13495 11.7159 5.54133 11.7171 5.17439 11.352L0.275764 6.47699C0.275483 6.47671 0.27525 6.47638 0.274921 6.4761C-0.0922505 6.10963 -0.0910778 5.51413 0.274969 5.14888Z" fill="#EA4989" />
+					</svg>
+					Back
+				</a>
+				<a class="mb-0 text-secondary fs-18 font-w500" href="#">Tips  /</a>
+				<a class="mb-0 font-w500 fs-18" href="#"> All tips </a>
+			</div>
+			<div class="input-group search-area ms-auto d-md-flex align-items-center d-inline-flex">
+				<input type="text" class="form-control" placeholder="Search here" id="search">
+				<div class="input-group-append">
+					<a href="javascript:void" class="input-group-text"><i class="fa-solid fa-magnifying-glass" id="btnSearch"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="row align-items-center table-responsive">
+			<table class="display mb-4 table ">
+				<thead style="height: 70px">
+					<tr style="">
+						<th>Id</th>
+						<th>Image</th>
+						<th>Title</th>
+						<th>Category</th>
+						<th>Description</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody id="content">
+					<tr>
+						<td>1</td>
+						<td>
+							<div class="media align-items-center">
+								<img class="me-3 img-fluid rounded-circle" width="75" src="https://www.tasteofhome.com/wp-content/uploads/2019/01/sugar-shutterstock_626920385.jpg?fit=700%2C700?fit=700,700">
+							</div>
+						</td>
+						
+						<td >Tips For Reducing Sugar in Recipes</td>
+						<td>Dessert</td>
+						<td>Recipes like fruit-filled pies, custards or compotes usually use sugar solely for its sweetness, rather than to add moisture or texture. For a recipe like this Cape Cod Blueberry Pie, you could get away with eliminating about 1/4 cup of sugar without a drastic change in the recipe’s integrity.</td>
+
+						<td>
+							<div class="dropdown ms-auto c-pointer">
+								<div class="btn-link" data-bs-toggle="dropdown">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M11.0005 12C11.0005 12.5523 11.4482 13 12.0005 13C12.5528 13 13.0005 12.5523 13.0005 12C13.0005 11.4477 12.5528 11 12.0005 11C11.4482 11 11.0005 11.4477 11.0005 12Z" stroke="#3E4954" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+										<path d="M18.0005 12C18.0005 12.5523 18.4482 13 19.0005 13C19.5528 13 20.0005 12.5523 20.0005 12C20.0005 11.4477 19.5528 11 19.0005 11C18.4482 11 18.0005 11.4477 18.0005 12Z" stroke="#3E4954" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+										<path d="M4.00049 12C4.00049 12.5523 4.4482 13 5.00049 13C5.55277 13 6.00049 12.5523 6.00049 12C6.00049 11.4477 5.55277 11 5.00049 11C4.4482 11 4.00049 11.4477 4.00049 12Z" stroke="#3E4954" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+									</svg>
+								</div>
+								<div class="dropdown-menu dropdown-menu-end">
+									<a class="dropdown-item text-info" href="#">
+										<svg class="me-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.709 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2461 3.61096 17.4371C2.43727 15.628 1.87979 13.4881 2.02168 11.3363C2.16356 9.18457 2.99721 7.13633 4.39828 5.49707C5.79935 3.85782 7.69279 2.71538 9.79619 2.24015C11.8996 1.76491 14.1003 1.98234 16.07 2.86" stroke="#2F4CDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+											<path d="M22 4L12 14.01L9 11.01" stroke="#2F4CDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+										</svg>
+										Edit
+									</a>
+									<a class="dropdown-item text-danger" href="#">
+										<svg class="me-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#F24242" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+											<path d="M15 9L9 15" stroke="#F24242" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+											<path d="M9 9L15 15" stroke="#F24242" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+										</svg>
+										Delete
+									</a>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>
+							<div class="media align-items-center">
+								<img class="me-3 img-fluid rounded-circle" width="75" src="https://hips.hearstapps.com/hmg-prod/images/bacon-sizzlin-at-camp-royalty-free-image-90650637-1544805861.jpg?crop=1xw:1xh;center,top&resize=980:*">
+							</div>
+						</td>
+						<td>Save bacon fat</td>
+						<td>Meat</td>
+						<td>There is no limit to how many things you can do with your leftover bacon
+							grease. Fry your eggs in it. Fry your potatoes in it. Make a damn bacon
+							candle! The possibilities are endless.</td>
+
+						<td>
+							<div class="dropdown ms-auto c-pointer">
+								<div class="btn-link" data-bs-toggle="dropdown">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M11.0005 12C11.0005 12.5523 11.4482 13 12.0005 13C12.5528 13 13.0005 12.5523 13.0005 12C13.0005 11.4477 12.5528 11 12.0005 11C11.4482 11 11.0005 11.4477 11.0005 12Z" stroke="#3E4954" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+										<path d="M18.0005 12C18.0005 12.5523 18.4482 13 19.0005 13C19.5528 13 20.0005 12.5523 20.0005 12C20.0005 11.4477 19.5528 11 19.0005 11C18.4482 11 18.0005 11.4477 18.0005 12Z" stroke="#3E4954" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+										<path d="M4.00049 12C4.00049 12.5523 4.4482 13 5.00049 13C5.55277 13 6.00049 12.5523 6.00049 12C6.00049 11.4477 5.55277 11 5.00049 11C4.4482 11 4.00049 11.4477 4.00049 12Z" stroke="#3E4954" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+									</svg>
+								</div>
+								<div class="dropdown-menu dropdown-menu-end">
+									<a class="dropdown-item text-info" href="#">
+										<svg class="me-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.709 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2461 3.61096 17.4371C2.43727 15.628 1.87979 13.4881 2.02168 11.3363C2.16356 9.18457 2.99721 7.13633 4.39828 5.49707C5.79935 3.85782 7.69279 2.71538 9.79619 2.24015C11.8996 1.76491 14.1003 1.98234 16.07 2.86" stroke="#2F4CDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+											<path d="M22 4L12 14.01L9 11.01" stroke="#2F4CDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+										</svg>
+										Edit
+									</a>
+									<a class="dropdown-item text-danger" href="#">
+										<svg class="me-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#F24242" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+											<path d="M15 9L9 15" stroke="#F24242" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+											<path d="M9 9L15 15" stroke="#F24242" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+										</svg>
+										Delete
+									</a>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>
+							<div class="media align-items-center">
+								<img class="me-3 img-fluid rounded-circle" width="75" src="https://hips.hearstapps.com/hmg-prod/images/close-up-of-tray-of-homemade-bread-rolls-royalty-free-image-554370561-1544806425.jpg?crop=1xw:1xh;center,top&resize=980:*">
+							</div>
+						</td>
+						<td>Set your timer for a few minutes less than the called-for time</td>
+						<td>Dessert</td>
+						<td>
+							Not only do all ovens heat differently, but you'll also never
+							really know how yours handles a new protein or veggie at first.
+							That's all to say you can always fix an undercooked situation—there's nothing to be done once you go over.
+						</td>
+
+						<td>
+							<div class="dropdown ms-auto c-pointer">
+								<div class="btn-link" data-bs-toggle="dropdown">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M11.0005 12C11.0005 12.5523 11.4482 13 12.0005 13C12.5528 13 13.0005 12.5523 13.0005 12C13.0005 11.4477 12.5528 11 12.0005 11C11.4482 11 11.0005 11.4477 11.0005 12Z" stroke="#3E4954" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+										<path d="M18.0005 12C18.0005 12.5523 18.4482 13 19.0005 13C19.5528 13 20.0005 12.5523 20.0005 12C20.0005 11.4477 19.5528 11 19.0005 11C18.4482 11 18.0005 11.4477 18.0005 12Z" stroke="#3E4954" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+										<path d="M4.00049 12C4.00049 12.5523 4.4482 13 5.00049 13C5.55277 13 6.00049 12.5523 6.00049 12C6.00049 11.4477 5.55277 11 5.00049 11C4.4482 11 4.00049 11.4477 4.00049 12Z" stroke="#3E4954" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+									</svg>
+								</div>
+								<div class="dropdown-menu dropdown-menu-end">
+									<a class="dropdown-item text-info" href="#">
+										<svg class="me-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.709 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2461 3.61096 17.4371C2.43727 15.628 1.87979 13.4881 2.02168 11.3363C2.16356 9.18457 2.99721 7.13633 4.39828 5.49707C5.79935 3.85782 7.69279 2.71538 9.79619 2.24015C11.8996 1.76491 14.1003 1.98234 16.07 2.86" stroke="#2F4CDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+											<path d="M22 4L12 14.01L9 11.01" stroke="#2F4CDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+										</svg>
+										Edit
+									</a>
+									<a class="dropdown-item text-danger" href="#">
+										<svg class="me-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#F24242" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+											<path d="M15 9L9 15" stroke="#F24242" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+											<path d="M9 9L15 15" stroke="#F24242" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+										</svg>
+										Delete
+									</a>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>
+							<div class="media align-items-center">
+								<img class="me-3 img-fluid rounded-circle" width="75" src="https://c.ndtvimg.com/2021-08/p4tvi0pg_milk_625x300_18_August_21.jpg">
+							</div>
+						</td>
+						<td>Use heavy-bottomed vessel for boiling milk</td>
+						<td>Milk</td>
+						<td>
+							We all know the struggle of cleaning the kitchen after the milk vessels over boil. So to prevent that from happening, 
+							take a heavy bottomed vessel and boil the milk in it. This is also good for making dishes such as kheer.
+						</td>
+
+						<td>
+							<div class="dropdown ms-auto c-pointer">
+								<div class="btn-link" data-bs-toggle="dropdown">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M11.0005 12C11.0005 12.5523 11.4482 13 12.0005 13C12.5528 13 13.0005 12.5523 13.0005 12C13.0005 11.4477 12.5528 11 12.0005 11C11.4482 11 11.0005 11.4477 11.0005 12Z" stroke="#3E4954" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+										<path d="M18.0005 12C18.0005 12.5523 18.4482 13 19.0005 13C19.5528 13 20.0005 12.5523 20.0005 12C20.0005 11.4477 19.5528 11 19.0005 11C18.4482 11 18.0005 11.4477 18.0005 12Z" stroke="#3E4954" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+										<path d="M4.00049 12C4.00049 12.5523 4.4482 13 5.00049 13C5.55277 13 6.00049 12.5523 6.00049 12C6.00049 11.4477 5.55277 11 5.00049 11C4.4482 11 4.00049 11.4477 4.00049 12Z" stroke="#3E4954" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+									</svg>
+								</div>
+								<div class="dropdown-menu dropdown-menu-end">
+									<a class="dropdown-item text-info" href="#">
+										<svg class="me-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.709 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2461 3.61096 17.4371C2.43727 15.628 1.87979 13.4881 2.02168 11.3363C2.16356 9.18457 2.99721 7.13633 4.39828 5.49707C5.79935 3.85782 7.69279 2.71538 9.79619 2.24015C11.8996 1.76491 14.1003 1.98234 16.07 2.86" stroke="#2F4CDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+											<path d="M22 4L12 14.01L9 11.01" stroke="#2F4CDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+										</svg>
+										Edit
+									</a>
+									<a class="dropdown-item text-danger" href="#">
+										<svg class="me-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#F24242" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+											<path d="M15 9L9 15" stroke="#F24242" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+											<path d="M9 9L15 15" stroke="#F24242" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+										</svg>
+										Delete
+									</a>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="card">
+				<div class="card-body p-0">
+					<div class="table-responsive ">
+						<table class="table order-request">
+							<tbody id="content">
+							</tbody>
+						</table>
+						<div class="card-footer border-0 pt-0 text-center">
+							<ul class="pagination pagination-gutter pagination-primary no-bg" id="pageList">
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+@section Script{
+}

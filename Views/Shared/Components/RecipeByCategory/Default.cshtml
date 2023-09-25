@@ -1,0 +1,69 @@
+﻿@using Project3.DTO;
+@model RecipeDetailDTO;
+
+@if (Model != null)
+{
+    <div class="bg-item elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-d396ba5" data-id="d396ba5" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+        <div class="elementor-widget-wrap elementor-element-populated">
+            <div class="elementor-element elementor-element-db90170 elementor-widget elementor-widget-image" data-id="db90170" data-element_type="widget" data-widget_type="image.default">
+                <div class="elementor-widget-container img-item">
+                    <a href="@Url.Action("SingleRecipe", new {id = Model.Recipe.Id})">
+                    <img decoding="async" width="1080" height="1618" src="/@Model.Recipe.Img.Split(',')[0]" class="attachment-full size-full wp-image-775" alt="huhu" srcset="/@Model.Recipe.Img.Split(',')[0] 1080w, /@Model.Recipe.Img.Split(',')[0] 200w,/@Model.Recipe.Img.Split(',')[0] 684w, /@Model.Recipe.Img.Split(',')[0] 768w, /@Model.Recipe.Img.Split(',')[0] 1025w, /@Model.Recipe.Img.Split(',')[0] 800w" sizes="(max-width: 1080px) 100vw, 1080px" />
+                    </a>
+                </div>
+            </div>
+            @*<div style="  width: 105px;
+                                        position: absolute;
+                                        left: 170px;" class=" elementor-element elementor-element-43c1969 elementor-widget__width-auto elementor-absolute elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="43c1969" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="icon-list.default">
+                <div style="  width: 100%;
+                                            height: 30px;
+                                            margin-top: 10px;" class="elementor-widget-container ">
+                    <ul style="  background-color: var(--e-global-color-d7d34cf );
+                                                width: 100%;
+                                                height: 100%;
+                                                border-radius: 20px 20px 20px 20px;" class="elementor-icon-list-items ">
+                        <li style=" display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
+                                                    height: 100%;
+                                                    color: #ffff;
+                                                    font-size: 12px;" class="elementor-icon-list-item ">
+                            <span class="elementor-icon-list-icon">
+                                <i aria-hidden="true" class="icon icon-user"></i>
+                            </span>
+                            <span class="elementor-icon-list-text">by Bren</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>*@
+            <div class="elementor-element elementor-element-fa8296c elementor-widget elementor-widget-heading" data-id="fa8296c" data-element_type="widget" data-widget_type="heading.default">
+                <div class="elementor-widget-container">
+                    <h6 class="elementor-heading-title elementor-size-default">
+                        <a href="@Url.Action("Category", new {id = Model.Category.CategoryId})">
+                            @Model.Category.CategoryName
+                        </a>
+                    </h6>
+                </div>
+            </div>
+            <div class="elementor-element elementor-element-5a2399c elementor-widget elementor-widget-heading" data-id="5a2399c" data-element_type="widget" data-widget_type="heading.default">
+                <div class="elementor-widget-container">
+                    <h4 class="elementor-heading-title elementor-size-default">
+                        <a href="@Url.Action("SingleRecipe", new {id = Model.Recipe.Id})">
+                            @Model.Recipe.Title
+                        </a>
+                    </h4>
+                </div>
+            </div>
+            
+            <div class="elementor-element elementor-element-58417a0 elementor-widget elementor-widget-text-editor" data-id="58417a0" data-element_type="widget" data-widget_type="text-editor.default">
+                <div class="elementor-widget-container">
+                    <p>@Model.Recipe.Cuisines</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}

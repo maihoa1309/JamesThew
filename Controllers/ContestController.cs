@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Project3.DTO;
 using Project3.Models;
@@ -9,7 +9,7 @@ namespace Project3.Controllers
 {
     public class ContestController : BaseController<Contest>
     {
-        private readonly IBaseRepository<Contest> _repository;
+     
         private readonly IContestRepository _contestRepository;
 
         public ContestController(IBaseRepository<Contest> repository, IContestRepository contestRepository) : base(repository)

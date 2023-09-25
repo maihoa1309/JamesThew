@@ -60,6 +60,23 @@ namespace Project3.Controllers
         {
             return View();
         }
+    
 
+        public IActionResult Users()
+        {
+            return View();
+        }
+        public IActionResult UpdateUser(string id)
+        {
+            return View((object)id);
+        }
+        public IActionResult Tips()
+        {
+            return View();
+        }
+        public IActionResult RegisterManage()
+        {
+            return View();
+        }
 	}
 }

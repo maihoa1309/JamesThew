@@ -9,8 +9,8 @@
             contests.RegisterEvent();
         })
         $(".page-link").off('click').on('click', function () {
-            ingredients.LoadData($(this).text());
-            ingredients.RegisterEvent();
+            contests.LoadData($(this).text());
+            contests.RegisterEvent();
         })
     },
     LoadData: function (pageLink) {
@@ -35,7 +35,8 @@
                     '<td>'+value.title+'</td>' +
                     '<td class="wspace-no">' + value.startDate.substring(0, 10) + '</td>' +
                     '<td>' + value.endDate.substring(0, 10) + '</td>' +
-                    '<td><a class="btn btn-warning light btn-sm">Show recipe</a></td>'+
+                    '<td><a class="btn btn-warning light btn-sm">Show recipe</a></td>' +
+
                     '<td>' +
                     '<div class="dropdown ms-auto c-pointer">' +
 
@@ -74,7 +75,7 @@
             $('#content').append(html);
 
             var pageNumber = 1;
-            var pageList = '<li class="page-item page-indicator ">' +
+            var pageList = '<li class="page-item page-indicator">' +
                 '<button class="page-link">' +
                 '<i class="la la-angle-left"></i>' +
                 '</button>' +

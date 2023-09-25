@@ -693,6 +693,9 @@ namespace Project3.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Img")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -724,6 +727,9 @@ namespace Project3.Data.Migrations
 
                     b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");

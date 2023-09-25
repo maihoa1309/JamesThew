@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using Project3.Data;
 using Project3.DTO;
 using Project3.Models;
@@ -11,7 +12,9 @@ namespace Project3.Repository
         Task<ContestDetailDTO> GetSubmissionAsync(int ContestId, string keyword, int index, int size);
         Task<bool> SaveContestAsync(Contest request);
         Task<ContestDTO> GetByNameAsync (string keyword, int index, int size);
-    }
+        Task<String> Burn ();
+        Task<string> Bunny();
+	}
     public class ContestRepository : BaseRepository<Contest>, IContestRepository
     {
         private readonly IWebHostEnvironment _hostingEnvironment;
@@ -121,6 +124,66 @@ namespace Project3.Repository
             return result;
         }
 
+		public async Task<string> Burn()
+		{
+			var contests = await _context.Contests.ToListAsync();
 
-    }
+			var convertedContests = contests.Select(c => new Contest
+			{
+				Id = c.Id,
+				Title = c.Title,
+                Rule = c.Rule,
+				Description = c.Description,
+                CategoryId = c.CategoryId,
+                StartDate = c.StartDate,
+                EndDate = c.EndDate,
+                Img = c.Img,
+			}).ToList();
+
+			string result = JsonConvert.SerializeObject(convertedContests);
+			return result;
+		}
+		public async Task<string> Bunny()
+		{
+			var us = await _context.Submissions.ToListAsync();
+
+			Dictionary<int, int> contestIdCounts = new Dictionary<int, int>();
+
+			
+			foreach (var submission in us)
+			{
+				if (submission.ContestId != null)
+				{
+					int contestId = submission.ContestId.Value;
+
+					if (contestIdCounts.ContainsKey(contestId))
+					{
+						contestIdCounts[contestId]++;
+					}
+					else
+					{
+						contestIdCounts[contestId] = 1;
+					}
+				}
+			}
+
+			
+			List<Resultt> results = contestIdCounts.Select(kvp => new Resultt
+			{
+				User = kvp.Value,
+				ContestId = kvp.Key
+			}).ToList();
+
+			
+			string jsonResult = JsonConvert.SerializeObject(results);
+
+			return jsonResult;
+		}
+
+		public class Resultt
+		{
+			public int User { get; set; }
+			public int ContestId { get; set; }
+		}
+	}
 }

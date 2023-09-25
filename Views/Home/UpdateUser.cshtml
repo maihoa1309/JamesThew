@@ -1,0 +1,131 @@
+﻿@using Project3.Repository
+@inject IUserRepository userRepository;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<CustomUser> SignInManager
+@inject UserManager<CustomUser> UserManager
+
+@{
+    var email = @User.Identity.Name;
+    Layout = "~/Views/Shared/_Layoutweb.cshtml";
+    var in4 = await userRepository.FindByEmailAsync(email);
+}
+@section css{
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        .img-user {
+            position: relative;
+            display: inline-block;
+        }
+
+        .camera-icon {
+            position: relative;
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            background-image: url('/path/to/camera-icon.png');
+            background-size: cover;
+            cursor: pointer;
+        }
+
+        .file-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+    </style>
+}
+<form method="post">
+    <div class="container">
+        <div class="info-user">
+            <h3>Update InforUser</h3>
+            <input type="hidden" id="_id" value="@in4.Id" />
+            <div>
+                <span>
+                    Fullname <span style=" color: #ff2424">*</span>
+                </span>
+                <input type="text" name="name" id="name" placeholder="Enter FullName" value="@in4.Name" />
+            </div>
+
+            <div>
+                <span>
+                    Gender<span style=" color: #ff2424">*</span>
+                </span>
+                <input type="text" id="gender" name="gender" placeholder="Enter Gender" value="@in4.Gender" />
+            </div>
+            <div>
+                <span>
+                    Age<span style=" color: #ff2424">*</span>
+                </span>
+                <input type="number" id="age" name="age" placeholder="Enter Age" value="@in4.Age" />
+            </div>
+            <div>
+                <button id="submit">Save</button>
+            </div>
+
+        </div>
+        <div class="img-infor">
+            <div class="left-infor">
+                <div class="img-user">
+                    <img style="width: 80px; height: 80px" src="/@in4.Avatar" id="formFile" name="avatar" />
+                    <span>
+                        <i class="fa-solid fa-camera"></i>
+                    </span>
+                    <input type="file" class="file-input" id="fileInput">
+                </div>
+                <div>
+                    <div>
+                        <p>Helloo,</p>
+                        <h2 style="font-size:15px">@in4.Name</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $(".file-input").change(function (event) {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    const imgElement = $("#formFile");
+                    imgElement.attr("src", e.target.result);
+
+                };
+
+                reader.readAsDataURL(file);
+            });
+            $('#submit').on('click', function () {
+                const data = {
+                    Id: $("#_id").val(),
+                    Gender: $('#gender').val(),
+                    Name: $('#name').val(),
+                    Age: parseInt($('#age').val()),
+                    Avatar: $('#formFile').attr('src')
+                };
+                console.log(data)
+                $.ajax({
+                    url: 'https://localhost:7034/CustomUser/SaveUser',
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    success: function (response) {
+                        console.log("yeah");
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(xhr);
+                        console.log(error);
+                    }
+                });
+            })
+        });
+    </script>
+}

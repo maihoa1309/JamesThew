@@ -34,7 +34,7 @@ namespace Project3
 			builder.Services.AddScoped<IRegisterRepository, RegisterRepository>();
 			builder.Services.AddScoped<ISubmissionRepository, SubmissionRepository>();
 			builder.Services.AddScoped<ITipRepository, TipRepository>();
-
+			builder.Services.AddScoped<IUserRepository, UserRepository>();
 			var app = builder.Build();
 
             // Configure the HTTP request pipeline.
