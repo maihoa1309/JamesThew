@@ -1,0 +1,243 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layoutweb.cshtml";
+}
+@section css{
+    <link rel="stylesheet" href="~/css/style.css" />
+}
+<style>
+    .custom {
+        margin-bottom:30px
+    }
+</style>
+<section class="blog spad">
+    <div class="container">
+        <div class="row" style="text-align: center">
+            <div>
+                <span><h1>Tips Cooking</h1></span>
+            </div>
+            <!-- THAY BẰNG col-lg-12 NẾU MUỐN FULL MÀN HÌNH VÀ XÓA SIDEBAR    -->
+            <div class="col-lg-12 col-md-12 ">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 custom">
+
+                        <div class="blog__item">
+                            <div class="blog__item__pic">
+                                <figure>
+                                    <img class="imgTips" src="" alt="">
+                                </figure>
+
+                            </div>
+                            <div class="blog__item__text">
+                                <ul>
+                                  
+                                </ul>
+                                <h5><a href="#"></a></h5>
+                                <p></p>
+                                <a href="#" data-id="1" onclick="goToDetailPage(event)" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 custom ">
+                        <div class="blog__item">
+                            <div class="blog__item__pic">
+                                <figure>
+                                    <img class="imgTips" src="" alt="">
+                                </figure>
+
+                            </div>
+                            <div class="blog__item__text">
+                                <ul>
+                                    
+                                </ul>
+                                <h5><a href="#"></a></h5>
+                                <p></p>
+                                <a href="#" data-id="2" onclick="goToDetailPage(event)" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 custom ">
+                        <div class="blog__item">
+                            <div class="blog__item__pic">
+                                <figure>
+                                    <img class="imgTips" src="" alt="">
+                                </figure>
+
+                            </div>
+                            <div class="blog__item__text">
+                                <ul>
+                                   
+                                </ul>
+                                <h5><a href="#"></a></h5>
+                                <p></p>
+                                <a href="#" data-id="3" onclick="goToDetailPage(event)" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 custom ">
+                        <div class="blog__item">
+                            <div class="blog__item__pic">
+                                <figure>
+                                    <img class="imgTips" src="" alt="">
+                                </figure>
+
+                            </div>
+                            <div class="blog__item__text">
+                                <ul>
+                                    
+                                </ul>
+                                <h5><a href="#"></a></h5>
+                                <p></p>
+                                <a href="#" data-id="4" onclick="goToDetailPage(event)" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 custom ">
+                        <div class="blog__item">
+                            <div class="blog__item__pic">
+                                <figure>
+                                    <img class="imgTips" src="" alt="">
+                                </figure>
+
+                            </div>
+                            <div class="blog__item__text">
+                                <ul>
+                                   
+                                </ul>
+                                <h5><a href="#"></a></h5>
+                                <p></p>
+                                <a href="#" data-id="5" onclick="goToDetailPage(event)" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 custom ">
+                        <div class="blog__item">
+                            <div class="blog__item__pic">
+                                <figure>
+                                    <img class="imgTips" src="" alt="">
+                                </figure>
+
+                            </div>
+                            <div class="blog__item__text">
+                                <ul>
+                                    
+                                </ul>
+                                <h5><a href="#"></a></h5>
+                                <p></p>
+                                <a href="#" data-id="6" onclick="goToDetailPage(event)" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    var tips = [
+        {
+            id: 1,
+            title: "Tips for preparing pho at home",
+            demoContent: "Pho is a delicious Vietnamese noodle soup that you can prepare at home with some patience and the right techniques",
+            content: "Pho is a delicious Vietnamese noodle soup that you can prepare at home with some patience and the right techniques. Here are some tips for preparing pho at home",
+            imgUrl: "https://i.pinimg.com/236x/71/be/38/71be38e661f54b84d359cf5bb4250624.jpg",
+            Intro: "1. Start with a Good Broth: Pho broth is the heart of the dish. Use a combination of beef bones (such as oxtail, marrow, and knuckle bones) and aromatic spices (like star anise, cinnamon, cloves, and cardamom) to make a flavorful broth. Roast the bones before simmering for added depth of flavor. Simmer Slowly: Simmer the broth for a long time (at least 6-8 hours) to extract all the flavors from the bones and spices. This slow cooking process is essential for a rich and aromatic broth. 3. Use Quality Ingredients: Choose high-quality meat for your pho. Thinly sliced beef (raw or cooked) and beef meatballs are traditional choices. You can also use chicken for chicken pho (pho ga) 4. Thinly Slice the Meat: If using raw beef, slice it as thinly as possible. It will cook quickly in the hot broth. If using cooked beef, slice it thinly so that it can easily soak up the broth's flavor.",
+            note: "Making pho at home can be a rewarding culinary experience. The key is to take your time with the broth, use quality ingredients, and have fun customizing your bowls with your favorite garnishes. Enjoy your homemade pho!"
+
+        },
+        {
+            id: 2,
+            title: "Tips for cooking delicious steak ",
+            demoContent: "Steak is a delicious and popular dish. Here are some tips for cooking delicious steak at home:",
+
+            content: "Steak is a delicious and popular dish. Here are some tips for cooking delicious steak at home:",
+            imgUrl: "https://media.cooky.vn/images/blog-2016/nghe-thuat-trinh-bay-va-chup-anh-mon-an%208.jpg",
+            Intro: "first, Choosing Good Beef: - Choose high quality beef such as rib beef, lean beef, or back beef.Meat that has fat around it is usually tastier.Grill Beef Properly: - For delicious steak, grill at high temperature.You can use a gas stove, oven, or grilling.Grill for 3 - 5 minutes on each side to marinate the meat.Don't Forget to Grill to the Right Cooking Point:- The doneness point of beef will affect the deliciousness of the steak. Cooking mode is usually: rare (marinated in light pink color), medium-rare (marinated in dark pink color), medium (marinated in light pink color in the middle), well-done (marinated in completely dark brown color).",
+            note: "Remember, the doneness of the beef and the seasoning depends on personal preference. Experiment and adjust ingredients to create the steak you love most."
+
+
+        },
+        {
+            id: 3,
+            demoContent: "To cook delicious Italian food, refer to the following tips:",
+            title: "Tips for cooking delicious spaghetti ",
+            content: "To cook delicious Italian food, refer to the following tips:",
+            imgUrl: "https://i.pinimg.com/236x/f4/f1/3d/f4f13d017b6ef9582c6877672bb66a43.jpg",
+            Intro: "First, choose good noodles: Use limited quantities, high-quality pasta such as spaghetti, fettuccine or penne. Delicious noodles are often made from semolina and water. Salt water properly: Use boiled water and add salt before boiling the noodles. Use about 1-2 pinches of salt per 4 liters of water. Noodle dipping time: Track the noodle cooking time on the product packaging. Normally, cooking time is about 8-12 minutes depending on type and thickness. Use the right mindset to avoid too soft or leftover noodles.Sauce Must Be Delicious:Use high quality or make your own sauce from fresh tomatoes, onions, garlic and spices. Sauce some time to clean flavors.",
+            note: "Remember that spaghetti can be customized to your personal taste, so you can experiment and adjust the ingredients to get the spaghetti exactly how you want it. Hope you have delicious meals!"
+
+
+        },
+        {
+            id: 4,
+            title: "Tips for making crispy French fries",
+            demoContent: "Making crispy French fries at home can be achieved with the right technique. Here are some tips for making crispy French fries",
+
+            content: "Choose the Right Potato:Use high-starch potatoes like Russet potatoes. They have a high starch content and low moisture, which helps create a crispy exterior.Cut the Fries Uniformly:Cut the potatoes into evenly sized sticks to ensure they cook uniformly. Aim for about 1/4 to 1/2 inch in thickness. Dry Thoroughly:After soaking, drain the fries and pat them completely dry with paper towels. Removing excess moisture is crucial for crispy results. Double Fry Method:The double fry method is a secret to achieving extra crispiness. Fry the potatoes in batches for the first time at a lower temperature (about 325°F or 160°C) until they are soft but not browned. Remove and drain. Then, increase the oil temperature to 375°F (190°C) and fry the potatoes a second time until golden brown and crispy. Don't Overcrowd the Fryer:Fry the potatoes in batches, making sure not to overcrowd the fryer. Overcrowding lowers the oil temperature and can lead to soggy fries.",
+            imgUrl:"https://i.pinimg.com/236x/fb/8f/15/fb8f150136519354d8a9aa871ff583c6.jpg",
+            Intro: "1. Start with a Good Broth: Pho broth is the heart of the dish. Use a combination of beef bones (such as oxtail, marrow, and knuckle bones) and aromatic spices (like star anise, cinnamon, cloves, and cardamom) to make a flavorful broth. Roast the bones before simmering for added depth of flavor. Simmer Slowly: Simmer the broth for a long time (at least 6-8 hours) to extract all the flavors from the bones and spices. This slow cooking process is essential for a rich and aromatic broth. 3. Use Quality Ingredients: Choose high-quality meat for your pho. Thinly sliced beef (raw or cooked) and beef meatballs are traditional choices. You can also use chicken for chicken pho (pho ga) 4. Thinly Slice the Meat: If using raw beef, slice it as thinly as possible. It will cook quickly in the hot broth. If using cooked beef, slice it thinly so that it can easily soak up the broth's flavor.",
+            note: "Don't be afraid to experiment with various seasonings and toppings, such as garlic parmesan, truffle oil, or chili cheese, to add extra flavor and texture to your fries."
+            
+
+        },
+        {
+            id: 5,
+            title: "Tips for boiling chicken until golden brown and without cracking ",
+            demoContent: "Boiling chicken until it's golden brown without cracking requires some specific techniques. Here are some tips to achieve this:",
+
+            content: "Boiling chicken until it's golden brown without cracking requires some specific techniques. Here are some tips to achieve this:",
+            imgUrl: "https://i.pinimg.com/564x/0a/5b/5e/0a5b5e0ff0367dbba4c6b19bd582e8b6.jpg",
+            Intro: "Start with Room Temperature Chicken: Allow the chicken to come to room temperature before boiling. Cold chicken added to boiling water can cause the skin to crack. Simmer Gently:Avoid boiling the chicken at a rapid boil. Instead, simmer it gently at a lower temperature. Keep the water just below boiling, around 180-190°F (82-88°C).Use a Lid:Cover the pot with a lid to trap steam and help maintain a consistent temperature. This can prevent the chicken from cracking.Monitor Cooking Time: Depending on the size and type of chicken, cooking times will vary. For bone-in chicken pieces, cook until the internal temperature reaches 165°F (74°C) and the juices run clear.Cool Gradually:After boiling, remove the chicken from the hot water and let it cool gradually. Plunging it into ice-cold water can cause the skin to contract and potentially crack.",
+            note: "By following these tips and being mindful of the cooking process, you can boil chicken until it's golden brown and minimize the risk of cracking."
+
+        },
+        {
+            id: 6,
+            title: "6 ways to prepare breakfast for Tips for cooking instant noodles that are chewy and not crumbly ",
+            demoContent: "Cooking instant noodles to achieve a chewy and not crumbly texture requires some attention to detail...",
+
+            content: "Cooking instant noodles to achieve a chewy and not crumbly texture requires some attention to detail. Here are some tips to help you cook instant noodles perfectly:",
+            imgUrl: "https://i.pinimg.com/236x/f4/cc/c1/f4ccc1d592968067b5676be2817edc43.jpg",
+            Intro: "Choose the Right Noodles: Look for instant noodles with a reputation for having a good texture.Different brands and varieties can vary in quality.Boil Sufficient Water: Use an ample amount of water to ensure that the noodles have enough space to cook evenly.Avoid overcrowding the pot.Add Noodles Gradually: Add the noodles to the boiling water gradually, making sure they don't stick together. Stir the noodles gently with chopsticks or a fork to separate them. Stir Occasionally:Stir the noodles occasionally during cooking to prevent them from clumping together and sticking to the pot. Follow Cooking Time:Pay close attention to the package instructions for the recommended cooking time. Overcooking can make the noodles mushy, while undercooking can leave them too firm",
+            note: "Remember that the texture of instant noodles can vary depending on the brand and type you choose. Experiment with different cooking times and methods to find the perfect texture that suits your taste."
+        }
+    ]
+    for (var i = 0; i < tips.length; i++) {
+        var tip = tips[i];
+        var imgTipsElement = document.querySelectorAll('.imgTips')[i];
+        var h5Element = document.querySelectorAll('.blog__item__text h5 a')[i];
+        var pElement = document.querySelectorAll('.blog__item__text p')[i];
+
+
+        if (imgTipsElement && h5Element && pElement) {
+            imgTipsElement.src = tip.imgUrl;
+            h5Element.textContent = tip.title;
+            pElement.textContent = tip.demoContent;
+        }
+    }
+    function goToDetailPage(event) {
+        event.preventDefault();
+        var tipId = event.target.dataset.id;
+        var selectedTip = tips.find(tip => tip.id == tipId);
+        console.log(selectedTip)
+        if (selectedTip) {
+            // Lấy ra phần tử đang được click
+            var clickedElement = selectedTip;
+            console.log('clickedElement:', clickedElement);
+            localStorage.setItem('selectedTip', JSON.stringify(selectedTip));
+            console.log(localStorage)
+
+        } else {
+            console.log("Không tìm thấy tip với ID:", tipId);
+        }
+        // Ngăn chặn hành vi mặc định của nút "READ MORE"
+
+
+
+        // Lấy ra chỉ mục của phần tử trong danh sách
+        // Chuyển hướng đến trang khác
+        window.location.href = '/Home/MoreTips';
+    }
+
+</script>

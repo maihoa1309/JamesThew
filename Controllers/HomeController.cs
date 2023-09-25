@@ -96,9 +96,19 @@ namespace Project3.Controllers
 		{
 			return View(id);
 		}
-		[HttpPost]
 
-		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Tips()
+        {
+            return View();
+        }
+        public IActionResult MoreTips()
+        {
+            return View();
+        }
+        [HttpPost]
+        
+            [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+
 		public IActionResult Error()
 		{
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
