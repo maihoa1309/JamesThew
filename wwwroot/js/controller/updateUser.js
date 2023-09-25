@@ -3,20 +3,9 @@
         updateUser.RegisterEvent();
     },
     RegisterEvent: function () {
-
-        $('#fileInput').off('change').on('change', function () {
-
-            const file = event.target.files[0];
-            const reader = new FileReader();
-
-            reader.onload = function (e) {
-                const imgElement = document.getElementById('formFile');
-                imgElement.src = e.target.result;
-            };
-
-            reader.readAsDataURL(file);
-            updateUser.RegisterEvent();
-
+        $(".saveCategory").off('submit').on('submit', function (event) {
+            event.preventDefault();
+            updateUser.SaveUser();
         }),
         $('#formFile').off('change').on('change', function () {
             const files = $(this)[0].files;

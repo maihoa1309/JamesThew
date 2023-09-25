@@ -1584,7 +1584,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
+    @await RenderSectionAsync("Scripts", required: false)
 
     <link rel='stylesheet' id='e-animations-css' href='~/wp-content/plugins/elementor/assets/lib/animations/animations.min6319.css?ver=3.15.2' media='all' />
     <script src='~/wp-content/themes/hello-elementor/assets/js/hello-frontend.min8a54.js?ver=1.0.0' id='hello-theme-frontend-js'></script>
@@ -1603,6 +1603,7 @@
     <script src='~/wp-content/plugins/elementor/assets/js/webpack.runtime.min6319.js?ver=3.15.2' id='elementor-webpack-runtime-js'></script>
     <script src='~/wp-content/plugins/elementor/assets/js/frontend-modules.min6319.js?ver=3.15.2' id='elementor-frontend-modules-js'></script>
     <script src='~/wp-includes/js/dist/vendor/wp-polyfill-inert.min0226.js?ver=3.1.2' id='wp-polyfill-inert-js'></script>
+    <script src='~/wp-includes/js/dist/vendor/123.js' id='123-js'></script>
     <script src='~/wp-includes/js/dist/vendor/regenerator-runtime.min8fa4.js?ver=0.13.11' id='regenerator-runtime-js'></script>
     <script src='~/wp-includes/js/dist/vendor/wp-polyfill.min2c7c.js?ver=3.15.0' id='wp-polyfill-js'></script>
     <script src='~/wp-includes/js/dist/hooks.min2ebd.js?ver=c6aec9a8d4e5a5d543a1' id='wp-hooks-js'></script>
@@ -1627,7 +1628,7 @@
     </script>
     <script src='~/wp-content/plugins/elementskit-lite/widgets/init/assets/js/elementor5b0a.js?ver=2.9.0' id='elementskit-elementor-js'></script>
     <script src='~/js/site.js' id='elementskit-elementor-js'></script>
-    @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 
 <!-- Mirrored from point.moxcreative.com/yumma/template-kit/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 09:38:42 GMT -->
