@@ -3,9 +3,20 @@
         updateUser.RegisterEvent();
     },
     RegisterEvent: function () {
-        $(".saveCategory").off('submit').on('submit', function (event) {
-            event.preventDefault();
-            updateUser.SaveUser();
+
+        $('#fileInput').off('change').on('change', function () {
+
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const imgElement = document.getElementById('formFile');
+                imgElement.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+            updateUser.RegisterEvent();
+
         }),
         $('#formFile').off('change').on('change', function () {
             const files = $(this)[0].files;

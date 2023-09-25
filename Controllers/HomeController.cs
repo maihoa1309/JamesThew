@@ -57,7 +57,7 @@ namespace Project3.Controllers
 			return View();
 		}
 
-		public IActionResult Team()
+		public IActionResult Contests()
 		{
 			return View();
 		}

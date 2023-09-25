@@ -1,10 +1,6 @@
-﻿@model IEnumerable<Project3.Models.Contest>
-
-@{
+﻿@{
 	Layout = "~/Views/Shared/_Layoutweb.cshtml";
-	ViewData["Title"] = "Team";
 }
-
 <div data-elementor-type="archive" data-elementor-id="83" class="elementor elementor-83 elementor-location-archive">
 	<section class="elementor-section elementor-top-section elementor-element elementor-element-9c87ac0 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="9c87ac0" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 		<div class="elementor-background-overlay"></div>
@@ -68,14 +64,14 @@
 									<span class="elementor-icon-list-icon">
 										<svg aria-hidden="true" class="e-font-icon-svg e-fas-chevron-right" viewBox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg>
 									</span>
-									<span class="elementor-icon-list-text">Archives: Templates</span>
+									<span class="elementor-icon-list-text">Archives: Contests</span>
 								</li>
 							</ul>
 						</div>
 					</div>
 					<div class="elementor-element elementor-element-11b41cf elementor-widget elementor-widget-heading" data-id="11b41cf" data-element_type="widget" data-widget_type="heading.default">
 						<div class="elementor-widget-container">
-							<h3 class="elementor-heading-title elementor-size-default">Archives: Templates</h3>
+							<h3 class="elementor-heading-title elementor-size-default">Archives: Contests</h3>
 						</div>
 					</div>
 				</div>
@@ -89,43 +85,258 @@
 					<div class="elementor-element elementor-element-d539eaf elementor-grid-1 elementor-grid-tablet-1 elementor-posts--thumbnail-right elementor-grid-mobile-1 elementor-widget elementor-widget-archive-posts" data-id="d539eaf" data-element_type="widget" data-settings="{&quot;archive_classic_columns&quot;:&quot;1&quot;,&quot;archive_classic_columns_tablet&quot;:&quot;1&quot;,&quot;archive_classic_columns_mobile&quot;:&quot;1&quot;,&quot;archive_classic_row_gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:35,&quot;sizes&quot;:[]},&quot;archive_classic_row_gap_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;archive_classic_row_gap_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;pagination_type&quot;:&quot;numbers&quot;}" data-widget_type="archive-posts.archive_classic">
 						<div class="elementor-widget-container">
 							<link rel="stylesheet" href="~/wp-content/plugins/elementor-pro/assets/css/widget-posts.min.css">		<div class="elementor-posts-container elementor-posts elementor-posts--skin-classic elementor-grid">
-								@foreach (var item in Model)
-								{
-								<article class="elementor-post elementor-grid-item post-254 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
-									
+								<article class="elementor-post elementor-grid-item post-1220 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
+									<a class="elementor-post__thumbnail__link" href="/Home/HomePage">
+										<div class="elementor-post__thumbnail"><img width="1080" height="6284" src="~/wp-content/uploads/sites/2/2022/04/Homepage.jpg" class="attachment-full size-full wp-image-1314" alt="" loading="lazy" /></div>
+									</a>
 									<div class="elementor-post__text">
 										<h3 class="elementor-post__title">
-												<a asp-area="" asp-controller="Home" asp-action="TemPlateKit" asp-route-id="@item.Id">
-												@Html.DisplayFor(modelItem => item.Title)
+											<a href="/Home/HomePage">
+												Homepage
 											</a>
 										</h3>
 										<div class="elementor-post__meta-data">
-											<span class="elementor-post-date">
-												<span>StartDate:</span>
-												@Html.DisplayFor(modelItem => item.StartDate)
+											<span class="elementor-post-author">
+												rocken
 											</span>
 											<span class="elementor-post-date">
-												<span>EndDate:</span>
-												@Html.DisplayFor(modelItem => item.EndDate)
+												April 12, 2022
 											</span>
 										</div>
-											<div class="elementor-post__excerpt">
-											<p id="content">@Html.DisplayFor(modelItem => item.Description)</p>
-												<script>
-													var contentElement = document.getElementById('content');
-													var content = contentElement.innerHTML;
-													var trimmedContent = content.substring(0, 200) + '...';
-														contentElement.innerHTML = trimmedContent;
-												</script>
+										<div class="elementor-post__excerpt">
+											<p>Boiled Steamed Fried Baked no matter how you cook, Yumma has many the recipes Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,</p>
 										</div>
 
-											<a class="elementor-post__read-more" asp-area="" asp-controller="Home" asp-action="TemPlateKit" asp-route-id="@item.Id">
+										<a class="elementor-post__read-more" href="/Home/HomePage">
 											Read More 🡥
 										</a>
 
 									</div>
 								</article>
-								}
+								<article class="elementor-post elementor-grid-item post-1111 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
+									<a class="elementor-post__thumbnail__link" href="/Home/JoinContriButor">
+										<div class="elementor-post__thumbnail"><img width="1600" height="3368" src="~/wp-content/uploads/sites/2/2022/04/Join-Contributor.jpg" class="attachment-full size-full wp-image-1315" alt="" loading="lazy" /></div>
+									</a>
+									<div class="elementor-post__text">
+										<h3 class="elementor-post__title">
+											<a href="/Home/JoinContriButor">
+												Join Contributor
+											</a>
+										</h3>
+										<div class="elementor-post__meta-data">
+											<span class="elementor-post-author">
+												rocken
+											</span>
+											<span class="elementor-post-date">
+												April 12, 2022
+											</span>
+										</div>
+										<div class="elementor-post__excerpt">
+											<p>Join Contributor Interested to share your recipes? Netus tempor ex feugiat mauris consectetuer primis aliquet tempus viverra purus. Lacinia arcu habitant vehicula condimentum cras venenatis</p>
+										</div>
+
+										<a class="elementor-post__read-more" href="/Home/JoinContributor">
+											Read More 🡥
+										</a>
+
+									</div>
+								</article>
+								<article class="elementor-post elementor-grid-item post-983 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
+									<a class="elementor-post__thumbnail__link" href="/Home/SingleRecipe">
+										<div class="elementor-post__thumbnail"><img width="1600" height="3240" src="~/wp-content/uploads/sites/2/2022/04/Single-Recipes.jpg" class="attachment-full size-full wp-image-1319" alt="" loading="lazy" /></div>
+									</a>
+									<div class="elementor-post__text">
+										<h3 class="elementor-post__title">
+											<a href="/Home/SingleRecipe">
+												Single Recipe
+											</a>
+										</h3>
+										<div class="elementor-post__meta-data">
+											<span class="elementor-post-author">
+												rocken
+											</span>
+											<span class="elementor-post-date">
+												April 11, 2022
+											</span>
+										</div>
+										<div class="elementor-post__excerpt">
+											<p>Drink Recipes The Real Mojito 187 Reviews &#9733;&#9733;&#9733;&#9733;&#9733; 4.5/5 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar</p>
+										</div>
+
+										<a class="elementor-post__read-more" href="/Home/SingleRecipe">
+											Read More 🡥
+										</a>
+
+									</div>
+								</article>
+								<article class="elementor-post elementor-grid-item post-713 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
+									<a class="elementor-post__thumbnail__link" href="/Home/RecipeList">
+										<div class="elementor-post__thumbnail"><img width="1080" height="3825" src="~/wp-content/uploads/sites/2/2022/04/Recipe-List.jpg" class="attachment-full size-full wp-image-1317" alt="" loading="lazy" /></div>
+									</a>
+									<div class="elementor-post__text">
+										<h3 class="elementor-post__title">
+											<a href="/Home/RecipeList">
+												Recipes List
+											</a>
+										</h3>
+										<div class="elementor-post__meta-data">
+											<span class="elementor-post-author">
+												rocken
+											</span>
+											<span class="elementor-post-date">
+												April 11, 2022
+											</span>
+										</div>
+										<div class="elementor-post__excerpt">
+											<p>What are your favorite food? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Popular search</p>
+										</div>
+
+										<a class="elementor-post__read-more" href="/Home/RecipeList">
+											Read More 🡥
+										</a>
+
+									</div>
+								</article>
+								<article class="elementor-post elementor-grid-item post-569 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
+									<a class="elementor-post__thumbnail__link" href="/Home/AboutUs">
+										<div class="elementor-post__thumbnail"><img width="1600" height="4635" src="~/wp-content/uploads/sites/2/2022/04/About-Us.jpg" class="attachment-full size-full wp-image-1307" alt="" loading="lazy" /></div>
+									</a>
+									<div class="elementor-post__text">
+										<h3 class="elementor-post__title">
+											<a href="/Home/AboutUs">
+												About Us
+											</a>
+										</h3>
+										<div class="elementor-post__meta-data">
+											<span class="elementor-post-author">
+												rocken
+											</span>
+											<span class="elementor-post-date">
+												April 10, 2022
+											</span>
+										</div>
+										<div class="elementor-post__excerpt">
+											<p>Beyond the boundaries of taste. “Ask not what you can do for your country. Ask what’s for lunch.” &#8211; Orson Welles Who we are One</p>
+										</div>
+
+										<a class="elementor-post__read-more" href="/Home/AboutUs">
+											Read More 🡥
+										</a>
+
+									</div>
+								</article>
+								<article class="elementor-post elementor-grid-item post-479 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
+									<a class="elementor-post__thumbnail__link" href="/Home/PricingPlan">
+										<div class="elementor-post__thumbnail"><img width="1600" height="3189" src="~/wp-content/uploads/sites/2/2022/04/Pricing-Plan.jpg" class="attachment-full size-full wp-image-1316" alt="" loading="lazy" /></div>
+									</a>
+									<div class="elementor-post__text">
+										<h3 class="elementor-post__title">
+											<a href="/Home/PricingPlan">
+												Pricing Plan
+											</a>
+										</h3>
+										<div class="elementor-post__meta-data">
+											<span class="elementor-post-author">
+												rocken
+											</span>
+											<span class="elementor-post-date">
+												April 10, 2022
+											</span>
+										</div>
+										<div class="elementor-post__excerpt">
+											<p>Pricing plan Choose your plan &#038; Try for free with a 30-day trial Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus</p>
+										</div>
+
+										<a class="elementor-post__read-more" href="/Home/PricingPlan">
+											Read More 🡥
+										</a>
+
+									</div>
+								</article>
+								<article class="elementor-post elementor-grid-item post-371 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
+									<a class="elementor-post__thumbnail__link" href="/Home/Team">
+										<div class="elementor-post__thumbnail"><img width="1600" height="2702" src="~/wp-content/uploads/sites/2/2022/04/Team.jpg" class="attachment-full size-full wp-image-1320" alt="" loading="lazy" /></div>
+									</a>
+									<div class="elementor-post__text">
+										<h3 class="elementor-post__title">
+											<a href="/Home/Team">
+												Team
+											</a>
+										</h3>
+										<div class="elementor-post__meta-data">
+											<span class="elementor-post-author">
+												rocken
+											</span>
+											<span class="elementor-post-date">
+												April 10, 2022
+											</span>
+										</div>
+										<div class="elementor-post__excerpt">
+											<p>If you can laugh together, you can work together. Meet our team It takes two flints to make a fire. Reuben Palmer Founder Danielle George</p>
+										</div>
+
+										<a class="elementor-post__read-more" href="/Home/Team">
+											Read More 🡥
+										</a>
+
+									</div>
+								</article>
+								<article class="elementor-post elementor-grid-item post-254 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
+									<a class="elementor-post__thumbnail__link" href="/Home/FAQ">
+										<div class="elementor-post__thumbnail"><img width="1600" height="3626" src="~/wp-content/uploads/sites/2/2022/04/FAQ.jpg" class="attachment-full size-full wp-image-1311" alt="" loading="lazy" /></div>
+									</a>
+									<div class="elementor-post__text">
+										<h3 class="elementor-post__title">
+											<a href="/Home/FAQ">
+												FAQ
+											</a>
+										</h3>
+										<div class="elementor-post__meta-data">
+											<span class="elementor-post-author">
+												rocken
+											</span>
+											<span class="elementor-post-date">
+												April 10, 2022
+											</span>
+										</div>
+										<div class="elementor-post__excerpt">
+											<p>Frequently Asked Questions We&#8217;re here to help you Basic Knowledge Vitae finibus tincidunt dictum integer elit facilisis. Posuere phasellus auctor tortor sodales mauris aenean suspendisse</p>
+										</div>
+
+										<a class="elementor-post__read-more" href="/Home/FAQ">
+											Read More 🡥
+										</a>
+
+									</div>
+								</article>
+								<article class="elementor-post elementor-grid-item post-141 envato_tk_templates type-envato_tk_templates status-publish has-post-thumbnail hentry">
+									<a class="elementor-post__thumbnail__link" href="/Home/ContactUs">
+										<div class="elementor-post__thumbnail"><img width="1600" height="3234" src="~/wp-content/uploads/sites/2/2022/04/Contact-Us.jpg" class="attachment-full size-full wp-image-1309" alt="" loading="lazy" /></div>
+									</a>
+									<div class="elementor-post__text">
+										<h3 class="elementor-post__title">
+											<a href="/Home/ContactUs">
+												Contact Us
+											</a>
+										</h3>
+										<div class="elementor-post__meta-data">
+											<span class="elementor-post-author">
+												rocken
+											</span>
+											<span class="elementor-post-date">
+												April 9, 2022
+											</span>
+										</div>
+										<div class="elementor-post__excerpt">
+											<p>We would love to hear from you. Send us a message Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper</p>
+										</div>
+
+										<a class="elementor-post__read-more" href="/Home/ContactUs">
+											Read More 🡥
+										</a>
+
+									</div>
+								</article>
 							</div>
 
 						</div>
@@ -584,3 +795,4 @@
 		</div>
 	</section>
 </div>
+
