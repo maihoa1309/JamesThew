@@ -4,25 +4,20 @@ using Project3.Models;
 using Microsoft.AspNetCore.Identity;
 using Project3.Data;
 using Project3.Repository;
-using Newtonsoft.Json;
-using static Project3.Repository.ContestRepository;
 
 namespace Project3.Controllers
 {
-    public class HomeController : Controller
-    {
-        private readonly ILogger<HomeController> _logger;
-        private readonly RoleManager<IdentityRole> _roleManager;
+	public class HomeController : Controller
+	{
+		private readonly ILogger<HomeController> _logger;
+		private readonly RoleManager<IdentityRole> _roleManager;
 		private readonly IRecipeRepository _recipeRepository;
-		private readonly IContestRepository _contestRepository;
 
-        public HomeController(ILogger<HomeController> logger,RoleManager<IdentityRole> roleManager , IRecipeRepository recipeRepository, IContestRepository contestRepository)
-        {
-            _logger = logger;
-            _roleManager = roleManager;
+		public HomeController(ILogger<HomeController> logger, RoleManager<IdentityRole> roleManager, IRecipeRepository recipeRepository)
+		{
+			_logger = logger;
+			_roleManager = roleManager;
 			_recipeRepository = recipeRepository;
-			_contestRepository = contestRepository;
-
 		}
 		//public async Task<IActionResult> SeedingRoleAsync()
 		//{
@@ -32,19 +27,19 @@ namespace Project3.Controllers
 		//}
 
 		public IActionResult Index()
-        {
-            return View();
-        }
+		{
+			return View();
+		}
 		public IActionResult InforUser(string email)
 		{
 			return View(email);
 		}
-        public IActionResult UpdateUser()
-        {
-            return View();
-        }
+		public IActionResult UpdateUser()
+		{
+			return View();
+		}
 
-        public IActionResult Privacy()
+		public IActionResult Privacy()
 		{
 			return View();
 		}
@@ -62,21 +57,14 @@ namespace Project3.Controllers
 			return View();
 		}
 
-		public async Task<IActionResult> Team()
+		public IActionResult Contest	()
 		{
-			string result = await _contestRepository.Burn();
-			List<Contest> contests = JsonConvert.DeserializeObject<List<Contest>>(result);
-
-			ViewBag.Result = contests;
-			string jsonResult = await _contestRepository.Bunny();
-			List<Resultt> results = JsonConvert.DeserializeObject<List<Resultt>>(jsonResult);
-			ViewBag.JsonResult = jsonResult;
 			return View();
 		}
 		public async Task<IActionResult> SingleRecipe(int id)
 		{
-            var recipe = await _recipeRepository.GetRecipeByIdAsync(id);
-            return View(recipe);
+			var recipe = await _recipeRepository.GetRecipeByIdAsync(id);
+			return View(recipe);
 
 		}
 		public IActionResult RecipeList()
@@ -95,27 +83,22 @@ namespace Project3.Controllers
 		{
 			return View();
 		}
-		public IActionResult FAQ()
+		public IActionResult FAQ
+			()
 		{
 			return View();
 		}
-		public async Task<IActionResult> TemPlateKit(int id)
+		public IActionResult TemPlateKit()
 		{
-			string result = await _contestRepository.Burn();
-			List<Contest> contests = JsonConvert.DeserializeObject<List<Contest>>(result);
-
-			ViewBag.Result = contests.Where(p => p.Id == id);
-				
-
 			return View();
 		}
 		public IActionResult Category(int id)
 		{
 			return View(id);
 		}
-        [HttpPost]
-        
-            [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+		[HttpPost]
+
+		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
 		{
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
