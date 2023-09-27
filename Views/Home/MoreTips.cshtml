@@ -7,46 +7,34 @@
 
 <section class="single-page-recipe spad">
     <div class="recipe-top">
-        <div class="container-fluid col-lg-12" style="transform: translate(12%, 10px);">
-            <div class="recipe-title col-lg-12">
-                <h2 id="recipeTitle" style="margin-left:100px; color:#d54215"></h2>
+        <div class="container-fluid">
+            <div class="recipe-title">
+                <h2 id="recipeTitle"></h2>
                 <ul class="tags">
-                    <li id="kind"></li>
-                    <li id="region"></li>
-                    <li id="taste"></li>
                 </ul>
             </div>
-            <div class="col-lg-12">
-                <img id="imgTipDetail" src="" alt="">
-            </div>
-          
+            <img id="imgTipDetail" src="" alt="">
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            
-   
-            <div class="col-lg-7">
-                <div class="recipe-right">
-                    <div class="recipe-desc">
-                        <h3>Description</h3>
-                        <p id="Description"></p>
+        <div class="col-lg-7">
+            <div class="recipe-right">
+                <div class="recipe-desc">
+                    <h3>Description</h3>
+                    <p id="Description"></p>
+                </div>
+                <div class="instruction-list">
+                    <h3>Instructions</h3>
+                    <ul>
+                        <li id="Intro">
+                        </li>
+                    </ul>
+                </div>
+                <div class="notes">
+                    <h3>Notes</h3>
+                    <div class="notes-item">
+                        <span></span>
+                        <p id="note"></p>
                     </div>
-                    <div class="instruction-list">
-                        <h3>Instructions</h3>
-                        <ul>
-                            <li id="Intro">
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="notes">
-                        <h3>Notes</h3>
-                        <div class="notes-item">
-                            <span></span>
-                            <p id="note"></p>
-                        </div>
 
-                    </div>
                 </div>
             </div>
         </div>
@@ -55,25 +43,19 @@
 
 @section script{
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var selectedTip = localStorage.getItem('selectedTip');
+        document.addEventListener('DOMContentLoaded', function () {
+            var selectedTip = localStorage.getItem('selectedTip');
 
-        if (selectedTip) {
-            selectedTip = JSON.parse(selectedTip);
-            // Sử dụng selectedTip ở đây
-            document.getElementById('recipeTitle').textContent = selectedTip.title;
-            document.getElementById('Description').textContent = selectedTip.content;
-            document.getElementById('imgTipDetail').src = selectedTip.imgUrl;
-            document.getElementById('note').textContent = selectedTip.note;
-            document.getElementById('Intro').textContent = selectedTip.Intro;
-
-
-
-
-
-
-        }
-    });
+            if (selectedTip) {
+                selectedTip = JSON.parse(selectedTip);
+                // Sử dụng selectedTip ở đây
+                document.getElementById('recipeTitle').textContent = selectedTip.title;
+                document.getElementById('Description').textContent = selectedTip.content;
+                document.getElementById('imgTipDetail').src = selectedTip.imgUrl;
+                document.getElementById('note').textContent = selectedTip.note;
+                document.getElementById('Intro').textContent = selectedTip.Intro;
+            }
+        });
     </script>
 }
 
