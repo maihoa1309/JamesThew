@@ -42,7 +42,8 @@
     <div class="container">
         <div class="info-user">
             <h3>Update InforUser</h3>
-            <input type="hidden" id="_id" value="@in4.Id" />
+            <input type="hidden" id="_id" value="@in4.Id"/>
+            <input type="hidden" id="mail" value="@email" />
             <div>
                 <span>
                     Fullname <span style=" color: #ff2424">*</span>
@@ -74,7 +75,7 @@
                     <span>
                         <i class="fa-solid fa-camera"></i>
                     </span>
-                    <input type="file" class="file-input" id="fileInput">
+                    <input type="file" class="file-input" id="fileInput" accept="image/jpeg, image/png, image/gif">
                 </div>
                 <div>
                     <div>
@@ -104,6 +105,7 @@
                 reader.readAsDataURL(file);
             });
             $('#submit').on('click', function () {
+                event.preventDefault();
                 const data = {
                     Id: $("#_id").val(),
                     Gender: $('#gender').val(),
@@ -111,14 +113,15 @@
                     Age: parseInt($('#age').val()),
                     Avatar: $('#formFile').attr('src')
                 };
-                console.log(data)
+                var email = $('#mail').val();
+                console.log(email);
                 $.ajax({
                     url: 'https://localhost:7034/CustomUser/SaveUser',
                     type: 'POST',
                     data: JSON.stringify(data),
                     contentType: 'application/json',
                     success: function (response) {
-                        console.log("yeah");
+                        window.location = "/Home/InforUser/"+email;
                     },
                     error: function (xhr, status, error) {
                         console.log(xhr);

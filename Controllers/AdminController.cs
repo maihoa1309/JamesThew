@@ -78,5 +78,10 @@ namespace Project3.Controllers
         {
             return View();
         }
+
+        public IActionResult UpdateFeedback(int id)
+        {
+            return View(id);
+        }
 	}
 }
