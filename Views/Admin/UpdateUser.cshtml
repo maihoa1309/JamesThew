@@ -1,9 +1,11 @@
 ﻿@model string
 @using Project3.Repository;
+@using Project3.DTO;
 @inject IUserRepository userRepository;
 @{
 	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-	var user = new CustomUser();
+	var user = new UserAccountDTO();
+	var role = userRepository.GetRoleIdAsync();
 
 	if (!string.IsNullOrEmpty(Model))
 	{
@@ -67,49 +69,55 @@
 			</div>
 			<div class="card-body">
 				<div class="basic-form">
-					<form method="post" class="saveCategory">
-						<input type="hidden" name="_token" value="ML92rdCjbEmTftVXgNyoQXBHnoqjfV95zZ8HN7me">
+					<form  class="saveCategory">
+						<div class="row">
+							<div class="col-lg-4 order-lg-2 mb-4">
+								<div class=" col-md-5 col-sm-6">
+									<div class="card">
+										<div class="card-body product-grid-card">
+											<div class="new-arrival-product">
+												<div class="new-arrivals-img-contnent" id="image-container">
+													<img class="img-fluid" src="/@user.Avatar">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-8 order-lg-1">
+								<div class="row">
+									<div class="mb-3 col-md-6">
+										<label class="form-label">User name:</label>
+										<input type="text" class="form-control" name="name" id="name" value="@user.Name" readonly>
+									</div>
+									<div class="col-md-6">
+										<label>Gender</label>
+										<div class="">
+											<input type="text" class="form-control" id="gender" name="gender" value="@user.Gender" readonly>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-4">
+										<label>Age</label>
+										<div class="">
+											<input class="form-control mb-3" aria-required="true" name="age" id="age" value="@user.Age" readonly />
+											<span class="text-danger"></span>
+										</div>
+									</div>
+									<div class="col-md-8">
+										<label class="form-label">Role user</label>
+										<select class="default-select form-control wide" name="roleId" id="roleId">
+											<option value="@role.Result">Admin</option>
+											<option value="">User</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
 						<input type="hidden" id="_id" value="@Model" />
-						<div class="row">
-							<div class="mb-3 col-md-4">
-								<label class="form-label">User name:</label>
-								<input type="text" class="form-control" name="name" id="name" value="@user.Name">
-							</div>
-							<div class="col-md-4">
-								<label>Gender</label>
-								<div class="">
-									<select class="form-select mb-3 default-select" aria-required="true" id="gender" name="gender">
-										<!option @(user.Gender == "Male"? "selected" : "") value="Male">Male</!option>
-										<!option @(user.Gender == "Female"? "selected" : "") value="Female">Female</!option>
-										<!option @(user.Gender == "Nonninary"? "selected" : "") value="Nonbinary">Nonbinary</!option>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<label>Age</label>
-								<div class="">
-									<input class="form-control mb-3" aria-required="true" name="age"  id="age" value="@user.Age"/>
-									<span class="text-danger"></span>
-								</div>
-							</div>
-
-						</div>
 						
-						<div class="row">
-							<span>Share photo of your recipe</span>
-							<div class="mb-3 col-xl-4 col-lg-4">
-								<input class="form-control" type="file" id="formFile" name="avatar" accept="image/jpeg, image/png, image/gif">
-							</div>
-						</div>
-						<div id="image-container">
-							@if (!string.IsNullOrEmpty(user.Avatar))
-							{
-
-								<div><img src="/@user.Avatar"><button type="button">x</button></div>
-
-							}
-						</div>
-						<button type="submit" class="btn btn-primary" style="float: right;">Save</button>
+						<button type="submit" id="submit" class="btn btn-primary" style="float: right;">Save</button>
 					</form>
 				</div>
 			</div>

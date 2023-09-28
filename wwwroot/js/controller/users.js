@@ -51,7 +51,7 @@
     LoadData: function (pageLink) {
         var keyword = $("#search").val();
         var index = pageLink ?? 1;
-        var size = 7
+        var size = 4
         var url = `/CustomUser/GetUser?keyword=${keyword}&index=${index}&size=${size}`
 
         $('#content').empty();
@@ -76,7 +76,6 @@
                     '<td>' + value.age + '</td>' +
                     '<td>' +
                     '<div class="dropdown ms-auto c-pointer">' +
-
                     '<div class="btn-link" data-bs-toggle="dropdown">' +
                     '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
                     '<path d="M11.0005 12C11.0005 12.5523 11.4482 13 12.0005 13C12.5528 13 13.0005 12.5523 13.0005 12C13.0005 11.4477 12.5528 11 12.0005 11C11.4482 11 11.0005 11.4477 11.0005 12Z" stroke="#3E4954" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />' +
@@ -84,7 +83,6 @@
                     '<path d="M4.00049 12C4.00049 12.5523 4.4482 13 5.00049 13C5.55277 13 6.00049 12.5523 6.00049 12C6.00049 11.4477 5.55277 11 5.00049 11C4.4482 11 4.00049 11.4477 4.00049 12Z" stroke="#3E4954" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />' +
                     '</svg>' +
                     '</div>' +
-
                     '<div class="dropdown-menu dropdown-menu-end">' +
                     '<a class="dropdown-item text-info update-user" href="/Admin/UpdateUser/' + value.id + '" >' +
                     '<svg class="me-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
@@ -106,9 +104,7 @@
                     '</td>' +
                     '</tr>'
                     ;
-
                 html += row;
-
             })
             $('#content').append(html);
 

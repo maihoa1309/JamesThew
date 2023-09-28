@@ -10,6 +10,7 @@ namespace Project3.Repository
     public interface IFeedBackRepository : IBaseRepository<Feedback>
     {
         Task<List<FeedbackDetailDTO>> GetFeedbackRecipeAsync(string recipe, int index, int size);
+        Task<bool> SaveFeedbackContentAsync(Feedback req);
 
     }
     public class FeedBackRepository : BaseRepository<Feedback>, IFeedBackRepository
@@ -40,5 +41,13 @@ namespace Project3.Repository
 			return result;
 		}
 
-	}
+        public async Task<bool> SaveFeedbackContentAsync(Feedback req)
+        {
+            Feedback feedback = _context.Feedbacks.Where(r => r.Id == req.Id).FirstOrDefault();
+            feedback.Content = req.Content;
+            _dbSet.Update(feedback);
+            await _context.SaveChangesAsync();
+            throw new NotImplementedException();
+        }
+    }
 }

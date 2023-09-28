@@ -3,7 +3,7 @@
 @inject IFeedBackRepository feedbackRepository;
 @{
 	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-	
+	var feedback = feedbackRepository.FindById(Model);
 }
 
 <div class="content-body ">
@@ -25,9 +25,9 @@
 			</div>
 			<div class="card-body">
 				<div class="basic-form">
-					<form method="post" class="saveFeedback">
+					<form class="saveFeedback">
 						<input type="hidden" id="_id" value="@Model"/>
-						<textarea class="form-control" rows="8" id="comment"></textarea>
+						<textarea class="form-control mb-3" rows="8" id="content">@feedback.Content</textarea>
 						<button type="submit" class="btn btn-primary" style="float: right;">Save</button>
 					</form>
 				</div>
@@ -36,6 +36,30 @@
 	</div>
 </div>
 @section Script{
-	<script src="~/js/controller/updateUser.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#submit').on('click', function () {
+                event.preventDefault();
+                var data = {
+					Id: $('#_id').val(),
+					Content: $('#content').val(),
+
+				}
+                $.ajax({
+                    url: 'https://localhost:7034/Feedback/SaveFeedback',
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    success: function (response) {
+                        window.location = ;
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(xhr);
+                        console.log(error);
+                    }
+                });
+            })
+        });
+    </script>
 }
 
