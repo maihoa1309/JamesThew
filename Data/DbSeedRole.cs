@@ -10,10 +10,10 @@ namespace Project3.Data
         {
             _roleManager = roleManager;
         }
-        public async Task RoleData()
-        {
-            //await _roleManager.CreateAsync(new IdentityRole { Name = "ADMIN", NormalizedName = "ADMIN" });
+        //public async Task RoleData()
+        //{
+        //    await _roleManager.CreateAsync(new IdentityRole { Name = "USER", NormalizedName = "USER" });
 
-        }
+        //}
     }
 }

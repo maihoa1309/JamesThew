@@ -32,7 +32,7 @@ namespace Project3.Controllers
             await _repository.DeleteAsync(id);
             return true;
         }
-        public async Task<bool> SaveUser([FromBody] CustomUser req)
+        public async Task<bool> SaveUser([FromBody] UserAccountDTO  req)
         {
             await _repository.UpdateUserAsync(req);
             return true;

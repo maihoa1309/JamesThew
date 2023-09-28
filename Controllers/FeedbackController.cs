@@ -27,5 +27,10 @@ namespace Project3.Controllers
             await _feedBackRepository.DeleteAsync(feedback);
             return true;
         }
+        public async Task<bool> SaveFeedback (Feedback req)
+        {
+            await _feedBackRepository.SaveFeedbackContentAsync(req);
+            return true;
+        }
     }
 }

@@ -10,7 +10,7 @@
     var in4 = await userRepository.FindByEmailAsync(email);
 }
 @section css{
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css"/>
     <style>
         .img-user {
             position: relative;
@@ -86,9 +86,7 @@
             </div>
         </div>
     </div>
-
 </form>
-
 @section Scripts{
     <script>
         $(document).ready(function () {
@@ -99,7 +97,6 @@
                 reader.onload = function (e) {
                     const imgElement = $("#formFile");
                     imgElement.attr("src", e.target.result);
-
                 };
 
                 reader.readAsDataURL(file);
@@ -111,7 +108,8 @@
                     Gender: $('#gender').val(),
                     Name: $('#name').val(),
                     Age: parseInt($('#age').val()),
-                    Avatar: $('#formFile').attr('src')
+                    Avatar: $('#formFile').attr('src'),
+                    RoleId: ""
                 };
                 var email = $('#mail').val();
                 console.log(email);

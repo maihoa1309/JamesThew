@@ -83,8 +83,7 @@ namespace Project3.Controllers
 		{
 			return View();
 		}
-		public IActionResult FAQ
-			()
+		public IActionResult FAQ()
 		{
 			return View();
 		}

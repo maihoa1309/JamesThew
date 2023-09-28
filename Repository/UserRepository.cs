@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Project3.Data;
 using Project3.DTO;
@@ -10,10 +11,11 @@ namespace Project3.Repository
 	{
 		Task<UserDTO> GetAllAsync(string keyword, int index, int size);
 		Task<bool> DeleteAsync(string id);
-		Task<CustomUser> FindByIdAsync(string id);
-		Task<bool> UpdateUserAsync(CustomUser req);
+		Task<UserAccountDTO> FindByIdAsync(string id);
+		Task<bool> UpdateUserAsync(UserAccountDTO req);
 		Task<CustomUser> FindByEmailAsync(string email);
-
+		Task<string> GetRoleIdAsync();
+		Task<List<CustomUser>> GetAllUser();
     }
 	public class UserRepository : IUserRepository
 	{
@@ -39,9 +41,17 @@ namespace Project3.Repository
 			return true;
 		}
 
-		public async Task<CustomUser> FindByIdAsync(string id)
+		public async Task<UserAccountDTO> FindByIdAsync(string id)
 		{
-			return await _userManager.Users.Where(r => r.Id.Equals(id)).FirstOrDefaultAsync();
+			var result = new UserAccountDTO();
+			var user =	await _userManager.Users.Where(r => r.Id.Equals(id)).FirstOrDefaultAsync();
+			result.Id = user.Id;
+			result.Age= user.Age;
+			result.Avatar = user.Avatar;
+			result.Gender= user.Gender;
+			result.Name = user.Name;
+			result.RoleId = await _context.UserRoles.Where(r => r.RoleId.Equals(id)).Select(r => r.RoleId).FirstOrDefaultAsync();
+			return result;
 		}
 
 		public async Task<UserDTO> GetAllAsync(string keyword, int index, int size)
@@ -57,7 +67,7 @@ namespace Project3.Repository
 			return users;
 		}
 
-		public async Task<bool> UpdateUserAsync(CustomUser req)
+		public async Task<bool> UpdateUserAsync(UserAccountDTO req)
 		{
 			var user = await _userManager.Users.Where(r => r.Id.Equals(req.Id)).FirstOrDefaultAsync();
 			user.Avatar = UploadImageFromBase64(req.Avatar);
@@ -65,6 +75,12 @@ namespace Project3.Repository
 			user.Name = req.Name;
 			user.Age= req.Age;
 			user.Gender = req.Gender;
+			var userRole = _context.UserRoles.Where(r => r.UserId.Equals(user.Id)).FirstOrDefault();
+			if (!string.IsNullOrEmpty(req.RoleId) && userRole == null)
+			{
+				string query = "INSERT INTO AspNetUserRoles (UserID, RoleID) VALUES ({0}, {1})";
+				await _context.Database.ExecuteSqlRawAsync(query, req.Id, req.RoleId);
+			}
 			await _userManager.UpdateAsync(user);
 			await _context.SaveChangesAsync();
 			return true;
@@ -102,8 +118,22 @@ namespace Project3.Repository
 				var imageUrl = Path.Combine("UploadImg/", fileName);
 				result += imageUrl;
 			}
-
 			return result;
 		}
-	}
+
+		public async Task<string> GetRoleIdAsync()
+		{
+			var roleId =  (from r in _context.Roles
+						 select r.Id).FirstOrDefault();
+
+			return roleId;
+		}
+
+        public async Task<List<CustomUser>> GetAllUser()
+        {
+			var result = await _userManager.Users.ToListAsync();
+			
+			return  result;
+        }
+    }
 }
