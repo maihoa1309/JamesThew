@@ -37,6 +37,21 @@ namespace Project3.Controllers
 		{
 			int usd = 0;
 			var type = "";
+			var stats = "";
+			
+			
+			int itv = _dbContext.Registers.Select(p => p.Id).Max();
+			var abc = _dbContext.Registers;
+			for (int i = 0; i < itv; i++)
+			{
+				var register = abc.FirstOrDefault(p => p.Id == i); // Tìm bản ghi có Id tương ứng
+
+				if (register != null && register.DueDate != null && register.DueDate < DateTime.Now)
+				{
+					register.Status = "expired"; // Thay đổi giá trị của cột 'Status' thành "expired"
+					_dbContext.SaveChanges(); // Lưu trữ thay đổi
+				}
+			}
 			//kiểm tra người dùng đăng nhập hay chưa
 			if (_signInManager.IsSignedIn(User))//đã đăng nhập
 			{
@@ -70,7 +85,8 @@ namespace Project3.Controllers
 							UserId = userId,
 							FromDate = DateTime.Now,
 							DueDate = DateTime.Now.AddDays(usd),
-							TypeMembership = type
+							TypeMembership = type,
+							Status = "active"
 						};
 						TempData["RegisterData"] = JsonConvert.SerializeObject(register);
 					}
@@ -81,7 +97,8 @@ namespace Project3.Controllers
 							UserId = userId,
 							FromDate = abcd,
 							DueDate = abcd + TimeSpan.FromDays(usd),
-							TypeMembership = type
+							TypeMembership = type,
+							Status = "active"
 						};
 						TempData["RegisterData"] = JsonConvert.SerializeObject(register);
 					}
@@ -93,7 +110,8 @@ namespace Project3.Controllers
 						UserId = userId,
 						FromDate = DateTime.Now,
 						DueDate = DateTime.Now.AddDays(usd),
-						TypeMembership = type
+						TypeMembership = type,
+						Status = "active"
 					};
 					//lưu dữ liệu để thêm vào db
 					TempData["RegisterData"] = JsonConvert.SerializeObject(register);
