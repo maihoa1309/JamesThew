@@ -4,7 +4,7 @@
 @inject IRecipeRepository recipeRepository;
 @inject ICategoryRepository categoryRepository;
 @{
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_Layoutweb.cshtml";
     var ingredients = await ingredientRepository.SortNameByASC();
     var categories = await categoryRepository.SortNameByASCAsync();
     var recipe = new Recipe();
