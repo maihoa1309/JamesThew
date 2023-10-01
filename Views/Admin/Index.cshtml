@@ -111,38 +111,13 @@
                 <div class="card">
                     <div class="card-header border-0 d-sm-flex d-block">
                         <div>
-                            <h4 class="card-title mb-2">Customer Map</h4>
+                            <h4 class="card-title mb-2"></h4>
                             <p class="fs-13 mb-0">Lorem ipsum dolor</p>
-                        </div>
-                        <div class="card-action card-tabs mt-3 mt-sm-0 mt-3 mt-sm-0">
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" data-bs-toggle="tab" href="#monthly" role="tab">
-                                        Monthly
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#weekly" role="tab">
-                                        Weekly
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#today" role="tab">
-                                        Today
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                     <div class="card-body tab-content p-3">
-                        <div class="tab-pane fade show active" id="monthly">
-                            <div id="chartTimeline"></div>
-                        </div>
-                        <div class="tab-pane fade" id="weekly">
-                            <div id="chartTimeline2"></div>
-                        </div>
-                        <div class="tab-pane fade" id="today">
-                            <div id="chartTimeline3"></div>
+                        <div class="">
+                            <canvas id="chartTest"></canvas>
                         </div>
                     </div>
                 </div>
@@ -151,5 +126,29 @@
         </div>
     </div>
 </div>
+@section Script{
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('chartTest');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+}
 
 
