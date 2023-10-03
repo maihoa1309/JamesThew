@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Project3.Data;
+using Project3.DTO;
 using Project3.Models;
 //using Project3.DTO;
 using Ingredient = Project3.Models.Ingredient;
@@ -13,6 +14,7 @@ namespace Project3.Repository
 		Task<List<Ingredient>> SortNameByASC();
 
 		Task<IngredientDTO> GetByNameAsync(string keyword, int index, int size);
+		Task<List<ChartData>> GetChartIngreAsync();
 
 	}
     public class IngerdientRepository : BaseRepository<Ingredient>, IIngerdientRepository
@@ -36,6 +38,19 @@ namespace Project3.Repository
 			return ingredientDTO;
         }
 
+        public async Task<List<ChartData>> GetChartIngreAsync()
+        {
+			var result = await (from rd in _context.RecipeDetail
+						 join i in _context.Ingredients on rd.IngredientId equals i.Id
+						 join r in _context.Recipes on rd.RecipeId equals r.Id
+                        group r.Id by i.Name into g
+                        select new ChartData
+                        {
+                            Label = g.Key,
+                            Data = g.Distinct().Count()
+                        }).ToListAsync();	 
+			return result;
+        }
 
         public async Task<List<Ingredient>> SortNameByASC()
 		{

@@ -24,8 +24,7 @@ namespace Project3.Repository
         Task<List<Category>> GetRandomCategories(int count);
         Task<List<RecipeDetailDTO>> GetRecipesByCategoryId(int categoryId);
         Task<List<RecipeDetailDTO>> GetRandomRecipes(int count);
-
-
+        Task<bool> CheckRegister(int idRecipe);
     }
     public class RecipeRepository : BaseRepository<Recipe>, IRecipeRepository
     {
@@ -218,8 +217,9 @@ namespace Project3.Repository
 
         public async Task<Recipe> SaveRecipeAsync(FormAddRecipe request)
         {
-            
-            if(request != null)
+            var currentUser = await _userManager.GetUserAsync(_contextAccessor.HttpContext.User);
+
+            if (request != null)
             {
                 var Recipe = new Recipe();
                 if(request.id > 0)
@@ -240,7 +240,7 @@ namespace Project3.Repository
                     Recipe.CookingTime = request.cookingTime;
                     Recipe.Servings = request.servings;
                     Recipe.Instruction = request.instruction;
-                    //Recipe.UserId = currentUser.Id;
+                    Recipe.UserId = currentUser.Id;
                     Recipe.Cuisines = request.cuisines;
                     Recipe.IsFree = Convert.ToBoolean(request.isFree);
                     Recipe.CreatedTime = DateTime.Now;
@@ -345,7 +345,38 @@ namespace Project3.Repository
 
         }
 
-	
-	}
+        public async Task<bool> CheckRegister(int idRecipe)
+        {
+            var currentUser = await _userManager.GetUserAsync(_contextAccessor.HttpContext.User);
+            var recipeIsFree = await _context.Recipes.Where(r=>r.Id.Equals(idRecipe)).Select(r=>r.IsFree).FirstOrDefaultAsync();
+            if (recipeIsFree == true)
+            {
+                return true;
+            }
+            else
+            {
+               
+                if(currentUser == null)
+                {
+                    return false;
+                }else
+                {
+                    var currentUserId = currentUser.Id;
+                    var check =( from r in _context.Registers
+                                where r.UserId == currentUserId && r.DueDate >= DateTime.Now
+                                select r).ToList();
+                    if (check.Any())
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                                
+                }
+            }
+        }
+    }
 }
 

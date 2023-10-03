@@ -71,8 +71,17 @@ namespace Project3.Controllers{
 		}
 		public async Task<IActionResult> SingleRecipe(int id)
 		{
-			var recipe = await _recipeRepository.GetRecipeByIdAsync(id);
-			return View(recipe);
+			var isFree = await _recipeRepository.CheckRegister(id);
+			if (isFree == false)
+			{
+                return RedirectToAction("PricingPlan");
+            }
+			else
+			{
+                var recipe = await _recipeRepository.GetRecipeByIdAsync(id);
+                return View(recipe);
+            }
+            
 
 		}
 		public IActionResult RecipeList()
