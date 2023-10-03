@@ -130,6 +130,15 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         const ctx = document.getElementById('chartTest');
+        var labelsIngre = [];
+        var datasIngre =[];
+        @{
+            var chartIngre = await ingredientRepository.GetChartIngreAsync();
+            @foreach (var ingre in chartIngre)
+            {
+                
+            }
+        }
         new Chart(ctx, {
             type: 'bar',
             data: {
