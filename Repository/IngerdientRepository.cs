@@ -40,7 +40,7 @@ namespace Project3.Repository
 
         public async Task<List<ChartData>> GetChartIngreAsync()
         {
-			var result = await (from rd in _context.RecipeDetail
+			var listData = await (from rd in _context.RecipeDetail
 						 join i in _context.Ingredients on rd.IngredientId equals i.Id
 						 join r in _context.Recipes on rd.RecipeId equals r.Id
                         group r.Id by i.Name into g
@@ -48,8 +48,26 @@ namespace Project3.Repository
                         {
                             Label = g.Key,
                             Data = g.Distinct().Count()
-                        }).ToListAsync();	 
-			return result;
+                        }).ToListAsync();
+			var others = new ChartData();
+			others.Label = "Others";
+			others.Data = 0;
+            var result = new List<ChartData>();
+
+            foreach (var item in listData)
+			{
+				if(item.Data == 1)
+				{
+					others.Data += 1;
+				}
+				else
+				{
+					result.Add(item);
+				}
+
+			}
+            result.Add(others);
+            return result;
         }
 
         public async Task<List<Ingredient>> SortNameByASC()
