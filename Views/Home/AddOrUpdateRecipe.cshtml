@@ -4,7 +4,7 @@
 @inject IRecipeRepository recipeRepository;
 @inject ICategoryRepository categoryRepository;
 @{
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_Layoutweb.cshtml";
     var ingredients = await ingredientRepository.SortNameByASC();
     var categories = await categoryRepository.SortNameByASCAsync();
     var recipe = new Recipe();
@@ -16,7 +16,7 @@
         //receipt = await recipeRepository.GetRecipeByIdAsync(Model);
     }
 }
-@section Styles{
+@*@section Styles{
         <style>
             .select2-selection--single {
                 height: 2.5rem !important;
@@ -65,7 +65,7 @@
                 align-items: center;
                 }
         </style>
-}
+}*@
 <div class="content-body ">
     <!-- row -->
     <div class="container-fluid">
@@ -307,7 +307,7 @@
         </div>
     </div>
 </div>
-@section Script{
+@section Scripts{
         <script src="~/js/controller/add-recipe.js"></script>
 }
 
