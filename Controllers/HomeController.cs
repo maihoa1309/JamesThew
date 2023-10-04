@@ -84,9 +84,15 @@ namespace Project3.Controllers{
             
 
 		}
-		public IActionResult RecipeList()
+        public IActionResult Search()
+        {
+            return View();
+        }
+
+        public IActionResult RecipeList()
 		{
-			return View();
+            var searchResult = TempData["SearchResult"] as List<Recipe>;
+            return View(searchResult);
 		}
 		public IActionResult PricingPlan()
 		{

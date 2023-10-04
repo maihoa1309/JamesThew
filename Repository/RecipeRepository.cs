@@ -9,6 +9,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Project3.Repository
 {
@@ -24,7 +25,13 @@ namespace Project3.Repository
         Task<List<Category>> GetRandomCategories(int count);
         Task<List<RecipeDetailDTO>> GetRecipesByCategoryId(int categoryId);
         Task<List<RecipeDetailDTO>> GetRandomRecipes(int count);
+
+        Task<List<RecipeDetailDTO>> SearchRecipes(string keyword);
+        
+
+        
         Task<bool> CheckRegister(int idRecipe);
+
     }
     public class RecipeRepository : BaseRepository<Recipe>, IRecipeRepository
     {
@@ -32,6 +39,28 @@ namespace Project3.Repository
         public RecipeRepository(ApplicationDbContext dbContext, UserManager<CustomUser> userManager, IHttpContextAccessor httpContext, IWebHostEnvironment hostingEnviroment) : base(dbContext, userManager, httpContext) {
             _hostingEnvironment = hostingEnviroment;
         }
+        public async Task<List<RecipeDetailDTO>> SearchRecipes(string keyword)
+        {
+            // Thực hiện logic tìm kiếm trong bảng Recipe dựa trên keyword
+            // Ví dụ:
+            List<Recipe> allRecipes = await _context.Recipes.ToListAsync();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                allRecipes = allRecipes.Where(r => r.Title.ToLower().Contains(keyword.ToLower())).ToList();
+            }
+
+            var query = (from r in allRecipes
+                         join u in _userManager.Users on r.UserId equals u.Id
+                         select new RecipeDetailDTO
+                         {
+                             Recipe = r,
+                             User = u,
+                         }).ToList();
+
+            return query;
+        }
+   
+
         public async Task<List<RecipeDetailDTO>> GetRandomRecipes(int count)
         {
             var allRecipes = await _dbSet.ToListAsync();
