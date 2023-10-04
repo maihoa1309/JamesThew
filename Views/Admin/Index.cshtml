@@ -8,7 +8,11 @@
     var recipes = await recipeRepository.GetAllAsync();
     var ingres = await ingredientRepository.GetAllAsync();
 }
-
+@section Styles{
+    <style>
+        
+    </style>
+}
 
 <div class="content-body ">
     <!-- row -->
@@ -112,7 +116,7 @@
                     <div class="card-header border-0 d-sm-flex d-block">
                         <div>
                             <h4 class="card-title mb-2"></h4>
-                            <p class="fs-13 mb-0">Lorem ipsum dolor</p>
+                            <p class="fs-13 mb-0"></p>
                         </div>
                     </div>
                     <div class="card-body tab-content p-3">
@@ -122,7 +126,6 @@
                     </div>
                 </div>
             </div>
-          
         </div>
     </div>
 </div>
@@ -131,31 +134,42 @@
     <script>
         const ctx = document.getElementById('chartTest');
         var labelsIngre = [];
-        var datasIngre =[];
+        var datasIngre = [];
         @{
             var chartIngre = await ingredientRepository.GetChartIngreAsync();
             @foreach (var ingre in chartIngre)
             {
-                
+                @:labelsIngre.push("@ingre.Label");
+                @:datasIngre.push(@ingre.Data);
+            }
+        }
+        const doughnutLabel ={
+            id: 'doughnutLabel',
+            beforeDatasetsDraw(chart, args, pluginOptions){
+                const{ctx, data} = chart;
+
+                ctx.save();
+                const xCoor = chart.getDatasetMeta(0).data[0].x;
+                const yCoor = chart.getDatasetMeta(0).data[0].y;
+                ctx.font = ' 10px monospace';
+                ctx.fillStyle = ' #DD2F6E';
+                ctx.textAlign = 'center';
+                ctx.fillText('Ingredient Chart', xCoor, yCoor);
             }
         }
         new Chart(ctx, {
-            type: 'bar',
+            type: 'doughnut',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: labelsIngre,
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderWidth: 1
+                    label: 'of recipes',
+                    data: datasIngre
                 }]
+            }, 
+            option: {
+              
             },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
+            plugins: [doughnutLabel]
         });
     </script>
 }

@@ -22,6 +22,8 @@
 
     <PackageReference Include="PayPalMerchantSDK" Version="2.16.250" />
 
+    <PackageReference Include="Quartz" Version="3.7.0" />
+
   </ItemGroup>
 
   <ItemGroup>

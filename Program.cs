@@ -8,6 +8,7 @@ namespace Project3
 {
     public class Program
     {
+      
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +36,7 @@ namespace Project3
 			builder.Services.AddScoped<ISubmissionRepository, SubmissionRepository>();
 			builder.Services.AddScoped<ITipRepository, TipRepository>();
 			builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 			var app = builder.Build();
 
             // Configure the HTTP request pipeline.
