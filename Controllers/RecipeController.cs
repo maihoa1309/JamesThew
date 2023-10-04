@@ -41,7 +41,12 @@ namespace Project3.Controllers
             _recipeRepository.DeleteAsync(entity).Wait();
             return RedirectToAction("RecipesByAdmin", "Admin");
         }
-       
+        public async Task<IActionResult> SearchRecipes(string keyword)
+        {
+            var searchResult = await _recipeRepository.SearchRecipes(keyword);
+            
+            return View(searchResult);
+        }
 
     }
 }

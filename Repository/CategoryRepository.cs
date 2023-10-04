@@ -9,6 +9,8 @@ namespace Project3.Repository
     {
         Task<List<Category>> SortNameByASCAsync();
         Task<bool> SaveCategoryAsync(Category request);
+        
+
     }
     public class CategoryRepository : BaseRepository<Category>, ICategoryRepository
     {
@@ -17,8 +19,8 @@ namespace Project3.Repository
         {
 			_hostingEnvironment = hostingEnviroment;
 		}
-
-		public async Task<bool> SaveCategoryAsync(Category request)
+        
+        public async Task<bool> SaveCategoryAsync(Category request)
 		{
             var cate = new Category();
             if (request.Id > 0)

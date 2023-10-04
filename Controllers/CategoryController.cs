@@ -21,6 +21,6 @@ namespace Project3.Controllers
             await _categoryRepository.SaveCategoryAsync(category);
             return Json(category);
         }
-
+        
     }
 }

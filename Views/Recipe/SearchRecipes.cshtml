@@ -1,22 +1,22 @@
 ﻿@using Project3.Repository
 @using Project3.DTO
 @inject IRecipeRepository recipeRepository;
-
+@model List<RecipeDetailDTO>;
 
 @{
     Layout = "~/Views/Shared/_Layoutweb.cshtml";
     List<RecipeDetailDTO> allrecipe = await recipeRepository.GetLatestCreatedRecipes(8);
     List<Category> categories = await recipeRepository.GetRandomCategories(4);
     var i = 0;
-    //if (Model.Any())
-    //{
-    //    var model = Model;
-    //}
+    if (Model.Any())
+    {
+        var model = Model;
+    }
 
 
 }
 <div data-elementor-type="wp-post" data-elementor-id="713" class="elementor elementor-713">
-   
+
     <section class="elementor-section elementor-top-section elementor-element elementor-element-e0fd804 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="e0fd804" data-element_type="section">
         <div class="elementor-container elementor-column-gap-default ">
             <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-167ed45" data-id="167ed45" data-element_type="column">
@@ -27,52 +27,24 @@
                                 <div class="elementor-widget-wrap elementor-element-populated">
                                     <div class="elementor-element elementor-element-bca8a19 elementor-widget elementor-widget-heading" data-id="bca8a19" data-element_type="widget" data-widget_type="heading.default">
                                         <div class="elementor-widget-container">
-                                            <h3 class="elementor-heading-title elementor-size-default">Latest Recipes</h3>
+                                            <h3 class="elementor-heading-title elementor-size-default">Result:</h3>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-7c8d4ec elementor-invisible" data-id="7c8d4ec" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInRight&quot;}">
-                                <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class="elementor-element elementor-element-749d236 elementor-align-right elementor-mobile-align-center elementor-widget elementor-widget-button" data-id="749d236" data-element_type="widget" data-widget_type="button.default">
-                                        <div class="elementor-widget-container">
-                                            <div class="elementor-button-wrapper">
-                                                <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
-                                                    <span class="elementor-button-content-wrapper">
-                                                        <span class="elementor-button-icon elementor-align-icon-right">
-                                                            <i aria-hidden="true" class="material-icons md-call_made" data-md-icon="call_made"></i>
-                                                        </span>
-                                                        <span class="elementor-button-text">View more</span>
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </section>
                     <section class="elementor-section elementor-inner-section elementor-element elementor-element-8e637d0 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="8e637d0" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeInRight&quot;}">
                         <div class="elementor-container elementor-column-gap-default" style="margin-bottom:50px">
-                            @foreach (var recipe in allrecipe)
+                            @foreach (var recipe in Model)
                             {
-                                i++;
-                                if (i <= (allrecipe.Count() / 2))
-                                {
+                                
                                     @await  Component.InvokeAsync("LatestRecipe", new { item = recipe })
-                                }
                             }
                         </div>
                     </section>
-                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-2035e13 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="2035e13" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeInLeft&quot;}">
-                        <div class="elementor-container elementor-column-gap-default">
-                            @for (int j = (allrecipe.Count() / 2); j < allrecipe.Count(); j++)
-                            {
-                                var recipe = allrecipe[j];
-                                @await  Component.InvokeAsync("LatestRecipe", new { item = recipe })
-                            }
-                        </div>
-                    </section>
+                    
                 </div>
             </div>
         </div>
