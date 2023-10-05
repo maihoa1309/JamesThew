@@ -983,9 +983,10 @@ progress {
     font-size: 0.875em;
     color: var(--bs-secondary-color);
 }
-
+.container-fluid{
+    width : 10000%;
+}
 .container,
-.container-fluid,
 .container-sm,
 .container-md,
 .container-lg,
