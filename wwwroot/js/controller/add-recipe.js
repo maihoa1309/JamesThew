@@ -75,7 +75,7 @@
         })
 
         $('.recipe-item .select2-item').each((i, v) => {
-            $(v).select2();
+            $(v).select('select2');
         })
 
     },
