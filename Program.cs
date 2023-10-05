@@ -1,8 +1,11 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Project3.Data;
+using Project3.Job;
 using Project3.Models;
 using Project3.Repository;
+using Quartz;
+using Quartz.Impl;
 
 namespace Project3
 {
@@ -43,9 +46,33 @@ namespace Project3
             if (app.Environment.IsDevelopment())
             {
                 app.UseMigrationsEndPoint();
+               
             }
             else
             {
+                async Task ConfigureQuartzScheduler()
+                {
+                    // Tạo một đối tượng Scheduler
+                    ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
+                    IScheduler scheduler = await schedulerFactory.GetScheduler();
+
+                    // Khởi động Scheduler
+                    await scheduler.Start();
+
+                    // Tạo một công việc
+                    IJobDetail job = JobBuilder.Create<SendMail>()
+                        .WithIdentity("UpdateRole", "YourJobGroup")
+                        .Build();
+
+                    // Tạo một Trigger để chạy công việc mỗi ngày lúc 12:00 PM
+                    ITrigger trigger = TriggerBuilder.Create()
+                        .WithIdentity("YourTriggerName", "YourTriggerGroup")
+                        .WithSimpleSchedule(x => x.WithIntervalInSeconds(5).RepeatForever())
+                        .Build();
+
+                    // Lên lịch công việc với Trigger
+                    await scheduler.ScheduleJob(job, trigger);
+                }
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
@@ -63,7 +90,6 @@ namespace Project3
                 name: "default",
                 pattern: "{controller=Home}/{action=HomePage}/{id?}");
             app.MapRazorPages();
-
             app.Run();
         }
     }
