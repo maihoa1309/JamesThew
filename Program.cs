@@ -41,6 +41,29 @@ namespace Project3
 			builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 			var app = builder.Build();
+            async Task ConfigureQuartzScheduler()
+            {
+                // Tạo một đối tượng Scheduler
+                ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
+                IScheduler scheduler = await schedulerFactory.GetScheduler();
+
+                // Khởi động Scheduler
+                await scheduler.Start();
+
+                // Tạo một công việc
+                IJobDetail job = JobBuilder.Create<SendMail>()
+                    .WithIdentity("UpdateRole", "YourJobGroup")
+                    .Build();
+
+                // Tạo một Trigger để chạy công việc mỗi ngày lúc 12:00 PM
+                ITrigger trigger = TriggerBuilder.Create()
+                    .WithIdentity("YourTriggerName", "YourTriggerGroup")
+                    .WithSimpleSchedule(x => x.WithIntervalInSeconds(5).RepeatForever())
+                    .Build();
+
+                // Lên lịch công việc với Trigger
+                await scheduler.ScheduleJob(job, trigger);
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -50,29 +73,7 @@ namespace Project3
             }
             else
             {
-                async Task ConfigureQuartzScheduler()
-                {
-                    // Tạo một đối tượng Scheduler
-                    ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
-                    IScheduler scheduler = await schedulerFactory.GetScheduler();
-
-                    // Khởi động Scheduler
-                    await scheduler.Start();
-
-                    // Tạo một công việc
-                    IJobDetail job = JobBuilder.Create<SendMail>()
-                        .WithIdentity("UpdateRole", "YourJobGroup")
-                        .Build();
-
-                    // Tạo một Trigger để chạy công việc mỗi ngày lúc 12:00 PM
-                    ITrigger trigger = TriggerBuilder.Create()
-                        .WithIdentity("YourTriggerName", "YourTriggerGroup")
-                        .WithSimpleSchedule(x => x.WithIntervalInSeconds(5).RepeatForever())
-                        .Build();
-
-                    // Lên lịch công việc với Trigger
-                    await scheduler.ScheduleJob(job, trigger);
-                }
+               
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
@@ -90,6 +91,7 @@ namespace Project3
                 name: "default",
                 pattern: "{controller=Home}/{action=HomePage}/{id?}");
             app.MapRazorPages();
+            await ConfigureQuartzScheduler();
             app.Run();
         }
     }
