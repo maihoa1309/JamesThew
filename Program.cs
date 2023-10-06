@@ -91,7 +91,6 @@ namespace Project3
                 name: "default",
                 pattern: "{controller=Home}/{action=HomePage}/{id?}");
             app.MapRazorPages();
-            await ConfigureQuartzScheduler();
             app.Run();
         }
     }
