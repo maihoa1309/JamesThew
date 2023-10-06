@@ -8,6 +8,8 @@ using Hangfire;
 using Project3.DTO;
 using System.Net.Mail;
 using System.Net;
+using Newtonsoft.Json;
+using PayPal.Api;
 
 namespace Project3.Controllers{
 	public class HomeController : Controller
@@ -15,16 +17,18 @@ namespace Project3.Controllers{
 		private readonly ILogger<HomeController> _logger;
 		private readonly RoleManager<IdentityRole> _roleManager;
 		private readonly IRecipeRepository _recipeRepository;
-        private readonly ApplicationDbContext _context;
+		private readonly IContestRepository _contestRepository;
+		private readonly ApplicationDbContext _context;
         protected readonly UserManager<CustomUser> _userManager;
-        public HomeController(ILogger<HomeController> logger, RoleManager<IdentityRole> roleManager, IRecipeRepository recipeRepository, ApplicationDbContext context,  UserManager<CustomUser> userManager)
+        public HomeController(IContestRepository contestRepository, ILogger<HomeController> logger, RoleManager<IdentityRole> roleManager, IRecipeRepository recipeRepository, ApplicationDbContext context,  UserManager<CustomUser> userManager)
 		{
 			_logger = logger;
 			_roleManager = roleManager;
 			_recipeRepository = recipeRepository;
 			_context = context;
 			_userManager = userManager;
-		}
+			_contestRepository = contestRepository;
+	}
 		//public async Task<IActionResult> SeedingRoleAsync()
 		//{
 		//	var dbSeedRole = new DbSeedRole(_roleManager);
@@ -63,8 +67,11 @@ namespace Project3.Controllers{
 			return View();
 		}
 
-		public IActionResult Contest()
+		public async Task<IActionResult> Contest()
 		{
+			var contest = await _contestRepository.Burn();
+			var contests = JsonConvert.DeserializeObject(contest);
+			ViewBag.Result = contests;
 			return View();
 		}
 		public async Task<IActionResult> SingleRecipe(int id)
@@ -107,8 +114,17 @@ namespace Project3.Controllers{
 		{
 			return View();
 		}
-		public IActionResult TemPlateKit()
+		public async Task<IActionResult> TemPlateKit(int id)
 		{
+			var contest = await _contestRepository.Burns(id);
+			var contests = JsonConvert.DeserializeObject(contest);
+			var tr = await _contestRepository.Bunny(id);
+			var re = await _contestRepository.Burna();
+			var rec = JsonConvert.DeserializeObject(re);
+			ViewBag.recipe = rec;
+			ViewBag.number = tr;
+			ViewBag.Result = contests;
+			
 			return View();
 		}
 		public IActionResult Category(int id)

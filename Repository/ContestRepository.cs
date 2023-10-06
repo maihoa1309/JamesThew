@@ -13,7 +13,9 @@ namespace Project3.Repository
         Task<bool> SaveContestAsync(Contest request);
         Task<ContestDTO> GetByNameAsync (string keyword, int index, int size);
         Task<String> Burn ();
-        Task<string> Bunny();
+		Task<String> Burns(int id);
+		Task<string> Bunny(int id);
+        Task<string> Burna();
 	}
     public class ContestRepository : BaseRepository<Contest>, IContestRepository
     {
@@ -21,6 +23,7 @@ namespace Project3.Repository
         public ContestRepository(ApplicationDbContext dbContext, UserManager<CustomUser> userManager, IHttpContextAccessor httpContext, IWebHostEnvironment hostingEnviroment) : base(dbContext, userManager, httpContext)
         {
             _hostingEnvironment = hostingEnviroment;
+
         }
 
 		public async Task<ContestDTO> GetByNameAsync(string keyword, int index, int size)
@@ -143,47 +146,47 @@ namespace Project3.Repository
 			string result = JsonConvert.SerializeObject(convertedContests);
 			return result;
 		}
-		public async Task<string> Bunny()
+		public async Task<string> Burns(int id)
 		{
-			var us = await _context.Submissions.ToListAsync();
+			var contests = await _context.Contests.Where(c => c.Id == id).ToListAsync();
 
-			Dictionary<int, int> contestIdCounts = new Dictionary<int, int>();
-
-			
-			foreach (var submission in us)
+			var convertedContests = contests.Select(c => new Contest
 			{
-				if (submission.ContestId != null)
-				{
-					int contestId = submission.ContestId.Value;
-
-					if (contestIdCounts.ContainsKey(contestId))
-					{
-						contestIdCounts[contestId]++;
-					}
-					else
-					{
-						contestIdCounts[contestId] = 1;
-					}
-				}
-			}
-
-			
-			List<Resultt> results = contestIdCounts.Select(kvp => new Resultt
-			{
-				User = kvp.Value,
-				ContestId = kvp.Key
+				Id = c.Id,
+				Title = c.Title,
+				Rule = c.Rule,
+				Description = c.Description,
+				CategoryId = c.CategoryId,
+				StartDate = c.StartDate,
+				EndDate = c.EndDate,
+				Img = c.Img,
 			}).ToList();
 
-			
-			string jsonResult = JsonConvert.SerializeObject(results);
-
-			return jsonResult;
+			string result = JsonConvert.SerializeObject(convertedContests);
+			return result;
 		}
-
-		public class Resultt
+		public async Task<string> Bunny(int id)
 		{
-			public int User { get; set; }
-			public int ContestId { get; set; }
+			var us = await _context.Submissions.Where(c => c.ContestId == id).CountAsync();
+            string uss = us.ToString();
+			return uss;
 		}
+
+		public async Task<string> Burna()
+		{
+			var currentUser = _userManager.GetUserAsync(_contextAccessor.HttpContext.User).Result;
+			var user = currentUser.Id;
+			var contests = await _context.Recipes.Where(d => d.UserId == user).ToListAsync();
+
+			var convertedContests = contests.Select(c => new Contest
+			{
+				Id= c.Id,
+                Title = c.Title
+			}).ToList();
+
+			string result = JsonConvert.SerializeObject(convertedContests);
+			return result;
+		}
+
 	}
 }
